@@ -1,6 +1,6 @@
 :root {
   --ink: #111723;
-  --muted: #6c737e;
+  --muted: #686f7a;
   --blue: #1884ff;
   --deep-blue: #0d3673;
   --page: #dff2ff;
@@ -55,7 +55,7 @@ button {
   width: min(100vw, 430px);
   min-height: 932px;
   overflow: hidden;
-  padding: 16px 16px 132px;
+  padding: 16px 16px 124px;
   background:
     radial-gradient(circle at 78% 10%, rgba(255, 255, 255, 0.8), transparent 22%),
     linear-gradient(180deg, #dff4ff 0%, var(--page) 42%, var(--page-bottom) 100%);
@@ -63,12 +63,12 @@ button {
 }
 
 .status-bar {
-  height: 42px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 6px 0 4px;
-  font-size: 19px;
+  font-size: 18px;
   font-weight: var(--weight-bold);
   letter-spacing: 0;
 }
@@ -102,11 +102,11 @@ button {
 }
 
 .top-nav {
-  height: 58px;
+  height: 54px;
   display: grid;
-  grid-template-columns: 34px 0.88fr 1.22fr 0.88fr 0.88fr 34px 34px;
+  grid-template-columns: 30px 0.86fr 1.14fr 0.86fr 0.86fr 30px 32px;
   align-items: center;
-  column-gap: 5px;
+  column-gap: 4px;
 }
 
 .nav-tab {
@@ -114,14 +114,14 @@ button {
   text-align: center;
   text-decoration: none;
   color: #636a74;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: var(--weight-semibold);
   white-space: nowrap;
 }
 
 .nav-tab.active {
   color: #111;
-  font-size: 24px;
+  font-size: 23px;
   font-weight: var(--weight-heavy);
 }
 
@@ -129,9 +129,9 @@ button {
   content: "";
   position: absolute;
   left: 50%;
-  bottom: -9px;
-  width: 58px;
-  height: 11px;
+  bottom: -8px;
+  width: 54px;
+  height: 10px;
   transform: translateX(-50%) rotate(3deg);
   background: var(--blue);
   border-radius: 999px;
@@ -140,8 +140,8 @@ button {
 }
 
 .icon-btn {
-  width: 34px;
-  height: 42px;
+  width: 32px;
+  height: 38px;
   display: grid;
   place-items: center;
   position: relative;
@@ -149,8 +149,8 @@ button {
 }
 
 .nav-icon {
-  width: 27px;
-  height: 27px;
+  width: 25px;
+  height: 25px;
   fill: none;
   stroke: currentColor;
   stroke-width: 2.7;
@@ -159,14 +159,14 @@ button {
 }
 
 .message .nav-icon {
-  width: 28px;
-  height: 28px;
+  width: 25px;
+  height: 25px;
   stroke-width: 2.35;
 }
 
 .profile .nav-icon {
-  width: 29px;
-  height: 29px;
+  width: 28px;
+  height: 28px;
   stroke-width: 2.45;
 }
 
@@ -191,17 +191,17 @@ button {
 
 .hero {
   position: relative;
-  min-height: 122px;
-  padding: 30px 12px 0;
+  min-height: 112px;
+  padding: 26px 12px 0;
 }
 
 .greeting h1 {
   position: relative;
   z-index: 2;
-  max-width: 292px;
-  margin: 0 0 9px;
+  max-width: 260px;
+  margin: 0 0 8px;
   color: #082e64;
-  font-size: 24px;
+  font-size: 22px;
   line-height: 1.2;
   font-weight: var(--weight-heavy);
   letter-spacing: 0;
@@ -212,16 +212,16 @@ button {
   z-index: 2;
   margin: 0;
   color: #596675;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: var(--weight-semibold);
 }
 
 .mascot-wrap {
   position: absolute;
-  right: 12px;
-  top: 0;
-  width: 148px;
-  height: 160px;
+  right: 8px;
+  top: -2px;
+  width: 136px;
+  height: 148px;
 }
 
 .mascot-wrap img {
@@ -235,22 +235,22 @@ button {
 .speech {
   position: absolute;
   z-index: 2;
-  left: -18px;
-  top: 50px;
-  min-width: 34px;
-  padding: 4px 7px;
-  border-radius: 9px;
+  left: -14px;
+  top: 48px;
+  min-width: 32px;
+  padding: 3px 7px;
+  border-radius: 8px;
   color: #4b83ff;
   background: rgba(255, 255, 255, 0.92);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: var(--weight-heavy);
 }
 
 .assistant-card {
   position: relative;
-  margin-top: -18px;
-  min-height: 414px;
-  padding: 22px 16px 20px;
+  margin-top: -14px;
+  min-height: 374px;
+  padding: 18px 16px 18px;
   border: 1px solid rgba(255, 255, 255, 0.86);
   border-radius: 24px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(240, 248, 255, 0.44));
@@ -258,10 +258,10 @@ button {
 }
 
 .intro {
-  margin: 0 0 38px;
+  margin: 0 0 30px;
   color: #777f8c;
-  font-size: 16px;
-  line-height: 1.62;
+  font-size: 15px;
+  line-height: 1.58;
   font-weight: var(--weight-medium);
 }
 
@@ -269,14 +269,14 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .ask-title {
   display: flex;
   align-items: center;
-  gap: 9px;
-  font-size: 18px;
+  gap: 8px;
+  font-size: 17px;
 }
 
 .ask-title strong {
@@ -284,9 +284,9 @@ button {
 }
 
 .bubble-icon {
-  width: 24px;
-  height: 20px;
-  border: 2.5px solid #161d27;
+  width: 23px;
+  height: 19px;
+  border: 2.2px solid #161d27;
   border-radius: 7px;
   position: relative;
   background: rgba(255, 255, 255, 0.3);
@@ -321,52 +321,52 @@ button {
   align-items: center;
   gap: 7px;
   color: #121820;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: var(--weight-semibold);
 }
 
 .refresh span {
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1;
 }
 
 .question-list {
   display: grid;
-  gap: 14px;
+  gap: 12px;
 }
 
 .question {
-  min-height: 62px;
+  min-height: 54px;
   width: 100%;
   display: grid;
-  grid-template-columns: 38px 1fr 22px;
+  grid-template-columns: 32px 1fr 20px;
   align-items: center;
-  gap: 7px;
-  padding: 12px 18px;
-  border-radius: 18px;
+  gap: 6px;
+  padding: 10px 16px;
+  border-radius: 16px;
   color: #141820;
   background: var(--white);
   box-shadow: 0 8px 22px rgba(77, 126, 170, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.95);
   text-align: left;
-  font-size: 18px;
-  font-weight: var(--weight-bold);
+  font-size: 16px;
+  font-weight: var(--weight-semibold);
   line-height: 1.4;
 }
 
 .question.tall {
-  min-height: 84px;
+  min-height: 74px;
 }
 
 .hash {
   color: #237cff;
-  font-size: 28px;
+  font-size: 25px;
   font-weight: var(--weight-heavy);
 }
 
 .arrow {
   justify-self: end;
   color: #a0a5ad;
-  font-size: 23px;
+  font-size: 20px;
   transform: rotate(-12deg);
 }
 
@@ -384,89 +384,85 @@ button {
 
 .quick-actions {
   display: flex;
-  gap: 9px;
-  padding: 0 0 11px;
+  gap: 8px;
+  padding: 0 0 10px;
 }
 
 .pet-chip,
 .mode-chip {
-  height: 38px;
+  height: 34px;
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 4px 13px 4px 4px;
+  gap: 6px;
+  padding: 3px 11px 3px 3px;
   border-radius: 999px;
   color: #262b31;
   background: rgba(255, 255, 255, 0.76);
   box-shadow: 0 6px 16px rgba(71, 115, 156, 0.08);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: var(--weight-bold);
 }
 
 .pet-photo {
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  background:
-    radial-gradient(circle at 49% 45%, #5a5b52 0 16%, transparent 17%),
-    radial-gradient(circle at 42% 44%, #c1b49f 0 36%, transparent 37%),
-    radial-gradient(circle at 60% 52%, #f4d3a0 0 42%, transparent 43%),
-    linear-gradient(135deg, #b96f24, #ecd39c);
+  background: url("./assets/kele-avatar.jpg") center / cover no-repeat;
   border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
 .switch {
   display: inline-grid;
   place-items: center;
-  width: 24px;
-  height: 24px;
+  width: 21px;
+  height: 21px;
   border-radius: 50%;
   color: #2b72ff;
   background: #e8f2ff;
-  font-size: 15px;
+  font-size: 13px;
 }
 
 .mode-chip {
-  padding: 4px 16px;
+  padding: 3px 13px;
 }
 
 .atom {
   display: inline-grid;
   place-items: center;
-  width: 24px;
-  height: 24px;
+  width: 21px;
+  height: 21px;
   border-radius: 50%;
   border: 2px solid #171d26;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1;
 }
 
 .composer {
-  height: 56px;
+  height: 52px;
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 0 17px 0 14px;
-  border-radius: 23px;
+  padding: 0 15px 0 12px;
+  border-radius: 22px;
   background: rgba(255, 255, 255, 0.92);
   box-shadow: 0 9px 24px rgba(62, 109, 150, 0.1);
 }
 
 .plus {
   flex: 0 0 auto;
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   display: grid;
   place-items: center;
-  border: 3.4px solid #0d121a;
+  border: 3px solid #0d121a;
   border-radius: 50%;
 }
 
 .plus span,
 .plus span::before {
   display: block;
-  width: 18px;
-  height: 3.4px;
+  width: 16px;
+  height: 3px;
   border-radius: 99px;
   background: #0d121a;
   content: "";
@@ -479,12 +475,12 @@ button {
 .composer input {
   min-width: 0;
   width: 100%;
-  height: 44px;
+  height: 40px;
   border: 0;
   outline: 0;
   color: #212832;
   background: transparent;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: var(--weight-medium);
 }
 
@@ -501,15 +497,15 @@ button {
 }
 
 .pet-view {
-  padding-top: 34px;
+  padding-top: 28px;
 }
 
 .pet-archive {
   position: relative;
-  min-height: 318px;
-  padding: 76px 14px 16px;
+  min-height: 250px;
+  padding: 60px 12px 12px;
   border: 1px solid rgba(117, 202, 255, 0.62);
-  border-radius: 26px;
+  border-radius: 23px;
   background:
     linear-gradient(180deg, rgba(223, 241, 255, 0.92) 0 30%, rgba(174, 210, 255, 0.96) 31% 100%),
     linear-gradient(135deg, #2f82ff, #8dbdff);
@@ -521,7 +517,7 @@ button {
   content: "";
   position: absolute;
   inset: 0 0 auto;
-  height: 72px;
+  height: 58px;
   background: linear-gradient(90deg, #2577ff, #4592ff);
 }
 
@@ -530,8 +526,8 @@ button {
   position: absolute;
   left: 18px;
   right: 18px;
-  top: 60px;
-  height: 23px;
+  top: 47px;
+  height: 19px;
   border-radius: 18px 18px 0 0;
   background: rgba(211, 232, 255, 0.95);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
@@ -539,7 +535,7 @@ button {
 
 .archive-rings {
   position: absolute;
-  top: -11px;
+  top: -10px;
   left: 45%;
   z-index: 2;
   display: flex;
@@ -547,9 +543,9 @@ button {
 }
 
 .archive-rings span {
-  width: 28px;
-  height: 44px;
-  border: 5px solid rgba(255, 255, 255, 0.8);
+  width: 24px;
+  height: 38px;
+  border: 4px solid rgba(255, 255, 255, 0.8);
   border-bottom-color: #8d98a8;
   border-radius: 999px;
   box-shadow: inset 0 0 0 2px rgba(86, 95, 108, 0.36);
@@ -557,8 +553,8 @@ button {
 
 .archive-title {
   position: absolute;
-  top: 36px;
-  left: 23px;
+  top: 29px;
+  left: 20px;
   z-index: 3;
   display: flex;
   align-items: center;
@@ -573,7 +569,7 @@ button {
 }
 
 .archive-title span {
-  font-size: 25px;
+  font-size: 23px;
   line-height: 1;
   font-weight: 900;
 }
@@ -590,34 +586,34 @@ button {
 .title-bolt {
   margin-left: 3px;
   color: #0d1a2b;
-  font-size: 30px !important;
+  font-size: 27px !important;
   transform: rotate(6deg);
 }
 
 .edit-info {
   position: absolute;
-  top: 36px;
-  right: 18px;
+  top: 27px;
+  right: 15px;
   z-index: 3;
-  min-width: 116px;
-  height: 48px;
+  min-width: 102px;
+  height: 42px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 7px;
-  border: 3px solid rgba(255, 255, 255, 0.88);
-  border-radius: 14px;
+  gap: 6px;
+  border: 2.5px solid rgba(255, 255, 255, 0.88);
+  border-radius: 12px;
   color: #fff;
   background: linear-gradient(135deg, #1fc5dc, #31d4ee);
   box-shadow: 0 5px 0 rgba(33, 130, 190, 0.24);
-  font-size: 18px;
+  font-size: 16px;
   font-weight: var(--weight-bold);
   transform: rotate(-7deg);
 }
 
 .edit-pencil {
-  width: 18px;
-  height: 28px;
+  width: 15px;
+  height: 23px;
   border-radius: 6px 6px 3px 3px;
   background: linear-gradient(180deg, #ff9c22 0 72%, #ffe0a4 72% 100%);
   transform: rotate(-12deg);
@@ -627,36 +623,36 @@ button {
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: 1.45fr 1fr;
+  grid-template-columns: 1.58fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 12px;
+  gap: 10px;
 }
 
 .profile-card,
 .stat-card {
   background: rgba(247, 252, 255, 0.9);
   border: 2px solid rgba(255, 255, 255, 0.92);
-  border-radius: 20px;
+  border-radius: 17px;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85);
 }
 
 .profile-card {
   position: relative;
   grid-row: 1 / 3;
-  min-height: 198px;
+  min-height: 156px;
   display: grid;
-  grid-template-columns: 76px 1fr;
+  grid-template-columns: 56px 1fr;
   align-items: center;
-  gap: 16px;
-  padding: 28px 18px 18px 16px;
+  gap: 10px;
+  padding: 20px 10px 12px;
 }
 
 .collar {
   position: absolute;
-  left: 55px;
-  top: -15px;
-  width: 22px;
-  height: 48px;
+  left: 43px;
+  top: -12px;
+  width: 19px;
+  height: 38px;
   border: 2.5px solid #182333;
   border-radius: 7px;
   background:
@@ -677,15 +673,11 @@ button {
 }
 
 .archive-avatar {
-  width: 72px;
-  height: 72px;
-  border: 4px solid #151922;
+  width: 56px;
+  height: 56px;
+  border: 3.5px solid #151922;
   border-radius: 50%;
-  background:
-    radial-gradient(circle at 49% 45%, #5a5b52 0 16%, transparent 17%),
-    radial-gradient(circle at 42% 44%, #c1b49f 0 36%, transparent 37%),
-    radial-gradient(circle at 60% 52%, #f4d3a0 0 42%, transparent 43%),
-    linear-gradient(135deg, #b96f24, #ecd39c);
+  background: url("./assets/kele-avatar.jpg") center / cover no-repeat;
   box-shadow: 0 0 0 3px rgba(255, 230, 216, 0.9);
 }
 
@@ -697,37 +689,39 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
-  margin-bottom: 18px;
+  gap: 6px;
+  margin-bottom: 12px;
 }
 
 .name-row h2 {
   margin: 0;
   color: #151922;
-  font-size: 28px;
+  font-size: 24px;
   line-height: 1;
   font-weight: var(--weight-heavy);
+  white-space: nowrap;
 }
 
 .switch-pet {
-  width: 34px;
-  height: 28px;
+  width: 29px;
+  height: 24px;
   display: inline-grid;
   place-items: center;
   flex: 0 0 auto;
   border-radius: 11px;
   color: #fff;
   background: linear-gradient(135deg, #3c78ff, #6fa4ff);
-  font-size: 17px;
+  font-size: 14px;
   font-weight: var(--weight-heavy);
 }
 
 .pet-summary p {
-  margin: 0 0 12px;
+  margin: 0 0 9px;
   color: #6d727c;
-  font-size: 19px;
+  font-size: 15px;
   line-height: 1;
   font-weight: var(--weight-semibold);
+  white-space: nowrap;
 }
 
 .pet-summary p:last-child {
@@ -735,29 +729,29 @@ button {
 }
 
 .stat-card {
-  min-height: 92px;
+  min-height: 73px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 18px 20px;
+  padding: 12px 13px;
 }
 
 .stat-card strong {
   color: #151922;
-  font-size: 22px;
+  font-size: 18px;
   line-height: 1.1;
   font-weight: var(--weight-heavy);
 }
 
 .stat-card span {
-  margin-top: 12px;
+  margin-top: 9px;
   color: #686e78;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: var(--weight-medium);
 }
 
 .weight-card strong {
-  font-size: 26px;
+  font-size: 23px;
 }
 
 .pet-home-indicator {
@@ -944,9 +938,9 @@ button {
   }
 
   .new-chat {
-    width: 206px;
-    height: 54px;
-    font-size: 17px;
+    width: 190px;
+    height: 48px;
+    font-size: 15px;
   }
 
   .pet-view {
@@ -954,29 +948,29 @@ button {
   }
 
   .pet-archive {
-    min-height: 286px;
-    padding: 70px 11px 13px;
-    border-radius: 23px;
+    min-height: 236px;
+    padding: 58px 10px 11px;
+    border-radius: 22px;
   }
 
   .archive-title {
     left: 18px;
-    top: 35px;
+    top: 29px;
   }
 
   .archive-title span {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .title-bolt {
-    font-size: 27px !important;
+    font-size: 24px !important;
   }
 
   .edit-info {
     right: 13px;
-    min-width: 104px;
-    height: 44px;
-    font-size: 16px;
+    min-width: 94px;
+    height: 38px;
+    font-size: 14px;
   }
 
   .archive-main {
@@ -985,93 +979,113 @@ button {
   }
 
   .profile-card {
-    min-height: 176px;
-    grid-template-columns: 58px 1fr;
-    gap: 12px;
-    padding: 25px 11px 15px;
+    min-height: 144px;
+    grid-template-columns: 52px 1fr;
+    gap: 9px;
+    padding: 19px 9px 12px;
   }
 
   .collar {
-    left: 47px;
-    width: 19px;
-    height: 45px;
+    left: 41px;
+    width: 18px;
+    height: 36px;
   }
 
   .archive-avatar {
-    width: 58px;
-    height: 58px;
-    border-width: 4px;
+    width: 52px;
+    height: 52px;
+    border-width: 3px;
   }
 
   .name-row {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
 
   .name-row h2 {
-    font-size: 24px;
-  }
-
-  .switch-pet {
-    width: 30px;
-    height: 25px;
-    font-size: 15px;
-  }
-
-  .pet-summary p {
-    margin-bottom: 11px;
-    font-size: 15px;
-  }
-
-  .stat-card {
-    min-height: 82px;
-    padding: 14px 13px;
-    border-radius: 18px;
-  }
-
-  .stat-card strong {
-    font-size: 18px;
-  }
-
-  .weight-card strong {
     font-size: 22px;
   }
 
-  .stat-card span {
-    margin-top: 10px;
-    font-size: 15px;
+  .switch-pet {
+    width: 27px;
+    height: 22px;
+    font-size: 13px;
   }
 
-  .nav-tab {
+  .pet-summary p {
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+
+  .stat-card {
+    min-height: 67px;
+    padding: 10px 12px;
+    border-radius: 16px;
+  }
+
+  .stat-card strong {
     font-size: 16px;
   }
 
+  .weight-card strong {
+    font-size: 20px;
+  }
+
+  .stat-card span {
+    margin-top: 8px;
+    font-size: 14px;
+  }
+
+  .nav-tab {
+    font-size: 14px;
+  }
+
   .nav-tab.active {
-    font-size: 23px;
+    font-size: 20px;
+  }
+
+  .top-nav {
+    grid-template-columns: 28px 0.82fr 1.1fr 0.82fr 0.82fr 28px 30px;
+    column-gap: 3px;
+  }
+
+  .icon-btn {
+    width: 30px;
+  }
+
+  .nav-icon,
+  .message .nav-icon {
+    width: 23px;
+    height: 23px;
+  }
+
+  .profile .nav-icon {
+    width: 26px;
+    height: 26px;
   }
 
   .greeting h1 {
-    max-width: 250px;
-    font-size: 23px;
+    max-width: 232px;
+    font-size: 21px;
   }
 
   .greeting p,
   .intro {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .mascot-wrap {
-    width: 142px;
+    width: 128px;
     right: 0;
   }
 
   .question {
-    font-size: 17px;
-    grid-template-columns: 36px 1fr 20px;
-    padding-inline: 16px;
+    font-size: 15px;
+    grid-template-columns: 30px 1fr 18px;
+    padding-inline: 14px;
   }
 
   .composer input {
-    font-size: 17px;
+    font-size: 15px;
   }
 }
 
@@ -1101,8 +1115,8 @@ button {
   }
 
   .assistant-card {
-    margin-top: -18px;
-    min-height: 398px;
+    margin-top: -14px;
+    min-height: 348px;
     padding: 18px 15px;
   }
 
@@ -1120,12 +1134,12 @@ button {
   }
 
   .question {
-    min-height: 58px;
+    min-height: 52px;
     padding-block: 10px;
   }
 
   .question.tall {
-    min-height: 78px;
+    min-height: 72px;
   }
 
   .spacer {
