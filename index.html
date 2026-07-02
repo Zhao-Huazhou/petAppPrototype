@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>宠智灵 AI 对话页</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="phone">
+      <section class="app-screen" aria-label="宠智灵 AI 对话页面">
+        <header class="status-bar" aria-hidden="true">
+          <div class="time">10:15</div>
+          <div class="status-icons">
+            <span class="wifi">⌁</span>
+            <span class="signal">5A▮▮▮</span>
+            <span class="signal">5A▮▮▮</span>
+            <span class="battery">99</span>
+          </div>
+        </header>
+
+        <nav class="top-nav" aria-label="顶部导航">
+          <button class="icon-btn history" aria-label="对话历史">
+            <span></span><span></span><span></span>
+          </button>
+          <a href="#" class="nav-tab">健康</a>
+          <a href="#" class="nav-tab active" aria-current="page">宠智灵</a>
+          <a href="#" class="nav-tab">趣养</a>
+          <a href="#" class="nav-tab">趣玩</a>
+          <button class="icon-btn profile" aria-label="我的">
+            <span class="head"></span>
+            <span class="body"></span>
+            <span class="dot"></span>
+          </button>
+        </nav>
+
+        <section class="hero">
+          <div class="greeting">
+            <h1>Hi~，有什么可以帮你</h1>
+            <p>我是养宠管家—宠智灵</p>
+          </div>
+          <div class="mascot-wrap">
+            <span class="speech">Hi!</span>
+            <img src="./assets/pet-ai-mascot-cutout.png" alt="宠智灵宠物管家形象" />
+          </div>
+        </section>
+
+        <section class="assistant-card">
+          <p class="intro">
+            可以把遇到养宠问题和我说，<br />
+            比如:疾病咨询、养宠问题、拍照分析...<br />
+            我都会全力为你解答。
+          </p>
+
+          <div class="ask-row">
+            <div class="ask-title">
+              <span class="bubble-icon" aria-hidden="true"></span>
+              <strong>你可以试着问我</strong>
+            </div>
+            <button class="refresh" type="button" aria-label="换一换">
+              <span aria-hidden="true">⟳</span>
+              换一换
+            </button>
+          </div>
+
+          <div class="question-list">
+            <button class="question" type="button">
+              <span class="hash">#</span>
+              <span>猫咪喘粗气是心脏病吗?</span>
+              <span class="arrow">→</span>
+            </button>
+            <button class="question" type="button">
+              <span class="hash">#</span>
+              <span>幼猫多大可以吃罐头?</span>
+              <span class="arrow">→</span>
+            </button>
+            <button class="question tall" type="button">
+              <span class="hash">#</span>
+              <span>猫咪总是半夜跑酷，怎么培养它和人一样的作息呢?</span>
+              <span class="arrow">→</span>
+            </button>
+          </div>
+        </section>
+
+        <div class="spacer"></div>
+
+        <section class="quick-actions" aria-label="当前宠物与模式">
+          <button class="pet-chip" type="button">
+            <span class="pet-photo" aria-hidden="true"></span>
+            <span>可乐</span>
+            <span class="switch">⇄</span>
+          </button>
+          <button class="mode-chip" type="button">
+            <span class="atom" aria-hidden="true">⌘</span>
+            <span>深度思考</span>
+          </button>
+        </section>
+
+        <form class="composer">
+          <button class="plus" type="button" aria-label="添加">
+            <span></span>
+          </button>
+          <label class="sr-only" for="question-input">输入您宠物遇到的问题</label>
+          <input id="question-input" type="text" placeholder="请输入您宠物遇到的问题" />
+        </form>
+
+        <div class="home-indicator" aria-hidden="true"></div>
+      </section>
+    </main>
+  </body>
+</html>
