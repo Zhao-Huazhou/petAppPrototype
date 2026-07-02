@@ -20,92 +20,173 @@
         </header>
 
         <nav class="top-nav" aria-label="顶部导航">
-          <button class="icon-btn history" aria-label="对话历史">
-            <span></span><span></span><span></span>
+          <button class="icon-btn history" type="button" aria-label="对话历史" aria-controls="history-drawer" aria-expanded="false">
+            <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 6h16" />
+              <path d="M4 12h12" />
+              <path d="M4 18h16" />
+            </svg>
           </button>
-          <a href="#" class="nav-tab">健康</a>
-          <a href="#" class="nav-tab active" aria-current="page">宠智灵</a>
+          <a href="#" class="nav-tab" data-view-target="pet">爱宠</a>
+          <a href="#" class="nav-tab active" data-view-target="ai" aria-current="page">宠智灵</a>
           <a href="#" class="nav-tab">趣养</a>
           <a href="#" class="nav-tab">趣玩</a>
+          <button class="icon-btn message" type="button" aria-label="消息">
+            <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21 11.5a8.4 8.4 0 0 1-8.6 8.2 9.1 9.1 0 0 1-3.8-.8L4 20l1.2-4.1A8 8 0 0 1 3.5 11.5 8.4 8.4 0 0 1 12 3.3a8.4 8.4 0 0 1 9 8.2Z" />
+              <path d="M8.2 11.4h7.6" />
+              <path d="M8.2 14.2h4.9" />
+            </svg>
+            <span class="nav-badge"></span>
+          </button>
           <button class="icon-btn profile" aria-label="我的">
-            <span class="head"></span>
-            <span class="body"></span>
-            <span class="dot"></span>
+            <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 12.2a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4Z" />
+              <path d="M4.6 21a7.4 7.4 0 0 1 14.8 0" />
+            </svg>
+            <span class="nav-badge"></span>
           </button>
         </nav>
 
-        <section class="hero">
-          <div class="greeting">
-            <h1>Hi~，有什么可以帮你</h1>
-            <p>我是养宠管家—宠智灵</p>
-          </div>
-          <div class="mascot-wrap">
-            <span class="speech">Hi!</span>
-            <img src="./assets/pet-ai-mascot-cutout.png" alt="宠智灵宠物管家形象" />
-          </div>
-        </section>
-
-        <section class="assistant-card">
-          <p class="intro">
-            可以把遇到养宠问题和我说，<br />
-            比如:疾病咨询、养宠问题、拍照分析...<br />
-            我都会全力为你解答。
-          </p>
-
-          <div class="ask-row">
-            <div class="ask-title">
-              <span class="bubble-icon" aria-hidden="true"></span>
-              <strong>你可以试着问我</strong>
+        <section class="page-view ai-view active" data-view="ai">
+          <section class="hero">
+            <div class="greeting">
+              <h1>Hi~，有什么可以帮你</h1>
+              <p>我是养宠管家—宠智灵</p>
             </div>
-            <button class="refresh" type="button" aria-label="换一换">
-              <span aria-hidden="true">⟳</span>
-              换一换
-            </button>
-          </div>
+            <div class="mascot-wrap">
+              <span class="speech">Hi!</span>
+              <img src="./assets/pet-ai-mascot-cutout.png" alt="宠智灵宠物管家形象" />
+            </div>
+          </section>
 
-          <div class="question-list">
-            <button class="question" type="button">
-              <span class="hash">#</span>
-              <span>猫咪喘粗气是心脏病吗?</span>
-              <span class="arrow">→</span>
-            </button>
-            <button class="question" type="button">
-              <span class="hash">#</span>
-              <span>幼猫多大可以吃罐头?</span>
-              <span class="arrow">→</span>
-            </button>
-            <button class="question tall" type="button">
-              <span class="hash">#</span>
-              <span>猫咪总是半夜跑酷，怎么培养它和人一样的作息呢?</span>
-              <span class="arrow">→</span>
-            </button>
-          </div>
+          <section class="assistant-card">
+            <p class="intro">
+              可以把遇到养宠问题和我说，<br />
+              比如:疾病咨询、养宠问题、拍照分析...<br />
+              我都会全力为你解答。
+            </p>
+
+            <div class="ask-row">
+              <div class="ask-title">
+                <span class="bubble-icon" aria-hidden="true"></span>
+                <strong>你可以试着问我</strong>
+              </div>
+              <button class="refresh" type="button" aria-label="换一换">
+                <span aria-hidden="true">⟳</span>
+                换一换
+              </button>
+            </div>
+
+            <div class="question-list">
+              <button class="question" type="button">
+                <span class="hash">#</span>
+                <span>猫咪喘粗气是心脏病吗?</span>
+                <span class="arrow">→</span>
+              </button>
+              <button class="question" type="button">
+                <span class="hash">#</span>
+                <span>幼猫多大可以吃罐头?</span>
+                <span class="arrow">→</span>
+              </button>
+              <button class="question tall" type="button">
+                <span class="hash">#</span>
+                <span>猫咪总是半夜跑酷，怎么培养它和人一样的作息呢?</span>
+                <span class="arrow">→</span>
+              </button>
+            </div>
+          </section>
+
+          <footer class="bottom-dock">
+            <section class="quick-actions" aria-label="当前宠物与模式">
+              <button class="pet-chip" type="button">
+                <span class="pet-photo" aria-hidden="true"></span>
+                <span>可乐</span>
+                <span class="switch">⇄</span>
+              </button>
+              <button class="mode-chip" type="button">
+                <span class="atom" aria-hidden="true">⌘</span>
+                <span>深度思考</span>
+              </button>
+            </section>
+
+            <form class="composer">
+              <button class="plus" type="button" aria-label="添加">
+                <span></span>
+              </button>
+              <label class="sr-only" for="question-input">输入您宠物遇到的问题</label>
+              <input id="question-input" type="text" placeholder="请输入您宠物遇到的问题" />
+            </form>
+
+            <div class="home-indicator" aria-hidden="true"></div>
+          </footer>
         </section>
 
-        <div class="spacer"></div>
+        <section class="page-view pet-view" data-view="pet" aria-label="爱宠页面">
+          <article class="pet-archive">
+            <div class="archive-rings" aria-hidden="true">
+              <span></span>
+              <span></span>
+            </div>
+            <div class="archive-title">
+              <span class="title-orange">爱宠</span><span class="title-black">档案</span><span class="title-bolt">↯</span>
+            </div>
+            <button class="edit-info" type="button">
+              <span class="edit-pencil" aria-hidden="true"></span>
+              编辑信息
+            </button>
 
-        <section class="quick-actions" aria-label="当前宠物与模式">
-          <button class="pet-chip" type="button">
-            <span class="pet-photo" aria-hidden="true"></span>
-            <span>可乐</span>
-            <span class="switch">⇄</span>
-          </button>
-          <button class="mode-chip" type="button">
-            <span class="atom" aria-hidden="true">⌘</span>
-            <span>深度思考</span>
-          </button>
+            <section class="archive-main">
+              <div class="profile-card">
+                <div class="collar" aria-hidden="true"></div>
+                <div class="archive-avatar" aria-hidden="true"></div>
+                <div class="pet-summary">
+                  <div class="name-row">
+                    <h2>可乐</h2>
+                    <button class="switch-pet" type="button" aria-label="切换宠物">⇄</button>
+                  </div>
+                  <p>年龄: 3岁3个月</p>
+                  <p>性别: 妹妹</p>
+                  <p>绝育: 已绝育</p>
+                </div>
+              </div>
+
+              <div class="stat-card breed-card">
+                <strong>英国短毛猫</strong>
+                <span>品种</span>
+              </div>
+              <div class="stat-card weight-card">
+                <strong>11.0kg</strong>
+                <span>体重</span>
+              </div>
+            </section>
+          </article>
+          <div class="home-indicator pet-home-indicator" aria-hidden="true"></div>
         </section>
 
-        <form class="composer">
-          <button class="plus" type="button" aria-label="添加">
-            <span></span>
-          </button>
-          <label class="sr-only" for="question-input">输入您宠物遇到的问题</label>
-          <input id="question-input" type="text" placeholder="请输入您宠物遇到的问题" />
-        </form>
+        <div class="drawer-layer" aria-hidden="true">
+          <button class="drawer-scrim" type="button" aria-label="关闭对话历史"></button>
+          <aside class="history-drawer" id="history-drawer" aria-label="对话历史抽屉">
+            <div class="drawer-head">
+              <div>
+                <h2>对话历史</h2>
+                <p>只展示最近20条</p>
+              </div>
+            </div>
 
-        <div class="home-indicator" aria-hidden="true"></div>
+            <section class="empty-history" aria-label="暂无对话历史">
+              <p>哎哟，当前还没有内容哦~</p>
+            </section>
+
+            <button class="new-chat" type="button">
+              <span class="new-chat-icon" aria-hidden="true"></span>
+              <span>新建对话</span>
+            </button>
+            <div class="drawer-home-indicator" aria-hidden="true"></div>
+          </aside>
+        </div>
       </section>
     </main>
+    <script src="./script.js"></script>
   </body>
 </html>
