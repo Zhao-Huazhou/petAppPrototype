@@ -29,7 +29,7 @@
           </button>
           <a href="#" class="nav-tab" data-view-target="pet">爱宠</a>
           <a href="#" class="nav-tab active" data-view-target="ai" aria-current="page">宠智灵</a>
-          <a href="#" class="nav-tab">趣养</a>
+          <a href="#" class="nav-tab" data-view-target="care">趣养</a>
           <a href="#" class="nav-tab">趣玩</a>
           <button class="icon-btn message" type="button" aria-label="消息">
             <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -312,6 +312,201 @@
           <div class="home-indicator pet-home-indicator" aria-hidden="true"></div>
         </section>
 
+        <section class="page-view care-view" data-view="care" aria-label="趣养页面">
+          <section class="care-hero" aria-label="智能问诊">
+            <div class="care-hero-copy">
+              <h1>智能问诊 <span>24h</span></h1>
+              <p>极速、精准分析爱宠病症</p>
+              <button type="button">
+                去问诊
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m9 6 8 6-8 6V6Z" />
+                </svg>
+              </button>
+            </div>
+            <div class="care-hero-art" aria-hidden="true">
+              <span class="care-bubble bubble-a">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 4v16" />
+                  <path d="M4 12h16" />
+                </svg>
+              </span>
+              <span class="care-bubble bubble-b">
+                <svg viewBox="0 0 24 24">
+                  <path d="M7 5h10v14H7z" />
+                  <path d="M10 9h4" />
+                  <path d="M10 13h4" />
+                </svg>
+              </span>
+              <img src="./assets/pet-ai-mascot-cutout.png" alt="" />
+            </div>
+          </section>
+
+          <section class="care-tools" aria-label="趣养能力">
+            <button type="button">
+              <span class="tool-icon species-icon" aria-hidden="true">
+                <svg viewBox="0 0 36 36">
+                  <path d="M11 15c-1.5-2.3-.5-5 2.5-6l3.4 4" />
+                  <path d="M25 15c1.5-2.3.5-5-2.5-6l-3.4 4" />
+                  <path d="M8.5 20.5C8.5 15.8 12.3 12 18 12s9.5 3.8 9.5 8.5S23.7 28 18 28s-9.5-2.8-9.5-7.5Z" />
+                  <path d="M15 20h.01" />
+                  <path d="M21 20h.01" />
+                  <path d="M16.5 24h3" />
+                </svg>
+              </span>
+              品种识别
+            </button>
+            <button type="button">
+              <span class="tool-icon exotic-icon" aria-hidden="true">
+                <svg viewBox="0 0 36 36">
+                  <path d="M14 18c0-5 4-9 10-9" />
+                  <path d="M24 9c0 6-4 10-10 10" />
+                  <path d="M12 20c-3 1-5 3.5-5 7h17c0-4-3-7-7-7" />
+                  <path d="M21 12h.01" />
+                  <path d="M13 25h6" />
+                </svg>
+              </span>
+              异宠识别
+            </button>
+            <button type="button">
+              <span class="tool-icon emotion-icon" aria-hidden="true">
+                <svg viewBox="0 0 36 36">
+                  <circle cx="18" cy="18" r="10" />
+                  <path d="M14 16h.01" />
+                  <path d="M22 16h.01" />
+                  <path d="M14 22c1.8 2 6.2 2 8 0" />
+                  <path d="M25 9l3-3" />
+                </svg>
+              </span>
+              情绪识别
+            </button>
+            <button type="button">
+              <span class="tool-icon sound-icon" aria-hidden="true">
+                <svg viewBox="0 0 36 36">
+                  <path d="M8 15h5l7-5v16l-7-5H8z" />
+                  <path d="M24 15c1.4 2 1.4 4 0 6" />
+                  <path d="M28 12c3 4 3 8 0 12" />
+                </svg>
+              </span>
+              叫声识别
+            </button>
+            <button type="button">
+              <span class="tool-icon video-icon" aria-hidden="true">
+                <svg viewBox="0 0 36 36">
+                  <rect x="8" y="11" width="17" height="14" rx="4" />
+                  <path d="m25 16 5-3v10l-5-3" />
+                  <path d="m16 15 6 3-6 3v-6Z" />
+                </svg>
+              </span>
+              视频分析
+            </button>
+            <button type="button">
+              <span class="tool-icon music-icon" aria-hidden="true">
+                <svg viewBox="0 0 36 36">
+                  <path d="M23 9v15" />
+                  <path d="M13 13v13" />
+                  <path d="M13 13 23 9" />
+                  <circle cx="11" cy="26" r="3" />
+                  <circle cx="21" cy="24" r="3" />
+                  <path d="M27 12c2 1.5 3 3.5 3 6" />
+                </svg>
+              </span>
+              宠物音乐
+            </button>
+            <button type="button">
+              <span class="tool-icon health-icon" aria-hidden="true">
+                <svg viewBox="0 0 36 36">
+                  <path d="M18 29s-10-6.4-10-14a5.4 5.4 0 0 1 9.8-3.2L18 12l.2-.2A5.4 5.4 0 0 1 28 15c0 7.6-10 14-10 14Z" />
+                  <path d="M18 15v8" />
+                  <path d="M14 19h8" />
+                </svg>
+              </span>
+              健康测评
+            </button>
+            <button type="button">
+              <span class="tool-icon mbti-icon" aria-hidden="true">
+                <svg viewBox="0 0 36 36">
+                  <rect x="8" y="8" width="20" height="20" rx="6" />
+                  <path d="M13 14h2" />
+                  <path d="M18 14h5" />
+                  <path d="M13 19h10" />
+                  <path d="M13 24h6" />
+                </svg>
+              </span>
+              MBTI
+            </button>
+          </section>
+
+          <section class="sign-panel" aria-label="体征识别">
+            <h2>体征识别</h2>
+            <div class="sign-grid">
+              <button type="button">
+                <span class="sign-icon eye-sign" aria-hidden="true">
+                  <svg viewBox="0 0 28 28">
+                    <path d="M3 14s4-6 11-6 11 6 11 6-4 6-11 6S3 14 3 14Z" />
+                    <circle cx="14" cy="14" r="3.5" />
+                  </svg>
+                </span>
+                眼睛识别
+              </button>
+              <button type="button">
+                <span class="sign-icon ear-sign" aria-hidden="true">
+                  <svg viewBox="0 0 28 28">
+                    <path d="M10 23c5-3 10-7 10-14a5 5 0 0 0-10 0v5" />
+                    <path d="M10 14c0 3 2 4 4 4" />
+                  </svg>
+                </span>
+                耳道识别
+              </button>
+              <button type="button">
+                <span class="sign-icon skin-sign" aria-hidden="true">
+                  <svg viewBox="0 0 28 28">
+                    <path d="M6 9h16v13H6z" />
+                    <path d="M9 6h10" />
+                    <path d="M10 13h8" />
+                    <path d="M10 17h5" />
+                  </svg>
+                </span>
+                皮肤识别
+              </button>
+              <button type="button">
+                <span class="sign-icon mouth-sign" aria-hidden="true">
+                  <svg viewBox="0 0 28 28">
+                    <path d="M7 10c3 6 11 6 14 0" />
+                    <path d="M9 10c1.5-4 8.5-4 10 0" />
+                    <path d="M12 16v5" />
+                    <path d="M16 16v5" />
+                  </svg>
+                </span>
+                口腔识别
+              </button>
+              <button type="button">
+                <span class="sign-icon vomit-sign" aria-hidden="true">
+                  <svg viewBox="0 0 28 28">
+                    <path d="M7 8c0 5 4 6 7 6s7-1 7-6" />
+                    <path d="M10 15c-1 3-2 5-4 7" />
+                    <path d="M14 15v7" />
+                    <path d="M18 15c1 3 2 5 4 7" />
+                  </svg>
+                </span>
+                呕吐物识别
+              </button>
+              <button type="button">
+                <span class="sign-icon stool-sign" aria-hidden="true">
+                  <svg viewBox="0 0 28 28">
+                    <path d="M8 10c2-3 10-3 12 0" />
+                    <path d="M7 14c3-2 11-2 14 0" />
+                    <path d="M6 18c4-2 12-2 16 0" />
+                    <path d="M9 22h10" />
+                  </svg>
+                </span>
+                排泄物识别
+              </button>
+            </div>
+          </section>
+          <div class="home-indicator care-home-indicator" aria-hidden="true"></div>
+        </section>
+
         <section class="page-view scan-view" data-view="add-device" aria-label="扫码添加设备页面">
           <header class="scan-topbar">
             <button class="scan-back" type="button" aria-label="返回爱宠页面">
@@ -348,14 +543,14 @@
           </button>
         </section>
 
-        <section class="page-view monitor-view" data-view="reptile-camera" aria-label="爬宠摄像头实时监控页面">
+        <section class="page-view monitor-view" data-view="reptile-camera" aria-label="爬宠摄像头页面">
           <header class="monitor-topbar">
             <button class="monitor-back" type="button" aria-label="返回爱宠页面">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="m15 5-7 7 7 7" />
               </svg>
             </button>
-            <h1>实时监控</h1>
+            <h1>爬宠摄像头</h1>
           </header>
 
           <div class="monitor-scroll">
@@ -370,119 +565,234 @@
               </span>
             </section>
 
-            <section class="monitor-panel env-panel" aria-label="环境数据">
-              <h2>环境数据</h2>
-              <div class="temp-grid">
-                <article class="temp-card warm">
-                  <div class="temp-head">
-                    <strong>热区</strong>
-                    <span>单位℃</span>
-                  </div>
-                  <svg class="temp-gauge" viewBox="0 0 160 92" aria-hidden="true">
-                    <path class="gauge-back" d="M22 80a58 58 0 0 1 116 0" />
-                    <path class="gauge-value" d="M22 80a58 58 0 0 1 96-43" />
-                    <g class="gauge-ticks">
-                      <path d="M32 76l10-3" />
-                      <path d="M41 53l8 6" />
-                      <path d="M60 37l4 10" />
-                      <path d="M80 31v11" />
-                      <path d="M100 37l-4 10" />
-                      <path d="M119 53l-8 6" />
-                      <path d="M128 76l-10-3" />
-                    </g>
-                    <circle class="gauge-dot" cx="101" cy="38" r="7" />
+            <div class="feature-pair" aria-label="摄像头 AI 能力">
+              <button class="ai-feature-card" type="button">
+                <span class="feature-icon food">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 11h16" />
+                    <path d="M5 11c.4 5 3 8 7 8s6.6-3 7-8" />
+                    <path d="M8 19h8" />
+                    <path d="M9 8c.8-1.2 2.2-2 3-2s2.2.8 3 2" />
+                    <path d="M7 5h.01" />
+                    <path d="M17 5h.01" />
                   </svg>
-                  <b>32.5</b>
-                </article>
-                <article class="temp-card cool">
-                  <div class="temp-head">
-                    <strong>冷区</strong>
-                    <span>单位℃</span>
-                  </div>
-                  <svg class="temp-gauge" viewBox="0 0 160 92" aria-hidden="true">
-                    <path class="gauge-back" d="M22 80a58 58 0 0 1 116 0" />
-                    <path class="gauge-value" d="M22 80a58 58 0 0 1 96-43" />
-                    <g class="gauge-ticks">
-                      <path d="M32 76l10-3" />
-                      <path d="M41 53l8 6" />
-                      <path d="M60 37l4 10" />
-                      <path d="M80 31v11" />
-                      <path d="M100 37l-4 10" />
-                      <path d="M119 53l-8 6" />
-                      <path d="M128 76l-10-3" />
-                    </g>
-                    <circle class="gauge-dot" cx="101" cy="38" r="7" />
+                </span>
+                <strong>进食</strong>
+                <small>今日进食 2 次</small>
+              </button>
+              <button class="ai-feature-card" type="button">
+                <span class="feature-icon activity">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M13 2 5 13h6l-1 9 9-13h-6l1-7Z" />
                   </svg>
-                  <b>32.5</b>
-                </article>
+                </span>
+                <strong>活动</strong>
+                <small>今日活动 48 分钟</small>
+              </button>
+              <button class="ai-feature-card" type="button">
+                <span class="feature-icon sun">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="4" />
+                    <path d="M12 2v3" />
+                    <path d="M12 19v3" />
+                    <path d="m4.9 4.9 2.1 2.1" />
+                    <path d="m17 17 2.1 2.1" />
+                    <path d="M2 12h3" />
+                    <path d="M19 12h3" />
+                  </svg>
+                </span>
+                <strong>晒背</strong>
+                <small>今日晒背 42 分钟</small>
+              </button>
+              <button class="ai-feature-card" type="button">
+                <span class="feature-icon molt">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5.5 18 3 19 2c1 2.4 1.5 5.5.5 8.4C18.2 14.4 14.7 17.2 11 20Z" />
+                    <path d="M2 21c0-3 1.8-5.7 5.4-8.2" />
+                    <path d="M11.6 13.2c1.4-.2 3-.9 4.4-2.2" />
+                  </svg>
+                </span>
+                <strong>蜕皮</strong>
+                <small>未检测到蜕皮行为</small>
+              </button>
+            </div>
+
+            <section class="monitor-ai-section" aria-label="行为分析">
+              <div class="monitor-section-title">
+                <h2>行为分析</h2>
               </div>
-              <div class="humidity-row">
-                <strong>湿度</strong>
-                <div class="humidity-track" aria-hidden="true"><span></span></div>
-                <b>58<small>%</small></b>
+              <div class="behavior-card">
+                <div class="behavior-timeline" aria-label="当天行为时间轴">
+                  <div class="time-labels" aria-hidden="true">
+                    <span>00:00</span>
+                    <span>08:00</span>
+                    <span>16:00</span>
+                    <span>24:00</span>
+                  </div>
+                  <div class="timeline-track">
+                    <span class="state-still" style="--span: 34%">
+                      <b>静止</b>
+                    </span>
+                    <span class="state-food" style="--span: 5%">
+                      <b>进食</b>
+                    </span>
+                    <span class="state-sun" style="--span: 31%">
+                      <b>晒背</b>
+                    </span>
+                    <span class="state-food" style="--span: 5%">
+                      <b>进食</b>
+                    </span>
+                    <span class="state-active" style="--span: 25%">
+                      <b>活动</b>
+                    </span>
+                  </div>
+                  <div class="state-legend">
+                    <span class="state-still">静止 9.6h</span>
+                    <span class="state-food">进食 12min</span>
+                    <span class="state-active">活动 48min</span>
+                    <span class="state-sun">晒背 42min</span>
+                  </div>
+                </div>
+                <div class="behavior-map-row">
+                  <div class="behavior-copy">
+                    <span>行为热力图</span>
+                    <strong>今日活动集中在右侧区域</strong>
+                    <p>九宫格展示今日停留时长与活动密度</p>
+                  </div>
+                  <div class="heatmap-preview" aria-label="行为热力图预览">
+                    <span></span><span></span><span></span>
+                    <span></span><span></span><span></span>
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
               </div>
             </section>
 
-            <section class="monitor-panel events-panel" aria-label="最近事件">
-              <div class="events-head">
-                <h2>最近事件</h2>
-                <button type="button">查看更多
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="m9 5 7 7-7 7" />
+            <section class="monitor-ai-section health-section" aria-label="健康分析">
+              <div class="monitor-section-title">
+                <h2>健康分析</h2>
+              </div>
+              <div class="health-report-card">
+                <div class="health-score-summary" aria-label="综合健康评分 95 分">
+                  <div class="score-summary-copy">
+                    <h3>综合健康评分</h3>
+                    <span>优秀</span>
+                    <p>状态极佳，继续保持！</p>
+                  </div>
+                  <div class="score-orb" aria-hidden="true">
+                    <strong>95</strong>
+                    <small>分</small>
+                  </div>
+                </div>
+                <div class="health-dimensions" aria-label="健康维度">
+                  <article class="dimension-card">
+                    <div class="dimension-icon activity">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M13 2 5 13h6l-1 9 8-12h-6l1-8Z" />
+                      </svg>
+                    </div>
+                    <b>88<small>分</small></b>
+                    <span>活力指数</span>
+                    <i style="--value: 88%"></i>
+                  </article>
+                  <article class="dimension-card">
+                    <div class="dimension-icon food">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M6 12h12l-1 6a2 2 0 0 1-2 1.7H9a2 2 0 0 1-2-1.7l-1-6Z" />
+                        <path d="M8 12a4 4 0 0 1 8 0" />
+                        <path d="M12 5V3" />
+                      </svg>
+                    </div>
+                    <b>90<small>分</small></b>
+                    <span>进食规律</span>
+                    <i style="--value: 90%"></i>
+                  </article>
+                  <article class="dimension-card">
+                    <div class="dimension-icon env">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 4a6 6 0 0 0-6 6c0 5 6 10 6 10s6-5 6-10a6 6 0 0 0-6-6Z" />
+                        <path d="M9 10h6" />
+                      </svg>
+                    </div>
+                    <b>92<small>分</small></b>
+                    <span>环境适应</span>
+                    <i style="--value: 92%"></i>
+                  </article>
+                  <article class="dimension-card">
+                    <div class="dimension-icon body">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M7 18c0-4 2.2-7 5-7s5 3 5 7" />
+                        <path d="M9 9a3 3 0 0 1 6 0" />
+                        <path d="M8 18h8" />
+                      </svg>
+                    </div>
+                    <b>95<small>分</small></b>
+                    <span>体态健康</span>
+                    <i style="--value: 95%"></i>
+                  </article>
+                </div>
+                <article class="ai-health-advice">
+                  <div class="advice-orb" aria-hidden="true"></div>
+                  <div class="advice-copy">
+                    <h3><span>AI</span> 健康建议</h3>
+                    <p>Mochi 今日状态良好，活动时间充足，蜕皮周期正常。建议保持当前温湿度设置，明日可适当补给营养。</p>
+                  </div>
+                  <svg class="advice-spark" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M13 3 15.4 8.6 21 11l-5.6 2.4L13 19l-2.4-5.6L5 11l5.6-2.4L13 3Z" />
+                    <path d="M5.5 16.5 6.4 18.6 8.5 19.5 6.4 20.4 5.5 22.5 4.6 20.4 2.5 19.5 4.6 18.6 5.5 16.5Z" />
                   </svg>
-                </button>
-              </div>
-
-              <div class="event-list">
-                <article class="event-item">
-                  <div class="event-icon blue">
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M6 13a6 6 0 0 1 12 0v2H6v-2Z" />
-                      <path d="M9 18h6" />
-                      <path d="M12 5V3" />
-                    </svg>
-                  </div>
-                  <div class="event-card">
-                    <p class="event-time">今日 <span>06:15</span></p>
-                    <h3>进入晒点区域</h3>
-                    <p>Mochi 捕猎成功，用时约 35 秒</p>
-                    <button type="button" aria-label="查看进入晒点区域详情">›</button>
-                  </div>
-                </article>
-
-                <article class="event-item warning">
-                  <div class="event-icon red">
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M12 4 21 20H3L12 4Z" />
-                      <path d="M12 9v5" />
-                      <path d="M12 17h.01" />
-                    </svg>
-                  </div>
-                  <div class="event-card">
-                    <p class="event-time">今日 <span>06:15</span></p>
-                    <h3>异常告警</h3>
-                    <p>热区温度下降至 27.5℃，低于阈值</p>
-                    <button type="button" aria-label="查看异常告警详情">›</button>
-                  </div>
-                </article>
-
-                <article class="event-item">
-                  <div class="event-icon green">
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M7 13a5 5 0 0 1 10 0v5H7v-5Z" />
-                      <path d="M9 9 7.5 6.5" />
-                      <path d="M15 9l1.5-2.5" />
-                      <path d="M10 15h4" />
-                    </svg>
-                  </div>
-                  <div class="event-card">
-                    <p class="event-time">今日 <span>06:15</span></p>
-                    <h3>检测到进食行为</h3>
-                    <p>Mochi 捕猎成功，用时约 35 秒</p>
-                    <button type="button" aria-label="查看进食行为详情">›</button>
-                  </div>
                 </article>
               </div>
+            </section>
+
+            <section class="environment-section is-disconnected" aria-label="环境检测">
+              <article class="env-card env-card-compact">
+                <div class="env-compact-copy">
+                  <div class="monitor-section-title">
+                    <h2>环境检测</h2>
+                  </div>
+                  <strong>暂无环境数据</strong>
+                  <p>添加环境检测配件后，可查看冷热区温度与湿度变化</p>
+                </div>
+              </article>
+
+              <article class="env-card env-card-full">
+                <div class="monitor-section-title">
+                  <h2>环境检测</h2>
+                </div>
+                <div class="env-metrics">
+                  <div class="env-temp-card warm">
+                    <div class="env-metric-head">
+                      <strong>热区</strong>
+                      <span>适宜</span>
+                    </div>
+                    <svg class="env-temp-gauge" viewBox="0 0 150 90" aria-hidden="true">
+                      <path class="env-gauge-back" d="M22 76a53 53 0 0 1 106 0" />
+                      <path class="env-gauge-value" d="M22 76a53 53 0 0 1 88-39" />
+                      <circle cx="96" cy="38" r="6" />
+                    </svg>
+                    <b>32.4<small>℃</small></b>
+                  </div>
+                  <div class="env-temp-card cool">
+                    <div class="env-metric-head">
+                      <strong>冷区</strong>
+                      <span>适宜</span>
+                    </div>
+                    <svg class="env-temp-gauge" viewBox="0 0 150 90" aria-hidden="true">
+                      <path class="env-gauge-back" d="M22 76a53 53 0 0 1 106 0" />
+                      <path class="env-gauge-value" d="M22 76a53 53 0 0 1 78-43" />
+                      <circle cx="88" cy="35" r="6" />
+                    </svg>
+                    <b>26.1<small>℃</small></b>
+                  </div>
+                </div>
+                <div class="env-humidity-row">
+                  <strong>湿度</strong>
+                  <div class="env-humidity-track" aria-hidden="true"><span></span></div>
+                  <b>68<small>%</small></b>
+                  <em>适宜</em>
+                </div>
+              </article>
             </section>
           </div>
           <div class="home-indicator monitor-home-indicator" aria-hidden="true"></div>
@@ -567,6 +877,16 @@
           </section>
 
           <div class="profile-scroll">
+          <section class="pro-banner" aria-label="升级宠智灵会员">
+              <div class="pro-mascot" aria-hidden="true">
+                <img src="./assets/pro-member-cat.png" alt="" />
+              </div>
+              <div class="pro-copy">
+                <h2>升级宠智灵会员</h2>
+                <p>Pro 会员与设备智能权益一站开通</p>
+              </div>
+              <button type="button">立即解锁</button>
+            </section>
 
             <section class="profile-shortcuts" aria-label="快捷入口">
               <button type="button">
