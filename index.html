@@ -555,18 +555,21 @@
 
           <div class="monitor-scroll">
             <section class="live-card" aria-label="实时画面">
-              <img src="./assets/reptile-camera-live.png" alt="爬宠箱实时监控画面" />
-              <span class="live-time">09:20
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <rect x="4" y="6" width="12" height="12" rx="2" />
-                  <path d="m16 10 4-2.4v8.8L16 14" />
-                  <circle cx="8" cy="10" r="1.4" />
-                </svg>
-              </span>
+              <img src="./assets/new-camera-live.jpg" alt="爬宠箱实时监控画面" />
+              <div class="live-actions" aria-label="实时画面操作">
+                <button type="button" aria-label="全屏">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8 3H5a2 2 0 0 0-2 2v3" />
+                    <path d="M21 8V5a2 2 0 0 0-2-2h-3" />
+                    <path d="M3 16v3a2 2 0 0 0 2 2h3" />
+                    <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
+                  </svg>
+                </button>
+              </div>
             </section>
 
             <div class="feature-pair" aria-label="摄像头 AI 能力">
-              <button class="ai-feature-card" type="button">
+              <button class="ai-feature-card food-feature-card" type="button">
                 <span class="feature-icon food">
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M4 11h16" />
@@ -578,9 +581,9 @@
                   </svg>
                 </span>
                 <strong>进食</strong>
-                <small>今日进食 2 次</small>
+                <small>最近一次 8:12</small>
               </button>
-              <button class="ai-feature-card" type="button">
+              <button class="ai-feature-card activity-feature-card" type="button">
                 <span class="feature-icon activity">
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M13 2 5 13h6l-1 9 9-13h-6l1-7Z" />
@@ -589,7 +592,7 @@
                 <strong>活动</strong>
                 <small>今日活动 48 分钟</small>
               </button>
-              <button class="ai-feature-card" type="button">
+              <button class="ai-feature-card sun-feature-card" type="button">
                 <span class="feature-icon sun">
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <circle cx="12" cy="12" r="4" />
@@ -604,7 +607,7 @@
                 <strong>晒背</strong>
                 <small>今日晒背 42 分钟</small>
               </button>
-              <button class="ai-feature-card" type="button">
+              <button class="ai-feature-card molt-feature-card" type="button">
                 <span class="feature-icon molt">
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5.5 18 3 19 2c1 2.4 1.5 5.5.5 8.4C18.2 14.4 14.7 17.2 11 20Z" />
@@ -617,49 +620,35 @@
               </button>
             </div>
 
-            <section class="monitor-ai-section" aria-label="行为分析">
+            <section class="monitor-ai-section" aria-label="活动概览">
               <div class="monitor-section-title">
-                <h2>行为分析</h2>
+                <h2>活动概览</h2>
               </div>
               <div class="behavior-card">
-                <div class="behavior-timeline" aria-label="当天行为时间轴">
-                  <div class="time-labels" aria-hidden="true">
-                    <span>00:00</span>
-                    <span>08:00</span>
-                    <span>16:00</span>
-                    <span>24:00</span>
+                <div class="behavior-ratio" aria-label="全天活动">
+                  <div class="behavior-subhead">
+                    <span>全天活动</span>
                   </div>
-                  <div class="timeline-track">
-                    <span class="state-still" style="--span: 34%">
-                      <b>静止</b>
-                    </span>
-                    <span class="state-food" style="--span: 5%">
-                      <b>进食</b>
-                    </span>
-                    <span class="state-sun" style="--span: 31%">
-                      <b>晒背</b>
-                    </span>
-                    <span class="state-food" style="--span: 5%">
-                      <b>进食</b>
-                    </span>
-                    <span class="state-active" style="--span: 25%">
-                      <b>活动</b>
-                    </span>
+                  <div class="ratio-track" aria-hidden="true">
+                    <span class="state-still" style="--span: 62%"></span>
+                    <span class="state-active" style="--span: 18%"></span>
+                    <span class="state-sun" style="--span: 15%"></span>
+                    <span class="state-food" style="--span: 5%"></span>
                   </div>
                   <div class="state-legend">
-                    <span class="state-still">静止 9.6h</span>
-                    <span class="state-food">进食 12min</span>
-                    <span class="state-active">活动 48min</span>
-                    <span class="state-sun">晒背 42min</span>
+                    <span class="state-still">静止 62%</span>
+                    <span class="state-active">活动 18%</span>
+                    <span class="state-sun">晒背 15%</span>
+                    <span class="state-food">进食 5%</span>
                   </div>
                 </div>
                 <div class="behavior-map-row">
                   <div class="behavior-copy">
-                    <span>行为热力图</span>
+                    <span>活动区域</span>
                     <strong>今日活动集中在右侧区域</strong>
-                    <p>九宫格展示今日停留时长与活动密度</p>
+                    <p>九宫格展示各区域活跃情况</p>
                   </div>
-                  <div class="heatmap-preview" aria-label="行为热力图预览">
+                  <div class="heatmap-preview" aria-label="活动区域预览">
                     <span></span><span></span><span></span>
                     <span></span><span></span><span></span>
                     <span></span><span></span><span></span>
@@ -668,14 +657,14 @@
               </div>
             </section>
 
-            <section class="monitor-ai-section health-section" aria-label="健康分析">
+            <section class="monitor-ai-section health-section" aria-label="健康评估">
               <div class="monitor-section-title">
-                <h2>健康分析</h2>
+                <h2>健康评估</h2>
               </div>
               <div class="health-report-card">
-                <div class="health-score-summary" aria-label="综合健康评分 95 分">
+                <div class="health-score-summary" aria-label="健康综合评分 95 分">
                   <div class="score-summary-copy">
-                    <h3>综合健康评分</h3>
+                    <h3>健康综合评分</h3>
                     <span>优秀</span>
                     <p>状态极佳，继续保持！</p>
                   </div>
@@ -693,6 +682,7 @@
                     </div>
                     <b>88<small>分</small></b>
                     <span>活力指数</span>
+                    <p>今日活动 3小时25分 · 活动 6次</p>
                     <i style="--value: 88%"></i>
                   </article>
                   <article class="dimension-card">
@@ -705,6 +695,7 @@
                     </div>
                     <b>90<small>分</small></b>
                     <span>进食规律</span>
+                    <p>今日进食 1次 · 距上次进食 6小时</p>
                     <i style="--value: 90%"></i>
                   </article>
                   <article class="dimension-card">
@@ -716,6 +707,7 @@
                     </div>
                     <b>92<small>分</small></b>
                     <span>环境适应</span>
+                    <p>活动范围良好 · 晒点停留 42分钟</p>
                     <i style="--value: 92%"></i>
                   </article>
                   <article class="dimension-card">
@@ -728,6 +720,7 @@
                     </div>
                     <b>95<small>分</small></b>
                     <span>体态健康</span>
+                    <p>未发现明显卡皮或异常疾病风险</p>
                     <i style="--value: 95%"></i>
                   </article>
                 </div>
@@ -745,20 +738,20 @@
               </div>
             </section>
 
-            <section class="environment-section is-disconnected" aria-label="环境检测">
+            <section class="environment-section is-disconnected" aria-label="环境监测">
               <article class="env-card env-card-compact">
                 <div class="env-compact-copy">
                   <div class="monitor-section-title">
-                    <h2>环境检测</h2>
+                    <h2>环境监测</h2>
                   </div>
                   <strong>暂无环境数据</strong>
-                  <p>添加环境检测配件后，可查看冷热区温度与湿度变化</p>
+                  <p>添加环境监测配件后，AI 持续判断箱内环境是否适宜</p>
                 </div>
               </article>
 
               <article class="env-card env-card-full">
                 <div class="monitor-section-title">
-                  <h2>环境检测</h2>
+                  <h2>环境监测</h2>
                 </div>
                 <div class="env-metrics">
                   <div class="env-temp-card warm">
@@ -793,6 +786,683 @@
                   <em>适宜</em>
                 </div>
               </article>
+            </section>
+          </div>
+          <div class="home-indicator monitor-home-indicator" aria-hidden="true"></div>
+        </section>
+
+        <section class="page-view food-detail-view" data-view="food-detail" aria-label="进食页面">
+          <header class="monitor-topbar food-topbar">
+            <button class="monitor-back food-back" type="button" aria-label="返回爬宠摄像头">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m15 5-7 7 7 7" />
+              </svg>
+            </button>
+            <h1>进食</h1>
+          </header>
+
+          <div class="food-detail-scroll">
+            <section class="food-date-panel" aria-label="日期选择">
+              <div class="food-week-head">
+                <div>
+                  <span>进食记录</span>
+                  <strong>7.6 - 7.12</strong>
+                </div>
+                <button class="food-calendar-button" type="button" aria-label="切换日期">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8 2v4" />
+                    <path d="M16 2v4" />
+                    <rect x="3" y="5" width="18" height="16" rx="4" />
+                    <path d="M3 10h18" />
+                    <path d="M8 14h.01" />
+                    <path d="M12 14h.01" />
+                    <path d="M16 14h.01" />
+                    <path d="M8 18h.01" />
+                    <path d="M12 18h.01" />
+                  </svg>
+                </button>
+              </div>
+              <div class="food-day-row" aria-label="本周日期">
+                <button class="food-day-button" type="button">
+                  <span>周一</span>
+                  <strong>7.6</strong>
+                </button>
+                <button class="food-day-button active" type="button">
+                  <span>周二</span>
+                  <strong>7.7</strong>
+                </button>
+                <button class="food-day-button" type="button">
+                  <span>周三</span>
+                  <strong>7.8</strong>
+                </button>
+                <button class="food-day-button" type="button">
+                  <span>周四</span>
+                  <strong>7.9</strong>
+                </button>
+                <button class="food-day-button" type="button">
+                  <span>周五</span>
+                  <strong>7.10</strong>
+                </button>
+                <button class="food-day-button" type="button">
+                  <span>周六</span>
+                  <strong>7.11</strong>
+                </button>
+                <button class="food-day-button" type="button">
+                  <span>周日</span>
+                  <strong>7.12</strong>
+                </button>
+              </div>
+            </section>
+
+            <section class="food-summary-grid" aria-label="饮食概览">
+              <article class="food-summary-card">
+                <span class="food-summary-icon food">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 11h16" />
+                    <path d="M5 11c.4 5 3 8 7 8s6.6-3 7-8" />
+                    <path d="M8 19h8" />
+                    <path d="M9 8c.8-1.2 2.2-2 3-2s2.2.8 3 2" />
+                    <path d="M7 5h.01" />
+                    <path d="M17 5h.01" />
+                  </svg>
+                </span>
+                <h2>进食</h2>
+                <p>最近一次 11:45</p>
+                <strong>今日 1 次</strong>
+              </article>
+              <article class="food-summary-card water">
+                <span class="food-summary-icon water">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 3s6 6.2 6 11a6 6 0 0 1-12 0c0-4.8 6-11 6-11Z" />
+                    <path d="M9.5 15.5c.5 1.2 1.4 1.9 2.8 2.1" />
+                  </svg>
+                </span>
+                <h2>饮水</h2>
+                <p>最近一次 13:20</p>
+                <strong>今日 2 次</strong>
+              </article>
+            </section>
+
+            <section class="food-events" aria-label="每日饮食事件记录">
+              <div class="food-event-list">
+                <article class="food-event-item">
+                  <div class="food-event-dot food">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M4 11h16" />
+                      <path d="M5 11c.4 5 3 8 7 8s6.6-3 7-8" />
+                      <path d="M8 19h8" />
+                      <path d="M9 8c.8-1.2 2.2-2 3-2s2.2.8 3 2" />
+                      <path d="M7 5h.01" />
+                      <path d="M17 5h.01" />
+                    </svg>
+                  </div>
+                  <div class="food-event-card has-thumb">
+                    <div class="food-event-copy">
+                      <p>
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <circle cx="12" cy="12" r="8" />
+                          <path d="M12 7v5l3 2" />
+                        </svg>
+                        今日 <span>11:45</span>
+                      </p>
+                      <h3>检测到进食行为</h3>
+                      <small>Mochi 进入食盆区域</small>
+                    </div>
+                    <img class="food-event-thumb" src="./assets/new-camera-live.jpg" alt="进食行为识别画面" />
+                  </div>
+                </article>
+                <article class="food-event-item">
+                  <div class="food-event-dot water">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M12 3s6 6.2 6 11a6 6 0 0 1-12 0c0-4.8 6-11 6-11Z" />
+                      <path d="M9.5 15.5c.5 1.2 1.4 1.9 2.8 2.1" />
+                    </svg>
+                  </div>
+                  <div class="food-event-card water has-thumb">
+                    <div class="food-event-copy">
+                      <p>
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <circle cx="12" cy="12" r="8" />
+                          <path d="M12 7v5l3 2" />
+                        </svg>
+                        今日 <span>13:20</span>
+                      </p>
+                      <h3>检测到饮水行为</h3>
+                      <small>Mochi 靠近饮水区</small>
+                    </div>
+                    <img class="food-event-thumb" src="./assets/new-camera-live.jpg" alt="饮水行为识别画面" />
+                  </div>
+                </article>
+              </div>
+            </section>
+          </div>
+          <div class="home-indicator monitor-home-indicator" aria-hidden="true"></div>
+        </section>
+
+        <div class="food-date-dialog" aria-hidden="true">
+          <button class="food-date-scrim" type="button" aria-label="关闭日期选择"></button>
+          <section class="food-date-modal" role="dialog" aria-modal="true" aria-label="选择日期">
+            <div class="food-date-modal-head">
+              <button type="button" aria-label="上一月">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m15 18-6-6 6-6" />
+                  <path d="m20 18-6-6 6-6" />
+                </svg>
+              </button>
+              <h2>2026 年 7 月</h2>
+              <button type="button" aria-label="下一月">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m9 6 6 6-6 6" />
+                  <path d="m4 6 6 6-6 6" />
+                </svg>
+              </button>
+            </div>
+            <div class="food-date-weekdays" aria-hidden="true">
+              <span>一</span>
+              <span>二</span>
+              <span>三</span>
+              <span>四</span>
+              <span>五</span>
+              <span>六</span>
+              <span>日</span>
+            </div>
+            <div class="food-date-modal-grid">
+              <button class="muted" type="button" disabled>29</button>
+              <button class="muted" type="button" disabled>30</button>
+              <button type="button" disabled>1</button>
+              <button type="button" disabled>2</button>
+              <button type="button" disabled>3</button>
+              <button type="button" disabled>4</button>
+              <button type="button" disabled>5</button>
+              <button type="button" data-food-day="0">6</button>
+              <button class="active" type="button" data-food-day="1">7</button>
+              <button type="button" data-food-day="2">8</button>
+              <button type="button" data-food-day="3">9</button>
+              <button type="button" data-food-day="4">10</button>
+              <button type="button" data-food-day="5">11</button>
+              <button type="button" data-food-day="6">12</button>
+              <button type="button" disabled>13</button>
+              <button type="button" disabled>14</button>
+              <button type="button" disabled>15</button>
+              <button type="button" disabled>16</button>
+              <button type="button" disabled>17</button>
+              <button type="button" disabled>18</button>
+              <button type="button" disabled>19</button>
+              <button type="button" disabled>20</button>
+              <button type="button" disabled>21</button>
+              <button type="button" disabled>22</button>
+              <button type="button" disabled>23</button>
+              <button type="button" disabled>24</button>
+              <button type="button" disabled>25</button>
+              <button type="button" disabled>26</button>
+              <button type="button" disabled>27</button>
+              <button type="button" disabled>28</button>
+              <button type="button" disabled>29</button>
+              <button type="button" disabled>30</button>
+              <button type="button" disabled>31</button>
+              <button class="muted" type="button" disabled>1</button>
+              <button class="muted" type="button" disabled>2</button>
+            </div>
+            <button class="food-date-today" type="button" data-food-day="1">今天</button>
+          </section>
+        </div>
+
+        <section class="page-view food-detail-view activity-detail-view" data-view="activity-detail" aria-label="活动页面">
+          <header class="monitor-topbar food-topbar">
+            <button class="monitor-back activity-back" type="button" aria-label="返回爬宠摄像头">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m15 5-7 7 7 7" />
+              </svg>
+            </button>
+            <h1>活动</h1>
+          </header>
+
+          <div class="food-detail-scroll">
+            <section class="food-date-panel" aria-label="日期选择">
+              <div class="food-week-head">
+                <div>
+                  <span>活动记录</span>
+                  <strong>7.6 - 7.12</strong>
+                </div>
+                <button class="food-calendar-button" type="button" aria-label="切换日期">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8 2v4" />
+                    <path d="M16 2v4" />
+                    <rect x="3" y="5" width="18" height="16" rx="4" />
+                    <path d="M3 10h18" />
+                    <path d="M8 14h.01" />
+                    <path d="M12 14h.01" />
+                    <path d="M16 14h.01" />
+                    <path d="M8 18h.01" />
+                    <path d="M12 18h.01" />
+                  </svg>
+                </button>
+              </div>
+              <div class="food-day-row" aria-label="本周日期">
+                <button class="food-day-button" type="button">
+                  <span>周一</span>
+                  <strong>7.6</strong>
+                </button>
+                <button class="food-day-button active" type="button">
+                  <span>周二</span>
+                  <strong>7.7</strong>
+                </button>
+                <button class="food-day-button" type="button">
+                  <span>周三</span>
+                  <strong>7.8</strong>
+                </button>
+                <button class="food-day-button" type="button">
+                  <span>周四</span>
+                  <strong>7.9</strong>
+                </button>
+                <button class="food-day-button" type="button">
+                  <span>周五</span>
+                  <strong>7.10</strong>
+                </button>
+                <button class="food-day-button" type="button">
+                  <span>周六</span>
+                  <strong>7.11</strong>
+                </button>
+                <button class="food-day-button" type="button">
+                  <span>周日</span>
+                  <strong>7.12</strong>
+                </button>
+              </div>
+            </section>
+
+            <section class="food-summary-grid activity-summary-grid" aria-label="活动概览">
+              <article class="food-summary-card activity-summary-card">
+                <span class="food-summary-icon activity">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="8" />
+                    <path d="M12 8v5l3 2" />
+                  </svg>
+                </span>
+                <h2>活动时长</h2>
+                <strong>1 小时 20 分钟</strong>
+              </article>
+              <article class="food-summary-card activity-summary-card">
+                <span class="food-summary-icon activity-count">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m2 9 3-3 3 3" />
+                    <path d="M13 18H7a2 2 0 0 1-2-2V6" />
+                    <path d="m22 15-3 3-3-3" />
+                    <path d="M11 6h6a2 2 0 0 1 2 2v10" />
+                  </svg>
+                </span>
+                <h2>活动次数</h2>
+                <strong>6 次</strong>
+              </article>
+            </section>
+
+            <section class="food-events activity-events" aria-label="每日活动事件记录">
+              <div class="food-event-list">
+                <article class="food-event-item">
+                  <div class="food-event-dot activity">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M13 2 5 13h6l-1 9 9-13h-6l1-7Z" />
+                    </svg>
+                  </div>
+                  <div class="food-event-card activity has-thumb">
+                    <div class="food-event-copy">
+                      <p>
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <circle cx="12" cy="12" r="8" />
+                          <path d="M12 7v5l3 2" />
+                        </svg>
+                        今日 <span>21:10</span>
+                      </p>
+                      <h3>检测到活动行为</h3>
+                      <small>Mochi 在饲养箱右侧区域活动中</small>
+                    </div>
+                    <img class="food-event-thumb" src="./assets/new-camera-live.jpg" alt="活动行为识别画面" />
+                  </div>
+                </article>
+                <article class="food-event-item">
+                  <div class="food-event-dot activity">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M13 2 5 13h6l-1 9 9-13h-6l1-7Z" />
+                    </svg>
+                  </div>
+                  <div class="food-event-card activity has-thumb">
+                    <div class="food-event-copy">
+                      <p>
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <circle cx="12" cy="12" r="8" />
+                          <path d="M12 7v5l3 2" />
+                        </svg>
+                        今日 <span>19:42</span>
+                      </p>
+                      <h3>检测到活动行为</h3>
+                      <small>Mochi 在饲养箱右侧区域活动中</small>
+                    </div>
+                    <img class="food-event-thumb" src="./assets/new-camera-live.jpg" alt="活动行为识别画面" />
+                  </div>
+                </article>
+              </div>
+            </section>
+          </div>
+          <div class="home-indicator monitor-home-indicator" aria-hidden="true"></div>
+        </section>
+
+        <section class="page-view food-detail-view sun-detail-view" data-view="sun-detail" aria-label="晒背页面">
+          <header class="monitor-topbar food-topbar">
+            <button class="monitor-back sun-back" type="button" aria-label="返回爬宠摄像头">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m15 5-7 7 7 7" />
+              </svg>
+            </button>
+            <h1>晒背</h1>
+          </header>
+
+          <div class="food-detail-scroll">
+            <section class="food-date-panel" aria-label="日期选择">
+              <div class="food-week-head">
+                <div>
+                  <span>晒背记录</span>
+                  <strong>7.6 - 7.12</strong>
+                </div>
+                <button class="food-calendar-button" type="button" aria-label="切换日期">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8 2v4" />
+                    <path d="M16 2v4" />
+                    <rect x="3" y="5" width="18" height="16" rx="4" />
+                    <path d="M3 10h18" />
+                    <path d="M8 14h.01" />
+                    <path d="M12 14h.01" />
+                    <path d="M16 14h.01" />
+                    <path d="M8 18h.01" />
+                    <path d="M12 18h.01" />
+                  </svg>
+                </button>
+              </div>
+              <div class="food-day-row" aria-label="本周日期">
+                <button class="food-day-button" type="button">
+                  <span>周一</span>
+                  <strong>7.6</strong>
+                </button>
+                <button class="food-day-button active" type="button">
+                  <span>周二</span>
+                  <strong>7.7</strong>
+                </button>
+                <button class="food-day-button" type="button">
+                  <span>周三</span>
+                  <strong>7.8</strong>
+                </button>
+                <button class="food-day-button" type="button">
+                  <span>周四</span>
+                  <strong>7.9</strong>
+                </button>
+                <button class="food-day-button" type="button">
+                  <span>周五</span>
+                  <strong>7.10</strong>
+                </button>
+                <button class="food-day-button" type="button">
+                  <span>周六</span>
+                  <strong>7.11</strong>
+                </button>
+                <button class="food-day-button" type="button">
+                  <span>周日</span>
+                  <strong>7.12</strong>
+                </button>
+              </div>
+            </section>
+
+            <section class="food-summary-grid activity-summary-grid" aria-label="晒背概览">
+              <article class="food-summary-card activity-summary-card">
+                <span class="food-summary-icon sun-duration">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="4" />
+                    <path d="M12 2v2" />
+                    <path d="M12 20v2" />
+                    <path d="m4.93 4.93 1.41 1.41" />
+                    <path d="m17.66 17.66 1.41 1.41" />
+                    <path d="M2 12h2" />
+                    <path d="M20 12h2" />
+                    <path d="m6.34 17.66-1.41 1.41" />
+                    <path d="m19.07 4.93-1.41 1.41" />
+                  </svg>
+                </span>
+                <h2>晒背时长</h2>
+                <strong>42 分钟</strong>
+              </article>
+              <article class="food-summary-card activity-summary-card">
+                <span class="food-summary-icon sun-count">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m2 9 3-3 3 3" />
+                    <path d="M13 18H7a2 2 0 0 1-2-2V6" />
+                    <path d="m22 15-3 3-3-3" />
+                    <path d="M11 6h6a2 2 0 0 1 2 2v10" />
+                  </svg>
+                </span>
+                <h2>晒背次数</h2>
+                <strong>3 次</strong>
+              </article>
+            </section>
+
+            <section class="food-events sun-events" aria-label="每日晒背事件记录">
+              <div class="food-event-list">
+                <article class="food-event-item">
+                  <div class="food-event-dot sun">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <circle cx="12" cy="12" r="4" />
+                      <path d="M12 2v2" />
+                      <path d="M12 20v2" />
+                      <path d="m4.93 4.93 1.41 1.41" />
+                      <path d="m17.66 17.66 1.41 1.41" />
+                      <path d="M2 12h2" />
+                      <path d="M20 12h2" />
+                      <path d="m6.34 17.66-1.41 1.41" />
+                      <path d="m19.07 4.93-1.41 1.41" />
+                    </svg>
+                  </div>
+                  <div class="food-event-card sun has-thumb">
+                    <div class="food-event-copy">
+                      <p>
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <circle cx="12" cy="12" r="8" />
+                          <path d="M12 7v5l3 2" />
+                        </svg>
+                        今日 <span>14:20</span>
+                      </p>
+                      <h3>检测到晒背行为</h3>
+                      <small>Mochi 正在晒背中</small>
+                    </div>
+                    <img class="food-event-thumb" src="./assets/new-camera-live.jpg" alt="晒背行为识别画面" />
+                  </div>
+                </article>
+                <article class="food-event-item">
+                  <div class="food-event-dot sun">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <circle cx="12" cy="12" r="4" />
+                      <path d="M12 2v2" />
+                      <path d="M12 20v2" />
+                      <path d="m4.93 4.93 1.41 1.41" />
+                      <path d="m17.66 17.66 1.41 1.41" />
+                      <path d="M2 12h2" />
+                      <path d="M20 12h2" />
+                      <path d="m6.34 17.66-1.41 1.41" />
+                      <path d="m19.07 4.93-1.41 1.41" />
+                    </svg>
+                  </div>
+                  <div class="food-event-card sun has-thumb">
+                    <div class="food-event-copy">
+                      <p>
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <circle cx="12" cy="12" r="8" />
+                          <path d="M12 7v5l3 2" />
+                        </svg>
+                        今日 <span>11:35</span>
+                      </p>
+                      <h3>检测到晒背行为</h3>
+                      <small>Mochi 正在晒背中</small>
+                    </div>
+                    <img class="food-event-thumb" src="./assets/new-camera-live.jpg" alt="晒背行为识别画面" />
+                  </div>
+                </article>
+              </div>
+            </section>
+          </div>
+          <div class="home-indicator monitor-home-indicator" aria-hidden="true"></div>
+        </section>
+
+        <section class="page-view food-detail-view molt-detail-view" data-view="molt-detail" aria-label="蜕皮页面">
+          <header class="monitor-topbar food-topbar">
+            <button class="monitor-back molt-back" type="button" aria-label="返回爬宠摄像头">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m15 5-7 7 7 7" />
+              </svg>
+            </button>
+            <h1>蜕皮</h1>
+          </header>
+
+          <div class="food-detail-scroll">
+            <section class="molt-status-card" aria-label="蜕皮状态">
+              <div class="molt-status-head">
+                <span class="food-summary-icon molt-status-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="m9 12 2 2 4-4" />
+                  </svg>
+                </span>
+                <div class="molt-status-copy">
+                  <h2>蜕皮状态</h2>
+                  <p>当前未检测到蜕皮行为</p>
+                </div>
+                <span class="molt-status-badge">未蜕皮</span>
+              </div>
+            </section>
+
+            <section class="molt-cycle-section" aria-label="蜕皮周期">
+              <div class="monitor-section-title">
+                <h2>蜕皮周期</h2>
+              </div>
+              <div class="molt-cycle-grid">
+                <article class="food-summary-card molt-cycle-card">
+                  <span class="food-summary-icon molt-last">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M3 12a9 9 0 1 0 3-6.7" />
+                      <path d="M3 4v5h5" />
+                      <path d="M12 7v5l3 2" />
+                    </svg>
+                  </span>
+                  <h2>上次蜕皮</h2>
+                  <strong>14 天前</strong>
+                </article>
+                <article class="food-summary-card molt-cycle-card">
+                  <span class="food-summary-icon molt-average">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M21 12a9 9 0 1 1-9-9" />
+                      <path d="M21 3v6h-6" />
+                    </svg>
+                  </span>
+                  <h2>平均周期</h2>
+                  <strong>28 天</strong>
+                </article>
+                <article class="food-summary-card molt-cycle-card">
+                  <span class="food-summary-icon molt-next">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M8 2v4" />
+                      <path d="M16 2v4" />
+                      <rect x="3" y="5" width="18" height="16" rx="4" />
+                      <path d="M3 10h18" />
+                      <circle cx="12" cy="16" r="2" />
+                      <path d="M12 14v2l1 1" />
+                    </svg>
+                  </span>
+                  <h2>下次预计</h2>
+                  <strong>~14 天</strong>
+                </article>
+              </div>
+              <div class="molt-timeline-section" aria-label="蜕皮事件记录">
+              <div class="molt-next-card">
+                <span class="molt-timeline-dot next"></span>
+                <div class="molt-timeline-content">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8 2v4" />
+                    <path d="M16 2v4" />
+                    <rect x="3" y="5" width="18" height="16" rx="4" />
+                    <path d="M3 10h18" />
+                    <circle cx="12" cy="16" r="2" />
+                    <path d="M12 14v2l1 1" />
+                  </svg>
+                  <span>下次预计</span>
+                  <strong>07/21</strong>
+                </div>
+              </div>
+
+              <article class="molt-period-card">
+                <div class="molt-period-line" aria-hidden="true">
+                  <span class="done"></span>
+                  <span class="start"></span>
+                </div>
+                <div class="molt-period-events">
+                  <div class="molt-timeline-content done">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M8 2v4" />
+                      <path d="M16 2v4" />
+                      <rect x="3" y="5" width="18" height="16" rx="4" />
+                      <path d="M3 10h18" />
+                      <path d="M9 15l2 2 4-4" />
+                    </svg>
+                    <span>蜕皮完成</span>
+                    <strong>06/23</strong>
+                  </div>
+                  <p>持续时间 <strong>24h</strong></p>
+                  <div class="molt-timeline-content start">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M8 2v4" />
+                      <path d="M16 2v4" />
+                      <rect x="3" y="5" width="18" height="16" rx="4" />
+                      <path d="M3 10h18" />
+                      <circle cx="12" cy="16" r="2" />
+                      <path d="M12 14v2l1 1" />
+                    </svg>
+                    <span>蜕皮开始</span>
+                    <strong>06/22</strong>
+                  </div>
+                </div>
+              </article>
+
+              <div class="molt-gap">
+                <span></span>
+                <strong>间隔时间 30 天</strong>
+                <span></span>
+              </div>
+
+              <article class="molt-period-card">
+                <div class="molt-period-line" aria-hidden="true">
+                  <span class="done"></span>
+                  <span class="start"></span>
+                </div>
+                <div class="molt-period-events">
+                  <div class="molt-timeline-content done">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M8 2v4" />
+                      <path d="M16 2v4" />
+                      <rect x="3" y="5" width="18" height="16" rx="4" />
+                      <path d="M3 10h18" />
+                      <path d="M9 15l2 2 4-4" />
+                    </svg>
+                    <span>蜕皮完成</span>
+                    <strong>05/24</strong>
+                  </div>
+                  <p>持续时间 <strong>24h</strong></p>
+                  <div class="molt-timeline-content start">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M8 2v4" />
+                      <path d="M16 2v4" />
+                      <rect x="3" y="5" width="18" height="16" rx="4" />
+                      <path d="M3 10h18" />
+                      <circle cx="12" cy="16" r="2" />
+                      <path d="M12 14v2l1 1" />
+                    </svg>
+                    <span>蜕皮开始</span>
+                    <strong>05/23</strong>
+                  </div>
+                </div>
+              </article>
+              </div>
             </section>
           </div>
           <div class="home-indicator monitor-home-indicator" aria-hidden="true"></div>
