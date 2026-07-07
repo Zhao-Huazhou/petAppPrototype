@@ -1799,10 +1799,6 @@ button {
   padding: 4px 0 0;
 }
 
-.monitor-view .monitor-ai-section[aria-label="活动概览"] {
-  display: none;
-}
-
 .live-card {
   position: relative;
   overflow: hidden;
