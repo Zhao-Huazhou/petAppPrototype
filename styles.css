@@ -1799,6 +1799,10 @@ button {
   padding: 4px 0 0;
 }
 
+.monitor-view .monitor-ai-section[aria-label="活动概览"] {
+  display: none;
+}
+
 .live-card {
   position: relative;
   overflow: hidden;
@@ -2708,7 +2712,8 @@ button {
 
 .food-date-panel,
 .food-summary-card,
-.food-events {
+.food-events,
+.activity-behavior-panel {
   border: 1px solid rgba(255, 255, 255, 0.82);
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.62);
@@ -2909,6 +2914,45 @@ button {
   color: #111821;
   font-size: 15px;
   font-weight: var(--weight-regular);
+}
+
+.activity-behavior-panel {
+  display: grid;
+  gap: 12px;
+  padding: 14px 12px;
+}
+
+.activity-behavior-card {
+  display: grid;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(246, 250, 255, 0.88);
+}
+
+.activity-behavior-card .behavior-subhead span {
+  color: #4e8fff;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: var(--weight-semibold);
+}
+
+.activity-behavior-card .ratio-track {
+  height: 18px;
+}
+
+.activity-behavior-card .behavior-map-row {
+  padding-top: 12px;
+  border-top-color: rgba(210, 226, 244, 0.82);
+}
+
+.activity-behavior-card .behavior-copy strong {
+  font-size: 15px;
+}
+
+.activity-behavior-card .heatmap-preview {
+  border-radius: 14px;
+  grid-auto-rows: 24px;
 }
 
 .food-events {
