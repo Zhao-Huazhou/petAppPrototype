@@ -2339,18 +2339,21 @@ button {
 }
 
 .dimension-card {
-  min-height: 124px;
   display: grid;
-  grid-template-columns: 32px 1fr;
-  align-items: start;
-  gap: 7px;
-  padding: 12px 10px 10px;
+  grid-template-columns: 30px 1fr auto;
+  grid-template-rows: auto auto;
+  align-items: center;
+  gap: 12px 8px;
+  min-height: 96px;
+  padding: 14px 12px 13px;
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.62);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82);
 }
 
 .dimension-icon {
+  grid-column: 1;
+  grid-row: 1;
   width: 30px;
   height: 30px;
   display: grid;
@@ -2376,24 +2379,27 @@ button {
 }
 
 .dimension-card b {
-  justify-self: end;
+  grid-column: 3;
+  grid-row: 1;
   color: #111821;
-  font-size: 22px;
+  font-size: 21px;
   line-height: 1;
   font-weight: var(--weight-heavy);
 }
 
 .dimension-card b small {
-  margin-left: 3px;
-  font-size: 12px;
+  margin-left: 2px;
+  font-size: 11px;
   font-weight: var(--weight-bold);
 }
 
 .dimension-card span {
-  grid-column: 1 / -1;
-  margin-bottom: -3px;
+  grid-column: 2;
+  grid-row: 1;
+  margin: 0;
   color: #313946;
   font-size: 13px;
+  line-height: 1.2;
   font-weight: var(--weight-semibold);
 }
 
@@ -2409,7 +2415,9 @@ button {
 .dimension-card i {
   position: relative;
   grid-column: 1 / -1;
-  margin-top: -2px;
+  grid-row: 2;
+  align-self: end;
+  margin-top: 0;
   height: 7px;
   overflow: hidden;
   border-radius: 999px;
