@@ -27,7 +27,7 @@
               <path d="M4 18h16" />
             </svg>
           </button>
-          <a href="#" class="nav-tab" data-view-target="pet">爱宠</a>
+          <a href="#" class="nav-tab" data-view-target="pet">设备</a>
           <a href="#" class="nav-tab active" data-view-target="ai" aria-current="page">宠智灵</a>
           <a href="#" class="nav-tab" data-view-target="care">趣养</a>
           <a href="#" class="nav-tab">趣玩</a>
@@ -123,7 +123,7 @@
           </footer>
         </section>
 
-        <section class="page-view pet-view" data-view="pet" aria-label="爱宠页面">
+        <section class="page-view pet-view" data-view="pet" aria-label="设备页面">
           <article class="pet-archive">
             <div class="archive-rings" aria-hidden="true">
               <span></span>
@@ -163,18 +163,16 @@
             </section>
           </article>
 
-          <section class="smart-devices" aria-label="爱宠设备">
-            <div class="devices-head">
-              <h2>爱宠设备</h2>
+          <section class="smart-devices" aria-label="设备">
+            <div class="device-toolbar" aria-label="设备筛选">
+              <div class="device-tabs" aria-label="设备类型">
+                <button class="device-tab active" type="button">全部</button>
+                <button class="device-tab" type="button">智能项圈</button>
+                <button class="device-tab" type="button">摄像头</button>
+              </div>
               <button class="add-device" type="button" aria-label="添加设备">
                 <span></span>
               </button>
-            </div>
-
-            <div class="device-tabs" aria-label="设备类型">
-              <button class="device-tab active" type="button">全部</button>
-              <button class="device-tab" type="button">智能项圈</button>
-              <button class="device-tab" type="button">摄像头</button>
             </div>
 
             <div class="device-grid">
@@ -509,7 +507,7 @@
 
         <section class="page-view scan-view" data-view="add-device" aria-label="扫码添加设备页面">
           <header class="scan-topbar">
-            <button class="scan-back" type="button" aria-label="返回爱宠页面">
+            <button class="scan-back" type="button" aria-label="返回设备页面">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="m15 5-7 7 7 7" />
               </svg>
@@ -545,7 +543,7 @@
 
         <section class="page-view monitor-view" data-view="reptile-camera" aria-label="爬宠摄像头页面">
           <header class="monitor-topbar">
-            <button class="monitor-back" type="button" aria-label="返回爱宠页面">
+            <button class="monitor-back" type="button" aria-label="返回设备页面">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="m15 5-7 7 7 7" />
               </svg>

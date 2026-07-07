@@ -525,6 +525,15 @@ button {
   scrollbar-width: none;
 }
 
+.pet-view .pet-archive,
+.pet-view .advisor-stack {
+  display: none;
+}
+
+.pet-view .smart-devices {
+  margin-top: 0;
+}
+
 .pet-view::-webkit-scrollbar {
   width: 0;
   height: 0;
@@ -788,37 +797,39 @@ button {
   margin-top: 22px;
 }
 
-.devices-head {
+.device-toolbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 4px 0 2px;
+  gap: 10px;
+  margin: 0 0 13px;
 }
 
-.devices-head h2 {
-  margin: 0;
-  color: #101823;
-  font-size: 22px;
-  line-height: 1;
-  font-weight: var(--weight-heavy);
+.device-tabs {
+  display: flex;
+  gap: 8px;
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
 }
 
 .add-device {
-  width: 30px;
-  height: 30px;
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
   display: grid;
   place-items: center;
-  border: 2.4px solid #101823;
+  border: 2px solid #101823;
   border-radius: 50%;
   background: transparent;
-  box-shadow: 0 5px 12px rgba(73, 125, 169, 0.08);
+  box-shadow: 0 4px 10px rgba(73, 125, 169, 0.08);
 }
 
 .add-device span,
 .add-device span::before {
   display: block;
-  width: 14px;
-  height: 2.6px;
+  width: 12px;
+  height: 2.4px;
   border-radius: 999px;
   background: #101823;
   content: "";
@@ -826,13 +837,6 @@ button {
 
 .add-device span::before {
   transform: rotate(90deg);
-}
-
-.device-tabs {
-  display: flex;
-  gap: 8px;
-  margin: 14px 0 13px;
-  overflow: hidden;
 }
 
 .device-tab {
@@ -4821,13 +4825,13 @@ button {
     margin-top: 18px;
   }
 
-  .devices-head h2 {
-    font-size: 20px;
+  .device-toolbar {
+    gap: 8px;
+    margin-bottom: 12px;
   }
 
   .device-tabs {
     gap: 6px;
-    margin: 12px 0;
   }
 
   .device-tab {
