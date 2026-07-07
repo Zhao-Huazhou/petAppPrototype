@@ -91,6 +91,18 @@ scanBackButton?.addEventListener("click", () => {
   setActiveView("pet");
 });
 
+const environmentSection = document.querySelector(".environment-section");
+const envPrototypeToggle = document.querySelector(".env-prototype-toggle");
+const envPrototypeToggleLabel = document.querySelector(".env-prototype-toggle-label");
+
+envPrototypeToggle?.addEventListener("click", () => {
+  const hasData = environmentSection?.classList.toggle("env-has-data") ?? false;
+  envPrototypeToggle.setAttribute("aria-pressed", String(hasData));
+  if (envPrototypeToggleLabel) {
+    envPrototypeToggleLabel.textContent = hasData ? "有数据" : "无数据";
+  }
+});
+
 reptileDeviceButton?.addEventListener("click", () => {
   setActiveView("reptile-camera");
   setDrawerOpen(false);
