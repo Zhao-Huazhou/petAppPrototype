@@ -1888,6 +1888,18 @@ button {
   font-weight: var(--weight-semibold);
 }
 
+.live-ai-overlay .live-status-value.is-normal {
+  color: #9ef0b8;
+}
+
+.live-ai-overlay .live-status-value.is-event {
+  color: #ffd08a;
+}
+
+.live-ai-overlay .live-status-value.is-abnormal {
+  color: #ffb4b4;
+}
+
 .live-device-status {
   position: absolute;
   right: 12px;
