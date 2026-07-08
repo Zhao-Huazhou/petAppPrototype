@@ -1888,6 +1888,49 @@ button {
   font-weight: var(--weight-semibold);
 }
 
+.live-device-status {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  max-width: calc(100% - 24px);
+  padding: 4px 8px;
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(2px);
+  font-size: 10px;
+  line-height: 1;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+
+.live-device-status-value {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: var(--weight-bold);
+}
+
+.live-device-status-value i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 6px rgba(74, 222, 128, 0.55);
+}
+
+.live-device-status.is-offline .live-device-status-value {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.live-device-status.is-offline .live-device-status-value i {
+  background: #9aa5b2;
+  box-shadow: none;
+}
+
 .live-time {
   position: absolute;
   left: 12px;
