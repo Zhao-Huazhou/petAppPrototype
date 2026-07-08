@@ -542,13 +542,17 @@
         </section>
 
         <section class="page-view monitor-view" data-view="reptile-camera" aria-label="爬宠摄像头页面">
-          <header class="monitor-topbar">
+          <header class="monitor-topbar monitor-topbar-with-prototype">
             <button class="monitor-back" type="button" aria-label="返回设备页面">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="m15 5-7 7 7 7" />
               </svg>
             </button>
             <h1>爬宠摄像头</h1>
+            <button class="env-prototype-toggle" type="button" aria-label="演示：切换环境监测数据状态" aria-pressed="false">
+              <span class="env-prototype-toggle-tag">演示</span>
+              <span class="env-prototype-toggle-label">无数据</span>
+            </button>
           </header>
 
           <div class="monitor-scroll">
@@ -657,16 +661,19 @@
                     <span>进食规律</span>
                     <i style="--value: 90%"></i>
                   </article>
-                  <article class="dimension-card">
+                  <article class="dimension-card dimension-card-env">
                     <div class="dimension-icon env">
                       <svg viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M12 4a6 6 0 0 0-6 6c0 5 6 10 6 10s6-5 6-10a6 6 0 0 0-6-6Z" />
                         <path d="M9 10h6" />
                       </svg>
                     </div>
-                    <b>92<small>分</small></b>
+                    <b class="dimension-env-score">92<small>分</small></b>
                     <span>环境适应</span>
-                    <i style="--value: 92%"></i>
+                    <div class="dimension-card-footer">
+                      <p class="dimension-env-hint">需添加环境监测设备后评估</p>
+                      <i class="dimension-env-progress"></i>
+                    </div>
                   </article>
                   <article class="dimension-card">
                     <div class="dimension-icon body">
@@ -685,7 +692,8 @@
                   <div class="advice-orb" aria-hidden="true"></div>
                   <div class="advice-copy">
                     <h3><span>AI</span> 健康建议</h3>
-                    <p>Mochi 今日状态良好，活动时间充足，蜕皮周期正常。建议保持当前温湿度设置，明日可适当补给营养。</p>
+                    <p class="health-advice-without-env">Mochi 今日状态良好，活动时间充足，蜕皮周期正常。明日可适当补给营养。</p>
+                    <p class="health-advice-with-env">Mochi 今日状态良好，活动时间充足，蜕皮周期正常。建议保持当前温湿度设置，明日可适当补给营养。</p>
                   </div>
                   <svg class="advice-spark" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M13 3 15.4 8.6 21 11l-5.6 2.4L13 19l-2.4-5.6L5 11l5.6-2.4L13 3Z" />
@@ -696,10 +704,6 @@
             </section>
 
             <section class="environment-section" aria-label="环境监测">
-              <button class="env-prototype-toggle" type="button" aria-label="演示：切换环境监测数据状态" aria-pressed="false">
-                <span class="env-prototype-toggle-tag">演示</span>
-                <span class="env-prototype-toggle-label">无数据</span>
-              </button>
               <article class="env-card env-card-compact">
                 <div class="env-compact-copy">
                   <div class="monitor-section-title">
@@ -1366,7 +1370,7 @@
                     </svg>
                   </span>
                   <h2>下次预计</h2>
-                  <strong>~14 天</strong>
+                  <strong>7月21日</strong>
                 </article>
               </div>
               <div class="molt-timeline-section" aria-label="蜕皮事件记录">
