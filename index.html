@@ -558,14 +558,37 @@
           <div class="monitor-scroll">
             <section class="live-card" aria-label="实时画面">
               <img src="./assets/new-camera-live.jpg" alt="爬宠箱实时监控画面" />
+              <div class="live-ai-overlay" aria-label="AI 实时分析">
+                <span class="live-ai-overlay-tag">AI 实时分析</span>
+                <p>物种识别：<strong>绿鬣蜥</strong></p>
+                <p>行为识别：<strong>晒背中</strong></p>
+              </div>
               <div class="live-actions" aria-label="实时画面操作">
-                <button type="button" aria-label="全屏">
+                <button class="live-action-button" type="button" aria-label="高清，清晰度设置">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M5 18V6" />
+                    <path d="M10 18v-5" />
+                    <path d="M15 18v-8" />
+                    <path d="M20 18v-11" />
+                  </svg>
+                  <span>高清</span>
+                </button>
+                <button class="live-action-button" type="button" aria-label="回放，查看本地回放">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M3 12a9 9 0 1 0 3-6.7" />
+                    <path d="M3 4v5h5" />
+                    <path class="live-action-play" d="M12 8v8l6-4-6-4Z" />
+                  </svg>
+                  <span>回放</span>
+                </button>
+                <button class="live-action-button" type="button" aria-label="全屏，切换全屏">
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M8 3H5a2 2 0 0 0-2 2v3" />
                     <path d="M21 8V5a2 2 0 0 0-2-2h-3" />
                     <path d="M3 16v3a2 2 0 0 0 2 2h3" />
                     <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
                   </svg>
+                  <span>全屏</span>
                 </button>
               </div>
             </section>
@@ -582,7 +605,7 @@
                     <path d="M17 5h.01" />
                   </svg>
                 </span>
-                <strong>进食</strong>
+                <strong>进食识别</strong>
                 <small>最近一次 8:12</small>
               </button>
               <button class="ai-feature-card activity-feature-card" type="button">
@@ -591,7 +614,7 @@
                     <path d="M13 2 5 13h6l-1 9 9-13h-6l1-7Z" />
                   </svg>
                 </span>
-                <strong>活动</strong>
+                <strong>活动分析</strong>
                 <small>今日活动 48 分钟</small>
               </button>
               <button class="ai-feature-card sun-feature-card" type="button">
@@ -606,7 +629,7 @@
                     <path d="M19 12h3" />
                   </svg>
                 </span>
-                <strong>晒背</strong>
+                <strong>晒背识别</strong>
                 <small>今日晒背 42 分钟</small>
               </button>
               <button class="ai-feature-card molt-feature-card" type="button">
@@ -617,7 +640,7 @@
                     <path d="M11.6 13.2c1.4-.2 3-.9 4.4-2.2" />
                   </svg>
                 </span>
-                <strong>蜕皮</strong>
+                <strong>蜕皮检测</strong>
                 <small>未检测到蜕皮行为</small>
               </button>
             </div>
@@ -627,9 +650,9 @@
                 <h2>健康评估</h2>
               </div>
               <div class="health-report-card">
-                <div class="health-score-summary" aria-label="健康综合评分 95 分">
+                <div class="health-score-summary" aria-label="AI 多维健康分析 95 分">
                   <div class="score-summary-copy">
-                    <h3>健康综合评分</h3>
+                    <h3>AI 多维健康分析</h3>
                     <span>优秀</span>
                     <p>状态极佳，继续保持！</p>
                   </div>

@@ -1845,6 +1845,49 @@ button {
   pointer-events: none;
 }
 
+.live-ai-overlay {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  z-index: 2;
+  display: grid;
+  gap: 5px;
+  max-width: calc(100% - 24px);
+  padding: 0;
+  color: #fff;
+  pointer-events: none;
+}
+
+.live-ai-overlay-tag {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 3px 8px;
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(2px);
+  font-size: 10px;
+  line-height: 1;
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+.live-ai-overlay p {
+  margin: 0;
+  padding-left: 1px;
+  color: rgba(255, 255, 255, 0.96);
+  font-size: 11px;
+  line-height: 1.35;
+  font-weight: var(--weight-medium);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.55), 0 0 1px rgba(0, 0, 0, 0.4);
+}
+
+.live-ai-overlay strong {
+  font-weight: var(--weight-semibold);
+}
+
 .live-time {
   position: absolute;
   left: 12px;
@@ -1889,38 +1932,50 @@ button {
 
 .live-actions {
   position: absolute;
-  left: 50%;
-  top: 50%;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 2;
   display: grid;
-  gap: 10px;
-  transform: translate(-50%, -50%);
+  grid-template-columns: repeat(3, 1fr);
+  align-items: end;
+  gap: 0;
+  padding: 18px 10px 10px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.38));
 }
 
-.live-actions button {
-  width: 42px;
-  height: 42px;
+.live-action-button {
   display: grid;
-  place-items: center;
-  border-radius: 16px;
+  justify-items: center;
+  gap: 4px;
+  padding: 2px 4px 0;
   color: #fff;
-  background: rgba(22, 32, 45, 0.42);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(8px);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
 }
 
-.live-actions button:active {
+.live-action-button:active {
   transform: scale(0.96);
 }
 
-.live-actions svg {
-  width: 23px;
-  height: 23px;
+.live-action-button svg {
+  width: 20px;
+  height: 20px;
   fill: none;
   stroke: currentColor;
-  stroke-width: 2.2;
+  stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+.live-action-play {
+  fill: currentColor;
+  stroke: none;
+}
+
+.live-action-button span {
+  font-size: 11px;
+  line-height: 1;
+  font-weight: var(--weight-medium);
 }
 
 .monitor-ai-section {
