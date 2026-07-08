@@ -2103,16 +2103,96 @@ button {
   transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
 }
 
-.ai-feature-card::after {
-  content: "";
-  position: absolute;
-  right: 13px;
-  top: 15px;
-  width: 7px;
-  height: 7px;
-  border-top: 2px solid rgba(78, 143, 255, 0.48);
-  border-right: 2px solid rgba(78, 143, 255, 0.48);
-  transform: rotate(45deg);
+.ai-feature-card.ai-metric-card {
+  min-height: 116px;
+  gap: 6px;
+  padding: 12px 12px 11px;
+}
+
+.ai-metric-head {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.ai-metric-head .feature-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 12px;
+}
+
+.ai-metric-head .feature-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.ai-metric-label {
+  color: #111821;
+  font-size: 15px;
+  line-height: 1.2;
+  font-weight: var(--weight-heavy);
+}
+
+.ai-metric-body {
+  display: grid;
+  gap: 8px;
+  width: 100%;
+}
+
+.ai-metric-value {
+  margin: 0;
+  color: #111821;
+  font-size: 26px;
+  line-height: 1;
+  font-weight: var(--weight-heavy);
+  min-height: 26px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.ai-metric-value small {
+  margin-left: 2px;
+  font-size: 14px;
+  font-weight: var(--weight-heavy);
+  color: #111821;
+}
+
+.ai-metric-value.is-duration {
+  gap: 4px;
+  align-items: baseline;
+  font-size: 22px;
+}
+
+.ai-metric-duration-main,
+.ai-metric-duration-sub {
+  display: inline-flex;
+  align-items: baseline;
+  white-space: nowrap;
+  line-height: 1;
+  font-size: 22px;
+  font-weight: var(--weight-heavy);
+}
+
+.ai-metric-duration-main small,
+.ai-metric-duration-sub small {
+  margin-left: 2px;
+  font-size: 13px;
+  font-weight: var(--weight-heavy);
+  color: #111821;
+}
+
+.ai-metric-value.is-text {
+  font-size: 20px;
+}
+
+.ai-metric-caption {
+  margin: 0;
+  color: #9aa3ae;
+  font-size: 11px;
+  line-height: 1.2;
+  font-weight: var(--weight-medium);
 }
 
 .ai-feature-card:hover {

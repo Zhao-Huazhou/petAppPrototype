@@ -600,54 +600,77 @@
             </section>
 
             <div class="feature-pair" aria-label="摄像头 AI 能力">
-              <button class="ai-feature-card food-feature-card" type="button">
-                <span class="feature-icon food">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M4 11h16" />
-                    <path d="M5 11c.4 5 3 8 7 8s6.6-3 7-8" />
-                    <path d="M8 19h8" />
-                    <path d="M9 8c.8-1.2 2.2-2 3-2s2.2.8 3 2" />
-                    <path d="M7 5h.01" />
-                    <path d="M17 5h.01" />
-                  </svg>
-                </span>
-                <strong>进食识别</strong>
-                <small>最近一次 8:12</small>
+              <button class="ai-feature-card ai-metric-card food-feature-card" type="button" aria-label="进食识别，最近一次 8:12">
+                <div class="ai-metric-head">
+                  <span class="feature-icon food">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M4 11h16" />
+                      <path d="M5 11c.4 5 3 8 7 8s6.6-3 7-8" />
+                      <path d="M8 19h8" />
+                      <path d="M9 8c.8-1.2 2.2-2 3-2s2.2.8 3 2" />
+                      <path d="M7 5h.01" />
+                      <path d="M17 5h.01" />
+                    </svg>
+                  </span>
+                  <span class="ai-metric-label">进食识别</span>
+                </div>
+                <div class="ai-metric-body">
+                  <p class="ai-metric-value">8:12</p>
+                  <p class="ai-metric-caption">最近一次进食</p>
+                </div>
               </button>
-              <button class="ai-feature-card activity-feature-card" type="button">
-                <span class="feature-icon activity">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M13 2 5 13h6l-1 9 9-13h-6l1-7Z" />
-                  </svg>
-                </span>
-                <strong>活动分析</strong>
-                <small>今日活动 48 分钟</small>
+              <button class="ai-feature-card ai-metric-card activity-feature-card" type="button" aria-label="活动分析，今日活动 1 小时 20 分钟">
+                <div class="ai-metric-head">
+                  <span class="feature-icon activity">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M13 2 5 13h6l-1 9 9-13h-6l1-7Z" />
+                    </svg>
+                  </span>
+                  <span class="ai-metric-label">活动分析</span>
+                </div>
+                <div class="ai-metric-body">
+                  <p class="ai-metric-value is-duration">
+                    <span class="ai-metric-duration-main">1<small>小时</small></span>
+                    <span class="ai-metric-duration-sub">20<small>分钟</small></span>
+                  </p>
+                  <p class="ai-metric-caption">今日活动</p>
+                </div>
               </button>
-              <button class="ai-feature-card sun-feature-card" type="button">
-                <span class="feature-icon sun">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <circle cx="12" cy="12" r="4" />
-                    <path d="M12 2v3" />
-                    <path d="M12 19v3" />
-                    <path d="m4.9 4.9 2.1 2.1" />
-                    <path d="m17 17 2.1 2.1" />
-                    <path d="M2 12h3" />
-                    <path d="M19 12h3" />
-                  </svg>
-                </span>
-                <strong>晒背识别</strong>
-                <small>今日晒背 42 分钟</small>
+              <button class="ai-feature-card ai-metric-card sun-feature-card" type="button" aria-label="晒背识别，今日晒背 42 分钟">
+                <div class="ai-metric-head">
+                  <span class="feature-icon sun">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <circle cx="12" cy="12" r="4" />
+                      <path d="M12 2v3" />
+                      <path d="M12 19v3" />
+                      <path d="m4.9 4.9 2.1 2.1" />
+                      <path d="m17 17 2.1 2.1" />
+                      <path d="M2 12h3" />
+                      <path d="M19 12h3" />
+                    </svg>
+                  </span>
+                  <span class="ai-metric-label">晒背识别</span>
+                </div>
+                <div class="ai-metric-body">
+                  <p class="ai-metric-value">42<small>分钟</small></p>
+                  <p class="ai-metric-caption">今日晒背</p>
+                </div>
               </button>
-              <button class="ai-feature-card molt-feature-card" type="button">
-                <span class="feature-icon molt">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5.5 18 3 19 2c1 2.4 1.5 5.5.5 8.4C18.2 14.4 14.7 17.2 11 20Z" />
-                    <path d="M2 21c0-3 1.8-5.7 5.4-8.2" />
-                    <path d="M11.6 13.2c1.4-.2 3-.9 4.4-2.2" />
-                  </svg>
-                </span>
-                <strong>蜕皮检测</strong>
-                <small>未检测到蜕皮行为</small>
+              <button class="ai-feature-card ai-metric-card molt-feature-card" type="button" aria-label="蜕皮检测，未蜕皮，未检测到蜕皮行为">
+                <div class="ai-metric-head">
+                  <span class="feature-icon molt">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5.5 18 3 19 2c1 2.4 1.5 5.5.5 8.4C18.2 14.4 14.7 17.2 11 20Z" />
+                      <path d="M2 21c0-3 1.8-5.7 5.4-8.2" />
+                      <path d="M11.6 13.2c1.4-.2 3-.9 4.4-2.2" />
+                    </svg>
+                  </span>
+                  <span class="ai-metric-label">蜕皮检测</span>
+                </div>
+                <div class="ai-metric-body">
+                  <p class="ai-metric-value is-text">未蜕皮</p>
+                  <p class="ai-metric-caption">未检测到蜕皮行为</p>
+                </div>
               </button>
             </div>
 
