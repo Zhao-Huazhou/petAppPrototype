@@ -2880,6 +2880,11 @@ button {
   font-weight: var(--weight-bold);
 }
 
+.ai-env-advice {
+  margin-top: 12px;
+  min-height: auto;
+}
+
 .env-humidity-track {
   position: relative;
   height: 16px;
