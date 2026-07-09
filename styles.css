@@ -4041,6 +4041,11 @@ button {
   display: block;
 }
 
+.env-advice-alert strong {
+  color: #2f3640;
+  font-weight: var(--weight-heavy);
+}
+
 .env-humidity-track {
   position: relative;
   height: 16px;
