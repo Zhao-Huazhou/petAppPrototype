@@ -16,8 +16,6 @@ const wifiSsidInput = document.querySelector(".wifi-ssid");
 const wifiNextButton = document.querySelector(".wifi-next");
 const linkPetView = document.querySelector('[data-view="link-pet-profile"]');
 const linkPetBackButton = document.querySelector(".link-pet-back");
-const linkPetPrototypeToggle = document.querySelector(".link-pet-prototype-toggle");
-const linkPetPrototypeToggleLabel = document.querySelector(".link-pet-prototype-toggle-label");
 const linkPetCards = document.querySelectorAll(".link-pet-card:not(.link-pet-add-card)");
 const linkPetAddCard = document.querySelector(".link-pet-add-card");
 const linkPetEmptyCreateButton = document.querySelector(".link-pet-empty-create");
@@ -188,15 +186,6 @@ linkPetBackButton?.addEventListener("click", () => {
   setActiveView("wifi-setup");
 });
 
-linkPetPrototypeToggle?.addEventListener("click", () => {
-  const hasProfiles = linkPetView?.classList.toggle("has-reptile-profiles") ?? false;
-  linkPetPrototypeToggle.setAttribute("aria-pressed", String(hasProfiles));
-  if (linkPetPrototypeToggleLabel) {
-    linkPetPrototypeToggleLabel.textContent = hasProfiles ? "有档案" : "无档案";
-  }
-  syncLinkPetCompleteState();
-});
-
 linkPetCards.forEach((card) => {
   card.addEventListener("click", () => {
     setSelectedLinkPetCard(card);
@@ -318,10 +307,6 @@ syncCreatePetAgeDisplay();
 
 createPetSaveButton?.addEventListener("click", () => {
   linkPetView?.classList.add("has-reptile-profiles");
-  linkPetPrototypeToggle?.setAttribute("aria-pressed", "true");
-  if (linkPetPrototypeToggleLabel) {
-    linkPetPrototypeToggleLabel.textContent = "有档案";
-  }
   const firstCard = linkPetCards[0];
   if (firstCard) {
     setSelectedLinkPetCard(firstCard);

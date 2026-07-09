@@ -1970,29 +1970,6 @@ button {
   flex-shrink: 0;
 }
 
-.link-pet-topbar.link-pet-topbar-with-prototype {
-  grid-template-columns: 44px 1fr auto;
-  padding-right: 0;
-}
-
-.link-pet-topbar-with-prototype .link-pet-back {
-  grid-column: 1;
-  grid-row: 1;
-  z-index: 1;
-}
-
-.link-pet-topbar-with-prototype h1 {
-  grid-column: 1 / -1;
-  grid-row: 1;
-  justify-self: center;
-}
-
-.link-pet-topbar-with-prototype .link-pet-prototype-toggle {
-  grid-column: 3;
-  grid-row: 1;
-  z-index: 1;
-}
-
 .link-pet-topbar h1,
 .create-pet-topbar h1 {
   margin: 0;
