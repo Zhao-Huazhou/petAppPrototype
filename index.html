@@ -621,7 +621,7 @@
             <h1>关联爬宠档案</h1>
             <button class="link-pet-prototype-toggle env-prototype-toggle" type="button" aria-label="演示：切换爬宠档案状态" aria-pressed="true">
               <span class="env-prototype-toggle-tag">演示</span>
-              <span class="link-pet-prototype-toggle-label">有爬宠档案</span>
+              <span class="link-pet-prototype-toggle-label">有档案</span>
             </button>
           </header>
 
@@ -1036,7 +1036,7 @@
                   </button>
                 </div>
                 <div class="env-metrics">
-                  <div class="env-temp-card warm">
+                  <button class="env-temp-card env-detail-entry warm" type="button" aria-label="查看热区温度详情，当前 32.4 摄氏度">
                     <div class="env-metric-head">
                       <strong>热区</strong>
                       <span class="env-metric-status is-good">适宜</span>
@@ -1049,8 +1049,8 @@
                     </svg>
                     <b class="env-temp-value is-good">32.4<small>℃</small></b>
                     <b class="env-temp-value is-warn">38<small>℃</small></b>
-                  </div>
-                  <div class="env-temp-card cool">
+                  </button>
+                  <button class="env-temp-card env-detail-entry cool" type="button" aria-label="查看冷区温度详情，当前 26.1 摄氏度">
                     <div class="env-metric-head">
                       <strong>冷区</strong>
                       <span>适宜</span>
@@ -1061,14 +1061,14 @@
                       <circle cx="88" cy="35" r="6" />
                     </svg>
                     <b>26.1<small>℃</small></b>
-                  </div>
+                  </button>
                 </div>
-                <div class="env-humidity-row">
+                <button class="env-humidity-row env-detail-entry" type="button" aria-label="查看湿度详情，当前 68%">
                   <strong>湿度</strong>
                   <div class="env-humidity-track" aria-hidden="true"><span></span></div>
                   <b>68<small>%</small></b>
                   <em>适宜</em>
-                </div>
+                </button>
                 <article class="ai-health-advice ai-env-advice" aria-label="AI 环境分析">
                   <div class="advice-orb" aria-hidden="true"></div>
                   <div class="advice-copy">
@@ -1302,6 +1302,98 @@
             <button class="food-date-today" type="button" data-food-day="1">今天</button>
           </section>
         </div>
+
+        <section class="page-view food-detail-view environment-detail-view" data-view="environment-detail" aria-label="环境页面">
+          <header class="monitor-topbar food-topbar">
+            <button class="monitor-back env-back" type="button" aria-label="返回爬宠摄像头">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m15 5-7 7 7 7" />
+              </svg>
+            </button>
+            <h1>环境</h1>
+          </header>
+
+          <div class="food-detail-scroll">
+            <section class="food-date-panel" aria-label="日期选择">
+              <div class="food-week-head">
+                <div>
+                  <span>环境记录</span>
+                  <strong>7.6 - 7.12</strong>
+                </div>
+                <button class="food-calendar-button" type="button" aria-label="切换日期">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8 2v4" />
+                    <path d="M16 2v4" />
+                    <rect x="3" y="5" width="18" height="16" rx="4" />
+                    <path d="M3 10h18" />
+                    <path d="M8 14h.01" />
+                    <path d="M12 14h.01" />
+                    <path d="M16 14h.01" />
+                    <path d="M8 18h.01" />
+                    <path d="M12 18h.01" />
+                  </svg>
+                </button>
+              </div>
+              <div class="food-day-row" aria-label="本周日期">
+                <button class="food-day-button" type="button">
+                  <span>周一</span>
+                  <strong>7.6</strong>
+                </button>
+                <button class="food-day-button active" type="button">
+                  <span>周二</span>
+                  <strong>7.7</strong>
+                </button>
+                <button class="food-day-button" type="button">
+                  <span>周三</span>
+                  <strong>7.8</strong>
+                </button>
+                <button class="food-day-button" type="button">
+                  <span>周四</span>
+                  <strong>7.9</strong>
+                </button>
+                <button class="food-day-button" type="button">
+                  <span>周五</span>
+                  <strong>7.10</strong>
+                </button>
+                <button class="food-day-button" type="button">
+                  <span>周六</span>
+                  <strong>7.11</strong>
+                </button>
+                <button class="food-day-button" type="button">
+                  <span>周日</span>
+                  <strong>7.12</strong>
+                </button>
+              </div>
+            </section>
+
+            <section class="environment-trend-panel" aria-label="24h 温湿度趋势">
+              <div class="environment-trend-head">
+                <h2>24h 温湿度趋势</h2>
+              </div>
+              <div class="environment-trend-summary" aria-label="当前温湿度">
+                <article class="environment-trend-card warm">
+                  <span class="environment-trend-icon" aria-hidden="true">🔥</span>
+                  <span>热区</span>
+                  <strong>32.5<small>℃</small></strong>
+                </article>
+                <article class="environment-trend-card cool">
+                  <span class="environment-trend-icon" aria-hidden="true">❄️</span>
+                  <span>冷区</span>
+                  <strong>25.5<small>℃</small></strong>
+                </article>
+                <article class="environment-trend-card humidity">
+                  <span class="environment-trend-icon" aria-hidden="true">💧</span>
+                  <span>湿度</span>
+                  <strong>60<small>%</small></strong>
+                </article>
+              </div>
+              <div class="environment-chart" aria-label="热区、冷区和湿度 24 小时趋势图">
+                <img src="./assets/environment-trend-chart.png" alt="24 小时热区、冷区和湿度趋势折线图" />
+              </div>
+            </section>
+          </div>
+          <div class="home-indicator monitor-home-indicator" aria-hidden="true"></div>
+        </section>
 
         <section class="page-view food-detail-view activity-detail-view" data-view="activity-detail" aria-label="活动页面">
           <header class="monitor-topbar food-topbar">

@@ -41,11 +41,13 @@ const activityFeatureButton = document.querySelector(".activity-feature-card");
 const sunFeatureButton = document.querySelector(".sun-feature-card");
 const moltFeatureButton = document.querySelector(".molt-feature-card");
 const healthReportCard = document.querySelector(".health-report-card");
+const envMetricButtons = document.querySelectorAll(".env-detail-entry");
 const foodBackButton = document.querySelector(".food-back");
 const activityBackButton = document.querySelector(".activity-back");
 const sunBackButton = document.querySelector(".sun-back");
 const moltBackButton = document.querySelector(".molt-back");
 const healthBackButton = document.querySelector(".health-back");
+const envBackButton = document.querySelector(".env-back");
 const foodCalendarButtons = document.querySelectorAll(".food-calendar-button");
 const foodDayButtons = document.querySelectorAll(".food-day-button");
 const foodDateDialog = document.querySelector(".food-date-dialog");
@@ -79,7 +81,8 @@ function setActiveView(viewName) {
       viewName === "activity-detail" ||
       viewName === "sun-detail" ||
       viewName === "molt-detail" ||
-      viewName === "health-detail",
+      viewName === "health-detail" ||
+      viewName === "environment-detail",
   );
   appScreen?.classList.toggle("message-mode", viewName === "message");
   appScreen?.classList.toggle("profile-mode", viewName === "profile");
@@ -183,7 +186,7 @@ linkPetPrototypeToggle?.addEventListener("click", () => {
   const hasProfiles = linkPetView?.classList.toggle("has-reptile-profiles") ?? false;
   linkPetPrototypeToggle.setAttribute("aria-pressed", String(hasProfiles));
   if (linkPetPrototypeToggleLabel) {
-    linkPetPrototypeToggleLabel.textContent = hasProfiles ? "有爬宠档案" : "无爬宠档案";
+    linkPetPrototypeToggleLabel.textContent = hasProfiles ? "有档案" : "无档案";
   }
   syncLinkPetCompleteState();
 });
@@ -311,7 +314,7 @@ createPetSaveButton?.addEventListener("click", () => {
   linkPetView?.classList.add("has-reptile-profiles");
   linkPetPrototypeToggle?.setAttribute("aria-pressed", "true");
   if (linkPetPrototypeToggleLabel) {
-    linkPetPrototypeToggleLabel.textContent = "有爬宠档案";
+    linkPetPrototypeToggleLabel.textContent = "有档案";
   }
   const firstCard = linkPetCards[0];
   if (firstCard) {
@@ -426,6 +429,16 @@ healthReportCard?.addEventListener("keydown", (event) => {
   }
 });
 
+envMetricButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    if (!monitorScroll?.classList.contains("env-has-data")) {
+      return;
+    }
+    setActiveView("environment-detail");
+    setDrawerOpen(false);
+  });
+});
+
 foodBackButton?.addEventListener("click", () => {
   setActiveView("reptile-camera");
 });
@@ -443,6 +456,10 @@ moltBackButton?.addEventListener("click", () => {
 });
 
 healthBackButton?.addEventListener("click", () => {
+  setActiveView("reptile-camera");
+});
+
+envBackButton?.addEventListener("click", () => {
   setActiveView("reptile-camera");
 });
 
