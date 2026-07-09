@@ -2459,6 +2459,18 @@ button {
   background:
     radial-gradient(circle at 78% 8%, rgba(76, 142, 255, 0.16), transparent 28%),
     rgba(246, 250, 255, 0.92);
+  box-shadow: 0 4px 10px rgba(73, 134, 205, 0.07);
+  cursor: pointer;
+  transition: box-shadow 160ms ease, transform 160ms ease;
+}
+
+.health-report-card:hover {
+  box-shadow: 0 5px 12px rgba(73, 134, 205, 0.09);
+}
+
+.health-report-card:active {
+  transform: translateY(1px) scale(0.998);
+  box-shadow: 0 2px 7px rgba(73, 134, 205, 0.07);
 }
 
 .health-score-summary {
