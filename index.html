@@ -551,7 +551,7 @@
             <h1>爬宠摄像头</h1>
             <button class="env-prototype-toggle" type="button" aria-label="演示：切换环境监测数据状态" aria-pressed="false">
               <span class="env-prototype-toggle-tag">演示</span>
-              <span class="env-prototype-toggle-label">无数据</span>
+              <span class="env-prototype-toggle-label">无环境数据</span>
             </button>
           </header>
 
@@ -598,6 +598,33 @@
                 </button>
               </div>
             </section>
+
+            <div class="monitor-status-notices" aria-label="状态通知" hidden>
+              <article class="monitor-status-notice tone-env" role="alert">
+                <span class="monitor-status-notice-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="4" />
+                    <path d="M12 2v3" />
+                    <path d="M12 19v3" />
+                    <path d="m4.9 4.9 2.1 2.1" />
+                    <path d="m17 17 2.1 2.1" />
+                    <path d="M2 12h3" />
+                    <path d="M19 12h3" />
+                  </svg>
+                </span>
+                <div class="monitor-status-notice-copy">
+                  <span class="monitor-status-notice-tag">环境异常</span>
+                  <strong>热区温度偏高</strong>
+                  <p>热区当前 38 °C，高于绿鬣蜥适宜范围，建议检查加热设备与温控设置。</p>
+                </div>
+                <button class="monitor-status-notice-close" type="button" aria-label="关闭热区温度提醒">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M18 6 6 18" />
+                    <path d="m6 6 12 12" />
+                  </svg>
+                </button>
+              </article>
+            </div>
 
             <div class="feature-pair" aria-label="摄像头 AI 能力">
               <button class="ai-feature-card ai-metric-card food-feature-card" type="button" aria-label="进食识别，最近一次 8:12">
@@ -723,7 +750,7 @@
                     <b class="dimension-env-score">92<small>分</small></b>
                     <span>环境适应</span>
                     <div class="dimension-card-footer">
-                      <p class="dimension-env-hint">需添加环境监测设备后评估</p>
+                      <p class="dimension-env-hint">需添加环境监测配件后评估</p>
                       <i class="dimension-env-progress"></i>
                     </div>
                   </article>
@@ -769,19 +796,25 @@
               <article class="env-card env-card-full">
                 <div class="monitor-section-title">
                   <h2>环境监测</h2>
+                  <button class="env-prototype-toggle env-alert-toggle" type="button" aria-label="演示：切换环境异常状态" aria-pressed="false">
+                    <span class="env-prototype-toggle-tag">演示</span>
+                    <span class="env-prototype-toggle-label">无环境异常</span>
+                  </button>
                 </div>
                 <div class="env-metrics">
                   <div class="env-temp-card warm">
                     <div class="env-metric-head">
                       <strong>热区</strong>
-                      <span>适宜</span>
+                      <span class="env-metric-status is-good">适宜</span>
+                      <span class="env-metric-status is-warn">偏高</span>
                     </div>
                     <svg class="env-temp-gauge" viewBox="0 0 150 90" aria-hidden="true">
                       <path class="env-gauge-back" d="M22 76a53 53 0 0 1 106 0" />
                       <path class="env-gauge-value" d="M22 76a53 53 0 0 1 88-39" />
                       <circle cx="96" cy="38" r="6" />
                     </svg>
-                    <b>32.4<small>℃</small></b>
+                    <b class="env-temp-value is-good">32.4<small>℃</small></b>
+                    <b class="env-temp-value is-warn">38<small>℃</small></b>
                   </div>
                   <div class="env-temp-card cool">
                     <div class="env-metric-head">
@@ -806,7 +839,8 @@
                   <div class="advice-orb" aria-hidden="true"></div>
                   <div class="advice-copy">
                     <h3><span>AI</span> 环境分析</h3>
-                    <p>结合绿鬣蜥的适宜环境条件分析，当前箱内温度与湿度均处于合理范围，整体环境状态良好。建议继续保持现有环境设置，并定期观察绿鬣蜥的晒背与活动情况。</p>
+                    <p class="env-advice-normal">结合绿鬣蜥的适宜环境条件分析，当前箱内温度与湿度均处于合理范围，整体环境状态良好。建议继续保持现有环境设置，并定期观察绿鬣蜥的晒背与活动情况。</p>
+                    <p class="env-advice-alert">结合绿鬣蜥的适宜环境条件分析，当前热区温度 38°C 偏高，存在局部过热风险。建议检查加热设备功率与温控设置，并持续观察绿鬣蜥是否出现长时间逃离热区等行为。</p>
                   </div>
                   <svg class="advice-spark" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M13 3 15.4 8.6 21 11l-5.6 2.4L13 19l-2.4-5.6L5 11l5.6-2.4L13 3Z" />

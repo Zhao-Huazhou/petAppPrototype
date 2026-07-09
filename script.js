@@ -98,15 +98,65 @@ scanBackButton?.addEventListener("click", () => {
 });
 
 const monitorScroll = document.querySelector('[data-view="reptile-camera"] .monitor-scroll');
+const monitorStatusNotices = document.querySelector(".monitor-status-notices");
+const monitorStatusNoticeCloseButtons = document.querySelectorAll(".monitor-status-notice-close");
 const envPrototypeToggle = document.querySelector(".env-prototype-toggle");
 const envPrototypeToggleLabel = document.querySelector(".env-prototype-toggle-label");
+const envAlertToggle = document.querySelector(".env-alert-toggle");
+const envAlertToggleLabel = document.querySelector(".env-alert-toggle .env-prototype-toggle-label");
+
+function syncMonitorStatusNoticeVisibility() {
+  const hasData = monitorScroll?.classList.contains("env-has-data");
+  const hasAlert = monitorScroll?.classList.contains("env-has-alert");
+  const isDismissed = monitorStatusNotices?.classList.contains("is-hidden");
+  const shouldShow = Boolean(hasData && hasAlert && !isDismissed);
+  monitorStatusNotices?.toggleAttribute("hidden", !shouldShow);
+}
+
+function setEnvAlertState(hasAlert) {
+  monitorScroll?.classList.toggle("env-has-alert", hasAlert);
+  envAlertToggle?.setAttribute("aria-pressed", String(hasAlert));
+  if (envAlertToggleLabel) {
+    envAlertToggleLabel.textContent = hasAlert ? "有环境异常" : "无环境异常";
+  }
+  if (hasAlert) {
+    monitorStatusNotices?.classList.remove("is-hidden");
+    monitorStatusNotices?.querySelector(".monitor-status-notice")?.classList.remove("is-dismissed");
+  }
+  syncMonitorStatusNoticeVisibility();
+}
 
 envPrototypeToggle?.addEventListener("click", () => {
   const hasData = monitorScroll?.classList.toggle("env-has-data") ?? false;
   envPrototypeToggle.setAttribute("aria-pressed", String(hasData));
   if (envPrototypeToggleLabel) {
-    envPrototypeToggleLabel.textContent = hasData ? "有数据" : "无数据";
+    envPrototypeToggleLabel.textContent = hasData ? "有环境数据" : "无环境数据";
   }
+  if (!hasData) {
+    monitorScroll?.classList.remove("env-has-alert");
+    envAlertToggle?.setAttribute("aria-pressed", "false");
+    if (envAlertToggleLabel) {
+      envAlertToggleLabel.textContent = "无环境异常";
+    }
+  }
+  syncMonitorStatusNoticeVisibility();
+});
+
+envAlertToggle?.addEventListener("click", () => {
+  const hasAlert = !monitorScroll?.classList.contains("env-has-alert");
+  setEnvAlertState(hasAlert);
+});
+
+function dismissMonitorStatusNotice(notice) {
+  notice?.classList.add("is-dismissed");
+  monitorStatusNotices?.classList.add("is-hidden");
+  syncMonitorStatusNoticeVisibility();
+}
+
+monitorStatusNoticeCloseButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    dismissMonitorStatusNotice(button.closest(".monitor-status-notice"));
+  });
 });
 
 reptileDeviceButton?.addEventListener("click", () => {

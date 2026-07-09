@@ -1810,6 +1810,10 @@ button {
   order: 1;
 }
 
+.monitor-scroll .monitor-status-notices {
+  order: 2;
+}
+
 .monitor-scroll .feature-pair {
   order: 3;
 }
@@ -1843,6 +1847,147 @@ button {
   inset: 0;
   background: linear-gradient(90deg, rgba(30, 51, 62, 0.22), transparent 24%, transparent 72%, rgba(30, 51, 62, 0.2));
   pointer-events: none;
+}
+
+.monitor-status-notices {
+  display: none;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.monitor-scroll.env-has-data .monitor-status-notices:not(.is-hidden) {
+  display: none;
+}
+
+.monitor-scroll.env-has-data.env-has-alert .monitor-status-notices:not(.is-hidden) {
+  display: grid;
+}
+
+.monitor-status-notices.is-hidden {
+  display: none;
+}
+
+.monitor-status-notice {
+  position: relative;
+  display: grid;
+  grid-template-columns: 36px 1fr 28px;
+  align-items: start;
+  gap: 10px;
+  padding: 12px 10px 12px 12px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 4px 10px rgba(73, 134, 205, 0.07);
+}
+
+.monitor-status-notice.is-dismissed {
+  display: none;
+}
+
+.monitor-status-notice-icon {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+}
+
+.monitor-status-notice-icon svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.monitor-status-notice.tone-env .monitor-status-notice-icon {
+  color: #e08a2d;
+  background: rgba(255, 242, 221, 0.96);
+}
+
+.monitor-status-notice.tone-health .monitor-status-notice-icon {
+  color: #e25555;
+  background: rgba(255, 236, 236, 0.96);
+}
+
+.monitor-status-notice.tone-device .monitor-status-notice-icon {
+  color: #4f8bff;
+  background: rgba(226, 239, 255, 0.96);
+}
+
+.monitor-status-notice-copy {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  padding-top: 1px;
+}
+
+.monitor-status-notice-tag {
+  color: #8a95a3;
+  font-size: 10px;
+  line-height: 1;
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.02em;
+}
+
+.monitor-status-notice.tone-env .monitor-status-notice-tag {
+  color: #d8842d;
+}
+
+.monitor-status-notice.tone-health .monitor-status-notice-tag {
+  color: #de5f5f;
+}
+
+.monitor-status-notice.tone-device .monitor-status-notice-tag {
+  color: #4f8bff;
+}
+
+.monitor-status-notice-copy strong {
+  color: #111821;
+  font-size: 14px;
+  line-height: 1.25;
+  font-weight: var(--weight-heavy);
+}
+
+.monitor-status-notice-copy p {
+  margin: 0;
+  color: #6d7682;
+  font-size: 11px;
+  line-height: 1.45;
+  font-weight: var(--weight-medium);
+}
+
+.monitor-status-notice-close {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  margin-top: -2px;
+  border: 0;
+  border-radius: 999px;
+  color: #9aa3ae;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.monitor-status-notice-close svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+
+.monitor-status-notice-close:hover {
+  color: #6d7682;
+  background: rgba(120, 140, 170, 0.1);
+}
+
+.monitor-status-notice-close:active {
+  transform: scale(0.96);
 }
 
 .live-ai-overlay {
@@ -2085,7 +2230,7 @@ button {
   background: linear-gradient(180deg, #2c83ff, #48c8ff);
 }
 
-.monitor-section-title span {
+.monitor-section-title > span {
   color: #4b8cff;
   font-size: 12px;
   font-weight: var(--weight-semibold);
@@ -2846,6 +2991,19 @@ button {
   font-weight: var(--weight-semibold);
 }
 
+.env-alert-toggle {
+  display: none;
+  flex-shrink: 0;
+}
+
+.monitor-scroll.env-has-data .env-alert-toggle {
+  display: inline-flex;
+}
+
+.monitor-section-title .env-prototype-toggle {
+  margin: 0;
+}
+
 .env-card {
   border: 1px solid rgba(255, 255, 255, 0.82);
   border-radius: 20px;
@@ -2932,6 +3090,29 @@ button {
   background: rgba(222, 249, 236, 0.9);
   font-size: 11px;
   font-weight: var(--weight-bold);
+}
+
+.env-metric-status.is-warn {
+  display: none;
+  color: #e08a2d;
+  background: rgba(255, 242, 221, 0.96);
+}
+
+.env-temp-value.is-warn {
+  display: none;
+}
+
+.monitor-scroll.env-has-alert .env-temp-card.warm .env-metric-status.is-good,
+.monitor-scroll.env-has-alert .env-temp-card.warm .env-temp-value.is-good {
+  display: none;
+}
+
+.monitor-scroll.env-has-alert .env-temp-card.warm .env-metric-status.is-warn {
+  display: inline-flex;
+}
+
+.monitor-scroll.env-has-alert .env-temp-card.warm .env-temp-value.is-warn {
+  display: block;
 }
 
 .env-temp-gauge {
@@ -3040,6 +3221,18 @@ button {
 .ai-env-advice {
   margin-top: 12px;
   min-height: auto;
+}
+
+.env-advice-alert {
+  display: none;
+}
+
+.monitor-scroll.env-has-alert .env-advice-normal {
+  display: none;
+}
+
+.monitor-scroll.env-has-alert .env-advice-alert {
+  display: block;
 }
 
 .env-humidity-track {
