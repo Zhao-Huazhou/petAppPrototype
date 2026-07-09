@@ -100,8 +100,8 @@ scanBackButton?.addEventListener("click", () => {
 const monitorScroll = document.querySelector('[data-view="reptile-camera"] .monitor-scroll');
 const monitorStatusNotices = document.querySelector(".monitor-status-notices");
 const monitorStatusNoticeCloseButtons = document.querySelectorAll(".monitor-status-notice-close");
-const envPrototypeToggle = document.querySelector(".env-prototype-toggle");
-const envPrototypeToggleLabel = document.querySelector(".env-prototype-toggle-label");
+const envPrototypeToggle = document.querySelector(".monitor-topbar .env-prototype-toggle");
+const envPrototypeToggleLabel = document.querySelector(".monitor-topbar .env-prototype-toggle-label");
 const envAlertToggle = document.querySelector(".env-alert-toggle");
 const envAlertToggleLabel = document.querySelector(".env-alert-toggle .env-prototype-toggle-label");
 

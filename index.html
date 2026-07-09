@@ -506,13 +506,17 @@
         </section>
 
         <section class="page-view scan-view" data-view="add-device" aria-label="扫码添加设备页面">
-          <header class="scan-topbar">
+          <header class="scan-topbar scan-topbar-with-prototype">
             <button class="scan-back" type="button" aria-label="返回设备页面">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="m15 5-7 7 7 7" />
               </svg>
             </button>
             <h1>添加设备</h1>
+            <button class="env-prototype-toggle scan-prototype-toggle" type="button" aria-label="演示：连接 Wi-Fi" aria-pressed="false">
+              <span class="env-prototype-toggle-tag">演示</span>
+              <span class="env-prototype-toggle-label">连接Wi-Fi</span>
+            </button>
           </header>
 
           <section class="scan-content">
