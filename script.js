@@ -13,10 +13,12 @@ const foodFeatureButton = document.querySelector(".food-feature-card");
 const activityFeatureButton = document.querySelector(".activity-feature-card");
 const sunFeatureButton = document.querySelector(".sun-feature-card");
 const moltFeatureButton = document.querySelector(".molt-feature-card");
+const healthReportCard = document.querySelector(".health-report-card");
 const foodBackButton = document.querySelector(".food-back");
 const activityBackButton = document.querySelector(".activity-back");
 const sunBackButton = document.querySelector(".sun-back");
 const moltBackButton = document.querySelector(".molt-back");
+const healthBackButton = document.querySelector(".health-back");
 const foodCalendarButtons = document.querySelectorAll(".food-calendar-button");
 const foodDayButtons = document.querySelectorAll(".food-day-button");
 const foodDateDialog = document.querySelector(".food-date-dialog");
@@ -39,7 +41,11 @@ function setActiveView(viewName) {
   appScreen?.classList.toggle("monitor-mode", viewName === "reptile-camera");
   appScreen?.classList.toggle(
     "food-mode",
-    viewName === "food-detail" || viewName === "activity-detail" || viewName === "sun-detail" || viewName === "molt-detail",
+    viewName === "food-detail" ||
+      viewName === "activity-detail" ||
+      viewName === "sun-detail" ||
+      viewName === "molt-detail" ||
+      viewName === "health-detail",
   );
   appScreen?.classList.toggle("message-mode", viewName === "message");
   appScreen?.classList.toggle("profile-mode", viewName === "profile");
@@ -132,6 +138,19 @@ moltFeatureButton?.addEventListener("click", () => {
   setDrawerOpen(false);
 });
 
+healthReportCard?.addEventListener("click", () => {
+  setActiveView("health-detail");
+  setDrawerOpen(false);
+});
+
+healthReportCard?.addEventListener("keydown", (event) => {
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    setActiveView("health-detail");
+    setDrawerOpen(false);
+  }
+});
+
 foodBackButton?.addEventListener("click", () => {
   setActiveView("reptile-camera");
 });
@@ -145,6 +164,10 @@ sunBackButton?.addEventListener("click", () => {
 });
 
 moltBackButton?.addEventListener("click", () => {
+  setActiveView("reptile-camera");
+});
+
+healthBackButton?.addEventListener("click", () => {
   setActiveView("reptile-camera");
 });
 

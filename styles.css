@@ -2459,18 +2459,23 @@ button {
   background:
     radial-gradient(circle at 78% 8%, rgba(76, 142, 255, 0.16), transparent 28%),
     rgba(246, 250, 255, 0.92);
-  box-shadow: 0 4px 10px rgba(73, 134, 205, 0.07);
   cursor: pointer;
-  transition: box-shadow 160ms ease, transform 160ms ease;
+  transition: background-color 160ms ease, transform 160ms ease;
 }
 
 .health-report-card:hover {
-  box-shadow: 0 5px 12px rgba(73, 134, 205, 0.09);
+  background:
+    radial-gradient(circle at 78% 8%, rgba(76, 142, 255, 0.18), transparent 28%),
+    rgba(246, 250, 255, 0.96);
 }
 
 .health-report-card:active {
   transform: translateY(1px) scale(0.998);
-  box-shadow: 0 2px 7px rgba(73, 134, 205, 0.07);
+}
+
+.health-report-card:focus-visible {
+  outline: 2px solid rgba(47, 128, 255, 0.72);
+  outline-offset: 3px;
 }
 
 .health-score-summary {
@@ -2738,6 +2743,11 @@ button {
     radial-gradient(circle at 15% 18%, rgba(82, 221, 225, 0.2), transparent 22%),
     linear-gradient(135deg, rgba(243, 250, 255, 0.96), rgba(248, 252, 255, 0.9));
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.health-section-advice {
+  margin-top: 12px;
+  cursor: default;
 }
 
 .advice-orb {
@@ -3301,6 +3311,339 @@ button {
 .activity-behavior-card .heatmap-preview {
   border-radius: 14px;
   grid-auto-rows: 24px;
+}
+
+.health-score-hero,
+.health-trend-panel,
+.health-breakdown-panel {
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86);
+}
+
+.health-score-hero {
+  min-height: 150px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 112px;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 14px;
+  background:
+    radial-gradient(circle at 78% 16%, rgba(77, 146, 255, 0.18), transparent 34%),
+    rgba(255, 255, 255, 0.62);
+}
+
+.health-score-hero-copy {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.health-score-hero-copy span,
+.health-panel-head span {
+  color: #4b8cff;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: var(--weight-bold);
+}
+
+.health-score-hero-copy strong {
+  display: inline-flex;
+  align-items: end;
+  color: #111821;
+  font-size: 46px;
+  line-height: 0.9;
+  font-weight: var(--weight-heavy);
+}
+
+.health-score-hero-copy small {
+  margin-left: 4px;
+  padding-bottom: 5px;
+  color: #111821;
+  font-size: 16px;
+  font-weight: var(--weight-heavy);
+}
+
+.health-score-hero-copy p {
+  max-width: 190px;
+  margin: 0;
+  color: #65707e;
+  font-size: 12px;
+  line-height: 1.45;
+  font-weight: var(--weight-medium);
+}
+
+.health-score-ring {
+  position: relative;
+  width: 104px;
+  height: 104px;
+  display: grid;
+  place-items: center;
+  color: #25b67e;
+}
+
+.health-score-ring svg {
+  position: absolute;
+  inset: 0;
+  width: 104px;
+  height: 104px;
+  transform: rotate(-90deg);
+}
+
+.health-score-ring circle {
+  fill: none;
+  stroke-width: 10;
+}
+
+.health-score-ring .ring-track {
+  stroke: rgba(225, 240, 255, 0.96);
+}
+
+.health-score-ring .ring-value {
+  stroke: #35c990;
+  stroke-linecap: round;
+  stroke-dasharray: 286 302;
+}
+
+.health-score-ring b {
+  min-height: 30px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 12px;
+  border-radius: 999px;
+  color: #fff;
+  background: linear-gradient(135deg, #39c78d, #61d7a4);
+  box-shadow: 0 8px 16px rgba(57, 199, 141, 0.2);
+  font-size: 14px;
+  line-height: 1;
+  font-weight: var(--weight-heavy);
+}
+
+.health-trend-panel,
+.health-breakdown-panel {
+  display: grid;
+  gap: 12px;
+  padding: 16px 14px 14px;
+}
+
+.health-panel-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.health-panel-head div {
+  display: grid;
+  gap: 6px;
+}
+
+.health-panel-head strong {
+  color: #121923;
+  font-size: 17px;
+  line-height: 1;
+  font-weight: var(--weight-heavy);
+}
+
+.health-line-chart {
+  display: grid;
+  gap: 6px;
+  padding: 10px 4px 0;
+}
+
+.health-line-chart svg {
+  width: 100%;
+  height: auto;
+}
+
+.chart-grid {
+  fill: none;
+  stroke: rgba(205, 223, 241, 0.86);
+  stroke-width: 1;
+  stroke-dasharray: 5 6;
+}
+
+.chart-area {
+  fill: rgba(79, 139, 255, 0.11);
+}
+
+.chart-line {
+  fill: none;
+  stroke: #4f8bff;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.chart-points circle {
+  fill: #fff;
+  stroke: #4f8bff;
+  stroke-width: 3;
+}
+
+.chart-labels {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  color: #8a95a3;
+  font-size: 10px;
+  line-height: 1;
+  font-weight: var(--weight-semibold);
+}
+
+.chart-labels span {
+  text-align: center;
+}
+
+.food-summary-icon.health-up {
+  color: #24b981;
+  background: rgba(224, 250, 240, 0.96);
+}
+
+.food-summary-icon.health-stable {
+  color: #4f8bff;
+  background: rgba(226, 239, 255, 0.96);
+}
+
+.health-compare-card strong {
+  margin-top: 7px;
+  font-size: 22px;
+  font-weight: var(--weight-heavy);
+}
+
+.health-breakdown-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.health-breakdown-item {
+  display: grid;
+  align-content: start;
+  gap: 7px;
+  min-height: 158px;
+  padding: 11px 10px;
+  border-radius: 16px;
+  background: rgba(246, 250, 255, 0.9);
+}
+
+.health-breakdown-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.health-breakdown-top div {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+
+.health-breakdown-top b {
+  color: #121923;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: var(--weight-heavy);
+}
+
+.health-breakdown-top strong {
+  flex-shrink: 0;
+  color: #111821;
+  font-size: 16px;
+  line-height: 1;
+  font-weight: var(--weight-heavy);
+}
+
+.health-breakdown-top small {
+  margin-left: 2px;
+  font-size: 10px;
+  font-weight: var(--weight-bold);
+}
+
+.health-radar-block {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  padding-top: 0;
+}
+
+.health-mini-radar {
+  width: 132px;
+  height: 132px;
+  overflow: visible;
+}
+
+.health-mini-radar .radar-label {
+  fill: #647284;
+  font-size: 7px;
+  font-weight: 700;
+  dominant-baseline: middle;
+  pointer-events: none;
+}
+
+.health-mini-radar .radar-score {
+  fill: rgba(36, 120, 238, 0.5);
+  font-size: 6px;
+  font-weight: 700;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+}
+
+.health-mini-radar .radar-label.top,
+.health-mini-radar .radar-label.bottom {
+  text-anchor: middle;
+}
+
+.health-mini-radar .radar-label.left {
+  text-anchor: start;
+}
+
+.health-mini-radar .radar-label.right {
+  text-anchor: end;
+}
+
+.health-mini-radar .radar-grid {
+  fill: rgba(236, 244, 255, 0.66);
+  stroke: rgba(153, 187, 226, 0.58);
+  stroke-width: 1;
+}
+
+.health-mini-radar .radar-grid.inner {
+  fill: rgba(255, 255, 255, 0.42);
+  stroke: rgba(166, 196, 230, 0.42);
+}
+
+.health-mini-radar .radar-axis {
+  fill: none;
+  stroke: rgba(151, 180, 215, 0.42);
+  stroke-width: 1;
+}
+
+.health-mini-radar .radar-value {
+  fill: rgba(64, 141, 255, 0.22);
+  stroke: #3d8cff;
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.health-mini-radar circle {
+  fill: #fff;
+  stroke: #3d8cff;
+  stroke-width: 1.8;
+}
+
+.food-event-dot.health {
+  background: linear-gradient(135deg, #31c989, #65dba8);
+}
+
+.food-event-dot.health-note {
+  background: linear-gradient(135deg, #4f8bff, #55c6ee);
+}
+
+.food-event-card.health {
+  background: rgba(246, 250, 255, 0.96);
 }
 
 .food-events {

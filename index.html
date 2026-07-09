@@ -678,7 +678,7 @@
               <div class="monitor-section-title">
                 <h2>健康评估</h2>
               </div>
-              <div class="health-report-card">
+              <div class="health-report-card" role="button" tabindex="0" aria-label="查看健康评估详情，综合评分 95 分">
                 <div class="health-score-summary" aria-label="AI 多维健康分析 95 分">
                   <div class="score-summary-copy">
                     <h3>AI 多维健康分析</h3>
@@ -740,19 +740,19 @@
                     <i style="--value: 95%"></i>
                   </article>
                 </div>
-                <article class="ai-health-advice">
-                  <div class="advice-orb" aria-hidden="true"></div>
-                  <div class="advice-copy">
-                    <h3><span>AI</span> 健康建议</h3>
-                    <p class="health-advice-without-env">Mochi 今日综合健康表现良好。活力状态与进食规律较稳定，体表与姿态表现正常，暂未发现明显卡皮或疑似疾病风险。建议保持当前喂养节奏，并按饲养需求定期补钙，持续关注后续食欲与蜕皮情况。</p>
-                    <p class="health-advice-with-env">Mochi 今日综合健康表现良好。活力状态与进食规律较稳定，体表与姿态表现正常，暂未发现明显卡皮或疑似疾病风险。建议保持当前喂养节奏，并按饲养需求定期补钙，持续关注后续食欲与蜕皮情况。</p>
-                  </div>
-                  <svg class="advice-spark" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M13 3 15.4 8.6 21 11l-5.6 2.4L13 19l-2.4-5.6L5 11l5.6-2.4L13 3Z" />
-                    <path d="M5.5 16.5 6.4 18.6 8.5 19.5 6.4 20.4 5.5 22.5 4.6 20.4 2.5 19.5 4.6 18.6 5.5 16.5Z" />
-                  </svg>
-                </article>
               </div>
+              <article class="ai-health-advice health-section-advice" aria-label="AI 健康建议">
+                <div class="advice-orb" aria-hidden="true"></div>
+                <div class="advice-copy">
+                  <h3><span>AI</span> 健康建议</h3>
+                  <p class="health-advice-without-env">Mochi 今日综合健康表现良好。活力状态与进食规律较稳定，体表与姿态表现正常，暂未发现明显卡皮或疑似疾病风险。建议保持当前喂养节奏，并按饲养需求定期补钙，持续关注后续食欲与蜕皮情况。</p>
+                  <p class="health-advice-with-env">Mochi 今日综合健康表现良好。活力状态与进食规律较稳定，体表与姿态表现正常，暂未发现明显卡皮或疑似疾病风险。建议保持当前喂养节奏，并按饲养需求定期补钙，持续关注后续食欲与蜕皮情况。</p>
+                </div>
+                <svg class="advice-spark" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M13 3 15.4 8.6 21 11l-5.6 2.4L13 19l-2.4-5.6L5 11l5.6-2.4L13 3Z" />
+                  <path d="M5.5 16.5 6.4 18.6 8.5 19.5 6.4 20.4 5.5 22.5 4.6 20.4 2.5 19.5 4.6 18.6 5.5 16.5Z" />
+                </svg>
+              </article>
             </section>
 
             <section class="environment-section" aria-label="环境监测">
@@ -1199,6 +1199,206 @@
                       <small>Mochi 在饲养箱右侧区域活动中</small>
                     </div>
                     <img class="food-event-thumb" src="./assets/new-camera-live.jpg" alt="活动行为识别画面" />
+                  </div>
+                </article>
+              </div>
+            </section>
+          </div>
+          <div class="home-indicator monitor-home-indicator" aria-hidden="true"></div>
+        </section>
+
+        <section class="page-view food-detail-view health-detail-view" data-view="health-detail" aria-label="健康详情页面">
+          <header class="monitor-topbar food-topbar">
+            <button class="monitor-back health-back" type="button" aria-label="返回爬宠摄像头">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m15 5-7 7 7 7" />
+              </svg>
+            </button>
+            <h1>健康详情</h1>
+          </header>
+
+          <div class="food-detail-scroll">
+            <section class="health-score-hero" aria-label="综合健康评分">
+              <div class="health-score-hero-copy">
+                <span>综合健康评分</span>
+                <strong>95<small>分</small></strong>
+                <p>较昨日 +3 分，近 7 日保持优秀。</p>
+              </div>
+              <div class="health-score-ring" aria-hidden="true">
+                <svg viewBox="0 0 120 120">
+                  <circle class="ring-track" cx="60" cy="60" r="48" />
+                  <circle class="ring-value" cx="60" cy="60" r="48" />
+                </svg>
+                <b>优秀</b>
+              </div>
+            </section>
+
+            <section class="health-trend-panel" aria-label="健康趋势">
+              <div class="health-panel-head">
+                <div>
+                  <span>趋势折线图</span>
+                  <strong>近 7 日健康评分</strong>
+                </div>
+              </div>
+              <div class="health-line-chart" aria-hidden="true">
+                <svg viewBox="0 0 360 152">
+                  <path class="chart-grid" d="M18 28H342M18 68H342M18 108H342" />
+                  <path class="chart-area" d="M24 104 L78 92 L132 86 L186 90 L240 74 L294 66 L336 56 L336 128 L24 128Z" />
+                  <path class="chart-line" d="M24 104 L78 92 L132 86 L186 90 L240 74 L294 66 L336 56" />
+                  <g class="chart-points">
+                    <circle cx="24" cy="104" r="4" />
+                    <circle cx="78" cy="92" r="4" />
+                    <circle cx="132" cy="86" r="4" />
+                    <circle cx="186" cy="90" r="4" />
+                    <circle cx="240" cy="74" r="4" />
+                    <circle cx="294" cy="66" r="4" />
+                    <circle cx="336" cy="56" r="5" />
+                  </g>
+                </svg>
+                <div class="chart-labels">
+                  <span>7.6</span>
+                  <span>7.7</span>
+                  <span>7.8</span>
+                  <span>7.9</span>
+                  <span>7.10</span>
+                  <span>7.11</span>
+                  <span>7.12</span>
+                </div>
+              </div>
+            </section>
+
+            <section class="food-summary-grid health-compare-grid" aria-label="历史对比">
+              <article class="food-summary-card health-compare-card">
+                <span class="food-summary-icon health-up">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m4 16 6-6 4 4 6-8" />
+                    <path d="M14 6h6v6" />
+                  </svg>
+                </span>
+                <h2>本周均分</h2>
+                <p>较上周 +5 分</p>
+                <strong>92 分</strong>
+              </article>
+              <article class="food-summary-card health-compare-card">
+                <span class="food-summary-icon health-stable">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 12h16" />
+                    <path d="M8 8h8" />
+                    <path d="M8 16h8" />
+                  </svg>
+                </span>
+                <h2>稳定天数</h2>
+                <p>连续优秀区间</p>
+                <strong>4 天</strong>
+              </article>
+            </section>
+
+            <section class="health-breakdown-panel" aria-label="维度解释">
+              <div class="health-panel-head">
+                <div>
+                  <span>评分依据</span>
+                  <strong>四维健康模型</strong>
+                </div>
+              </div>
+              <div class="health-breakdown-list">
+                <article class="health-breakdown-item">
+                  <div class="health-breakdown-top">
+                    <div>
+                      <b>活力指数</b>
+                    </div>
+                    <strong>88<small>分</small></strong>
+                  </div>
+                  <div class="health-radar-block" aria-label="活力指数参数评分">
+                    <svg class="health-mini-radar" viewBox="0 0 84 84" aria-hidden="true">
+                      <polygon class="radar-grid outer" points="42,12 68,57 16,57" />
+                      <polygon class="radar-grid inner" points="42,24 58,51 26,51" />
+                      <path class="radar-axis" d="M42 42V12M42 42 68 57M42 42 16 57" />
+                      <polygon class="radar-value" points="42,18 61.5,53.3 17.1,56.4" />
+                      <circle cx="42" cy="18" r="2.6" />
+                      <circle cx="61.5" cy="53.3" r="2.6" />
+                      <circle cx="17.1" cy="56.4" r="2.6" />
+                      <text class="radar-label top" x="42" y="8">活动时长</text>
+                      <text class="radar-label right" x="79" y="66">活动频次</text>
+                      <text class="radar-label left" x="5" y="66">昼夜规律</text>
+                      <text class="radar-score top" x="42" y="32">80</text>
+                      <text class="radar-score right" x="52" y="47">75</text>
+                      <text class="radar-score left" x="32" y="47">96</text>
+                    </svg>
+                  </div>
+                </article>
+                <article class="health-breakdown-item">
+                  <div class="health-breakdown-top">
+                    <div>
+                      <b>进食规律</b>
+                    </div>
+                    <strong>90<small>分</small></strong>
+                  </div>
+                  <div class="health-radar-block" aria-label="进食规律参数评分">
+                    <svg class="health-mini-radar" viewBox="0 0 84 84" aria-hidden="true">
+                      <polygon class="radar-grid outer" points="42,12 68,57 16,57" />
+                      <polygon class="radar-grid inner" points="42,24 58,51 26,51" />
+                      <path class="radar-axis" d="M42 42V12M42 42 68 57M42 42 16 57" />
+                      <polygon class="radar-value" points="42,12 64.4,54.9 19.6,54.9" />
+                      <circle cx="42" cy="12" r="2.6" />
+                      <circle cx="64.4" cy="54.9" r="2.6" />
+                      <circle cx="19.6" cy="54.9" r="2.6" />
+                      <text class="radar-label top" x="42" y="8">进食频次</text>
+                      <text class="radar-label right" x="79" y="66">进食间隔</text>
+                      <text class="radar-label left" x="5" y="66">进食稳定</text>
+                      <text class="radar-score top" x="42" y="31">100</text>
+                      <text class="radar-score right" x="52" y="47">86</text>
+                      <text class="radar-score left" x="32" y="47">86</text>
+                    </svg>
+                  </div>
+                </article>
+                <article class="health-breakdown-item">
+                  <div class="health-breakdown-top">
+                    <div>
+                      <b>环境适应</b>
+                    </div>
+                    <strong>92<small>分</small></strong>
+                  </div>
+                  <div class="health-radar-block" aria-label="环境适应参数评分">
+                    <svg class="health-mini-radar" viewBox="0 0 84 84" aria-hidden="true">
+                      <polygon class="radar-grid outer" points="42,12 68,57 16,57" />
+                      <polygon class="radar-grid inner" points="42,24 58,51 26,51" />
+                      <path class="radar-axis" d="M42 42V12M42 42 68 57M42 42 16 57" />
+                      <polygon class="radar-value" points="42,13.8 67,56.4 19.6,54.9" />
+                      <circle cx="42" cy="13.8" r="2.6" />
+                      <circle cx="67" cy="56.4" r="2.6" />
+                      <circle cx="19.6" cy="54.9" r="2.6" />
+                      <text class="radar-label top" x="42" y="8">温度</text>
+                      <text class="radar-label right" x="79" y="66">湿度</text>
+                      <text class="radar-label left" x="5" y="66">区域利用</text>
+                      <text class="radar-score top" x="42" y="31">94</text>
+                      <text class="radar-score right" x="52" y="47">96</text>
+                      <text class="radar-score left" x="32" y="47">86</text>
+                    </svg>
+                  </div>
+                </article>
+                <article class="health-breakdown-item">
+                  <div class="health-breakdown-top">
+                    <div>
+                      <b>体态健康</b>
+                    </div>
+                    <strong>95<small>分</small></strong>
+                  </div>
+                  <div class="health-radar-block" aria-label="体态健康参数评分">
+                    <svg class="health-mini-radar" viewBox="0 0 84 84" aria-hidden="true">
+                      <polygon class="radar-grid outer" points="42,12 68,57 16,57" />
+                      <polygon class="radar-grid inner" points="42,24 58,51 26,51" />
+                      <path class="radar-axis" d="M42 42V12M42 42 68 57M42 42 16 57" />
+                      <polygon class="radar-value" points="42,13.2 66.7,56.1 17.6,55.7" />
+                      <circle cx="42" cy="13.2" r="2.6" />
+                      <circle cx="66.7" cy="56.1" r="2.6" />
+                      <circle cx="17.6" cy="55.7" r="2.6" />
+                      <text class="radar-label top" x="42" y="8">体表健康</text>
+                      <text class="radar-label right" x="79" y="66">姿态健康</text>
+                      <text class="radar-label left" x="5" y="66">健康稳定</text>
+                      <text class="radar-score top" x="42" y="31">96</text>
+                      <text class="radar-score right" x="52" y="47">95</text>
+                      <text class="radar-score left" x="32" y="47">94</text>
+                    </svg>
                   </div>
                 </article>
               </div>
