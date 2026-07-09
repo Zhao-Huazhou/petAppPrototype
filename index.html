@@ -611,6 +611,170 @@
           </div>
         </section>
 
+        <section class="page-view link-pet-view has-reptile-profiles" data-view="link-pet-profile" aria-label="关联爬宠档案页面">
+          <header class="link-pet-topbar link-pet-topbar-with-prototype">
+            <button class="link-pet-back" type="button" aria-label="返回设置 Wi-Fi 页面">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m15 5-7 7 7 7" />
+              </svg>
+            </button>
+            <h1>关联爬宠档案</h1>
+            <button class="link-pet-prototype-toggle env-prototype-toggle" type="button" aria-label="演示：切换爬宠档案状态" aria-pressed="true">
+              <span class="env-prototype-toggle-tag">演示</span>
+              <span class="link-pet-prototype-toggle-label">有爬宠档案</span>
+            </button>
+          </header>
+
+          <div class="link-pet-scroll">
+            <p class="link-pet-intro">关联爬宠档案，开启 AI 智能守护，获取专属健康分析。</p>
+
+            <section class="link-pet-empty" aria-label="暂无爬宠档案">
+              <div class="link-pet-empty-icon" aria-hidden="true">
+                <svg viewBox="0 0 120 96" role="presentation">
+                  <ellipse cx="60" cy="88" rx="44" ry="6" />
+                  <path class="link-pet-empty-tray-back" d="M28 44 24 38h72l-4 6" />
+                  <path class="link-pet-empty-tray-front" d="M28 44v36h64V44H76L60 54 44 44Z" />
+                </svg>
+              </div>
+              <h2>暂无爬宠档案</h2>
+              <button class="link-pet-empty-create" type="button">创建爬宠档案</button>
+            </section>
+
+            <section class="link-pet-list" aria-label="爬宠档案列表">
+              <div class="link-pet-list-head">
+                <h2>选择档案</h2>
+                <span>仅显示爬宠类档案</span>
+              </div>
+
+              <div class="link-pet-cards">
+                <button class="link-pet-card selected" type="button" data-pet-id="mochi" aria-pressed="true">
+                  <span class="link-pet-avatar reptile-avatar-mochi" aria-hidden="true"></span>
+                  <span class="link-pet-meta">
+                    <strong>Mochi</strong>
+                    <small>绿鬣蜥 · 1岁2个月</small>
+                    <small>弟弟 · 饲养箱 A</small>
+                  </span>
+                  <span class="link-pet-check" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path d="m5 12 5 5 9-10" />
+                    </svg>
+                  </span>
+                </button>
+
+                <button class="link-pet-card" type="button" data-pet-id="xiaolv" aria-pressed="false">
+                  <span class="link-pet-avatar reptile-avatar-gecko" aria-hidden="true"></span>
+                  <span class="link-pet-meta">
+                    <strong>小绿</strong>
+                    <small>睫角守宫 · 8个月</small>
+                    <small>妹妹 · 饲养箱 B</small>
+                  </span>
+                  <span class="link-pet-check" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path d="m5 12 5 5 9-10" />
+                    </svg>
+                  </span>
+                </button>
+
+                <button class="link-pet-card link-pet-add-card" type="button" aria-label="添加爬宠档案">
+                  <span class="link-pet-add-icon" aria-hidden="true">+</span>
+                  <span class="link-pet-meta">
+                    <strong>添加爬宠档案</strong>
+                    <small>创建新的爬宠档案</small>
+                  </span>
+                </button>
+              </div>
+            </section>
+          </div>
+
+          <div class="link-pet-footer">
+            <button class="link-pet-complete" type="button">完成</button>
+          </div>
+        </section>
+
+        <section class="page-view create-pet-view" data-view="create-pet-profile" aria-label="创建爬宠档案页面">
+          <header class="create-pet-topbar">
+            <button class="create-pet-back" type="button" aria-label="返回关联爬宠档案页面">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m15 5-7 7 7 7" />
+              </svg>
+            </button>
+            <h1>创建爬宠档案</h1>
+            <span aria-hidden="true"></span>
+          </header>
+
+          <div class="create-pet-scroll">
+            <p class="create-pet-intro">填写基础信息，创建设备将关联的爬宠档案。</p>
+
+            <div class="create-pet-form">
+              <div class="create-pet-field create-pet-avatar-field">
+                <span>头像</span>
+                <div class="create-pet-avatar-setup">
+                  <button class="create-pet-avatar-upload" type="button" aria-label="拍照上传头像">
+                    <span class="create-pet-avatar-preview-wrap">
+                      <span class="create-pet-avatar-preview is-empty" aria-hidden="true"></span>
+                      <span class="create-pet-avatar-upload-badge" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                          <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z" />
+                          <circle cx="12" cy="13" r="3.5" />
+                        </svg>
+                      </span>
+                    </span>
+                  </button>
+                  <input class="create-pet-avatar-input" type="file" accept="image/*" capture="environment" hidden />
+                </div>
+              </div>
+
+              <label class="create-pet-field">
+                <span>宠物昵称</span>
+                <input class="create-pet-name" type="text" placeholder="如：Mochi" aria-label="宠物昵称" />
+              </label>
+
+              <div class="create-pet-field create-pet-species-field">
+                <span>品种</span>
+                <div class="create-pet-species-row">
+                  <select class="create-pet-species" aria-label="品种">
+                    <option value="">请选择品种</option>
+                    <option value="绿鬣蜥">绿鬣蜥</option>
+                    <option value="豹纹守宫">豹纹守宫</option>
+                    <option value="睫角守宫">睫角守宫</option>
+                    <option value="其他品种">其他品种</option>
+                  </select>
+                  <button class="create-pet-species-photo" type="button" aria-label="拍照识别品种">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z" />
+                      <circle cx="12" cy="13" r="3.5" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <label class="create-pet-field create-pet-species-custom" hidden>
+                <span>品种名称</span>
+                <input class="create-pet-species-name" type="text" placeholder="请输入品种名称" aria-label="品种名称" />
+              </label>
+
+              <label class="create-pet-field create-pet-birthdate-field">
+                <span>出生日期</span>
+                <input class="create-pet-birthdate" type="date" aria-label="出生日期" />
+                <p class="create-pet-age-display">年龄：请选择出生日期</p>
+              </label>
+
+              <div class="create-pet-field create-pet-gender-field">
+                <span>性别</span>
+                <div class="create-pet-gender-options" role="group" aria-label="性别">
+                  <button class="create-pet-gender active" type="button" data-gender="弟弟">弟弟</button>
+                  <button class="create-pet-gender" type="button" data-gender="妹妹">妹妹</button>
+                  <button class="create-pet-gender" type="button" data-gender="未知">未知</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="create-pet-footer">
+            <button class="create-pet-save" type="button">保存并关联</button>
+          </div>
+        </section>
+
         <section class="page-view monitor-view" data-view="reptile-camera" aria-label="爬宠摄像头页面">
           <header class="monitor-topbar monitor-topbar-with-prototype">
             <button class="monitor-back" type="button" aria-label="返回设备页面">

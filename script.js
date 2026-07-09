@@ -13,6 +13,27 @@ const wifiPasswordInput = document.querySelector(".wifi-password");
 const wifiTogglePasswordButton = document.querySelector(".wifi-toggle-password");
 const wifiClearButton = document.querySelector(".wifi-clear");
 const wifiSsidInput = document.querySelector(".wifi-ssid");
+const wifiNextButton = document.querySelector(".wifi-next");
+const linkPetView = document.querySelector('[data-view="link-pet-profile"]');
+const linkPetBackButton = document.querySelector(".link-pet-back");
+const linkPetPrototypeToggle = document.querySelector(".link-pet-prototype-toggle");
+const linkPetPrototypeToggleLabel = document.querySelector(".link-pet-prototype-toggle-label");
+const linkPetCards = document.querySelectorAll(".link-pet-card:not(.link-pet-add-card)");
+const linkPetAddCard = document.querySelector(".link-pet-add-card");
+const linkPetEmptyCreateButton = document.querySelector(".link-pet-empty-create");
+const linkPetCompleteButton = document.querySelector(".link-pet-complete");
+const createPetBackButton = document.querySelector(".create-pet-back");
+const createPetSaveButton = document.querySelector(".create-pet-save");
+const createPetGenderButtons = document.querySelectorAll(".create-pet-gender");
+const createPetNameInput = document.querySelector(".create-pet-name");
+const createPetSpeciesSelect = document.querySelector(".create-pet-species");
+const createPetSpeciesCustomField = document.querySelector(".create-pet-species-custom");
+const createPetSpeciesNameInput = document.querySelector(".create-pet-species-name");
+const createPetBirthdateInput = document.querySelector(".create-pet-birthdate");
+const createPetAgeDisplay = document.querySelector(".create-pet-age-display");
+const createPetAvatarPreview = document.querySelector(".create-pet-avatar-preview");
+const createPetAvatarUploadButton = document.querySelector(".create-pet-avatar-upload");
+const createPetAvatarInput = document.querySelector(".create-pet-avatar-input");
 const reptileDeviceButton = document.querySelector(".reptile-device-card");
 const monitorBackButton = document.querySelector(".monitor-back");
 const foodFeatureButton = document.querySelector(".food-feature-card");
@@ -43,7 +64,14 @@ function setActiveView(viewName) {
     view.classList.toggle("active", view.dataset.view === viewName);
   });
 
-  appScreen?.classList.toggle("scan-mode", viewName === "add-device" || viewName === "wifi-setup");
+  appScreen?.classList.toggle(
+    "scan-mode",
+    viewName === "add-device" ||
+      viewName === "wifi-setup" ||
+      viewName === "link-pet-profile" ||
+      viewName === "create-pet-profile",
+  );
+  appScreen?.classList.toggle("create-pet-mode", viewName === "create-pet-profile");
   appScreen?.classList.toggle("monitor-mode", viewName === "reptile-camera");
   appScreen?.classList.toggle(
     "food-mode",
@@ -126,6 +154,173 @@ wifiClearButton?.addEventListener("click", () => {
     wifiSsidInput.focus();
   }
 });
+
+wifiNextButton?.addEventListener("click", () => {
+  setActiveView("link-pet-profile");
+});
+
+function syncLinkPetCompleteState() {
+  const hasSelection = Boolean(linkPetView?.querySelector(".link-pet-card.selected:not(.link-pet-add-card)"));
+  if (linkPetCompleteButton) {
+    linkPetCompleteButton.disabled = !hasSelection;
+  }
+}
+
+function setSelectedLinkPetCard(card) {
+  linkPetCards.forEach((item) => {
+    const isSelected = item === card;
+    item.classList.toggle("selected", isSelected);
+    item.setAttribute("aria-pressed", String(isSelected));
+  });
+  syncLinkPetCompleteState();
+}
+
+linkPetBackButton?.addEventListener("click", () => {
+  setActiveView("wifi-setup");
+});
+
+linkPetPrototypeToggle?.addEventListener("click", () => {
+  const hasProfiles = linkPetView?.classList.toggle("has-reptile-profiles") ?? false;
+  linkPetPrototypeToggle.setAttribute("aria-pressed", String(hasProfiles));
+  if (linkPetPrototypeToggleLabel) {
+    linkPetPrototypeToggleLabel.textContent = hasProfiles ? "有爬宠档案" : "无爬宠档案";
+  }
+  syncLinkPetCompleteState();
+});
+
+linkPetCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    setSelectedLinkPetCard(card);
+  });
+});
+
+linkPetAddCard?.addEventListener("click", () => {
+  setActiveView("create-pet-profile");
+});
+
+linkPetEmptyCreateButton?.addEventListener("click", () => {
+  setActiveView("create-pet-profile");
+});
+
+linkPetCompleteButton?.addEventListener("click", () => {
+  if (linkPetCompleteButton.disabled) {
+    return;
+  }
+  setActiveView("pet");
+});
+
+createPetBackButton?.addEventListener("click", () => {
+  setActiveView("link-pet-profile");
+});
+
+createPetGenderButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    createPetGenderButtons.forEach((item) => {
+      item.classList.toggle("active", item === button);
+    });
+  });
+});
+
+function formatPetAge(birthDateValue) {
+  if (!birthDateValue) {
+    return "请选择出生日期";
+  }
+
+  const birth = new Date(`${birthDateValue}T00:00:00`);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  if (Number.isNaN(birth.getTime()) || birth > today) {
+    return "日期无效";
+  }
+
+  let years = today.getFullYear() - birth.getFullYear();
+  let months = today.getMonth() - birth.getMonth();
+
+  if (today.getDate() < birth.getDate()) {
+    months -= 1;
+  }
+
+  if (months < 0) {
+    years -= 1;
+    months += 12;
+  }
+
+  if (years <= 0 && months <= 0) {
+    return "不足 1 个月";
+  }
+
+  if (years <= 0) {
+    return `${months}个月`;
+  }
+
+  if (months <= 0) {
+    return `${years}岁`;
+  }
+
+  return `${years}岁${months}个月`;
+}
+
+function syncCreatePetAgeDisplay() {
+  if (createPetAgeDisplay) {
+    createPetAgeDisplay.textContent = `年龄：${formatPetAge(createPetBirthdateInput?.value ?? "")}`;
+  }
+}
+
+createPetBirthdateInput?.addEventListener("change", syncCreatePetAgeDisplay);
+
+function syncCreatePetSpeciesCustomField() {
+  const showCustom = createPetSpeciesSelect?.value === "其他品种";
+  createPetSpeciesCustomField?.toggleAttribute("hidden", !showCustom);
+  if (!showCustom && createPetSpeciesNameInput) {
+    createPetSpeciesNameInput.value = "";
+  }
+}
+
+createPetSpeciesSelect?.addEventListener("change", syncCreatePetSpeciesCustomField);
+
+createPetAvatarUploadButton?.addEventListener("click", () => {
+  createPetAvatarInput?.click();
+});
+
+createPetAvatarInput?.addEventListener("change", () => {
+  const file = createPetAvatarInput.files?.[0];
+  if (!file || !createPetAvatarPreview) {
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = () => {
+    if (typeof reader.result !== "string") {
+      return;
+    }
+
+    createPetAvatarPreview.style.backgroundImage = `url("${reader.result}")`;
+    createPetAvatarPreview.classList.remove("is-empty");
+  };
+  reader.readAsDataURL(file);
+});
+
+if (createPetBirthdateInput) {
+  createPetBirthdateInput.max = new Date().toISOString().slice(0, 10);
+}
+
+syncCreatePetAgeDisplay();
+
+createPetSaveButton?.addEventListener("click", () => {
+  linkPetView?.classList.add("has-reptile-profiles");
+  linkPetPrototypeToggle?.setAttribute("aria-pressed", "true");
+  if (linkPetPrototypeToggleLabel) {
+    linkPetPrototypeToggleLabel.textContent = "有爬宠档案";
+  }
+  const firstCard = linkPetCards[0];
+  if (firstCard) {
+    setSelectedLinkPetCard(firstCard);
+  }
+  setActiveView("link-pet-profile");
+});
+
+syncLinkPetCompleteState();
 
 const monitorScroll = document.querySelector('[data-view="reptile-camera"] .monitor-scroll');
 const monitorStatusNotices = document.querySelector(".monitor-status-notices");
@@ -320,6 +515,10 @@ document.addEventListener("keydown", (event) => {
       setActiveView(returnViewName);
     } else if (appScreen?.classList.contains("food-mode")) {
       setActiveView("reptile-camera");
+    } else if (activeViewName === "create-pet-profile") {
+      setActiveView("link-pet-profile");
+    } else if (activeViewName === "link-pet-profile") {
+      setActiveView("wifi-setup");
     } else if (activeViewName === "wifi-setup") {
       setActiveView("add-device");
     } else if (appScreen?.classList.contains("scan-mode") || appScreen?.classList.contains("monitor-mode")) {
