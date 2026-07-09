@@ -36,6 +36,12 @@ const createPetAvatarUploadButton = document.querySelector(".create-pet-avatar-u
 const createPetAvatarInput = document.querySelector(".create-pet-avatar-input");
 const reptileDeviceButton = document.querySelector(".reptile-device-card");
 const monitorBackButton = document.querySelector(".monitor-back");
+const playbackEntryButton = document.querySelector(".playback-entry-button");
+const playbackTopBackButton = document.querySelector(".playback-top-back");
+const playbackLiveModeButton = document.querySelector(".playback-live-mode-button");
+const playbackTabs = document.querySelectorAll(".playback-tab");
+const playbackPanels = document.querySelectorAll(".playback-tab-panel");
+const localFileCards = document.querySelectorAll(".local-file-card");
 const foodFeatureButton = document.querySelector(".food-feature-card");
 const activityFeatureButton = document.querySelector(".activity-feature-card");
 const sunFeatureButton = document.querySelector(".sun-feature-card");
@@ -74,7 +80,7 @@ function setActiveView(viewName) {
       viewName === "create-pet-profile",
   );
   appScreen?.classList.toggle("create-pet-mode", viewName === "create-pet-profile");
-  appScreen?.classList.toggle("monitor-mode", viewName === "reptile-camera");
+  appScreen?.classList.toggle("monitor-mode", viewName === "reptile-camera" || viewName === "camera-playback");
   appScreen?.classList.toggle(
     "food-mode",
     viewName === "food-detail" ||
@@ -396,6 +402,41 @@ monitorBackButton?.addEventListener("click", () => {
   setActiveView("pet");
 });
 
+playbackEntryButton?.addEventListener("click", () => {
+  setActiveView("camera-playback");
+  setDrawerOpen(false);
+});
+
+playbackTopBackButton?.addEventListener("click", () => {
+  setActiveView("reptile-camera");
+});
+
+playbackLiveModeButton?.addEventListener("click", () => {
+  setActiveView("reptile-camera");
+});
+
+playbackTabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    const targetPanel = tab.dataset.playbackTab;
+    playbackTabs.forEach((button) => {
+      const isActive = button === tab;
+      button.classList.toggle("active", isActive);
+      button.setAttribute("aria-selected", String(isActive));
+    });
+    playbackPanels.forEach((panel) => {
+      panel.classList.toggle("active", panel.dataset.playbackPanel === targetPanel);
+    });
+  });
+});
+
+localFileCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    localFileCards.forEach((item) => {
+      item.classList.toggle("active", item === card);
+    });
+  });
+});
+
 foodFeatureButton?.addEventListener("click", () => {
   setActiveView("food-detail");
   setDrawerOpen(false);
@@ -538,6 +579,8 @@ document.addEventListener("keydown", (event) => {
       setActiveView("wifi-setup");
     } else if (activeViewName === "wifi-setup") {
       setActiveView("add-device");
+    } else if (activeViewName === "camera-playback") {
+      setActiveView("reptile-camera");
     } else if (appScreen?.classList.contains("scan-mode") || appScreen?.classList.contains("monitor-mode")) {
       setActiveView("pet");
     } else {
