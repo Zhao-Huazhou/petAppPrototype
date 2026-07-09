@@ -7,6 +7,12 @@ const pageViews = document.querySelectorAll("[data-view]");
 const appScreen = document.querySelector(".app-screen");
 const addDeviceButton = document.querySelector(".add-device");
 const scanBackButton = document.querySelector(".scan-back");
+const scanPreviewButton = document.querySelector(".scan-preview");
+const wifiBackButton = document.querySelector(".wifi-back");
+const wifiPasswordInput = document.querySelector(".wifi-password");
+const wifiTogglePasswordButton = document.querySelector(".wifi-toggle-password");
+const wifiClearButton = document.querySelector(".wifi-clear");
+const wifiSsidInput = document.querySelector(".wifi-ssid");
 const reptileDeviceButton = document.querySelector(".reptile-device-card");
 const monitorBackButton = document.querySelector(".monitor-back");
 const foodFeatureButton = document.querySelector(".food-feature-card");
@@ -37,7 +43,7 @@ function setActiveView(viewName) {
     view.classList.toggle("active", view.dataset.view === viewName);
   });
 
-  appScreen?.classList.toggle("scan-mode", viewName === "add-device");
+  appScreen?.classList.toggle("scan-mode", viewName === "add-device" || viewName === "wifi-setup");
   appScreen?.classList.toggle("monitor-mode", viewName === "reptile-camera");
   appScreen?.classList.toggle(
     "food-mode",
@@ -95,6 +101,30 @@ addDeviceButton?.addEventListener("click", () => {
 
 scanBackButton?.addEventListener("click", () => {
   setActiveView("pet");
+});
+
+scanPreviewButton?.addEventListener("click", () => {
+  setActiveView("wifi-setup");
+});
+
+wifiBackButton?.addEventListener("click", () => {
+  setActiveView("add-device");
+});
+
+wifiTogglePasswordButton?.addEventListener("click", () => {
+  const isHidden = wifiPasswordInput?.type === "password";
+  if (wifiPasswordInput) {
+    wifiPasswordInput.type = isHidden ? "text" : "password";
+  }
+  wifiTogglePasswordButton?.setAttribute("aria-pressed", String(isHidden));
+  wifiTogglePasswordButton?.setAttribute("aria-label", isHidden ? "隐藏密码" : "显示密码");
+});
+
+wifiClearButton?.addEventListener("click", () => {
+  if (wifiSsidInput) {
+    wifiSsidInput.value = "";
+    wifiSsidInput.focus();
+  }
 });
 
 const monitorScroll = document.querySelector('[data-view="reptile-camera"] .monitor-scroll');
@@ -290,6 +320,8 @@ document.addEventListener("keydown", (event) => {
       setActiveView(returnViewName);
     } else if (appScreen?.classList.contains("food-mode")) {
       setActiveView("reptile-camera");
+    } else if (activeViewName === "wifi-setup") {
+      setActiveView("add-device");
     } else if (appScreen?.classList.contains("scan-mode") || appScreen?.classList.contains("monitor-mode")) {
       setActiveView("pet");
     } else {

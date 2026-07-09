@@ -516,7 +516,7 @@
           </header>
 
           <section class="scan-content">
-            <div class="scan-preview" aria-label="扫描二维码取景框">
+            <button class="scan-preview" type="button" aria-label="扫描二维码，进入 Wi-Fi 设置">
               <div class="scan-target" aria-hidden="true">
                 <span class="corner top-left"></span>
                 <span class="corner top-right"></span>
@@ -524,7 +524,7 @@
                 <span class="corner bottom-right"></span>
                 <span class="scan-line"></span>
               </div>
-            </div>
+            </button>
 
             <div class="scan-copy">
               <h2>扫描设备背面二维码</h2>
@@ -532,6 +532,83 @@
               <p>保持设备开机并电量充足</p>
             </div>
           </section>
+        </section>
+
+        <section class="page-view wifi-view" data-view="wifi-setup" aria-label="设置 Wi-Fi 页面">
+          <header class="wifi-topbar">
+            <button class="wifi-back" type="button" aria-label="返回添加设备页面">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m15 5-7 7 7 7" />
+              </svg>
+            </button>
+            <h1>设置Wi-Fi</h1>
+            <span aria-hidden="true"></span>
+          </header>
+
+          <div class="wifi-scroll">
+            <div class="wifi-illustration" aria-hidden="true">
+              <svg viewBox="0 0 280 160" role="presentation">
+                <rect x="88" y="28" width="52" height="92" rx="10" fill="rgba(255,255,255,0.92)" stroke="rgba(72,145,255,0.35)" stroke-width="2" />
+                <rect x="96" y="36" width="36" height="58" rx="4" fill="rgba(210,235,255,0.9)" />
+                <circle cx="114" cy="104" r="4" fill="rgba(72,145,255,0.45)" />
+                <path d="M148 78c18-10 38-10 56 0" fill="none" stroke="rgba(72,145,255,0.55)" stroke-width="3" stroke-linecap="round" />
+                <path d="M160 66c12-7 26-7 38 0" fill="none" stroke="rgba(72,145,255,0.45)" stroke-width="3" stroke-linecap="round" />
+                <path d="M172 54c6-3 13-3 19 0" fill="none" stroke="rgba(72,145,255,0.35)" stroke-width="3" stroke-linecap="round" />
+                <rect x="168" y="88" width="72" height="34" rx="8" fill="rgba(255,255,255,0.95)" stroke="rgba(72,145,255,0.35)" stroke-width="2" />
+                <rect x="176" y="96" width="10" height="10" rx="2" fill="rgba(72,145,255,0.25)" />
+                <rect x="190" y="96" width="10" height="10" rx="2" fill="rgba(72,145,255,0.25)" />
+                <rect x="204" y="96" width="10" height="10" rx="2" fill="rgba(72,145,255,0.25)" />
+                <rect x="218" y="96" width="10" height="10" rx="2" fill="rgba(72,145,255,0.25)" />
+                <rect x="176" y="110" width="52" height="4" rx="2" fill="rgba(72,145,255,0.18)" />
+              </svg>
+            </div>
+
+            <div class="wifi-form">
+              <div class="wifi-field">
+                <span class="wifi-field-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M4 10c4-4 12-4 16 0" />
+                    <path d="M7 13c2.5-2.5 7.5-2.5 10 0" />
+                    <path d="M10.5 16.5c1-1 2-1 3 0" />
+                    <circle cx="12" cy="19" r="1.2" />
+                  </svg>
+                </span>
+                <input class="wifi-ssid" type="text" value="SWL-888" aria-label="Wi-Fi 名称" />
+                <button class="wifi-clear" type="button" aria-label="清除 Wi-Fi 名称">×</button>
+                <button class="wifi-switch" type="button">切换网络</button>
+              </div>
+
+              <div class="wifi-field">
+                <span class="wifi-field-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <rect x="5" y="11" width="14" height="10" rx="2" />
+                    <path d="M8 11V8a4 4 0 0 1 8 0v3" />
+                  </svg>
+                </span>
+                <input class="wifi-password" type="password" value="66668888" aria-label="Wi-Fi 密码" />
+                <button class="wifi-toggle-password" type="button" aria-label="显示密码" aria-pressed="false">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                </button>
+              </div>
+
+              <label class="wifi-remember">
+                <input type="checkbox" checked />
+                <span class="wifi-remember-check" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="m5 12 5 5 9-10" />
+                  </svg>
+                </span>
+                <span>记住 Wi-Fi 名称和密码</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="wifi-footer">
+            <button class="wifi-next" type="button">下一步</button>
+          </div>
         </section>
 
         <section class="page-view monitor-view" data-view="reptile-camera" aria-label="爬宠摄像头页面">

@@ -1619,11 +1619,13 @@ button {
   position: relative;
   width: min(100%, 352px);
   aspect-ratio: 1 / 1;
+  padding: 0;
   border: 7px solid rgba(255, 255, 255, 0.96);
   border-radius: 34px;
   overflow: hidden;
   background: transparent;
   box-shadow: 0 16px 34px rgba(93, 139, 178, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.48);
+  cursor: pointer;
 }
 
 .scan-preview::before {
@@ -1717,6 +1719,228 @@ button {
   font-size: 16px;
   line-height: 1.35;
   font-weight: var(--weight-medium);
+}
+
+.wifi-view {
+  height: calc(100% - 40px);
+  position: relative;
+  display: none;
+  flex-direction: column;
+  padding: 0 22px 0;
+}
+
+.wifi-view.active {
+  display: flex;
+}
+
+.wifi-topbar {
+  height: 78px;
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.wifi-topbar h1 {
+  margin: 0;
+  color: #10141b;
+  text-align: center;
+  font-size: 23px;
+  line-height: 1;
+  font-weight: var(--weight-heavy);
+}
+
+.wifi-back {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  color: #1d232c;
+}
+
+.wifi-back svg {
+  width: 31px;
+  height: 31px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.wifi-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 8px 0 16px;
+  scrollbar-width: none;
+}
+
+.wifi-scroll::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.wifi-illustration {
+  display: grid;
+  place-items: center;
+  margin-bottom: 18px;
+}
+
+.wifi-illustration svg {
+  width: min(100%, 280px);
+  height: auto;
+}
+
+.wifi-form {
+  display: grid;
+  gap: 0;
+  padding: 4px 0;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.58);
+  box-shadow: 0 8px 20px rgba(73, 125, 169, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.88);
+}
+
+.wifi-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 56px;
+  padding: 0 14px;
+  border-bottom: 1px solid rgba(120, 140, 165, 0.14);
+}
+
+.wifi-field:last-of-type {
+  border-bottom: 0;
+}
+
+.wifi-field-icon {
+  display: grid;
+  place-items: center;
+  color: #7b838d;
+}
+
+.wifi-field-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.wifi-field input {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  padding: 0;
+  color: #1a202a;
+  background: transparent;
+  font-size: 16px;
+  font-weight: var(--weight-medium);
+}
+
+.wifi-field input:focus {
+  outline: none;
+}
+
+.wifi-clear {
+  width: 22px;
+  height: 22px;
+  margin-right: 2px;
+  border-radius: 50%;
+  color: #9aa1ab;
+  background: rgba(120, 140, 165, 0.12);
+  font-size: 16px;
+  line-height: 1;
+}
+
+.wifi-switch {
+  color: #1884ff;
+  font-size: 14px;
+  font-weight: var(--weight-semibold);
+  white-space: nowrap;
+}
+
+.wifi-toggle-password {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  color: #8a919b;
+}
+
+.wifi-toggle-password svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.wifi-remember {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 0 14px;
+  color: #4a515c;
+  font-size: 15px;
+  font-weight: var(--weight-medium);
+}
+
+.wifi-remember input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.wifi-remember-check {
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border: 2px solid rgba(72, 145, 255, 0.35);
+  border-radius: 50%;
+  color: transparent;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.wifi-remember-check svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.wifi-remember input:checked + .wifi-remember-check {
+  border-color: transparent;
+  color: #fff;
+  background: linear-gradient(135deg, #2d82ff, #28c9e5);
+}
+
+.wifi-footer {
+  flex-shrink: 0;
+  padding: 16px 0 28px;
+}
+
+.wifi-next {
+  width: 100%;
+  height: 52px;
+  border-radius: 14px;
+  color: #fff;
+  background: linear-gradient(135deg, #2d82ff, #28c9e5);
+  box-shadow: 0 10px 22px rgba(40, 129, 226, 0.22);
+  font-size: 18px;
+  font-weight: var(--weight-bold);
 }
 
 .monitor-view,
