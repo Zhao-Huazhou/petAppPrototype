@@ -4320,18 +4320,18 @@ button {
 
 .food-summary-icon.molt-status-icon,
 .food-summary-icon.molt-last {
-  color: #41c79a;
-  background: rgba(226, 250, 240, 0.96);
+  color: #4f8bff;
+  background: rgba(226, 239, 255, 0.96);
 }
 
 .food-summary-icon.molt-average {
-  color: #8f83ff;
-  background: rgba(239, 236, 255, 0.96);
+  color: #6f8cff;
+  background: rgba(229, 235, 255, 0.96);
 }
 
 .food-summary-icon.molt-next {
-  color: #5b9bff;
-  background: rgba(228, 240, 255, 0.96);
+  color: #22aeea;
+  background: rgba(224, 250, 252, 0.96);
 }
 
 .food-summary-icon svg {
@@ -5087,8 +5087,8 @@ button {
   padding: 0 17px;
   border-radius: 14px;
   color: #fff;
-  background: linear-gradient(135deg, #39c78d, #61d7a4);
-  box-shadow: 0 6px 14px rgba(57, 199, 141, 0.22);
+  background: linear-gradient(135deg, #4f8bff, #55c6ee);
+  box-shadow: 0 6px 14px rgba(79, 139, 255, 0.22);
   font-size: 17px;
   line-height: 1;
   font-weight: var(--weight-heavy);
@@ -5160,7 +5160,7 @@ button {
 }
 
 .molt-timeline-dot.next {
-  background: #ff9a5f;
+  background: #22aeea;
 }
 
 .molt-timeline-content {
@@ -5170,14 +5170,25 @@ button {
   gap: 8px;
   padding: 0 14px;
   border-radius: 15px;
-  color: #5b9bff;
+  color: #6f8cff;
   background: rgba(246, 250, 255, 0.96);
   font-size: 13px;
   font-weight: var(--weight-medium);
 }
 
+.molt-next-card .molt-timeline-content {
+  color: #22aeea;
+  background: rgba(240, 251, 255, 0.96);
+}
+
 .molt-timeline-content.done {
-  color: #41c79a;
+  color: #4f8bff;
+  background: rgba(244, 249, 255, 0.96);
+}
+
+.molt-timeline-content.start {
+  color: #6f8cff;
+  background: rgba(246, 248, 255, 0.96);
 }
 
 .molt-timeline-content svg {
@@ -5230,11 +5241,11 @@ button {
 }
 
 .molt-period-line .done {
-  background: #41c79a;
+  background: #4f8bff;
 }
 
 .molt-period-line .start {
-  background: #5b9bff;
+  background: #6f8cff;
 }
 
 .molt-period-events {
@@ -5251,7 +5262,7 @@ button {
 
 .molt-period-events p strong {
   margin-left: 6px;
-  color: #111821;
+  color: #4f8bff;
   font-weight: var(--weight-medium);
 }
 
@@ -5260,7 +5271,7 @@ button {
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 10px;
-  color: #4f83ff;
+  color: #4f8bff;
   font-size: 13px;
   font-weight: var(--weight-medium);
 }
