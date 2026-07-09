@@ -1391,6 +1391,78 @@
                 <img src="./assets/environment-trend-chart.png" alt="24 小时热区、冷区和湿度趋势折线图" />
               </div>
             </section>
+
+            <section class="food-events environment-events" aria-label="环境变化日志">
+              <div class="environment-events-head">
+                <h2>环境变化</h2>
+              </div>
+              <div class="food-event-list">
+                <article class="food-event-item">
+                  <div class="food-event-dot environment-normal">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M12 5v14" />
+                      <path d="m6 13 6 6 6-6" />
+                    </svg>
+                  </div>
+                  <div class="food-event-card environment">
+                    <div class="food-event-copy">
+                      <p>
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <circle cx="12" cy="12" r="8" />
+                          <path d="M12 7v5l3 2" />
+                        </svg>
+                        今日 <span>20:10</span>
+                      </p>
+                      <h3>冷区温度下降</h3>
+                      <small>冷区降至 25.5℃，仍处于适宜范围。</small>
+                    </div>
+                  </div>
+                </article>
+                <article class="food-event-item">
+                  <div class="food-event-dot environment-alert">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M12 9v4" />
+                      <path d="M12 17h.01" />
+                      <path d="M10.3 3.8 2.8 18a2 2 0 0 0 1.8 3h14.8a2 2 0 0 0 1.8-3L13.7 3.8a2 2 0 0 0-3.4 0Z" />
+                    </svg>
+                  </div>
+                  <div class="food-event-card environment-alert">
+                    <div class="food-event-copy">
+                      <p>
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <circle cx="12" cy="12" r="8" />
+                          <path d="M12 7v5l3 2" />
+                        </svg>
+                        今日 <span>15:40</span>
+                      </p>
+                      <h3>热区温度偏高</h3>
+                      <small>热区温度 38℃，超出适宜范围，建议检查加热设备与温控设置。</small>
+                    </div>
+                  </div>
+                </article>
+                <article class="food-event-item">
+                  <div class="food-event-dot environment-normal">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M12 19V5" />
+                      <path d="m6 11 6-6 6 6" />
+                    </svg>
+                  </div>
+                  <div class="food-event-card environment">
+                    <div class="food-event-copy">
+                      <p>
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <circle cx="12" cy="12" r="8" />
+                          <path d="M12 7v5l3 2" />
+                        </svg>
+                        今日 <span>13:20</span>
+                      </p>
+                      <h3>热区温度上升</h3>
+                      <small>热区升至 32.5℃，仍处于适宜范围。</small>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </section>
           </div>
           <div class="home-indicator monitor-home-indicator" aria-hidden="true"></div>
         </section>

@@ -4071,10 +4071,11 @@ button {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86);
 }
 
-.environment-trend-head h2 {
+.environment-trend-head h2,
+.environment-events-head h2 {
   margin: 0;
   color: #121923;
-  font-size: 19px;
+  font-size: 18px;
   line-height: 1;
   font-weight: var(--weight-heavy);
 }
@@ -4798,6 +4799,14 @@ button {
   background: linear-gradient(135deg, #4f8bff, #7fc7ff);
 }
 
+.food-event-dot.environment-normal {
+  background: linear-gradient(135deg, #48bdf2, #5d9dff);
+}
+
+.food-event-dot.environment-alert {
+  background: linear-gradient(135deg, #ff9a55, #ffbf6b);
+}
+
 .food-event-dot svg {
   width: 21px;
   height: 21px;
@@ -4832,6 +4841,36 @@ button {
 
 .food-event-card.sun {
   background: rgba(244, 249, 255, 0.96);
+}
+
+.food-event-card.environment {
+  background: rgba(246, 250, 255, 0.96);
+}
+
+.food-event-card.environment-alert {
+  background: rgba(255, 248, 237, 0.96);
+  box-shadow: inset 0 0 0 1px rgba(255, 167, 84, 0.18);
+}
+
+.environment-events {
+  display: grid;
+  gap: 13px;
+}
+
+.environment-events-head {
+  display: block;
+}
+
+.environment-events .food-event-card {
+  min-height: 102px;
+}
+
+.environment-events .food-event-card p {
+  margin-bottom: 12px;
+}
+
+.environment-events .food-event-card.environment-alert p {
+  color: #e98932;
 }
 
 .food-event-copy {
