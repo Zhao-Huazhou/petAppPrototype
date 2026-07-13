@@ -2560,7 +2560,7 @@ button {
   order: 2;
 }
 
-.monitor-scroll .feature-pair {
+.monitor-scroll .today-status-section {
   order: 3;
 }
 
@@ -2570,6 +2570,14 @@ button {
 
 .monitor-scroll .environment-section {
   order: 5;
+}
+
+.today-status-section .feature-pair {
+  margin-top: 0;
+}
+
+.today-status-advice {
+  margin-top: 12px;
 }
 
 .live-card {
@@ -3314,6 +3322,32 @@ button {
   border-top: 1px solid rgba(219, 234, 247, 0.78);
 }
 
+.today-status-section .today-activity-area {
+  grid-template-columns: minmax(0, 1fr) 104px;
+  gap: 14px;
+  margin-top: 14px;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.64);
+  box-shadow: 0 4px 10px rgba(73, 134, 205, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.86);
+}
+
+.today-status-section .today-activity-area .behavior-copy {
+  align-self: stretch;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.today-status-section .today-activity-area .behavior-copy > span {
+  align-self: start;
+  transform: translateY(6px);
+}
+
+.today-status-section .today-activity-area .activity-area-summary {
+  align-self: center;
+}
+
 .heatmap-preview {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -4018,8 +4052,11 @@ button {
   display: block;
 }
 
+.today-status-advice .advice-copy p strong,
+.health-section-advice .advice-copy p strong,
+.env-advice-normal strong,
 .env-advice-alert strong {
-  color: #2f3640;
+  color: #111821;
   font-weight: var(--weight-heavy);
 }
 
@@ -4343,6 +4380,257 @@ button {
   font-size: 15px;
   line-height: 1;
   font-weight: var(--weight-medium);
+}
+
+.food-habit-panel {
+  display: grid;
+  gap: 12px;
+  padding: 15px 14px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86);
+}
+
+.sun-habit-panel {
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.activity-habit-panel {
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.molt-habit-panel {
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.environment-suitability-panel {
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.health-ai-analysis-panel {
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.food-habit-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.food-habit-head h2 {
+  margin: 0;
+  color: #121923;
+  font-size: 17px;
+  line-height: 1.2;
+  font-weight: var(--weight-heavy);
+}
+
+.food-habit-head .habit-ai-label {
+  color: #2378ff;
+}
+
+.food-habit-head p {
+  margin: 6px 0 0;
+  color: #707987;
+  font-size: 12px;
+  line-height: 1.45;
+  font-weight: var(--weight-medium);
+}
+
+.food-habit-head > span {
+  flex: 0 0 auto;
+  padding: 5px 9px;
+  border-radius: 999px;
+  color: #24966d;
+  background: rgba(85, 207, 151, 0.14);
+  font-size: 11px;
+  line-height: 1;
+  font-weight: var(--weight-bold);
+}
+
+.sun-habit-panel .food-habit-head > span {
+  color: #bf7e30;
+  background: rgba(255, 202, 114, 0.18);
+}
+
+.activity-habit-panel .food-habit-head > span {
+  color: #6077d8;
+  background: rgba(124, 145, 255, 0.15);
+}
+
+.molt-habit-panel .food-habit-head > span {
+  color: #3b77c8;
+  background: rgba(103, 168, 255, 0.15);
+}
+
+.environment-suitability-panel .food-habit-head > span {
+  color: #3583ad;
+  background: rgba(84, 184, 232, 0.15);
+}
+
+.health-ai-analysis-panel .food-habit-head > span {
+  color: #3d78c9;
+  background: rgba(98, 163, 255, 0.1);
+}
+
+.food-habit-daily {
+  display: grid;
+  gap: 7px;
+  padding: 10px 11px;
+  border-radius: 14px;
+  background: rgba(239, 250, 245, 0.8);
+}
+
+.food-habit-daily > span {
+  color: #4b967d;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: var(--weight-bold);
+}
+
+.food-habit-panel:not(.environment-suitability-panel) .food-habit-daily:not(.today-habit-analysis) > span {
+  font-size: 12px;
+}
+
+.food-habit-daily p {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 7px;
+  margin: 0;
+}
+
+.food-habit-daily strong {
+  color: #275e4d;
+  font-size: 13px;
+  line-height: 1;
+  font-weight: var(--weight-bold);
+}
+
+.food-habit-daily em {
+  color: #7b978e;
+  font-size: 11px;
+  line-height: 1;
+  font-style: normal;
+  font-weight: var(--weight-medium);
+}
+
+.sun-habit-panel .food-habit-daily {
+  background: rgba(255, 247, 233, 0.84);
+}
+
+.molt-habit-panel .food-habit-daily {
+  background: rgba(239, 247, 255, 0.84);
+}
+
+.environment-suitability-panel .food-habit-daily {
+  background: rgba(238, 250, 255, 0.84);
+}
+
+.health-ai-analysis-panel .food-habit-daily {
+  background: rgba(248, 251, 255, 0.66);
+}
+
+.environment-suitability-panel .environment-today-analysis {
+  background: rgba(246, 251, 255, 0.9);
+  box-shadow: inset 0 0 0 1px rgba(91, 181, 229, 0.1);
+}
+
+.today-habit-analysis {
+  box-shadow: inset 0 0 0 1px rgba(68, 147, 115, 0.1);
+}
+
+.today-habit-analysis p,
+.environment-today-analysis p {
+  display: grid;
+  gap: 6px;
+  align-items: start;
+}
+
+.activity-habit-panel .today-habit-analysis {
+  background: rgba(247, 249, 255, 0.9);
+  box-shadow: inset 0 0 0 1px rgba(119, 141, 222, 0.1);
+}
+
+.sun-habit-panel .today-habit-analysis {
+  background: rgba(255, 251, 241, 0.9);
+  box-shadow: inset 0 0 0 1px rgba(232, 178, 94, 0.12);
+}
+
+.molt-habit-panel .today-habit-analysis {
+  background: rgba(246, 250, 255, 0.9);
+  box-shadow: inset 0 0 0 1px rgba(91, 163, 224, 0.1);
+}
+
+.health-ai-analysis-panel .today-habit-analysis {
+  background: rgba(250, 252, 255, 0.72);
+  box-shadow: inset 0 0 0 1px rgba(91, 163, 224, 0.07);
+}
+
+.sun-habit-panel .food-habit-daily > span {
+  color: #b48343;
+}
+
+.molt-habit-panel .food-habit-daily > span {
+  color: #5e91cb;
+}
+
+.environment-suitability-panel .food-habit-daily > span {
+  color: #5598b9;
+}
+
+.health-ai-analysis-panel .food-habit-daily > span {
+  color: #5c91c6;
+}
+
+.sun-habit-panel .food-habit-daily strong {
+  color: #76572d;
+}
+
+.sun-habit-panel .food-habit-daily em {
+  color: #9b8569;
+}
+
+.molt-habit-panel .food-habit-daily strong {
+  color: #35669f;
+}
+
+.molt-habit-panel .food-habit-daily em {
+  color: #7e98b3;
+}
+
+.environment-suitability-panel .food-habit-daily strong {
+  color: #326d8d;
+}
+
+.environment-suitability-panel .food-habit-daily em {
+  color: #7b99aa;
+}
+
+.health-ai-analysis-panel .food-habit-daily strong {
+  color: #356ba5;
+}
+
+.health-ai-analysis-panel .food-habit-daily em {
+  color: #7d98b5;
+}
+
+.activity-habit-panel .food-habit-daily {
+  background: rgba(240, 243, 255, 0.82);
+}
+
+.activity-habit-panel .food-habit-daily > span {
+  color: #7183c4;
+}
+
+.activity-habit-panel .food-habit-daily strong {
+  color: #4b5c9e;
+}
+
+.activity-habit-panel .food-habit-daily em {
+  color: #8791ae;
 }
 
 .activity-summary-card strong {
@@ -5029,8 +5317,7 @@ button {
   font-weight: var(--weight-bold);
 }
 
-.molt-status-card,
-.molt-cycle-section {
+.molt-status-card {
   border: 1px solid rgba(255, 255, 255, 0.82);
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.62);
@@ -5084,38 +5371,42 @@ button {
   font-weight: var(--weight-regular);
 }
 
-.molt-cycle-section {
-  padding: 16px 14px;
-}
-
 .molt-cycle-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
 }
 
-.molt-cycle-card {
-  min-height: 126px;
-  gap: 9px;
-  padding: 13px 10px;
+.molt-cycle-grid .food-summary-card {
+  min-height: 128px;
+  gap: 8px;
+  padding: 14px 12px;
 }
 
-.molt-cycle-card h2 {
-  color: #7a8491;
-  font-size: 13px;
-  font-weight: var(--weight-medium);
+.molt-cycle-grid .food-summary-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 13px;
 }
 
-.molt-cycle-card strong {
-  color: #111821;
-  font-size: 15px;
-  font-weight: var(--weight-medium);
+.molt-cycle-grid .food-summary-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.molt-cycle-grid .food-summary-card strong {
+  margin-top: 7px;
+  font-weight: var(--weight-regular);
 }
 
 .molt-timeline-section {
   display: grid;
   gap: 13px;
-  margin-top: 16px;
+  padding: 16px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86);
 }
 
 .molt-next-card,

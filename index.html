@@ -839,7 +839,11 @@
               </article>
             </div>
 
-            <div class="feature-pair" aria-label="摄像头 AI 能力">
+            <section class="monitor-ai-section today-status-section" aria-label="今日状态">
+              <div class="monitor-section-title">
+                <h2>今日状态</h2>
+              </div>
+              <div class="feature-pair" aria-label="摄像头 AI 能力">
               <button class="ai-feature-card ai-metric-card food-feature-card" type="button" aria-label="进食识别，最近一次 8:12">
                 <div class="ai-metric-head">
                   <span class="feature-icon food">
@@ -912,7 +916,33 @@
                   <p class="ai-metric-caption">未检测到蜕皮行为</p>
                 </div>
               </button>
-            </div>
+              </div>
+              <div class="today-activity-area behavior-map-row" aria-label="活动区域">
+                <div class="behavior-copy">
+                  <span>活动区域</span>
+                  <div class="activity-area-summary">
+                    <strong>今日活动集中在右侧区域</strong>
+                    <p>九宫格展示各区域活跃情况</p>
+                  </div>
+                </div>
+                <div class="heatmap-preview" aria-label="活动区域预览">
+                  <span></span><span></span><span></span>
+                  <span></span><span></span><span></span>
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+              <article class="ai-health-advice today-status-advice" aria-label="AI 养宠建议">
+                <div class="advice-orb" aria-hidden="true"></div>
+                <div class="advice-copy">
+                  <h3><span>AI</span> 状态解读</h3>
+                  <p><strong>Mochi 今日状态良好</strong>，进食、活动与晒背表现稳定，暂未发现蜕皮迹象。建议提供新鲜叶菜、按需补钙，并保证充足的 UVB 照明。</p>
+                </div>
+                <svg class="advice-spark" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M13 3 15.4 8.6 21 11l-5.6 2.4L13 19l-2.4-5.6L5 11l5.6-2.4L13 3Z" />
+                  <path d="M5.5 16.5 6.4 18.6 8.5 19.5 6.4 20.4 5.5 22.5 4.6 20.4 2.5 19.5 4.6 18.6 5.5 16.5Z" />
+                </svg>
+              </article>
+            </section>
 
             <section class="monitor-ai-section health-section" aria-label="健康评估">
               <div class="monitor-section-title">
@@ -984,9 +1014,9 @@
               <article class="ai-health-advice health-section-advice" aria-label="AI 健康建议">
                 <div class="advice-orb" aria-hidden="true"></div>
                 <div class="advice-copy">
-                  <h3><span>AI</span> 健康建议</h3>
-                  <p class="health-advice-without-env">Mochi 今日综合健康表现良好。活力状态与进食规律较稳定，体表与姿态表现正常，暂未发现明显卡皮或疑似疾病风险。建议保持当前喂养节奏，并按饲养需求定期补钙，持续关注后续食欲与蜕皮情况。</p>
-                  <p class="health-advice-with-env">Mochi 今日综合健康表现良好。活力状态与进食规律较稳定，体表与姿态表现正常，暂未发现明显卡皮或疑似疾病风险。建议保持当前喂养节奏，并按饲养需求定期补钙，持续关注后续食欲与蜕皮情况。</p>
+                  <h3><span>AI</span> 健康解读</h3>
+                  <p class="health-advice-without-env"><strong>Mochi 今日健康表现良好</strong>，活力、进食、体表与姿态均无明显异常。暂未发现卡皮或疑似疾病风险，建议持续关注食欲与蜕皮情况。</p>
+                  <p class="health-advice-with-env"><strong>Mochi 今日健康表现良好</strong>，活力、进食、体表与姿态均无明显异常。暂未发现卡皮或疑似疾病风险，建议持续关注食欲与蜕皮情况。</p>
                 </div>
                 <svg class="advice-spark" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M13 3 15.4 8.6 21 11l-5.6 2.4L13 19l-2.4-5.6L5 11l5.6-2.4L13 3Z" />
@@ -1051,9 +1081,9 @@
                 <article class="ai-health-advice ai-env-advice" aria-label="AI 环境分析">
                   <div class="advice-orb" aria-hidden="true"></div>
                   <div class="advice-copy">
-                    <h3><span>AI</span> 环境分析</h3>
-                    <p class="env-advice-normal">结合绿鬣蜥的适宜环境条件分析，当前箱内温度与湿度均处于合理范围，整体环境状态良好。建议继续保持现有环境设置，并定期观察绿鬣蜥的晒背与活动情况。</p>
-                    <p class="env-advice-alert">结合绿鬣蜥的适宜环境条件分析，<strong>当前热区温度 38°C 偏高，存在局部过热风险。</strong>建议检查加热设备功率与温控设置，并持续观察绿鬣蜥是否出现长时间逃离热区等行为。</p>
+                    <h3><span>AI</span> 环境解读</h3>
+                    <p class="env-advice-normal"><strong>当前箱内温湿度适宜，整体环境状态良好。</strong>建议维持现有设置，并持续留意温湿度变化。</p>
+                    <p class="env-advice-alert"><strong>当前热区温度为 38°C，温度偏高，存在局部过热风险。</strong>建议及时检查加热设备功率与温控设置，并留意 Mochi 是否出现持续远离热区等异常行为。</p>
                   </div>
                   <svg class="advice-spark" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M13 3 15.4 8.6 21 11l-5.6 2.4L13 19l-2.4-5.6L5 11l5.6-2.4L13 3Z" />
@@ -1323,6 +1353,25 @@
               </article>
             </section>
 
+            <section class="food-habit-panel" aria-label="绿鬣蜥饮食习性">
+              <div class="food-habit-head">
+                <div>
+                  <h2><span class="habit-ai-label">AI</span> 饮食分析</h2>
+                  <p>绿鬣蜥以植物性食物为主，日常饮食需要兼顾叶菜、蔬菜与稳定光照。</p>
+                </div>
+                <span>表现正常</span>
+              </div>
+              <div class="food-habit-daily" aria-label="绿鬣蜥常见饮食规律">
+                <span>绿鬣蜥饮食习性</span>
+                <p><strong>进食：通常每日 1 次</strong><em>以日间进食为主</em></p>
+                <p><strong>饮水：没有固定次数</strong><em>建议全天保持清洁饮水</em></p>
+              </div>
+              <div class="food-habit-daily today-habit-analysis" aria-label="今日饮食分析">
+                <span>今日饮食分析</span>
+                <p><strong>进食与饮水表现正常</strong><em>整体符合绿鬣蜥的日常行为习性。</em></p>
+              </div>
+            </section>
+
             <section class="food-events" aria-label="每日饮食事件记录">
               <div class="food-event-list">
                 <article class="food-event-item">
@@ -1536,6 +1585,25 @@
               </div>
             </section>
 
+            <section class="food-habit-panel environment-suitability-panel" aria-label="绿鬣蜥环境适宜度">
+              <div class="food-habit-head">
+                <div>
+                  <h2><span class="habit-ai-label">AI</span> 环境分析</h2>
+                  <p>绿鬣蜥需要清晰的冷热区、稳定湿度与日间 UVB 照明，以支持体温调节、活动与消化。</p>
+                </div>
+                <span>整体适宜</span>
+              </div>
+              <div class="food-habit-daily" aria-label="绿鬣蜥环境要点">
+                <span>绿鬣蜥适宜环境</span>
+                <p><strong>温度：热区 29–33℃，冷区 24–27℃</strong></p>
+                <p><strong>湿度：60%–85%</strong></p>
+              </div>
+              <div class="food-habit-daily environment-today-analysis" aria-label="今日环境适宜度分析">
+                <span>今日环境分析</span>
+                <p><strong>冷热区温度与湿度整体适宜</strong><em>均处于适宜范围，能够满足日常活动需求。</em></p>
+              </div>
+            </section>
+
             <section class="food-events environment-events" aria-label="环境变化日志">
               <div class="environment-events-head">
                 <h2>环境变化</h2>
@@ -1699,37 +1767,22 @@
               </article>
             </section>
 
-            <section class="activity-behavior-panel" aria-label="全天行为">
-              <div class="activity-behavior-card">
-                <div class="behavior-ratio" aria-label="全天活动">
-                  <div class="behavior-subhead">
-                    <span>全天行为</span>
-                  </div>
-                  <div class="ratio-track" aria-hidden="true">
-                    <span class="state-still" style="--span: 62%"></span>
-                    <span class="state-active" style="--span: 18%"></span>
-                    <span class="state-sun" style="--span: 15%"></span>
-                    <span class="state-food" style="--span: 5%"></span>
-                  </div>
-                  <div class="state-legend">
-                    <span class="state-still">静止 62%</span>
-                    <span class="state-active">活动 18%</span>
-                    <span class="state-sun">晒背 15%</span>
-                    <span class="state-food">进食 5%</span>
-                  </div>
+            <section class="food-habit-panel activity-habit-panel" aria-label="绿鬣蜥活动习性">
+              <div class="food-habit-head">
+                <div>
+                  <h2><span class="habit-ai-label">AI</span> 活动分析</h2>
+                  <p>绿鬣蜥为日行性动物，白天会在攀爬、取食、晒背与休息之间切换，活动会受到光照与环境温度影响。</p>
                 </div>
-                <div class="behavior-map-row">
-                  <div class="behavior-copy">
-                    <span>活动区域</span>
-                    <strong>今日活动集中在右侧区域</strong>
-                    <p>九宫格展示各区域活跃情况</p>
-                  </div>
-                  <div class="heatmap-preview" aria-label="活动区域预览">
-                    <span></span><span></span><span></span>
-                    <span></span><span></span><span></span>
-                    <span></span><span></span><span></span>
-                  </div>
-                </div>
+                <span>表现正常</span>
+              </div>
+              <div class="food-habit-daily" aria-label="绿鬣蜥常见活动规律">
+                <span>绿鬣蜥活动习性</span>
+                <p><strong>活动：日间多次短时进行</strong><em>常随光照与温度变化</em></p>
+                <p><strong>静止：晒背与休息时常见</strong><em>建议结合连续趋势观察</em></p>
+              </div>
+              <div class="food-habit-daily today-habit-analysis" aria-label="今日活动分析">
+                <span>今日活动分析</span>
+                <p><strong>今日活动表现正常</strong><em>符合绿鬣蜥日间多次短时活动的习性。</em></p>
               </div>
             </section>
 
@@ -1790,7 +1843,7 @@
                 <path d="m15 5-7 7 7 7" />
               </svg>
             </button>
-            <h1>健康详情</h1>
+            <h1>健康</h1>
           </header>
 
           <div class="food-detail-scroll">
@@ -1843,30 +1896,22 @@
               </div>
             </section>
 
-            <section class="food-summary-grid health-compare-grid" aria-label="历史对比">
-              <article class="food-summary-card health-compare-card">
-                <span class="food-summary-icon health-up">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="m4 16 6-6 4 4 6-8" />
-                    <path d="M14 6h6v6" />
-                  </svg>
-                </span>
-                <h2>本周均分</h2>
-                <p>较上周 +5 分</p>
-                <strong>92 分</strong>
-              </article>
-              <article class="food-summary-card health-compare-card">
-                <span class="food-summary-icon health-stable">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M4 12h16" />
-                    <path d="M8 8h8" />
-                    <path d="M8 16h8" />
-                  </svg>
-                </span>
-                <h2>稳定天数</h2>
-                <p>连续优秀区间</p>
-                <strong>4 天</strong>
-              </article>
+            <section class="food-habit-panel health-ai-analysis-panel" aria-label="AI 健康分析">
+              <div class="food-habit-head">
+                <div>
+                  <h2><span class="habit-ai-label">AI</span> 健康分析</h2>
+                  <p>结合绿鬣蜥的品种特征与 Mochi 的宠物档案，综合评估其日常行为、进食规律、环境适应及体态状态。</p>
+                </div>
+                <span>整体良好</span>
+              </div>
+              <div class="food-habit-daily" aria-label="绿鬣蜥健康表现">
+                <span>绿鬣蜥健康特征</span>
+                <p><strong>日间活动稳定、进食规律、正常晒背且体态无明显异常</strong><em>是判断绿鬣蜥日常健康状态的重要参考。</em></p>
+              </div>
+              <div class="food-habit-daily today-habit-analysis" aria-label="今日健康分析">
+                <span>今日健康分析</span>
+                <p><strong>整体健康状态良好</strong><em>活力指数、进食规律、环境适应与体态健康均处于良好水平，暂未发现明显异常。</em></p>
+              </div>
             </section>
 
             <section class="health-breakdown-panel" aria-label="维度解释">
@@ -2078,6 +2123,25 @@
               </article>
             </section>
 
+            <section class="food-habit-panel sun-habit-panel" aria-label="绿鬣蜥晒背习性">
+              <div class="food-habit-head">
+                <div>
+                  <h2><span class="habit-ai-label">AI</span> 晒背分析</h2>
+                  <p>绿鬣蜥为日行性动物，通常会在白天于热源和 UVB 灯下晒背，以调节体温并支持钙的吸收与利用。</p>
+                </div>
+                <span>表现正常</span>
+              </div>
+              <div class="food-habit-daily" aria-label="绿鬣蜥常见晒背规律">
+                <span>绿鬣蜥晒背习性</span>
+                <p><strong>晒背：日间分次进行</strong><em>常见于开灯后至下午</em></p>
+                <p><strong>时长：随环境与个体变化</strong><em>稳定热区与 UVB 更重要</em></p>
+              </div>
+              <div class="food-habit-daily today-habit-analysis" aria-label="今日晒背分析">
+                <span>今日晒背分析</span>
+                <p><strong>今日晒背表现正常</strong><em>符合绿鬣蜥的日间晒背规律，可满足日常体温调节需求。</em></p>
+              </div>
+            </section>
+
             <section class="food-events sun-events" aria-label="每日晒背事件记录">
               <div class="food-event-list">
                 <article class="food-event-item">
@@ -2171,12 +2235,8 @@
               </div>
             </section>
 
-            <section class="molt-cycle-section" aria-label="蜕皮周期">
-              <div class="monitor-section-title">
-                <h2>蜕皮周期</h2>
-              </div>
-              <div class="molt-cycle-grid">
-                <article class="food-summary-card molt-cycle-card">
+            <section class="food-summary-grid molt-cycle-grid" aria-label="蜕皮周期数据">
+              <article class="food-summary-card">
                   <span class="food-summary-icon molt-last">
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M3 12a9 9 0 1 0 3-6.7" />
@@ -2187,7 +2247,7 @@
                   <h2>上次蜕皮</h2>
                   <strong>14 天前</strong>
                 </article>
-                <article class="food-summary-card molt-cycle-card">
+              <article class="food-summary-card">
                   <span class="food-summary-icon molt-average">
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M21 12a9 9 0 1 1-9-9" />
@@ -2197,7 +2257,7 @@
                   <h2>平均周期</h2>
                   <strong>28 天</strong>
                 </article>
-                <article class="food-summary-card molt-cycle-card">
+              <article class="food-summary-card">
                   <span class="food-summary-icon molt-next">
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M8 2v4" />
@@ -2211,8 +2271,28 @@
                   <h2>下次预计</h2>
                   <strong>7月21日</strong>
                 </article>
+            </section>
+
+            <section class="food-habit-panel molt-habit-panel" aria-label="绿鬣蜥蜕皮习性">
+              <div class="food-habit-head">
+                <div>
+                  <h2><span class="habit-ai-label">AI</span> 蜕皮分析</h2>
+                  <p>绿鬣蜥会随生长和皮肤更新自然蜕皮；幼体和亚成体通常蜕皮更频繁，成体的蜕皮间隔相对更长。</p>
+                </div>
+                <span>表现正常</span>
               </div>
-              <div class="molt-timeline-section" aria-label="蜕皮事件记录">
+              <div class="food-habit-daily" aria-label="绿鬣蜥常见蜕皮规律">
+                <span>绿鬣蜥蜕皮习性</span>
+                <p><strong>频率：随年龄与生长变化</strong><em>幼体通常比成体更频繁</em></p>
+                <p><strong>过程：可分区域陆续完成</strong><em>保持适宜湿度并留意残皮</em></p>
+              </div>
+              <div class="food-habit-daily today-habit-analysis" aria-label="蜕皮状态分析">
+                <span>蜕皮状态分析</span>
+                <p><strong>蜕皮表现正常</strong><em>Mochi 现年 2 岁，蜕皮节奏与其年龄及生长习性基本相符。</em></p>
+              </div>
+            </section>
+
+            <section class="molt-timeline-section" aria-label="蜕皮事件记录">
               <div class="molt-next-card">
                 <span class="molt-timeline-dot next"></span>
                 <div class="molt-timeline-content">
@@ -2300,7 +2380,6 @@
                   </div>
                 </div>
               </article>
-              </div>
             </section>
           </div>
           <div class="home-indicator monitor-home-indicator" aria-hidden="true"></div>
