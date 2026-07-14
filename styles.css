@@ -3403,6 +3403,62 @@ button {
   outline-offset: 3px;
 }
 
+.disease-risk-card {
+  position: relative;
+  display: grid;
+  align-items: center;
+  min-height: 116px;
+  margin-top: 12px;
+  padding: 16px 110px 15px 15px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.86);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 91% 8%, rgba(75, 193, 255, 0.26), transparent 35%),
+    linear-gradient(135deg, rgba(245, 251, 255, 0.98), rgba(230, 245, 255, 0.88));
+  box-shadow: 0 5px 13px rgba(73, 134, 205, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+
+.disease-risk-copy {
+  min-width: 0;
+}
+
+.disease-risk-heading h3 {
+  margin: 0;
+  color: #111821;
+  font-size: 15px;
+  line-height: 1.2;
+  font-weight: var(--weight-heavy);
+}
+
+.disease-risk-copy > strong {
+  display: block;
+  margin-top: 9px;
+  color: #2878d7;
+  font-size: 14px;
+  line-height: 1.2;
+  font-weight: var(--weight-heavy);
+}
+
+.disease-risk-copy p {
+  margin: 6px 0 0;
+  color: #788897;
+  font-size: 11px;
+  line-height: 1.45;
+  font-weight: var(--weight-medium);
+}
+
+.disease-risk-badge {
+  position: absolute;
+  right: -4px;
+  top: 50%;
+  width: 112px;
+  height: 112px;
+  object-fit: contain;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
 .health-score-summary {
   position: relative;
   min-height: 126px;
