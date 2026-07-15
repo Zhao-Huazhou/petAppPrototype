@@ -1012,13 +1012,13 @@
                   </article>
                 </div>
               </div>
-              <article class="disease-risk-card" aria-label="异常疾病风险识别：未检测到任何疾病风险">
+              <article class="disease-risk-card" role="button" tabindex="0" aria-label="查看健康详情，异常疾病风险识别暂未识别到明显风险">
                 <div class="disease-risk-copy">
                   <div class="disease-risk-heading">
                     <h3>异常疾病风险识别</h3>
                   </div>
-                  <strong>未检测到任何疾病风险</strong>
-                  <p>当前状态良好，暂未发现需关注的异常情况。</p>
+                  <strong>暂未识别到明显风险</strong>
+                  <p>当前状态良好，建议继续观察日常表现与体表变化。</p>
                 </div>
                 <img class="disease-risk-badge" src="./assets/health-badge.png" alt="健康状态徽章" />
               </article>
@@ -1907,21 +1907,48 @@
               </div>
             </section>
 
-            <section class="food-habit-panel health-ai-analysis-panel" aria-label="AI 健康分析">
-              <div class="food-habit-head">
-                <div>
-                  <h2><span class="habit-ai-label">AI</span> 健康分析</h2>
-                  <p>结合绿鬣蜥的品种特征与 Mochi 的宠物档案，综合评估其日常行为、进食规律、环境适应及体态状态。</p>
+            <section class="health-risk-panel" aria-label="异常疾病风险识别">
+              <div class="health-risk-head">
+                <span>疾病识别</span>
+              </div>
+              <div class="health-risk-summary">
+                <div class="disease-risk-copy">
+                  <div class="disease-risk-heading">
+                    <h3>异常疾病风险识别</h3>
+                  </div>
+                  <strong>暂未识别到明显风险</strong>
+                  <p>识别结果仅供参考，不代表专业医学诊断。</p>
                 </div>
-                <span>整体良好</span>
+                <img class="health-risk-summary-badge" src="./assets/health-badge.png" alt="当前风险识别状态良好" />
               </div>
-              <div class="food-habit-daily" aria-label="绿鬣蜥健康表现">
-                <span>绿鬣蜥健康特征</span>
-                <p><strong>日间活动稳定、进食规律、正常晒背且体态无明显异常</strong><em>是判断绿鬣蜥日常健康状态的重要参考。</em></p>
-              </div>
-              <div class="food-habit-daily today-habit-analysis" aria-label="今日健康分析">
-                <span>今日健康分析</span>
-                <p><strong>整体健康状态良好</strong><em>活力指数、进食规律、环境适应与体态健康均处于良好水平，暂未发现明显异常。</em></p>
+              <div class="health-risk-list" aria-label="疾病风险识别结果">
+                <article class="health-risk-item">
+                  <span class="health-risk-check" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="m7 12 3 3 7-7" /></svg>
+                  </span>
+                  <div>
+                    <strong>呼吸道感染</strong>
+                  </div>
+                  <em>未识别到明显风险</em>
+                </article>
+                <article class="health-risk-item">
+                  <span class="health-risk-check" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="m7 12 3 3 7-7" /></svg>
+                  </span>
+                  <div>
+                    <strong>外伤</strong>
+                  </div>
+                  <em>未识别到明显风险</em>
+                </article>
+                <article class="health-risk-item">
+                  <span class="health-risk-check" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="m7 12 3 3 7-7" /></svg>
+                  </span>
+                  <div>
+                    <strong>皮肤溃烂</strong>
+                  </div>
+                  <em>未识别到明显风险</em>
+                </article>
               </div>
             </section>
 

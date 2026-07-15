@@ -3429,6 +3429,21 @@ button {
     radial-gradient(circle at 91% 8%, rgba(75, 193, 255, 0.26), transparent 35%),
     linear-gradient(135deg, rgba(245, 251, 255, 0.98), rgba(230, 245, 255, 0.88));
   box-shadow: 0 5px 13px rgba(73, 134, 205, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.92);
+  cursor: pointer;
+  transition: box-shadow 160ms ease, transform 160ms ease;
+}
+
+.disease-risk-card:hover {
+  box-shadow: 0 8px 18px rgba(73, 134, 205, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.96);
+}
+
+.disease-risk-card:active {
+  transform: translateY(1px) scale(0.998);
+}
+
+.disease-risk-card:focus-visible {
+  outline: 2px solid rgba(47, 128, 255, 0.72);
+  outline-offset: 3px;
 }
 
 .disease-risk-copy {
@@ -4476,10 +4491,6 @@ button {
   background: rgba(255, 255, 255, 0.62);
 }
 
-.health-ai-analysis-panel {
-  background: rgba(255, 255, 255, 0.62);
-}
-
 .food-habit-head {
   display: flex;
   align-items: flex-start;
@@ -4538,11 +4549,6 @@ button {
   background: rgba(84, 184, 232, 0.15);
 }
 
-.health-ai-analysis-panel .food-habit-head > span {
-  color: #3d78c9;
-  background: rgba(98, 163, 255, 0.1);
-}
-
 .food-habit-daily {
   display: grid;
   gap: 7px;
@@ -4597,10 +4603,6 @@ button {
   background: rgba(238, 250, 255, 0.84);
 }
 
-.health-ai-analysis-panel .food-habit-daily {
-  background: rgba(248, 251, 255, 0.66);
-}
-
 .environment-suitability-panel .environment-today-analysis {
   background: rgba(246, 251, 255, 0.9);
   box-shadow: inset 0 0 0 1px rgba(91, 181, 229, 0.1);
@@ -4632,11 +4634,6 @@ button {
   box-shadow: inset 0 0 0 1px rgba(91, 163, 224, 0.1);
 }
 
-.health-ai-analysis-panel .today-habit-analysis {
-  background: rgba(250, 252, 255, 0.72);
-  box-shadow: inset 0 0 0 1px rgba(91, 163, 224, 0.07);
-}
-
 .sun-habit-panel .food-habit-daily > span {
   color: #b48343;
 }
@@ -4647,10 +4644,6 @@ button {
 
 .environment-suitability-panel .food-habit-daily > span {
   color: #5598b9;
-}
-
-.health-ai-analysis-panel .food-habit-daily > span {
-  color: #5c91c6;
 }
 
 .sun-habit-panel .food-habit-daily strong {
@@ -4675,14 +4668,6 @@ button {
 
 .environment-suitability-panel .food-habit-daily em {
   color: #7b99aa;
-}
-
-.health-ai-analysis-panel .food-habit-daily strong {
-  color: #356ba5;
-}
-
-.health-ai-analysis-panel .food-habit-daily em {
-  color: #7d98b5;
 }
 
 .activity-habit-panel .food-habit-daily {
@@ -4749,6 +4734,7 @@ button {
 
 .health-score-hero,
 .health-trend-panel,
+.health-risk-panel,
 .health-breakdown-panel {
   border: 1px solid rgba(255, 255, 255, 0.82);
   border-radius: 20px;
@@ -4927,6 +4913,116 @@ button {
 
 .chart-labels span {
   text-align: center;
+}
+
+.health-risk-panel {
+  display: grid;
+  gap: 14px;
+  padding: 16px 14px 14px;
+  background: rgba(255, 255, 255, 0.66);
+}
+
+.health-risk-head {
+  display: flex;
+  align-items: center;
+}
+
+.health-risk-head > span {
+  color: #4b8cff;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: var(--weight-bold);
+}
+
+.health-risk-summary {
+  position: relative;
+  display: grid;
+  align-items: center;
+  min-height: 116px;
+  padding: 16px 110px 15px 15px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.86);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 91% 8%, rgba(75, 193, 255, 0.26), transparent 35%),
+    linear-gradient(135deg, rgba(245, 251, 255, 0.98), rgba(230, 245, 255, 0.88));
+  box-shadow: 0 5px 13px rgba(73, 134, 205, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+
+.health-risk-summary > div {
+  min-width: 0;
+}
+
+.health-risk-summary-badge {
+  position: absolute;
+  right: -4px;
+  top: 50%;
+  width: 112px;
+  height: 112px;
+  object-fit: contain;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.health-risk-list {
+  display: grid;
+}
+
+.health-risk-item {
+  min-height: 54px;
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 2px;
+  border-bottom: 1px solid rgba(210, 226, 244, 0.82);
+}
+
+.health-risk-item:last-child {
+  border-bottom: 0;
+  padding-bottom: 2px;
+}
+
+.health-risk-check {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  color: #4b8cff;
+  background: rgba(235, 244, 255, 0.92);
+}
+
+.health-risk-check svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.health-risk-item > div {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+
+.health-risk-item > div strong {
+  color: #26303b;
+  font-size: 13px;
+  line-height: 1.15;
+  font-weight: var(--weight-bold);
+}
+
+.health-risk-item em {
+  color: #4b7fc4;
+  font-size: 11px;
+  line-height: 1;
+  font-style: normal;
+  font-weight: var(--weight-bold);
+  white-space: nowrap;
 }
 
 .food-summary-icon.health-up {

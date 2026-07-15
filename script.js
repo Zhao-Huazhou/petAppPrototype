@@ -45,6 +45,7 @@ const activityFeatureButton = document.querySelector(".activity-feature-card");
 const sunFeatureButton = document.querySelector(".sun-feature-card");
 const moltFeatureButton = document.querySelector(".molt-feature-card");
 const healthReportCard = document.querySelector(".health-report-card");
+const diseaseRiskCard = document.querySelector(".disease-risk-card");
 const envMetricButtons = document.querySelectorAll(".env-detail-entry");
 const foodBackButton = document.querySelector(".food-back");
 const activityBackButton = document.querySelector(".activity-back");
@@ -448,6 +449,19 @@ healthReportCard?.addEventListener("click", () => {
 });
 
 healthReportCard?.addEventListener("keydown", (event) => {
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    setActiveView("health-detail");
+    setDrawerOpen(false);
+  }
+});
+
+diseaseRiskCard?.addEventListener("click", () => {
+  setActiveView("health-detail");
+  setDrawerOpen(false);
+});
+
+diseaseRiskCard?.addEventListener("keydown", (event) => {
   if (event.key === "Enter" || event.key === " ") {
     event.preventDefault();
     setActiveView("health-detail");
