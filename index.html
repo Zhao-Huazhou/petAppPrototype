@@ -183,13 +183,13 @@
                   <p>可乐 · 在线</p>
                 </div>
               </article>
-              <article class="device-card">
+              <button class="device-card aquarium-device-card" type="button" aria-label="进入水族箱摄像头 AI 智养鱼">
                 <div class="device-visual camera-device aquarium-camera" aria-hidden="true"></div>
                 <div>
                   <h3>水族箱摄像头</h3>
                   <p>客厅 · 在线</p>
                 </div>
-              </article>
+              </button>
               <button class="device-card reptile-device-card" type="button" aria-label="进入爬宠摄像头实时监控">
                 <div class="device-visual camera-device reptile-camera" aria-hidden="true"></div>
                 <div>
@@ -756,6 +756,322 @@
           <div class="create-pet-footer">
             <button class="create-pet-save" type="button">保存并关联</button>
           </div>
+        </section>
+
+        <section class="page-view aquarium-view" data-view="aquarium-camera" aria-label="水族箱摄像头 AI 智养鱼">
+          <header class="aquarium-topbar">
+            <div class="aquarium-mini-actions" aria-label="页面操作">
+              <button class="aquarium-back" type="button" aria-label="返回设备页面">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m15 5-7 7 7 7" />
+                </svg>
+              </button>
+              <span aria-hidden="true"></span>
+              <button class="aquarium-more" type="button" aria-label="更多选项">···</button>
+            </div>
+            <h1 class="aquarium-page-title">AI智养鱼</h1>
+            <div class="aquarium-topbar-spacer" aria-hidden="true"></div>
+          </header>
+
+          <div class="aquarium-pages">
+            <section class="aquarium-page aquarium-home-page active" data-aquarium-page="home" aria-label="AI 智养鱼首页">
+              <section class="aquarium-hero">
+                <img src="./assets/aquarium-camera-live.png" alt="客厅草金鱼缸实时画面" />
+                <div class="aquarium-hero-shade" aria-hidden="true"></div>
+                <div class="aquarium-live-chip" role="status">
+                  <i aria-hidden="true"></i>
+                  实时 · 在线
+                </div>
+                <div class="aquarium-hero-copy">
+                  <p>下午好 ☀️ · Kelly</p>
+                  <h2>今天鱼缸看起来不错</h2>
+                  <span>上次分析：2小时前 · 健康分 86</span>
+                </div>
+              </section>
+
+              <button class="aquarium-feed-reminder" type="button" data-aquarium-feedback="喂食提醒已查看">
+                <span class="aquarium-feed-icon" aria-hidden="true">⏰</span>
+                <span>
+                  <strong>该喂鱼啦</strong>
+                  <small>上次喂食：今天 09:00 · 已过 6 小时</small>
+                </span>
+                <b aria-hidden="true">›</b>
+              </button>
+
+              <section class="aquarium-home-section" aria-labelledby="aquarium-ai-title">
+                <div class="aquarium-section-heading">
+                  <h2 id="aquarium-ai-title">AI 智能分析</h2>
+                </div>
+                <div class="aquarium-analysis-grid">
+                  <button class="aquarium-analysis-card" type="button" data-analysis-target="disease">
+                    <span aria-hidden="true">🩺</span>
+                    <strong>疾病检测</strong>
+                    <small>白点·赤皮</small>
+                  </button>
+                  <button class="aquarium-analysis-card" type="button" data-analysis-target="species">
+                    <span aria-hidden="true">🐠</span>
+                    <strong>鱼种识别</strong>
+                    <small>80+品种</small>
+                  </button>
+                  <button class="aquarium-analysis-card" type="button" data-analysis-target="density">
+                    <span aria-hidden="true">⚖️</span>
+                    <strong>密度混养</strong>
+                    <small>计算评级</small>
+                  </button>
+                  <button class="aquarium-analysis-card" type="button" data-analysis-target="behavior">
+                    <span aria-hidden="true">🎬</span>
+                    <strong>行为分析</strong>
+                    <small>10秒视频</small>
+                  </button>
+                </div>
+              </section>
+
+              <section class="aquarium-home-section" aria-labelledby="aquarium-shortcuts-title">
+                <div class="aquarium-section-heading">
+                  <h2 id="aquarium-shortcuts-title">快捷入口</h2>
+                </div>
+                <div class="aquarium-analysis-grid aquarium-shortcut-grid">
+                  <button class="aquarium-analysis-card" type="button" data-aquarium-feedback="养护记录功能已选中">
+                    <span aria-hidden="true">📋</span>
+                    <strong>养护记录</strong>
+                    <small>喂食/换水</small>
+                  </button>
+                  <button class="aquarium-analysis-card" type="button" data-aquarium-feedback="知识库功能已选中">
+                    <span aria-hidden="true">📚</span>
+                    <strong>知识库</strong>
+                    <small>新手入门</small>
+                  </button>
+                  <button class="aquarium-analysis-card" type="button" data-aquarium-feedback="AI 管家功能已选中">
+                    <span aria-hidden="true">💬</span>
+                    <strong>AI管家</strong>
+                    <small>在线问诊</small>
+                  </button>
+                  <button class="aquarium-analysis-card aquarium-report-shortcut" type="button">
+                    <span aria-hidden="true">📊</span>
+                    <strong>报告中心</strong>
+                    <small>查看历史</small>
+                  </button>
+                </div>
+              </section>
+
+              <section class="aquarium-first-use">
+                <h2>📸 首次使用?</h2>
+                <p>拍一张鱼缸照片，3秒出AI诊断报告。<br />无需注册鱼缸，新手友好。</p>
+                <button class="aquarium-photo-cta" type="button" data-analysis-upload="disease">立即拍照分析 ›</button>
+              </section>
+            </section>
+
+            <section class="aquarium-page aquarium-diagnosis-page" data-aquarium-page="diagnosis" aria-label="AI 诊断">
+              <section class="aquarium-diagnosis-hero">
+                <img src="./assets/aquarium-camera-live.png" alt="" aria-hidden="true" />
+                <div>
+                  <p>AI 诊断</p>
+                  <h2>四大AI分析 · 拍照即测</h2>
+                  <span>每次生成当次报告 · 无需绑定鱼缸</span>
+                </div>
+              </section>
+
+              <div class="aquarium-diagnosis-list">
+                <article class="aquarium-diagnosis-card disease" data-diagnosis-feature="disease">
+                  <span class="aquarium-diagnosis-icon" aria-hidden="true">🩺</span>
+                  <h2>疾病检测</h2>
+                  <p>白点病 / 赤皮病 体表早筛 · 照片标注病鱼位置、置信度与处理方案</p>
+                  <button type="button" data-analysis-upload="disease">立即检测 ›</button>
+                </article>
+                <article class="aquarium-diagnosis-card species" data-diagnosis-feature="species">
+                  <span class="aquarium-diagnosis-icon" aria-hidden="true">🐠</span>
+                  <h2>鱼种识别</h2>
+                  <p>80+观赏鱼品种识别 · 给出每种数量与混养兼容性提示</p>
+                  <button type="button" data-analysis-upload="species">立即识别 ›</button>
+                </article>
+                <article class="aquarium-diagnosis-card density" data-diagnosis-feature="density">
+                  <span class="aquarium-diagnosis-icon" aria-hidden="true">⚖️</span>
+                  <h2>密度 &amp; 混养分析</h2>
+                  <p>基于鱼缸水量+识别鱼数+鱼种 · 计算密度评级与混养冲突风险</p>
+                  <button type="button" data-analysis-upload="density">立即分析 ›</button>
+                </article>
+                <article class="aquarium-diagnosis-card behavior" data-diagnosis-feature="behavior">
+                  <span class="aquarium-diagnosis-icon" aria-hidden="true">🎬</span>
+                  <h2>行为分析（视频）</h2>
+                  <p>上传10秒视频 · AI识别6种行为 · 异常行为关联疾病风险</p>
+                  <button type="button" data-analysis-upload="behavior">拍视频分析 ›</button>
+                </article>
+              </div>
+
+              <section class="aquarium-shooting-tips">
+                <h2>💡 拍摄建议</h2>
+                <ul>
+                  <li>光线充足、水面平静时拍摄</li>
+                  <li>疾病检测：对准疑似病鱼体表，拍清晰</li>
+                  <li>鱼种/密度：拍摄鱼缸全景，尽量拍全</li>
+                  <li>行为分析：拍10秒视频，让鱼自由游动</li>
+                  <li>避免反光与手指遮挡镜头</li>
+                </ul>
+              </section>
+            </section>
+
+            <section class="aquarium-page aquarium-reports-page" data-aquarium-page="reports" aria-label="报告中心">
+              <article class="aquarium-current-report aquarium-report-entry" data-report-type="behavior"
+                data-report-title="行为分析报告 · 当次"
+                data-report-summary="客厅草金鱼缸 · 检出3种异常行为 · 健康分 58"
+                data-report-status="需关注 · 2026-07-27 15:40">
+                <div class="aquarium-report-meta">
+                  <span>本次</span>
+                  <time datetime="2026-07-27T15:40">2026-07-27 15:40</time>
+                </div>
+                <h2>行为分析报告 · 当次</h2>
+                <p>客厅草金鱼缸 · 检出3种异常行为 · 健康分 58</p>
+                <button type="button">查看完整报告 ›</button>
+              </article>
+
+              <div class="aquarium-report-history-head">
+                <h2>历史报告</h2>
+                <div class="aquarium-report-filter">
+                  <button class="aquarium-filter-button" type="button" aria-expanded="false">筛选⌄</button>
+                  <div class="aquarium-report-filter-menu" hidden>
+                    <button class="active" type="button" data-report-filter="all">全部</button>
+                    <button type="button" data-report-filter="disease">疾病</button>
+                    <button type="button" data-report-filter="species">鱼种</button>
+                    <button type="button" data-report-filter="density">密度</button>
+                    <button type="button" data-report-filter="behavior">行为</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="aquarium-report-list">
+                <article class="aquarium-history-report aquarium-report-entry" tabindex="0" role="button" data-report-type="disease"
+                  data-report-title="疾病检测报告 · 白点病"
+                  data-report-summary="草金鱼 · 健康分 62"
+                  data-report-status="高风险 · 2026-07-27 15:30">
+                  <span class="aquarium-report-emoji" aria-hidden="true">🩺</span>
+                  <div>
+                    <h3>疾病检测报告 · 白点病</h3>
+                    <p>草金鱼 · 健康分 62</p>
+                    <span class="aquarium-report-tag danger">高风险</span>
+                    <time datetime="2026-07-27T15:30">2026-07-27 15:30</time>
+                  </div>
+                </article>
+                <article class="aquarium-history-report aquarium-report-entry" tabindex="0" role="button" data-report-type="species"
+                  data-report-title="鱼种识别报告 · 3种鱼"
+                  data-report-summary="草金鱼×5 · 红绿灯×4 · 虎皮×3"
+                  data-report-status="健康 · 2026-07-26 10:15">
+                  <span class="aquarium-report-emoji" aria-hidden="true">🐠</span>
+                  <div>
+                    <h3>鱼种识别报告 · 3种鱼</h3>
+                    <p>草金鱼×5 · 红绿灯×4 · 虎皮×3</p>
+                    <span class="aquarium-report-tag healthy">健康</span>
+                    <time datetime="2026-07-26T10:15">2026-07-26 10:15</time>
+                  </div>
+                </article>
+                <article class="aquarium-history-report aquarium-report-entry" tabindex="0" role="button" data-report-type="density"
+                  data-report-title="密度混养分析报告"
+                  data-report-summary="18尾/80L · 2.25尾/10L · 偏高"
+                  data-report-status="偏高 · 2026-07-25 14:20">
+                  <span class="aquarium-report-emoji" aria-hidden="true">⚖️</span>
+                  <div>
+                    <h3>密度混养分析报告</h3>
+                    <p>18尾/80L · 2.25尾/10L · 偏高</p>
+                    <span class="aquarium-report-tag warn">偏高</span>
+                    <time datetime="2026-07-25T14:20">2026-07-25 14:20</time>
+                  </div>
+                </article>
+                <article class="aquarium-history-report aquarium-report-entry" tabindex="0" role="button" data-report-type="behavior"
+                  data-report-title="行为分析报告 · 视频"
+                  data-report-summary="检出3种异常行为 · 健康分 58"
+                  data-report-status="需关注 · 2026-07-24 21:00">
+                  <span class="aquarium-report-emoji" aria-hidden="true">🎬</span>
+                  <div>
+                    <h3>行为分析报告 · 视频</h3>
+                    <p>检出3种异常行为 · 健康分 58</p>
+                    <span class="aquarium-report-tag warn">需关注</span>
+                    <time datetime="2026-07-24T21:00">2026-07-24 21:00</time>
+                  </div>
+                </article>
+              </div>
+              <p class="aquarium-report-empty" hidden>暂无该类型报告</p>
+            </section>
+
+            <section class="aquarium-page aquarium-profile-page" data-aquarium-page="profile" aria-label="我的">
+              <section class="aquarium-user-hero">
+                <span class="aquarium-user-avatar" aria-hidden="true">K</span>
+                <div>
+                  <h2>Kelly</h2>
+                  <p>Lv.3 养鱼达人 · 累计分析 23 次</p>
+                </div>
+              </section>
+
+              <section class="aquarium-user-stats" aria-label="养鱼数据">
+                <div><strong>12</strong><span>已识别鱼种</span></div>
+                <div><strong>23</strong><span>分析报告</span></div>
+                <div><strong>76</strong><span>平均健康分</span></div>
+              </section>
+
+              <div class="aquarium-menu-group">
+                <button class="aquarium-my-reports" type="button"><span>📊</span><b>我的报告</b><small>23份 ›</small></button>
+                <button type="button" data-aquarium-feedback="养护记录功能已选中"><span>📋</span><b>养护记录</b><small>本月23条 ›</small></button>
+                <button type="button" data-aquarium-feedback="AI 智养管家功能已选中"><span>💬</span><b>AI智养管家</b><small>›</small></button>
+                <button type="button" data-aquarium-feedback="养鱼知识库功能已选中"><span>📚</span><b>养鱼知识库</b><small>›</small></button>
+              </div>
+              <div class="aquarium-menu-group">
+                <button type="button" data-aquarium-feedback="通知设置已开启"><span>🔔</span><b>通知设置</b><small>已开启 ›</small></button>
+                <button type="button" data-aquarium-feedback="隐私与数据功能已选中"><span>🔒</span><b>隐私与数据</b><small>›</small></button>
+                <button type="button" data-aquarium-feedback="帮助与反馈功能已选中"><span>❓</span><b>帮助与反馈</b><small>›</small></button>
+                <button type="button" data-aquarium-feedback="当前版本 v1.0.0"><span>ℹ️</span><b>关于宠智灵</b><small>v1.0.0 ›</small></button>
+              </div>
+            </section>
+          </div>
+
+          <nav class="aquarium-bottom-nav" aria-label="AI 智养鱼导航">
+            <button class="active" type="button" data-aquarium-tab="home" aria-current="page">
+              <span aria-hidden="true">🏠</span>
+              <b>首页</b>
+            </button>
+            <button class="aquarium-diagnosis-tab" type="button" data-aquarium-tab="diagnosis">
+              <span class="aquarium-diagnosis-orb" aria-hidden="true">🩺</span>
+              <b>诊断</b>
+            </button>
+            <button type="button" data-aquarium-tab="reports">
+              <span aria-hidden="true">📊</span>
+              <b>报告</b>
+            </button>
+            <button type="button" data-aquarium-tab="profile">
+              <span aria-hidden="true">👤</span>
+              <b>我的</b>
+            </button>
+          </nav>
+
+          <input class="aquarium-image-input" type="file" accept="image/*" capture="environment" hidden />
+          <input class="aquarium-video-input" type="file" accept="video/*" capture="environment" hidden />
+
+          <div class="aquarium-modal aquarium-analysis-preview" aria-hidden="true">
+            <button class="aquarium-modal-scrim" type="button" aria-label="关闭文件预览"></button>
+            <section class="aquarium-modal-card" role="dialog" aria-modal="true" aria-labelledby="aquarium-preview-title">
+              <button class="aquarium-modal-close" type="button" aria-label="关闭">×</button>
+              <span class="aquarium-modal-icon" aria-hidden="true">✨</span>
+              <h2 id="aquarium-preview-title">已选择分析素材</h2>
+              <p class="aquarium-preview-kind"></p>
+              <div class="aquarium-preview-media">
+                <img alt="待分析图片预览" hidden />
+                <video controls playsinline hidden></video>
+              </div>
+              <p class="aquarium-preview-note">本原型仅展示本地预览，不会上传文件或生成 AI 结果。</p>
+              <button class="aquarium-modal-primary aquarium-preview-done" type="button">完成</button>
+            </section>
+          </div>
+
+          <div class="aquarium-modal aquarium-report-modal" aria-hidden="true">
+            <button class="aquarium-modal-scrim" type="button" aria-label="关闭报告详情"></button>
+            <section class="aquarium-modal-card aquarium-report-modal-card" role="dialog" aria-modal="true" aria-labelledby="aquarium-report-modal-title">
+              <button class="aquarium-modal-close" type="button" aria-label="关闭">×</button>
+              <span class="aquarium-modal-icon" aria-hidden="true">📊</span>
+              <h2 id="aquarium-report-modal-title"></h2>
+              <p class="aquarium-report-modal-summary"></p>
+              <span class="aquarium-report-modal-status"></span>
+              <button class="aquarium-modal-primary aquarium-report-done" type="button">知道了</button>
+            </section>
+          </div>
+
+          <div class="aquarium-toast" role="status" aria-live="polite"></div>
         </section>
 
         <section class="page-view monitor-view" data-view="reptile-camera" aria-label="爬宠摄像头页面">
