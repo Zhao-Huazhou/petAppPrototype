@@ -40,6 +40,7 @@ const aquariumPageTitle = document.querySelector(".aquarium-page-title");
 const aquariumPages = document.querySelectorAll("[data-aquarium-page]");
 const aquariumTabs = document.querySelectorAll("[data-aquarium-tab]");
 const aquariumAnalysisTargets = document.querySelectorAll("[data-analysis-target]");
+const aquariumDiagnosisCards = document.querySelectorAll("[data-diagnosis-feature]");
 const aquariumUploadButtons = document.querySelectorAll("[data-analysis-upload]");
 const aquariumImageInput = document.querySelector(".aquarium-image-input");
 const aquariumVideoInput = document.querySelector(".aquarium-video-input");
@@ -47,6 +48,22 @@ const aquariumAnalysisPreview = document.querySelector(".aquarium-analysis-previ
 const aquariumPreviewKind = document.querySelector(".aquarium-preview-kind");
 const aquariumPreviewImage = document.querySelector(".aquarium-preview-media img");
 const aquariumPreviewVideo = document.querySelector(".aquarium-preview-media video");
+const aquariumCaptureGuide = document.querySelector(".aquarium-capture-guide-text");
+const aquariumCaptureMode = document.querySelector(".aquarium-capture-mode");
+const aquariumCaptureType = document.querySelector(".aquarium-capture-type strong");
+const aquariumCaptureLive = document.querySelector(".aquarium-capture-live");
+const aquariumCaptureImage = document.querySelector(".aquarium-capture-image");
+const aquariumCaptureVideo = document.querySelector(".aquarium-capture-video");
+const aquariumCaptureSelected = document.querySelector(".aquarium-capture-selected");
+const aquariumCaptureSelectedName = document.querySelector(".aquarium-capture-selected span");
+const aquariumCaptureGallery = document.querySelector(".aquarium-capture-gallery");
+const aquariumCaptureShutter = document.querySelector(".aquarium-capture-shutter");
+const aquariumCaptureFlash = document.querySelector(".aquarium-capture-flash");
+const aquariumCaptureFlip = document.querySelector(".aquarium-capture-flip");
+const aquariumCaptureCancel = document.querySelector(".aquarium-capture-cancel");
+const aquariumCaptureStart = document.querySelector(".aquarium-capture-start");
+const aquariumCaptureCloudNote = document.querySelector(".aquarium-capture-cloud-note");
+const aquariumCaptureWarning = document.querySelector(".aquarium-capture-warning");
 const aquariumReportShortcut = document.querySelector(".aquarium-report-shortcut");
 const aquariumMyReportsButton = document.querySelector(".aquarium-my-reports");
 const aquariumFilterButton = document.querySelector(".aquarium-filter-button");
@@ -91,15 +108,18 @@ const messageButton = document.querySelector(".message");
 const messageBackButton = document.querySelector(".message-back");
 const profileButton = document.querySelector(".profile");
 const profileBackButton = document.querySelector(".profile-back");
-let activeViewName = "ai";
-let returnViewName = "ai";
+let activeViewName = "pet";
+let returnViewName = "pet";
 let activeAquariumPage = "home";
 let pendingAquariumAnalysis = "disease";
+let aquariumCaptureReturnPage = "diagnosis";
 let aquariumPreviewUrl = "";
+let aquariumSelectedFile = null;
 let aquariumToastTimer = 0;
 const aquariumScrollPositions = {
   home: 0,
   diagnosis: 0,
+  capture: 0,
   reports: 0,
   profile: 0,
 };
@@ -421,6 +441,7 @@ monitorStatusNoticeCloseButtons.forEach((button) => {
 const aquariumPageTitles = {
   home: "AI智养鱼",
   diagnosis: "AI诊断",
+  capture: "拍照分析",
   reports: "报告中心",
   profile: "我的",
 };
@@ -430,6 +451,37 @@ const aquariumAnalysisNames = {
   species: "鱼种识别",
   density: "密度与混养分析",
   behavior: "行为分析",
+};
+
+const aquariumCaptureConfigs = {
+  disease: {
+    name: "疾病检测",
+    guide: "对准疑似病鱼体表 · 光线充足 / 水面平静",
+    cloudNote: "照片上传至云端 AI 推理，预计 5–10 秒生成当次分析报告。",
+    warningLead: "本分析基于照片 AI 推理，以下因素可能影响准确性：",
+    fileKind: "照片",
+  },
+  species: {
+    name: "鱼种识别",
+    guide: "对准鱼缸全景 · 确保鱼只清晰完整",
+    cloudNote: "照片上传至云端 AI 推理，预计 5–10 秒识别鱼种与数量。",
+    warningLead: "本分析基于照片 AI 推理，以下因素可能影响准确性：",
+    fileKind: "照片",
+  },
+  density: {
+    name: "密度与混养分析",
+    guide: "完整拍摄鱼缸 · 尽量拍全所有鱼只",
+    cloudNote: "照片上传至云端 AI 推理，将结合鱼缸水量计算密度与混养风险。",
+    warningLead: "本分析基于照片 AI 推理，以下因素可能影响准确性：",
+    fileKind: "照片",
+  },
+  behavior: {
+    name: "行为分析",
+    guide: "保持镜头稳定 · 连续录制鱼只游动 10 秒",
+    cloudNote: "视频上传至云端 AI 推理，预计 5–10 秒识别异常行为及疾病风险。",
+    warningLead: "本分析基于 10 秒视频 AI 推理，以下因素可能影响准确性：",
+    fileKind: "视频",
+  },
 };
 
 function showAquariumToast(message) {
@@ -453,10 +505,6 @@ function setAquariumModalOpen(modal, isOpen) {
 function closeAquariumAnalysisPreview() {
   setAquariumModalOpen(aquariumAnalysisPreview, false);
   aquariumPreviewVideo?.pause();
-  if (aquariumPreviewUrl) {
-    URL.revokeObjectURL(aquariumPreviewUrl);
-    aquariumPreviewUrl = "";
-  }
   if (aquariumPreviewImage) {
     aquariumPreviewImage.removeAttribute("src");
     aquariumPreviewImage.hidden = true;
@@ -466,6 +514,71 @@ function closeAquariumAnalysisPreview() {
     aquariumPreviewVideo.load();
     aquariumPreviewVideo.hidden = true;
   }
+}
+
+function clearAquariumCaptureSelection() {
+  closeAquariumAnalysisPreview();
+  aquariumCaptureVideo?.pause();
+
+  if (aquariumPreviewUrl) {
+    URL.revokeObjectURL(aquariumPreviewUrl);
+    aquariumPreviewUrl = "";
+  }
+
+  aquariumSelectedFile = null;
+  if (aquariumCaptureImage) {
+    aquariumCaptureImage.removeAttribute("src");
+    aquariumCaptureImage.hidden = true;
+  }
+  if (aquariumCaptureVideo) {
+    aquariumCaptureVideo.removeAttribute("src");
+    aquariumCaptureVideo.load();
+    aquariumCaptureVideo.hidden = true;
+  }
+  if (aquariumCaptureLive) {
+    aquariumCaptureLive.hidden = false;
+  }
+  if (aquariumCaptureSelected) {
+    aquariumCaptureSelected.hidden = true;
+  }
+  if (aquariumCaptureSelectedName) {
+    aquariumCaptureSelectedName.textContent = "";
+  }
+  aquariumCaptureStart?.classList.remove("has-media");
+}
+
+function configureAquariumCapture(analysisType) {
+  const config = aquariumCaptureConfigs[analysisType] ?? aquariumCaptureConfigs.disease;
+  pendingAquariumAnalysis = analysisType;
+
+  if (aquariumCaptureGuide) {
+    aquariumCaptureGuide.textContent = config.guide;
+  }
+  if (aquariumCaptureMode) {
+    aquariumCaptureMode.textContent = config.name;
+  }
+  if (aquariumCaptureType) {
+    aquariumCaptureType.textContent = config.name;
+  }
+  if (aquariumCaptureCloudNote) {
+    aquariumCaptureCloudNote.textContent = config.cloudNote;
+  }
+  const warningLead = aquariumCaptureWarning?.querySelector("p");
+  if (warningLead) {
+    warningLead.textContent = config.warningLead;
+  }
+
+  const isVideo = analysisType === "behavior";
+  aquariumCaptureShutter?.classList.toggle("is-video", isVideo);
+  aquariumCaptureShutter?.setAttribute("aria-label", isVideo ? "录像按钮展示" : "拍照按钮展示");
+  aquariumCaptureGallery?.setAttribute("aria-label", isVideo ? "从相册选择视频" : "从相册选择照片");
+}
+
+function openAquariumCapture(analysisType) {
+  clearAquariumCaptureSelection();
+  aquariumCaptureReturnPage = activeAquariumPage === "home" ? "home" : "diagnosis";
+  configureAquariumCapture(analysisType);
+  setAquariumPage("capture");
 }
 
 function closeAquariumReportModal() {
@@ -500,7 +613,8 @@ function setAquariumPage(pageName, focusFeature) {
   });
 
   aquariumTabs.forEach((tab) => {
-    const isActive = tab.dataset.aquariumTab === pageName;
+    const activeTabName = pageName === "capture" ? "diagnosis" : pageName;
+    const isActive = tab.dataset.aquariumTab === activeTabName;
     tab.classList.toggle("active", isActive);
     if (isActive) {
       tab.setAttribute("aria-current", "page");
@@ -513,7 +627,15 @@ function setAquariumPage(pageName, focusFeature) {
   if (aquariumPageTitle) {
     aquariumPageTitle.textContent = aquariumPageTitles[pageName];
   }
-  aquariumBackButton?.setAttribute("aria-label", pageName === "home" ? "返回设备页面" : "返回 AI 智养鱼首页");
+  const backLabel =
+    pageName === "home"
+      ? "返回设备页面"
+      : pageName === "capture"
+        ? aquariumCaptureReturnPage === "home"
+          ? "返回 AI 智养鱼首页"
+          : "返回 AI 诊断"
+        : "返回 AI 智养鱼首页";
+  aquariumBackButton?.setAttribute("aria-label", backLabel);
 
   window.requestAnimationFrame(() => {
     if (appScreen) {
@@ -554,22 +676,60 @@ function openAquariumUpload(analysisType) {
 
 function handleAquariumFileSelection(input, mediaType) {
   const file = input?.files?.[0];
-  if (!file || !aquariumPreviewKind) {
+  if (!file) {
+    return;
+  }
+
+  if (aquariumPreviewUrl) {
+    URL.revokeObjectURL(aquariumPreviewUrl);
+  }
+
+  aquariumCaptureVideo?.pause();
+  aquariumSelectedFile = file;
+  aquariumPreviewUrl = URL.createObjectURL(file);
+
+  if (aquariumCaptureLive) {
+    aquariumCaptureLive.hidden = true;
+  }
+  if (mediaType === "video" && aquariumCaptureVideo) {
+    if (aquariumCaptureImage) {
+      aquariumCaptureImage.hidden = true;
+      aquariumCaptureImage.removeAttribute("src");
+    }
+    aquariumCaptureVideo.src = aquariumPreviewUrl;
+    aquariumCaptureVideo.hidden = false;
+  } else if (aquariumCaptureImage) {
+    if (aquariumCaptureVideo) {
+      aquariumCaptureVideo.pause();
+      aquariumCaptureVideo.hidden = true;
+      aquariumCaptureVideo.removeAttribute("src");
+    }
+    aquariumCaptureImage.src = aquariumPreviewUrl;
+    aquariumCaptureImage.hidden = false;
+  }
+
+  if (aquariumCaptureSelected && aquariumCaptureSelectedName) {
+    aquariumCaptureSelectedName.textContent = file.name;
+    aquariumCaptureSelected.hidden = false;
+  }
+  aquariumCaptureStart?.classList.add("has-media");
+}
+
+function openAquariumSelectedPreview() {
+  if (!aquariumSelectedFile || !aquariumPreviewUrl || !aquariumPreviewKind) {
+    showAquariumToast(`请先拍摄或选择${aquariumCaptureConfigs[pendingAquariumAnalysis].fileKind}`);
     return;
   }
 
   closeAquariumAnalysisPreview();
-  aquariumPreviewUrl = URL.createObjectURL(file);
-  aquariumPreviewKind.textContent = `${aquariumAnalysisNames[pendingAquariumAnalysis]} · ${file.name}`;
-
-  if (mediaType === "video" && aquariumPreviewVideo) {
+  aquariumPreviewKind.textContent = `${aquariumAnalysisNames[pendingAquariumAnalysis]} · ${aquariumSelectedFile.name}`;
+  if (pendingAquariumAnalysis === "behavior" && aquariumPreviewVideo) {
     aquariumPreviewVideo.src = aquariumPreviewUrl;
     aquariumPreviewVideo.hidden = false;
   } else if (aquariumPreviewImage) {
     aquariumPreviewImage.src = aquariumPreviewUrl;
     aquariumPreviewImage.hidden = false;
   }
-
   setAquariumModalOpen(aquariumAnalysisPreview, true);
 }
 
@@ -605,6 +765,7 @@ function openAquariumReport(entry) {
 
 aquariumDeviceButton?.addEventListener("click", () => {
   closeAquariumOverlays();
+  clearAquariumCaptureSelection();
   setAquariumPage("home");
   setActiveView("aquarium-camera");
   setDrawerOpen(false);
@@ -613,7 +774,11 @@ aquariumDeviceButton?.addEventListener("click", () => {
 aquariumBackButton?.addEventListener("click", () => {
   closeAquariumOverlays();
   if (activeAquariumPage === "home") {
+    clearAquariumCaptureSelection();
     setActiveView("pet");
+  } else if (activeAquariumPage === "capture") {
+    clearAquariumCaptureSelection();
+    setAquariumPage(aquariumCaptureReturnPage);
   } else {
     setAquariumPage("home");
   }
@@ -625,21 +790,61 @@ aquariumMoreButton?.addEventListener("click", () => {
 
 aquariumTabs.forEach((tab) => {
   tab.addEventListener("click", () => {
+    if (activeAquariumPage === "capture") {
+      clearAquariumCaptureSelection();
+    }
     setAquariumPage(tab.dataset.aquariumTab);
   });
 });
 
 aquariumAnalysisTargets.forEach((target) => {
   target.addEventListener("click", () => {
-    setAquariumPage("diagnosis", target.dataset.analysisTarget);
+    openAquariumCapture(target.dataset.analysisTarget);
+  });
+});
+
+aquariumDiagnosisCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    openAquariumCapture(card.dataset.diagnosisFeature);
+  });
+
+  card.addEventListener("keydown", (event) => {
+    if ((event.key === "Enter" || event.key === " ") && event.target === card) {
+      event.preventDefault();
+      openAquariumCapture(card.dataset.diagnosisFeature);
+    }
   });
 });
 
 aquariumUploadButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    openAquariumUpload(button.dataset.analysisUpload);
+    openAquariumCapture(button.dataset.analysisUpload);
   });
 });
+
+aquariumCaptureGallery?.addEventListener("click", () => {
+  openAquariumUpload(pendingAquariumAnalysis);
+});
+
+aquariumCaptureFlash?.addEventListener("click", () => {
+  aquariumCaptureFlash.classList.toggle("active");
+  const isActive = aquariumCaptureFlash.classList.contains("active");
+  aquariumCaptureFlash.setAttribute("aria-pressed", String(isActive));
+  showAquariumToast(isActive ? "闪光灯已开启" : "闪光灯已关闭");
+});
+
+aquariumCaptureFlip?.addEventListener("click", () => {
+  aquariumCaptureFlip.classList.add("is-rotating");
+  showAquariumToast("已切换摄像头");
+  window.setTimeout(() => aquariumCaptureFlip.classList.remove("is-rotating"), 420);
+});
+
+aquariumCaptureCancel?.addEventListener("click", () => {
+  clearAquariumCaptureSelection();
+  setAquariumPage(aquariumCaptureReturnPage);
+});
+
+aquariumCaptureStart?.addEventListener("click", openAquariumSelectedPreview);
 
 aquariumImageInput?.addEventListener("change", () => {
   handleAquariumFileSelection(aquariumImageInput, "image");
@@ -889,7 +1094,11 @@ document.addEventListener("keydown", (event) => {
       aquariumFilterButton.setAttribute("aria-expanded", "false");
     } else if (activeViewName === "aquarium-camera") {
       if (activeAquariumPage === "home") {
+        clearAquariumCaptureSelection();
         setActiveView("pet");
+      } else if (activeAquariumPage === "capture") {
+        clearAquariumCaptureSelection();
+        setAquariumPage(aquariumCaptureReturnPage);
       } else {
         setAquariumPage("home");
       }

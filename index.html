@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>宠智灵 AI 对话页</title>
+    <title>宠智灵设备页</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <main class="phone">
-      <section class="app-screen" aria-label="宠智灵 AI 对话页面">
+      <section class="app-screen" aria-label="宠智灵设备页面">
         <header class="status-bar" aria-hidden="true">
           <div class="time">10:15</div>
           <div class="status-icons">
@@ -27,8 +27,8 @@
               <path d="M4 18h16" />
             </svg>
           </button>
-          <a href="#" class="nav-tab" data-view-target="pet">设备</a>
-          <a href="#" class="nav-tab active" data-view-target="ai" aria-current="page">宠智灵</a>
+          <a href="#" class="nav-tab active" data-view-target="pet" aria-current="page">设备</a>
+          <a href="#" class="nav-tab" data-view-target="ai">宠智灵</a>
           <a href="#" class="nav-tab" data-view-target="care">趣养</a>
           <a href="#" class="nav-tab">趣玩</a>
           <button class="icon-btn message" type="button" aria-label="消息">
@@ -46,7 +46,7 @@
           </button>
         </nav>
 
-        <section class="page-view ai-view active" data-view="ai">
+        <section class="page-view ai-view" data-view="ai">
           <section class="hero">
             <div class="greeting">
               <h1>Hi~，有什么可以帮你</h1>
@@ -123,7 +123,7 @@
           </footer>
         </section>
 
-        <section class="page-view pet-view" data-view="pet" aria-label="设备页面">
+        <section class="page-view pet-view active" data-view="pet" aria-label="设备页面">
           <article class="pet-archive">
             <div class="archive-rings" aria-hidden="true">
               <span></span>
@@ -778,19 +778,32 @@
               <section class="aquarium-hero">
                 <img src="./assets/aquarium-camera-live.png" alt="客厅草金鱼缸实时画面" />
                 <div class="aquarium-hero-shade" aria-hidden="true"></div>
-                <div class="aquarium-live-chip" role="status">
-                  <i aria-hidden="true"></i>
-                  实时 · 在线
-                </div>
                 <div class="aquarium-hero-copy">
-                  <p>下午好 ☀️ · Kelly</p>
+                  <p>
+                    下午好
+                    <svg class="aquarium-inline-icon" viewBox="0 0 24 24" aria-hidden="true">
+                      <circle cx="12" cy="12" r="4" />
+                      <path d="M12 2v3" />
+                      <path d="M12 19v3" />
+                      <path d="m4.9 4.9 2.1 2.1" />
+                      <path d="m17 17 2.1 2.1" />
+                      <path d="M2 12h3" />
+                      <path d="M19 12h3" />
+                    </svg>
+                    · Kelly
+                  </p>
                   <h2>今天鱼缸看起来不错</h2>
                   <span>上次分析：2小时前 · 健康分 86</span>
                 </div>
               </section>
 
               <button class="aquarium-feed-reminder" type="button" data-aquarium-feedback="喂食提醒已查看">
-                <span class="aquarium-feed-icon" aria-hidden="true">⏰</span>
+                <span class="aquarium-feed-icon" aria-hidden="true">
+                  <svg class="aquarium-ui-icon" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="8" />
+                    <path d="M12 8v5l3 2" />
+                  </svg>
+                </span>
                 <span>
                   <strong>该喂鱼啦</strong>
                   <small>上次喂食：今天 09:00 · 已过 6 小时</small>
@@ -804,22 +817,47 @@
                 </div>
                 <div class="aquarium-analysis-grid">
                   <button class="aquarium-analysis-card" type="button" data-analysis-target="disease">
-                    <span aria-hidden="true">🩺</span>
+                    <span aria-hidden="true">
+                      <svg class="aquarium-ui-icon" viewBox="0 0 36 36">
+                        <rect x="8" y="6" width="20" height="24" rx="4" />
+                        <path d="M18 15v8" />
+                        <path d="M14 19h8" />
+                        <path d="M13 10h10" />
+                      </svg>
+                    </span>
                     <strong>疾病检测</strong>
                     <small>白点·赤皮</small>
                   </button>
                   <button class="aquarium-analysis-card" type="button" data-analysis-target="species">
-                    <span aria-hidden="true">🐠</span>
+                    <span aria-hidden="true">
+                      <svg class="aquarium-ui-icon" viewBox="0 0 28 28">
+                        <path d="M3 14s4-6 11-6 11 6 11 6-4 6-11 6S3 14 3 14Z" />
+                        <circle cx="14" cy="14" r="3.5" />
+                      </svg>
+                    </span>
                     <strong>鱼种识别</strong>
                     <small>80+品种</small>
                   </button>
                   <button class="aquarium-analysis-card" type="button" data-analysis-target="density">
-                    <span aria-hidden="true">⚖️</span>
+                    <span aria-hidden="true">
+                      <svg class="aquarium-ui-icon" viewBox="0 0 24 24">
+                        <path d="m2 9 3-3 3 3" />
+                        <path d="M13 18H7a2 2 0 0 1-2-2V6" />
+                        <path d="m22 15-3 3-3-3" />
+                        <path d="M11 6h6a2 2 0 0 1 2 2v10" />
+                      </svg>
+                    </span>
                     <strong>密度混养</strong>
                     <small>计算评级</small>
                   </button>
                   <button class="aquarium-analysis-card" type="button" data-analysis-target="behavior">
-                    <span aria-hidden="true">🎬</span>
+                    <span aria-hidden="true">
+                      <svg class="aquarium-ui-icon" viewBox="0 0 36 36">
+                        <rect x="8" y="11" width="17" height="14" rx="4" />
+                        <path d="m25 16 5-3v10l-5-3" />
+                        <path d="m16 15 6 3-6 3v-6Z" />
+                      </svg>
+                    </span>
                     <strong>行为分析</strong>
                     <small>10秒视频</small>
                   </button>
@@ -832,22 +870,47 @@
                 </div>
                 <div class="aquarium-analysis-grid aquarium-shortcut-grid">
                   <button class="aquarium-analysis-card" type="button" data-aquarium-feedback="养护记录功能已选中">
-                    <span aria-hidden="true">📋</span>
+                    <span aria-hidden="true">
+                      <svg class="aquarium-ui-icon" viewBox="0 0 36 36">
+                        <rect x="8" y="7" width="20" height="23" rx="4" />
+                        <path d="M13 5v5" />
+                        <path d="M23 5v5" />
+                        <path d="M13 16h4" />
+                        <path d="M21 16h2" />
+                        <path d="M13 22h10" />
+                      </svg>
+                    </span>
                     <strong>养护记录</strong>
                     <small>喂食/换水</small>
                   </button>
                   <button class="aquarium-analysis-card" type="button" data-aquarium-feedback="知识库功能已选中">
-                    <span aria-hidden="true">📚</span>
+                    <span aria-hidden="true">
+                      <svg class="aquarium-ui-icon" viewBox="0 0 36 36">
+                        <path d="M7 11h11l3 4h8v14H7V11Z" />
+                        <path d="M11 22h14" />
+                      </svg>
+                    </span>
                     <strong>知识库</strong>
                     <small>新手入门</small>
                   </button>
                   <button class="aquarium-analysis-card" type="button" data-aquarium-feedback="AI 管家功能已选中">
-                    <span aria-hidden="true">💬</span>
+                    <span aria-hidden="true">
+                      <svg class="aquarium-ui-icon" viewBox="0 0 24 24">
+                        <path d="M21 11.5a8.4 8.4 0 0 1-8.6 8.2 9.1 9.1 0 0 1-3.8-.8L4 20l1.2-4.1A8 8 0 0 1 3.5 11.5 8.4 8.4 0 0 1 12 3.3a8.4 8.4 0 0 1 9 8.2Z" />
+                        <path d="M8.2 11.4h7.6" />
+                        <path d="M8.2 14.2h4.9" />
+                      </svg>
+                    </span>
                     <strong>AI管家</strong>
                     <small>在线问诊</small>
                   </button>
                   <button class="aquarium-analysis-card aquarium-report-shortcut" type="button">
-                    <span aria-hidden="true">📊</span>
+                    <span aria-hidden="true">
+                      <svg class="aquarium-ui-icon" viewBox="0 0 36 36">
+                        <path d="M7 11h11l3 4h8v14H7V11Z" />
+                        <path d="M11 22h14" />
+                      </svg>
+                    </span>
                     <strong>报告中心</strong>
                     <small>查看历史</small>
                   </button>
@@ -855,7 +918,13 @@
               </section>
 
               <section class="aquarium-first-use">
-                <h2>📸 首次使用?</h2>
+                <h2>
+                  <svg class="aquarium-ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z" />
+                    <circle cx="12" cy="13" r="3.5" />
+                  </svg>
+                  首次使用?
+                </h2>
                 <p>拍一张鱼缸照片，3秒出AI诊断报告。<br />无需注册鱼缸，新手友好。</p>
                 <button class="aquarium-photo-cta" type="button" data-analysis-upload="disease">立即拍照分析 ›</button>
               </section>
@@ -872,34 +941,65 @@
               </section>
 
               <div class="aquarium-diagnosis-list">
-                <article class="aquarium-diagnosis-card disease" data-diagnosis-feature="disease">
-                  <span class="aquarium-diagnosis-icon" aria-hidden="true">🩺</span>
+                <article class="aquarium-diagnosis-card disease" data-diagnosis-feature="disease" role="button" tabindex="0" aria-label="进入疾病检测拍照分析">
+                  <span class="aquarium-diagnosis-icon" aria-hidden="true">
+                    <svg class="aquarium-ui-icon" viewBox="0 0 36 36">
+                      <rect x="8" y="6" width="20" height="24" rx="4" />
+                      <path d="M18 15v8" />
+                      <path d="M14 19h8" />
+                      <path d="M13 10h10" />
+                    </svg>
+                  </span>
                   <h2>疾病检测</h2>
                   <p>白点病 / 赤皮病 体表早筛 · 照片标注病鱼位置、置信度与处理方案</p>
-                  <button type="button" data-analysis-upload="disease">立即检测 ›</button>
+                  <span class="aquarium-diagnosis-action" aria-hidden="true">立即检测 ›</span>
                 </article>
-                <article class="aquarium-diagnosis-card species" data-diagnosis-feature="species">
-                  <span class="aquarium-diagnosis-icon" aria-hidden="true">🐠</span>
+                <article class="aquarium-diagnosis-card species" data-diagnosis-feature="species" role="button" tabindex="0" aria-label="进入鱼种识别拍照分析">
+                  <span class="aquarium-diagnosis-icon" aria-hidden="true">
+                    <svg class="aquarium-ui-icon" viewBox="0 0 28 28">
+                      <path d="M3 14s4-6 11-6 11 6 11 6-4 6-11 6S3 14 3 14Z" />
+                      <circle cx="14" cy="14" r="3.5" />
+                    </svg>
+                  </span>
                   <h2>鱼种识别</h2>
                   <p>80+观赏鱼品种识别 · 给出每种数量与混养兼容性提示</p>
-                  <button type="button" data-analysis-upload="species">立即识别 ›</button>
+                  <span class="aquarium-diagnosis-action" aria-hidden="true">立即识别 ›</span>
                 </article>
-                <article class="aquarium-diagnosis-card density" data-diagnosis-feature="density">
-                  <span class="aquarium-diagnosis-icon" aria-hidden="true">⚖️</span>
+                <article class="aquarium-diagnosis-card density" data-diagnosis-feature="density" role="button" tabindex="0" aria-label="进入密度与混养拍照分析">
+                  <span class="aquarium-diagnosis-icon" aria-hidden="true">
+                    <svg class="aquarium-ui-icon" viewBox="0 0 24 24">
+                      <path d="m2 9 3-3 3 3" />
+                      <path d="M13 18H7a2 2 0 0 1-2-2V6" />
+                      <path d="m22 15-3 3-3-3" />
+                      <path d="M11 6h6a2 2 0 0 1 2 2v10" />
+                    </svg>
+                  </span>
                   <h2>密度 &amp; 混养分析</h2>
                   <p>基于鱼缸水量+识别鱼数+鱼种 · 计算密度评级与混养冲突风险</p>
-                  <button type="button" data-analysis-upload="density">立即分析 ›</button>
+                  <span class="aquarium-diagnosis-action" aria-hidden="true">立即分析 ›</span>
                 </article>
-                <article class="aquarium-diagnosis-card behavior" data-diagnosis-feature="behavior">
-                  <span class="aquarium-diagnosis-icon" aria-hidden="true">🎬</span>
+                <article class="aquarium-diagnosis-card behavior" data-diagnosis-feature="behavior" role="button" tabindex="0" aria-label="进入行为分析拍照分析">
+                  <span class="aquarium-diagnosis-icon" aria-hidden="true">
+                    <svg class="aquarium-ui-icon" viewBox="0 0 36 36">
+                      <rect x="8" y="11" width="17" height="14" rx="4" />
+                      <path d="m25 16 5-3v10l-5-3" />
+                      <path d="m16 15 6 3-6 3v-6Z" />
+                    </svg>
+                  </span>
                   <h2>行为分析（视频）</h2>
                   <p>上传10秒视频 · AI识别6种行为 · 异常行为关联疾病风险</p>
-                  <button type="button" data-analysis-upload="behavior">拍视频分析 ›</button>
+                  <span class="aquarium-diagnosis-action" aria-hidden="true">拍视频分析 ›</span>
                 </article>
               </div>
 
               <section class="aquarium-shooting-tips">
-                <h2>💡 拍摄建议</h2>
+                <h2>
+                  <svg class="aquarium-ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M13 3 15.4 8.6 21 11l-5.6 2.4L13 19l-2.4-5.6L5 11l5.6-2.4L13 3Z" />
+                    <path d="M5.5 16.5 6.4 18.6 8.5 19.5 6.4 20.4 5.5 22.5 4.6 20.4 2.5 19.5 4.6 18.6 5.5 16.5Z" />
+                  </svg>
+                  拍摄建议
+                </h2>
                 <ul>
                   <li>光线充足、水面平静时拍摄</li>
                   <li>疾病检测：对准疑似病鱼体表，拍清晰</li>
@@ -907,6 +1007,101 @@
                   <li>行为分析：拍10秒视频，让鱼自由游动</li>
                   <li>避免反光与手指遮挡镜头</li>
                 </ul>
+              </section>
+            </section>
+
+            <section class="aquarium-page aquarium-capture-page" data-aquarium-page="capture" aria-label="拍照分析">
+              <section class="aquarium-capture-viewfinder" aria-label="分析素材取景区">
+                <img class="aquarium-capture-live" src="./assets/aquarium-camera-live.png" alt="客厅草金鱼缸摄像头画面" />
+                <img class="aquarium-capture-image" alt="待分析图片" hidden />
+                <video class="aquarium-capture-video" muted controls playsinline hidden></video>
+                <div class="aquarium-capture-shade" aria-hidden="true"></div>
+                <div class="aquarium-capture-grid" aria-hidden="true"></div>
+
+                <div class="aquarium-capture-guide">
+                  <svg class="aquarium-ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z" />
+                    <circle cx="12" cy="13" r="3.5" />
+                  </svg>
+                  <span class="aquarium-capture-guide-text">对准疑似病鱼体表 · 光线充足 / 水面平静</span>
+                </div>
+
+                <span class="aquarium-capture-mode">疾病检测</span>
+
+                <button class="aquarium-capture-gallery" type="button" aria-label="从相册选择照片">
+                  <svg class="aquarium-ui-icon" viewBox="0 0 36 36" aria-hidden="true">
+                    <path d="M7 11h11l3 4h8v14H7V11Z" />
+                    <path d="M11 22h14" />
+                  </svg>
+                </button>
+
+                <div class="aquarium-capture-controls">
+                  <button class="aquarium-capture-flash" type="button" aria-label="切换闪光灯">
+                    <svg class="aquarium-ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M13 2 5 13h6l-1 9 9-13h-6l1-7Z" />
+                    </svg>
+                  </button>
+                  <button class="aquarium-capture-shutter" type="button" aria-label="拍摄按钮展示" disabled>
+                    <span aria-hidden="true"></span>
+                  </button>
+                  <button class="aquarium-capture-flip" type="button" aria-label="切换摄像头">
+                    <svg class="aquarium-ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M3 12a9 9 0 1 0 3-6.7" />
+                      <path d="M3 4v5h5" />
+                    </svg>
+                  </button>
+                </div>
+
+                <div class="aquarium-capture-selected" role="status" hidden>
+                  <svg class="aquarium-ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="m9 12 2 2 4-4" />
+                  </svg>
+                  <span></span>
+                </div>
+              </section>
+
+              <section class="aquarium-capture-panel">
+                <p class="aquarium-capture-type">
+                  <span>检测类型：</span>
+                  <strong>疾病检测</strong>
+                </p>
+
+                <label class="aquarium-capture-tank">
+                  <span>关联鱼缸（可选）</span>
+                  <span class="aquarium-capture-select-wrap">
+                    <select aria-label="关联鱼缸">
+                      <option>客厅草金鱼缸（120L）</option>
+                      <option>不关联鱼缸</option>
+                    </select>
+                  </span>
+                </label>
+
+                <p class="aquarium-capture-cloud-note">照片上传至云端 AI 推理，预计 5–10 秒生成当次分析报告。</p>
+
+                <aside class="aquarium-capture-warning">
+                  <h2>
+                    <svg class="aquarium-ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M12 9v4" />
+                      <path d="M12 17h.01" />
+                      <path d="M10.3 3.8 2.8 18a2 2 0 0 0 1.8 3h14.8a2 2 0 0 0 1.8-3L13.7 3.8a2 2 0 0 0-3.4 0Z" />
+                    </svg>
+                    识别准确性提示
+                  </h2>
+                  <p>本分析基于照片 AI 推理，以下因素可能影响准确性：</p>
+                  <ul>
+                    <li>鱼只互相遮挡或被水草 / 装饰物遮挡</li>
+                    <li>光线不足或水面反光 / 波纹干扰</li>
+                    <li>拍摄角度偏差或画面模糊 / 失焦</li>
+                  </ul>
+                  <p>建议多拍几张，选择画面最清晰的照片上传。</p>
+                  <small>AI 分析结果仅供参考，不构成专业诊断建议。</small>
+                </aside>
+
+                <div class="aquarium-capture-actions">
+                  <button class="aquarium-capture-cancel" type="button">返回</button>
+                  <button class="aquarium-capture-start" type="button">开始分析</button>
+                </div>
               </section>
             </section>
 
@@ -927,7 +1122,10 @@
               <div class="aquarium-report-history-head">
                 <h2>历史报告</h2>
                 <div class="aquarium-report-filter">
-                  <button class="aquarium-filter-button" type="button" aria-expanded="false">筛选⌄</button>
+                  <button class="aquarium-filter-button" type="button" aria-expanded="false">
+                    <span>筛选</span>
+                    <span class="aquarium-filter-chevron" aria-hidden="true">▾</span>
+                  </button>
                   <div class="aquarium-report-filter-menu" hidden>
                     <button class="active" type="button" data-report-filter="all">全部</button>
                     <button type="button" data-report-filter="disease">疾病</button>
@@ -943,7 +1141,14 @@
                   data-report-title="疾病检测报告 · 白点病"
                   data-report-summary="草金鱼 · 健康分 62"
                   data-report-status="高风险 · 2026-07-27 15:30">
-                  <span class="aquarium-report-emoji" aria-hidden="true">🩺</span>
+                  <span class="aquarium-report-emoji" aria-hidden="true">
+                    <svg class="aquarium-ui-icon" viewBox="0 0 36 36">
+                      <rect x="8" y="6" width="20" height="24" rx="4" />
+                      <path d="M18 15v8" />
+                      <path d="M14 19h8" />
+                      <path d="M13 10h10" />
+                    </svg>
+                  </span>
                   <div>
                     <h3>疾病检测报告 · 白点病</h3>
                     <p>草金鱼 · 健康分 62</p>
@@ -955,7 +1160,12 @@
                   data-report-title="鱼种识别报告 · 3种鱼"
                   data-report-summary="草金鱼×5 · 红绿灯×4 · 虎皮×3"
                   data-report-status="健康 · 2026-07-26 10:15">
-                  <span class="aquarium-report-emoji" aria-hidden="true">🐠</span>
+                  <span class="aquarium-report-emoji" aria-hidden="true">
+                    <svg class="aquarium-ui-icon" viewBox="0 0 28 28">
+                      <path d="M3 14s4-6 11-6 11 6 11 6-4 6-11 6S3 14 3 14Z" />
+                      <circle cx="14" cy="14" r="3.5" />
+                    </svg>
+                  </span>
                   <div>
                     <h3>鱼种识别报告 · 3种鱼</h3>
                     <p>草金鱼×5 · 红绿灯×4 · 虎皮×3</p>
@@ -967,7 +1177,14 @@
                   data-report-title="密度混养分析报告"
                   data-report-summary="18尾/80L · 2.25尾/10L · 偏高"
                   data-report-status="偏高 · 2026-07-25 14:20">
-                  <span class="aquarium-report-emoji" aria-hidden="true">⚖️</span>
+                  <span class="aquarium-report-emoji" aria-hidden="true">
+                    <svg class="aquarium-ui-icon" viewBox="0 0 24 24">
+                      <path d="m2 9 3-3 3 3" />
+                      <path d="M13 18H7a2 2 0 0 1-2-2V6" />
+                      <path d="m22 15-3 3-3-3" />
+                      <path d="M11 6h6a2 2 0 0 1 2 2v10" />
+                    </svg>
+                  </span>
                   <div>
                     <h3>密度混养分析报告</h3>
                     <p>18尾/80L · 2.25尾/10L · 偏高</p>
@@ -979,7 +1196,13 @@
                   data-report-title="行为分析报告 · 视频"
                   data-report-summary="检出3种异常行为 · 健康分 58"
                   data-report-status="需关注 · 2026-07-24 21:00">
-                  <span class="aquarium-report-emoji" aria-hidden="true">🎬</span>
+                  <span class="aquarium-report-emoji" aria-hidden="true">
+                    <svg class="aquarium-ui-icon" viewBox="0 0 36 36">
+                      <rect x="8" y="11" width="17" height="14" rx="4" />
+                      <path d="m25 16 5-3v10l-5-3" />
+                      <path d="m16 15 6 3-6 3v-6Z" />
+                    </svg>
+                  </span>
                   <div>
                     <h3>行为分析报告 · 视频</h3>
                     <p>检出3种异常行为 · 健康分 58</p>
@@ -1007,35 +1230,129 @@
               </section>
 
               <div class="aquarium-menu-group">
-                <button class="aquarium-my-reports" type="button"><span>📊</span><b>我的报告</b><small>23份 ›</small></button>
-                <button type="button" data-aquarium-feedback="养护记录功能已选中"><span>📋</span><b>养护记录</b><small>本月23条 ›</small></button>
-                <button type="button" data-aquarium-feedback="AI 智养管家功能已选中"><span>💬</span><b>AI智养管家</b><small>›</small></button>
-                <button type="button" data-aquarium-feedback="养鱼知识库功能已选中"><span>📚</span><b>养鱼知识库</b><small>›</small></button>
+                <button class="aquarium-my-reports" type="button">
+                  <span aria-hidden="true">
+                    <svg class="aquarium-ui-icon" viewBox="0 0 36 36">
+                      <path d="M7 11h11l3 4h8v14H7V11Z" />
+                      <path d="M11 22h14" />
+                    </svg>
+                  </span>
+                  <b>我的报告</b><small>23份 ›</small>
+                </button>
+                <button type="button" data-aquarium-feedback="养护记录功能已选中">
+                  <span aria-hidden="true">
+                    <svg class="aquarium-ui-icon" viewBox="0 0 36 36">
+                      <rect x="8" y="7" width="20" height="23" rx="4" />
+                      <path d="M13 5v5" />
+                      <path d="M23 5v5" />
+                      <path d="M13 16h4" />
+                      <path d="M21 16h2" />
+                      <path d="M13 22h10" />
+                    </svg>
+                  </span>
+                  <b>养护记录</b><small>本月23条 ›</small>
+                </button>
+                <button type="button" data-aquarium-feedback="AI 智养管家功能已选中">
+                  <span aria-hidden="true">
+                    <svg class="aquarium-ui-icon" viewBox="0 0 24 24">
+                      <path d="M21 11.5a8.4 8.4 0 0 1-8.6 8.2 9.1 9.1 0 0 1-3.8-.8L4 20l1.2-4.1A8 8 0 0 1 3.5 11.5 8.4 8.4 0 0 1 12 3.3a8.4 8.4 0 0 1 9 8.2Z" />
+                      <path d="M8.2 11.4h7.6" />
+                      <path d="M8.2 14.2h4.9" />
+                    </svg>
+                  </span>
+                  <b>AI智养管家</b><small>›</small>
+                </button>
+                <button type="button" data-aquarium-feedback="养鱼知识库功能已选中">
+                  <span aria-hidden="true">
+                    <svg class="aquarium-ui-icon" viewBox="0 0 36 36">
+                      <path d="M7 11h11l3 4h8v14H7V11Z" />
+                      <path d="M11 22h14" />
+                    </svg>
+                  </span>
+                  <b>养鱼知识库</b><small>›</small>
+                </button>
               </div>
               <div class="aquarium-menu-group">
-                <button type="button" data-aquarium-feedback="通知设置已开启"><span>🔔</span><b>通知设置</b><small>已开启 ›</small></button>
-                <button type="button" data-aquarium-feedback="隐私与数据功能已选中"><span>🔒</span><b>隐私与数据</b><small>›</small></button>
-                <button type="button" data-aquarium-feedback="帮助与反馈功能已选中"><span>❓</span><b>帮助与反馈</b><small>›</small></button>
-                <button type="button" data-aquarium-feedback="当前版本 v1.0.0"><span>ℹ️</span><b>关于宠智灵</b><small>v1.0.0 ›</small></button>
+                <button type="button" data-aquarium-feedback="通知设置已开启">
+                  <span aria-hidden="true">
+                    <svg class="aquarium-ui-icon" viewBox="0 0 24 24">
+                      <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 7h18s-3 0-3-7" />
+                      <path d="M10 19a2 2 0 0 0 4 0" />
+                      <path d="m19 4 2-2" />
+                    </svg>
+                  </span>
+                  <b>通知设置</b><small>已开启 ›</small>
+                </button>
+                <button type="button" data-aquarium-feedback="隐私与数据功能已选中">
+                  <span aria-hidden="true">
+                    <svg class="aquarium-ui-icon" viewBox="0 0 24 24">
+                      <rect x="5" y="11" width="14" height="10" rx="2" />
+                      <path d="M8 11V8a4 4 0 0 1 8 0v3" />
+                    </svg>
+                  </span>
+                  <b>隐私与数据</b><small>›</small>
+                </button>
+                <button type="button" data-aquarium-feedback="帮助与反馈功能已选中">
+                  <span aria-hidden="true">
+                    <svg class="aquarium-ui-icon" viewBox="0 0 32 32">
+                      <path d="M6 7h20v14H15l-6 5v-5H6V7Z" />
+                      <path d="M16 11v6" />
+                      <path d="M13 14h6" />
+                    </svg>
+                  </span>
+                  <b>帮助与反馈</b><small>›</small>
+                </button>
+                <button type="button" data-aquarium-feedback="当前版本 v1.0.0">
+                  <span aria-hidden="true">
+                    <svg class="aquarium-ui-icon" viewBox="0 0 32 32">
+                      <path d="M16 4 27 10v12l-11 6-11-6V10L16 4Z" />
+                      <circle cx="16" cy="16" r="4" />
+                    </svg>
+                  </span>
+                  <b>关于宠智灵</b><small>v1.0.0 ›</small>
+                </button>
               </div>
             </section>
           </div>
 
           <nav class="aquarium-bottom-nav" aria-label="AI 智养鱼导航">
             <button class="active" type="button" data-aquarium-tab="home" aria-current="page">
-              <span aria-hidden="true">🏠</span>
+              <span aria-hidden="true">
+                <svg class="aquarium-ui-icon" viewBox="0 0 24 24">
+                  <path d="m3 10 9-7 9 7" />
+                  <path d="M5 9v11h14V9" />
+                  <path d="M9 20v-7h6v7" />
+                </svg>
+              </span>
               <b>首页</b>
             </button>
             <button class="aquarium-diagnosis-tab" type="button" data-aquarium-tab="diagnosis">
-              <span class="aquarium-diagnosis-orb" aria-hidden="true">🩺</span>
+              <span class="aquarium-diagnosis-orb" aria-hidden="true">
+                <svg class="aquarium-ui-icon" viewBox="0 0 36 36">
+                  <rect x="8" y="6" width="20" height="24" rx="4" />
+                  <path d="M18 15v8" />
+                  <path d="M14 19h8" />
+                  <path d="M13 10h10" />
+                </svg>
+              </span>
               <b>诊断</b>
             </button>
-            <button type="button" data-aquarium-tab="reports">
-              <span aria-hidden="true">📊</span>
+            <button class="aquarium-reports-tab" type="button" data-aquarium-tab="reports">
+              <span aria-hidden="true">
+                <svg class="aquarium-ui-icon" viewBox="0 0 36 36">
+                  <path d="M7 11h11l3 4h8v14H7V11Z" />
+                  <path d="M11 22h14" />
+                </svg>
+              </span>
               <b>报告</b>
             </button>
             <button type="button" data-aquarium-tab="profile">
-              <span aria-hidden="true">👤</span>
+              <span aria-hidden="true">
+                <svg class="aquarium-ui-icon" viewBox="0 0 24 24">
+                  <path d="M12 12.2a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4Z" />
+                  <path d="M4.6 21a7.4 7.4 0 0 1 14.8 0" />
+                </svg>
+              </span>
               <b>我的</b>
             </button>
           </nav>
@@ -1046,8 +1363,18 @@
           <div class="aquarium-modal aquarium-analysis-preview" aria-hidden="true">
             <button class="aquarium-modal-scrim" type="button" aria-label="关闭文件预览"></button>
             <section class="aquarium-modal-card" role="dialog" aria-modal="true" aria-labelledby="aquarium-preview-title">
-              <button class="aquarium-modal-close" type="button" aria-label="关闭">×</button>
-              <span class="aquarium-modal-icon" aria-hidden="true">✨</span>
+              <button class="aquarium-modal-close" type="button" aria-label="关闭">
+                <svg class="aquarium-ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M18 6 6 18" />
+                  <path d="m6 6 12 12" />
+                </svg>
+              </button>
+              <span class="aquarium-modal-icon" aria-hidden="true">
+                <svg class="aquarium-ui-icon" viewBox="0 0 24 24">
+                  <path d="M13 3 15.4 8.6 21 11l-5.6 2.4L13 19l-2.4-5.6L5 11l5.6-2.4L13 3Z" />
+                  <path d="M5.5 16.5 6.4 18.6 8.5 19.5 6.4 20.4 5.5 22.5 4.6 20.4 2.5 19.5 4.6 18.6 5.5 16.5Z" />
+                </svg>
+              </span>
               <h2 id="aquarium-preview-title">已选择分析素材</h2>
               <p class="aquarium-preview-kind"></p>
               <div class="aquarium-preview-media">
@@ -1062,8 +1389,18 @@
           <div class="aquarium-modal aquarium-report-modal" aria-hidden="true">
             <button class="aquarium-modal-scrim" type="button" aria-label="关闭报告详情"></button>
             <section class="aquarium-modal-card aquarium-report-modal-card" role="dialog" aria-modal="true" aria-labelledby="aquarium-report-modal-title">
-              <button class="aquarium-modal-close" type="button" aria-label="关闭">×</button>
-              <span class="aquarium-modal-icon" aria-hidden="true">📊</span>
+              <button class="aquarium-modal-close" type="button" aria-label="关闭">
+                <svg class="aquarium-ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M18 6 6 18" />
+                  <path d="m6 6 12 12" />
+                </svg>
+              </button>
+              <span class="aquarium-modal-icon" aria-hidden="true">
+                <svg class="aquarium-ui-icon" viewBox="0 0 36 36">
+                  <path d="M7 11h11l3 4h8v14H7V11Z" />
+                  <path d="M11 22h14" />
+                </svg>
+              </span>
               <h2 id="aquarium-report-modal-title"></h2>
               <p class="aquarium-report-modal-summary"></p>
               <span class="aquarium-report-modal-status"></span>
