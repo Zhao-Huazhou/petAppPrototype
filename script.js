@@ -71,11 +71,20 @@ const aquariumFilterMenu = document.querySelector(".aquarium-report-filter-menu"
 const aquariumFilterOptions = document.querySelectorAll("[data-report-filter]");
 const aquariumReportEntries = document.querySelectorAll(".aquarium-report-entry");
 const aquariumReportEmpty = document.querySelector(".aquarium-report-empty");
-const aquariumReportModal = document.querySelector(".aquarium-report-modal");
-const aquariumReportModalTitle = document.querySelector("#aquarium-report-modal-title");
-const aquariumReportModalSummary = document.querySelector(".aquarium-report-modal-summary");
-const aquariumReportModalStatus = document.querySelector(".aquarium-report-modal-status");
-const aquariumFeedbackButtons = document.querySelectorAll("[data-aquarium-feedback]");
+const aquariumFullReportButton = document.querySelector(".aquarium-full-report-button");
+const aquariumDestinationButtons = document.querySelectorAll("[data-aquarium-destination]");
+const aquariumReportRetest = document.querySelector(".aquarium-report-retest");
+const aquariumReportConsult = document.querySelector(".aquarium-report-consult");
+const aquariumReportDiseaseButtons = document.querySelectorAll(".aquarium-report-disease, .aquarium-report-disease-cta");
+const aquariumKnowledgeSearch = document.querySelector(".aquarium-knowledge-search input");
+const aquariumKnowledgeFilters = document.querySelectorAll("[data-knowledge-filter]");
+const aquariumKnowledgeCards = document.querySelectorAll("[data-knowledge-category]");
+const aquariumKnowledgeDetailButtons = document.querySelectorAll("[data-knowledge-detail]");
+const aquariumKnowledgeEmpty = document.querySelector(".aquarium-knowledge-empty");
+const aquariumAssistantForm = document.querySelector(".aquarium-assistant-composer");
+const aquariumAssistantInput = document.querySelector("#aquarium-assistant-input");
+const aquariumAssistantMessages = document.querySelector(".aquarium-assistant-messages");
+const aquariumAssistantSuggestions = document.querySelectorAll(".aquarium-assistant-suggestions button");
 const aquariumToast = document.querySelector(".aquarium-toast");
 const reptileDeviceButton = document.querySelector(".reptile-device-card");
 const monitorBackButton = document.querySelector(".monitor-back");
@@ -116,11 +125,17 @@ let aquariumCaptureReturnPage = "diagnosis";
 let aquariumPreviewUrl = "";
 let aquariumSelectedFile = null;
 let aquariumToastTimer = 0;
+const aquariumPageReturnTargets = {};
 const aquariumScrollPositions = {
   home: 0,
   diagnosis: 0,
   capture: 0,
   reports: 0,
+  "report-detail": 0,
+  "care-records": 0,
+  knowledge: 0,
+  "knowledge-detail": 0,
+  assistant: 0,
   profile: 0,
 };
 
@@ -443,6 +458,11 @@ const aquariumPageTitles = {
   diagnosis: "AI诊断",
   capture: "拍照分析",
   reports: "报告中心",
+  "report-detail": "完整报告",
+  "care-records": "养护记录",
+  knowledge: "养鱼知识库",
+  "knowledge-detail": "知识详情",
+  assistant: "AI智养管家",
   profile: "我的",
 };
 
@@ -574,22 +594,44 @@ function configureAquariumCapture(analysisType) {
   aquariumCaptureGallery?.setAttribute("aria-label", isVideo ? "从相册选择视频" : "从相册选择照片");
 }
 
-function openAquariumCapture(analysisType) {
+function openAquariumCapture(analysisType, returnPage) {
   clearAquariumCaptureSelection();
-  aquariumCaptureReturnPage = activeAquariumPage === "home" ? "home" : "diagnosis";
+  aquariumCaptureReturnPage =
+    returnPage ??
+    (activeAquariumPage === "home" || activeAquariumPage === "diagnosis"
+      ? activeAquariumPage
+      : "diagnosis");
   configureAquariumCapture(analysisType);
   setAquariumPage("capture");
 }
 
-function closeAquariumReportModal() {
-  setAquariumModalOpen(aquariumReportModal, false);
-}
-
 function closeAquariumOverlays() {
   closeAquariumAnalysisPreview();
-  closeAquariumReportModal();
   aquariumFilterMenu?.toggleAttribute("hidden", true);
   aquariumFilterButton?.setAttribute("aria-expanded", "false");
+}
+
+function getAquariumRootTab(pageName) {
+  if (pageName === "capture") {
+    return "diagnosis";
+  }
+
+  let currentPageName = pageName;
+  let depth = 0;
+  while (aquariumPageReturnTargets[currentPageName] && depth < 8) {
+    currentPageName = aquariumPageReturnTargets[currentPageName];
+    depth += 1;
+  }
+
+  return ["home", "diagnosis", "reports", "profile"].includes(currentPageName)
+    ? currentPageName
+    : "home";
+}
+
+function openAquariumSubpage(pageName, returnPage = activeAquariumPage) {
+  aquariumPageReturnTargets[pageName] = returnPage;
+  aquariumScrollPositions[pageName] = 0;
+  setAquariumPage(pageName);
 }
 
 function setAquariumPage(pageName, focusFeature) {
@@ -613,7 +655,7 @@ function setAquariumPage(pageName, focusFeature) {
   });
 
   aquariumTabs.forEach((tab) => {
-    const activeTabName = pageName === "capture" ? "diagnosis" : pageName;
+    const activeTabName = getAquariumRootTab(pageName);
     const isActive = tab.dataset.aquariumTab === activeTabName;
     tab.classList.toggle("active", isActive);
     if (isActive) {
@@ -627,14 +669,14 @@ function setAquariumPage(pageName, focusFeature) {
   if (aquariumPageTitle) {
     aquariumPageTitle.textContent = aquariumPageTitles[pageName];
   }
-  const backLabel =
-    pageName === "home"
-      ? "返回设备页面"
-      : pageName === "capture"
-        ? aquariumCaptureReturnPage === "home"
-          ? "返回 AI 智养鱼首页"
-          : "返回 AI 诊断"
-        : "返回 AI 智养鱼首页";
+  let backLabel = "返回 AI 智养鱼首页";
+  if (pageName === "home") {
+    backLabel = "返回设备页面";
+  } else if (pageName === "capture") {
+    backLabel = `返回${aquariumPageTitles[aquariumCaptureReturnPage] ?? "上一页"}`;
+  } else if (aquariumPageReturnTargets[pageName]) {
+    backLabel = `返回${aquariumPageTitles[aquariumPageReturnTargets[pageName]] ?? "上一页"}`;
+  }
   aquariumBackButton?.setAttribute("aria-label", backLabel);
 
   window.requestAnimationFrame(() => {
@@ -752,17 +794,6 @@ function applyAquariumReportFilter(filterName) {
   aquariumFilterButton?.setAttribute("aria-expanded", "false");
 }
 
-function openAquariumReport(entry) {
-  if (!entry || !aquariumReportModalTitle || !aquariumReportModalSummary || !aquariumReportModalStatus) {
-    return;
-  }
-
-  aquariumReportModalTitle.textContent = entry.dataset.reportTitle ?? "";
-  aquariumReportModalSummary.textContent = entry.dataset.reportSummary ?? "";
-  aquariumReportModalStatus.textContent = entry.dataset.reportStatus ?? "";
-  setAquariumModalOpen(aquariumReportModal, true);
-}
-
 aquariumDeviceButton?.addEventListener("click", () => {
   closeAquariumOverlays();
   clearAquariumCaptureSelection();
@@ -779,6 +810,8 @@ aquariumBackButton?.addEventListener("click", () => {
   } else if (activeAquariumPage === "capture") {
     clearAquariumCaptureSelection();
     setAquariumPage(aquariumCaptureReturnPage);
+  } else if (aquariumPageReturnTargets[activeAquariumPage]) {
+    setAquariumPage(aquariumPageReturnTargets[activeAquariumPage]);
   } else {
     setAquariumPage("home");
   }
@@ -878,23 +911,107 @@ aquariumFilterOptions.forEach((option) => {
   });
 });
 
-aquariumReportEntries.forEach((entry) => {
-  entry.addEventListener("click", () => openAquariumReport(entry));
-  entry.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      openAquariumReport(entry);
-    }
+aquariumFullReportButton?.addEventListener("click", () => {
+  openAquariumSubpage("report-detail", "reports");
+});
+
+aquariumDestinationButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    openAquariumSubpage(button.dataset.aquariumDestination, activeAquariumPage);
   });
 });
 
-aquariumReportModal?.querySelectorAll(".aquarium-modal-close, .aquarium-modal-scrim, .aquarium-report-done").forEach((button) => {
-  button.addEventListener("click", closeAquariumReportModal);
+aquariumReportRetest?.addEventListener("click", () => {
+  openAquariumCapture("behavior", "report-detail");
 });
 
-aquariumFeedbackButtons.forEach((button) => {
+aquariumReportConsult?.addEventListener("click", () => {
+  openAquariumSubpage("assistant", "report-detail");
+});
+
+aquariumReportDiseaseButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    showAquariumToast(button.dataset.aquariumFeedback);
+    openAquariumCapture("disease", "report-detail");
+  });
+});
+
+let activeKnowledgeFilter = "all";
+
+function applyAquariumKnowledgeFilter() {
+  const query = aquariumKnowledgeSearch?.value.trim().toLocaleLowerCase("zh-CN") ?? "";
+  let visibleCount = 0;
+
+  aquariumKnowledgeCards.forEach((card) => {
+    const matchesCategory =
+      activeKnowledgeFilter === "all" || card.dataset.knowledgeCategory === activeKnowledgeFilter;
+    const matchesQuery = !query || card.textContent.toLocaleLowerCase("zh-CN").includes(query);
+    const shouldShow = matchesCategory && matchesQuery;
+    card.toggleAttribute("hidden", !shouldShow);
+    visibleCount += shouldShow ? 1 : 0;
+  });
+
+  aquariumKnowledgeEmpty?.toggleAttribute("hidden", visibleCount !== 0);
+}
+
+aquariumKnowledgeFilters.forEach((filter) => {
+  filter.addEventListener("click", () => {
+    activeKnowledgeFilter = filter.dataset.knowledgeFilter;
+    aquariumKnowledgeFilters.forEach((item) => {
+      item.classList.toggle("active", item === filter);
+    });
+    applyAquariumKnowledgeFilter();
+  });
+});
+
+aquariumKnowledgeSearch?.addEventListener("input", applyAquariumKnowledgeFilter);
+
+aquariumKnowledgeDetailButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    openAquariumSubpage("knowledge-detail", "knowledge");
+  });
+});
+
+function appendAquariumAssistantMessage(message, role) {
+  if (!aquariumAssistantMessages) {
+    return;
+  }
+
+  const bubble = document.createElement("div");
+  bubble.className = `aquarium-chat-bubble ${role}`;
+  const text = document.createElement("p");
+  text.textContent = message;
+  bubble.append(text);
+  aquariumAssistantMessages.append(bubble);
+  bubble.scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
+function sendAquariumAssistantQuestion(message) {
+  const question = message.trim();
+  if (!question) {
+    return;
+  }
+
+  appendAquariumAssistantMessage(question, "user");
+  if (aquariumAssistantInput) {
+    aquariumAssistantInput.value = "";
+  }
+
+  window.setTimeout(() => {
+    appendAquariumAssistantMessage(
+      "建议先检查水温、水质和鱼只体表，再结合行为或疾病检测结果判断。当前为交互原型，暂未接入在线问诊服务。",
+      "assistant",
+    );
+  }, 320);
+}
+
+aquariumAssistantForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+  sendAquariumAssistantQuestion(aquariumAssistantInput?.value ?? "");
+});
+
+aquariumAssistantSuggestions.forEach((button) => {
+  button.addEventListener("click", () => {
+    sendAquariumAssistantQuestion(button.textContent ?? "");
   });
 });
 
@@ -1087,8 +1204,6 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     if (aquariumAnalysisPreview?.classList.contains("is-open")) {
       closeAquariumAnalysisPreview();
-    } else if (aquariumReportModal?.classList.contains("is-open")) {
-      closeAquariumReportModal();
     } else if (aquariumFilterButton?.getAttribute("aria-expanded") === "true") {
       aquariumFilterMenu?.toggleAttribute("hidden", true);
       aquariumFilterButton.setAttribute("aria-expanded", "false");
@@ -1099,6 +1214,8 @@ document.addEventListener("keydown", (event) => {
       } else if (activeAquariumPage === "capture") {
         clearAquariumCaptureSelection();
         setAquariumPage(aquariumCaptureReturnPage);
+      } else if (aquariumPageReturnTargets[activeAquariumPage]) {
+        setAquariumPage(aquariumPageReturnTargets[activeAquariumPage]);
       } else {
         setAquariumPage("home");
       }

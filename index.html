@@ -797,7 +797,7 @@
                 </div>
               </section>
 
-              <button class="aquarium-feed-reminder" type="button" data-aquarium-feedback="喂食提醒已查看">
+              <div class="aquarium-feed-reminder">
                 <span class="aquarium-feed-icon" aria-hidden="true">
                   <svg class="aquarium-ui-icon" viewBox="0 0 24 24">
                     <circle cx="12" cy="12" r="8" />
@@ -808,8 +808,7 @@
                   <strong>该喂鱼啦</strong>
                   <small>上次喂食：今天 09:00 · 已过 6 小时</small>
                 </span>
-                <b aria-hidden="true">›</b>
-              </button>
+              </div>
 
               <section class="aquarium-home-section" aria-labelledby="aquarium-ai-title">
                 <div class="aquarium-section-heading">
@@ -869,7 +868,7 @@
                   <h2 id="aquarium-shortcuts-title">快捷入口</h2>
                 </div>
                 <div class="aquarium-analysis-grid aquarium-shortcut-grid">
-                  <button class="aquarium-analysis-card" type="button" data-aquarium-feedback="养护记录功能已选中">
+                  <button class="aquarium-analysis-card" type="button" data-aquarium-destination="care-records">
                     <span aria-hidden="true">
                       <svg class="aquarium-ui-icon" viewBox="0 0 36 36">
                         <rect x="8" y="7" width="20" height="23" rx="4" />
@@ -883,7 +882,7 @@
                     <strong>养护记录</strong>
                     <small>喂食/换水</small>
                   </button>
-                  <button class="aquarium-analysis-card" type="button" data-aquarium-feedback="知识库功能已选中">
+                  <button class="aquarium-analysis-card" type="button" data-aquarium-destination="knowledge">
                     <span aria-hidden="true">
                       <svg class="aquarium-ui-icon" viewBox="0 0 36 36">
                         <path d="M7 11h11l3 4h8v14H7V11Z" />
@@ -893,7 +892,7 @@
                     <strong>知识库</strong>
                     <small>新手入门</small>
                   </button>
-                  <button class="aquarium-analysis-card" type="button" data-aquarium-feedback="AI 管家功能已选中">
+                  <button class="aquarium-analysis-card" type="button" data-aquarium-destination="assistant">
                     <span aria-hidden="true">
                       <svg class="aquarium-ui-icon" viewBox="0 0 24 24">
                         <path d="M21 11.5a8.4 8.4 0 0 1-8.6 8.2 9.1 9.1 0 0 1-3.8-.8L4 20l1.2-4.1A8 8 0 0 1 3.5 11.5 8.4 8.4 0 0 1 12 3.3a8.4 8.4 0 0 1 9 8.2Z" />
@@ -1116,7 +1115,7 @@
                 </div>
                 <h2>行为分析报告 · 当次</h2>
                 <p>客厅草金鱼缸 · 检出3种异常行为 · 健康分 58</p>
-                <button type="button">查看完整报告 ›</button>
+                <button class="aquarium-full-report-button" type="button">查看完整报告 ›</button>
               </article>
 
               <div class="aquarium-report-history-head">
@@ -1137,7 +1136,7 @@
               </div>
 
               <div class="aquarium-report-list">
-                <article class="aquarium-history-report aquarium-report-entry" tabindex="0" role="button" data-report-type="disease"
+                <article class="aquarium-history-report aquarium-report-entry" data-report-type="disease"
                   data-report-title="疾病检测报告 · 白点病"
                   data-report-summary="草金鱼 · 健康分 62"
                   data-report-status="高风险 · 2026-07-27 15:30">
@@ -1156,7 +1155,7 @@
                     <time datetime="2026-07-27T15:30">2026-07-27 15:30</time>
                   </div>
                 </article>
-                <article class="aquarium-history-report aquarium-report-entry" tabindex="0" role="button" data-report-type="species"
+                <article class="aquarium-history-report aquarium-report-entry" data-report-type="species"
                   data-report-title="鱼种识别报告 · 3种鱼"
                   data-report-summary="草金鱼×5 · 红绿灯×4 · 虎皮×3"
                   data-report-status="健康 · 2026-07-26 10:15">
@@ -1173,7 +1172,7 @@
                     <time datetime="2026-07-26T10:15">2026-07-26 10:15</time>
                   </div>
                 </article>
-                <article class="aquarium-history-report aquarium-report-entry" tabindex="0" role="button" data-report-type="density"
+                <article class="aquarium-history-report aquarium-report-entry" data-report-type="density"
                   data-report-title="密度混养分析报告"
                   data-report-summary="18尾/80L · 2.25尾/10L · 偏高"
                   data-report-status="偏高 · 2026-07-25 14:20">
@@ -1192,7 +1191,7 @@
                     <time datetime="2026-07-25T14:20">2026-07-25 14:20</time>
                   </div>
                 </article>
-                <article class="aquarium-history-report aquarium-report-entry" tabindex="0" role="button" data-report-type="behavior"
+                <article class="aquarium-history-report aquarium-report-entry" data-report-type="behavior"
                   data-report-title="行为分析报告 · 视频"
                   data-report-summary="检出3种异常行为 · 健康分 58"
                   data-report-status="需关注 · 2026-07-24 21:00">
@@ -1212,6 +1211,264 @@
                 </article>
               </div>
               <p class="aquarium-report-empty" hidden>暂无该类型报告</p>
+            </section>
+
+            <section class="aquarium-page aquarium-report-detail-page" data-aquarium-page="report-detail" aria-label="完整报告">
+              <section class="aquarium-detail-hero aquarium-report-detail-hero">
+                <p>行为分析报告 · 当次</p>
+                <h2>客厅草金鱼缸</h2>
+                <span>2026-07-27 15:40 · 报告编号 FZ202607271540 · 10秒视频分析</span>
+              </section>
+
+              <article class="aquarium-report-summary-card">
+                <div class="aquarium-report-ring" aria-label="异常行为占比 32%">
+                  <span>32%</span>
+                </div>
+                <div>
+                  <h2>检出异常行为 <em>需关注</em></h2>
+                  <p>3种异常行为 · 视频10s · 检测到18尾鱼</p>
+                </div>
+              </article>
+
+              <section class="aquarium-detail-section">
+                <h2>行为总览</h2>
+                <div class="aquarium-report-overview">
+                  <div><strong class="good">68%</strong><span>正常行为</span></div>
+                  <div><strong class="warn">32%</strong><span>异常行为</span></div>
+                  <div><strong>18尾</strong><span>检测到</span></div>
+                  <div><strong>10s</strong><span>视频</span></div>
+                </div>
+              </section>
+
+              <section class="aquarium-detail-section">
+                <h2>7种行为详情</h2>
+                <div class="aquarium-behavior-list">
+                  <div class="aquarium-behavior-row good"><b>正常游动</b><i><span style="width:68%"></span></i><strong>68%</strong><em>正常</em></div>
+                  <div class="aquarium-behavior-row warn"><b>乱游 / 蹭缸</b><i><span style="width:12%"></span></i><strong>12%</strong><em>异常</em></div>
+                  <div class="aquarium-behavior-row warn"><b>缓慢游动</b><i><span style="width:8%"></span></i><strong>8%</strong><em>异常</em></div>
+                  <div class="aquarium-behavior-row warn"><b>趴缸 / 沉底</b><i><span style="width:6%"></span></i><strong>6%</strong><em>异常</em></div>
+                  <div class="aquarium-behavior-row danger"><b>浮头</b><i><span style="width:4%"></span></i><strong>4%</strong><em>高风险</em></div>
+                  <div class="aquarium-behavior-row warn"><b>悬停不动</b><i><span style="width:2%"></span></i><strong>2%</strong><em>异常</em></div>
+                  <div class="aquarium-behavior-row muted"><b>疑似死亡</b><i><span style="width:0%"></span></i><strong>0%</strong><em>未检出</em></div>
+                </div>
+              </section>
+
+              <section class="aquarium-detail-section">
+                <h2>异常行为与疾病风险关联</h2>
+                <article class="aquarium-risk-card">
+                  <h3>关联疾病风险预警</h3>
+                  <div><strong>乱游 / 蹭缸（12%）</strong><p>关联白点病风险，鱼类因体表寄生虫频繁摩擦物体。</p></div>
+                  <div><strong>趴缸 / 沉底（6%）</strong><p>关联赤皮病风险，感染可能导致活力下降、喜沉底。</p></div>
+                  <div><strong>浮头（4%）</strong><p>关联缺氧或水质恶化风险，建议检查打氧和过滤。</p></div>
+                  <p class="aquarium-risk-check">鱼种校验：草金鱼与红绿灯均为中层鱼，趴缸行为确属异常。</p>
+                </article>
+              </section>
+
+              <button class="aquarium-report-disease-cta" type="button">
+                <span class="aquarium-diagnosis-icon" aria-hidden="true">
+                  <svg class="aquarium-ui-icon" viewBox="0 0 36 36">
+                    <rect x="8" y="6" width="20" height="24" rx="4" />
+                    <path d="M18 15v8" />
+                    <path d="M14 19h8" />
+                    <path d="M13 10h10" />
+                  </svg>
+                </span>
+                <span><strong>建议进一步做疾病检测</strong><small>立即拍照确认是否有白点 / 赤皮症状</small></span>
+                <b>›</b>
+              </button>
+
+              <section class="aquarium-ai-advice-card">
+                <h2>AI 行为改善建议</h2>
+                <ul>
+                  <li>检查打氧机功率，浮头可能提示缺氧</li>
+                  <li>测试水质（氨 / 亚硝酸盐）</li>
+                  <li>乱游行为建议拍照做疾病检测确认</li>
+                  <li>24小时后复测，对比行为改善情况</li>
+                </ul>
+              </section>
+
+              <p class="aquarium-report-disclaimer">本报告由 AI 基于视频分析生成，结果仅供参考，不构成专业诊断建议。</p>
+
+              <div class="aquarium-report-detail-actions">
+                <button class="aquarium-report-retest" type="button">再测</button>
+                <button class="aquarium-report-consult" type="button">AI问诊</button>
+                <button class="aquarium-report-disease" type="button">疾病检测</button>
+              </div>
+            </section>
+
+            <section class="aquarium-page aquarium-care-records-page" data-aquarium-page="care-records" aria-label="养护记录">
+              <section class="aquarium-detail-hero aquarium-care-hero">
+                <p>养护记录</p>
+                <h2>本月 23 条记录</h2>
+                <span>系统基于记录频率推送提醒</span>
+              </section>
+
+              <div class="aquarium-care-summary">
+                <div>
+                  <span class="aquarium-care-icon feed" aria-hidden="true">
+                    <svg class="aquarium-ui-icon" viewBox="0 0 24 24">
+                      <path d="M4 11h16" />
+                      <path d="M5 11c.4 5 3 8 7 8s6.6-3 7-8" />
+                      <path d="M8 19h8" />
+                      <path d="M9 8c.8-1.2 2.2-2 3-2s2.2.8 3 2" />
+                    </svg>
+                  </span>
+                  <strong>喂食</strong><small>15条</small>
+                </div>
+                <div>
+                  <span class="aquarium-care-icon water" aria-hidden="true">
+                    <svg class="aquarium-ui-icon" viewBox="0 0 24 24">
+                      <path d="M12 3.5s6 6.4 6 11a6 6 0 0 1-12 0c0-4.6 6-11 6-11Z" />
+                    </svg>
+                  </span>
+                  <strong>换水</strong><small>6条</small>
+                </div>
+                <div>
+                  <span class="aquarium-care-icon other" aria-hidden="true">
+                    <svg class="aquarium-ui-icon" viewBox="0 0 36 36">
+                      <rect x="8" y="7" width="20" height="23" rx="4" />
+                      <path d="M13 5v5" />
+                      <path d="M23 5v5" />
+                      <path d="M13 16h10" />
+                      <path d="M13 22h10" />
+                    </svg>
+                  </span>
+                  <strong>其他</strong><small>2条</small>
+                </div>
+              </div>
+
+              <section class="aquarium-detail-section aquarium-care-list-section">
+                <h2>最近记录</h2>
+                <div class="aquarium-care-list">
+                  <article><span class="aquarium-care-icon feed"><svg class="aquarium-ui-icon" viewBox="0 0 24 24"><path d="M4 11h16" /><path d="M5 11c.4 5 3 8 7 8s6.6-3 7-8" /><path d="M8 19h8" /></svg></span><div><h3>喂食 · 颗粒饲料</h3><p>投喂量：1勺 · 约3g · 7条鱼</p><small>今天 09:00 · 客厅草金鱼缸</small></div></article>
+                  <article><span class="aquarium-care-icon water"><svg class="aquarium-ui-icon" viewBox="0 0 24 24"><path d="M12 3.5s6 6.4 6 11a6 6 0 0 1-12 0c0-4.6 6-11 6-11Z" /></svg></span><div><h3>换水 · 1/3 换水</h3><p>换水量：40L · 已清洗滤材</p><small>昨天 18:30 · 客厅草金鱼缸</small></div></article>
+                  <article><span class="aquarium-care-icon feed"><svg class="aquarium-ui-icon" viewBox="0 0 24 24"><path d="M4 11h16" /><path d="M5 11c.4 5 3 8 7 8s6.6-3 7-8" /><path d="M8 19h8" /></svg></span><div><h3>喂食 · 颗粒饲料</h3><p>投喂量：1勺 · 约3g</p><small>昨天 09:15 · 客厅草金鱼缸</small></div></article>
+                  <article><span class="aquarium-care-icon medicine"><svg class="aquarium-ui-icon" viewBox="0 0 24 24"><path d="m8 4 12 12" /><path d="M6 18a4 4 0 0 1 0-6l6-6a4 4 0 0 1 6 6l-6 6a4 4 0 0 1-6 0Z" /></svg></span><div><h3>加药 · 白点净</h3><p>用量：5ml · 主缸全池</p><small>前天 16:00 · 客厅草金鱼缸</small></div></article>
+                  <article><span class="aquarium-care-icon feed"><svg class="aquarium-ui-icon" viewBox="0 0 24 24"><path d="M4 11h16" /><path d="M5 11c.4 5 3 8 7 8s6.6-3 7-8" /><path d="M8 19h8" /></svg></span><div><h3>喂食 · 颗粒饲料</h3><p>投喂量：1勺 · 约3g</p><small>2026-07-24 09:00 · 客厅草金鱼缸</small></div></article>
+                </div>
+              </section>
+            </section>
+
+            <section class="aquarium-page aquarium-knowledge-page" data-aquarium-page="knowledge" aria-label="养鱼知识库">
+              <section class="aquarium-detail-hero aquarium-knowledge-hero">
+                <p>养鱼知识库</p>
+                <h2>新手入门到精通</h2>
+                <span>图文并茂 · 随时查阅</span>
+              </section>
+
+              <label class="aquarium-knowledge-search">
+                <span class="sr-only">搜索知识文章</span>
+                <input type="search" placeholder="搜索：白点病 / 换水 / 开缸…" />
+              </label>
+
+              <div class="aquarium-knowledge-filters" aria-label="知识分类">
+                <button class="active" type="button" data-knowledge-filter="all">全部</button>
+                <button type="button" data-knowledge-filter="starter">新手入门</button>
+                <button type="button" data-knowledge-filter="disease">疾病防治</button>
+                <button type="button" data-knowledge-filter="water">水质管理</button>
+                <button type="button" data-knowledge-filter="feeding">饲养指南</button>
+              </div>
+
+              <div class="aquarium-knowledge-list">
+                <button class="aquarium-knowledge-card" type="button" data-knowledge-category="disease" data-knowledge-detail="white-spot">
+                  <h2>白点病防治全攻略：从识别到治愈</h2>
+                  <p>白点病是观赏鱼最常见的疾病之一，由小瓜虫寄生引起。本文详解症状识别、治疗方法……</p>
+                  <span>5分钟阅读 · 2.3k浏览</span>
+                </button>
+                <article class="aquarium-knowledge-card" data-knowledge-category="starter">
+                  <h2>新缸开缸全流程：养水、闯缸、入鱼</h2>
+                  <p>新鱼缸不能直接养鱼！需要先建立硝化系统，本文手把手教你7天完成开缸……</p>
+                  <span>8分钟阅读 · 4.1k浏览</span>
+                </article>
+                <article class="aquarium-knowledge-card" data-knowledge-category="feeding">
+                  <h2>红绿灯鱼饲养指南：群游精灵的养护秘籍</h2>
+                  <p>本文介绍水温、饲料、混养搭配与常见注意事项……</p>
+                  <span>4分钟阅读 · 1.8k浏览</span>
+                </article>
+                <article class="aquarium-knowledge-card" data-knowledge-category="water">
+                  <h2>换水频率与水质管理：多久换一次水？</h2>
+                  <p>换水是养鱼的基本功，本文详解科学换水方法与常见误区……</p>
+                  <span>6分钟阅读 · 3.5k浏览</span>
+                </article>
+                <article class="aquarium-knowledge-card" data-knowledge-category="starter">
+                  <h2>草金鱼怎么养？最皮实的入门观赏鱼</h2>
+                  <p>草金鱼适合新手，本文介绍饲养要点与混养搭配……</p>
+                  <span>5分钟阅读 · 2.7k浏览</span>
+                </article>
+              </div>
+              <p class="aquarium-knowledge-empty" hidden>没有找到相关文章</p>
+            </section>
+
+            <section class="aquarium-page aquarium-knowledge-detail-page" data-aquarium-page="knowledge-detail" aria-label="知识详情">
+              <section class="aquarium-article-hero">
+                <img src="./assets/aquarium-camera-live.png" alt="" aria-hidden="true" />
+                <div>
+                  <p>疾病防治 · 5分钟阅读</p>
+                  <h2>白点病防治全攻略：从识别到治愈</h2>
+                </div>
+              </section>
+
+              <article class="aquarium-article-content">
+                <p class="lead">白点病是观赏鱼最常见的疾病之一，由多子小瓜虫寄生引起。它传染性强，但治愈率也很高，关键在于早发现、早治疗。</p>
+                <h2>一、如何识别白点病</h2>
+                <p>白点病的典型症状是在鱼体表出现白色点状物，类似撒了盐粒。常见部位：</p>
+                <ul><li>鱼鳍（最先出现）</li><li>鱼鳃（严重时）</li><li>身体两侧</li></ul>
+                <h2>二、治疗方法</h2>
+                <p>推荐<strong>升温 + 下盐</strong>组合治疗：</p>
+                <ol><li>缓慢升温至 <strong>28–30℃</strong>，每2小时升1℃</li><li>加入 <strong>0.3%粗盐</strong>，100L水加300g</li><li>加强打氧，小瓜虫不耐高温</li><li>持续 <strong>7–10天</strong>至白点消失</li></ol>
+                <h2>三、注意事项</h2>
+                <ul><li>升温期间暂停喂食，减少水质负担</li><li>有条件可隔离病鱼，避免传染</li><li>鼠鱼、清道夫等鱼种不建议用盐</li></ul>
+                <h2>四、预防措施</h2>
+                <p>白点病多发于水温骤变时。新鱼入缸前做好过水，保持水温稳定，并定期换水保持水质。</p>
+              </article>
+
+              <aside class="aquarium-article-disclaimer"><strong>免责声明：</strong>本文内容仅供参考。具体治疗方案建议咨询专业水族医生或结合 AI 诊断结果决定。</aside>
+
+              <section class="aquarium-detail-section aquarium-related-articles">
+                <h2>相关文章</h2>
+                <article><h3>换水频率与水质管理</h3><p>科学换水是预防白点病的根本……</p></article>
+                <article><h3>赤皮病的症状与治疗</h3><p>细菌感染引起的体表病变……</p></article>
+              </section>
+
+              <section class="aquarium-article-consult">
+                <h2>想要个性化方案？</h2>
+                <p>让 AI 智养管家结合你的鱼缸情况给出方案</p>
+                <button type="button" data-aquarium-destination="assistant">咨询AI管家 ›</button>
+              </section>
+            </section>
+
+            <section class="aquarium-page aquarium-assistant-page" data-aquarium-page="assistant" aria-label="AI 智养管家">
+              <header class="aquarium-assistant-status">
+                <span class="aquarium-assistant-avatar" aria-hidden="true">AI</span>
+                <div><h2>AI智养管家</h2><p><i></i>在线 · 基于知识库</p></div>
+              </header>
+
+              <div class="aquarium-assistant-messages" aria-live="polite">
+                <div class="aquarium-chat-bubble assistant">
+                  <p>你好 Kelly！我是 AI 智养管家，我可以帮你：</p>
+                  <ul><li>解读检测报告</li><li>推荐治疗方案</li><li>解答养护疑问</li></ul>
+                  <p>请告诉我你的问题～</p>
+                </div>
+                <div class="aquarium-chat-bubble user"><p>我的草金鱼最近总是趴在缸底，是不是生病了？</p></div>
+                <div class="aquarium-chat-bubble assistant">
+                  <p>趴缸是鱼活力下降的信号，常见原因有三种：</p>
+                  <ol><li><strong>水质问题</strong>：建议先测氨 / 亚硝酸盐</li><li><strong>疾病前兆</strong>：可能是赤皮病初期</li><li><strong>水温过低</strong>：冬季较常见</li></ol>
+                  <p>建议先做一次行为分析，结合画面判断原因。</p>
+                </div>
+              </div>
+
+              <div class="aquarium-assistant-suggestions">
+                <button type="button">白点病怎么治？</button>
+                <button type="button">多久换一次水？</button>
+                <button type="button">鱼浮头怎么办？</button>
+                <button type="button">新缸怎么开缸？</button>
+              </div>
+
+              <form class="aquarium-assistant-composer">
+                <label class="sr-only" for="aquarium-assistant-input">输入你的问题</label>
+                <input id="aquarium-assistant-input" type="text" placeholder="输入你的问题…" autocomplete="off" />
+                <button type="submit" aria-label="发送问题">发送</button>
+              </form>
             </section>
 
             <section class="aquarium-page aquarium-profile-page" data-aquarium-page="profile" aria-label="我的">
@@ -1239,7 +1496,7 @@
                   </span>
                   <b>我的报告</b><small>23份 ›</small>
                 </button>
-                <button type="button" data-aquarium-feedback="养护记录功能已选中">
+                <button type="button" data-aquarium-destination="care-records">
                   <span aria-hidden="true">
                     <svg class="aquarium-ui-icon" viewBox="0 0 36 36">
                       <rect x="8" y="7" width="20" height="23" rx="4" />
@@ -1252,7 +1509,7 @@
                   </span>
                   <b>养护记录</b><small>本月23条 ›</small>
                 </button>
-                <button type="button" data-aquarium-feedback="AI 智养管家功能已选中">
+                <button type="button" data-aquarium-destination="assistant">
                   <span aria-hidden="true">
                     <svg class="aquarium-ui-icon" viewBox="0 0 24 24">
                       <path d="M21 11.5a8.4 8.4 0 0 1-8.6 8.2 9.1 9.1 0 0 1-3.8-.8L4 20l1.2-4.1A8 8 0 0 1 3.5 11.5 8.4 8.4 0 0 1 12 3.3a8.4 8.4 0 0 1 9 8.2Z" />
@@ -1262,7 +1519,7 @@
                   </span>
                   <b>AI智养管家</b><small>›</small>
                 </button>
-                <button type="button" data-aquarium-feedback="养鱼知识库功能已选中">
+                <button type="button" data-aquarium-destination="knowledge">
                   <span aria-hidden="true">
                     <svg class="aquarium-ui-icon" viewBox="0 0 36 36">
                       <path d="M7 11h11l3 4h8v14H7V11Z" />
@@ -1273,7 +1530,7 @@
                 </button>
               </div>
               <div class="aquarium-menu-group">
-                <button type="button" data-aquarium-feedback="通知设置已开启">
+                <button type="button" disabled>
                   <span aria-hidden="true">
                     <svg class="aquarium-ui-icon" viewBox="0 0 24 24">
                       <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 7h18s-3 0-3-7" />
@@ -1283,7 +1540,7 @@
                   </span>
                   <b>通知设置</b><small>已开启 ›</small>
                 </button>
-                <button type="button" data-aquarium-feedback="隐私与数据功能已选中">
+                <button type="button" disabled>
                   <span aria-hidden="true">
                     <svg class="aquarium-ui-icon" viewBox="0 0 24 24">
                       <rect x="5" y="11" width="14" height="10" rx="2" />
@@ -1292,7 +1549,7 @@
                   </span>
                   <b>隐私与数据</b><small>›</small>
                 </button>
-                <button type="button" data-aquarium-feedback="帮助与反馈功能已选中">
+                <button type="button" disabled>
                   <span aria-hidden="true">
                     <svg class="aquarium-ui-icon" viewBox="0 0 32 32">
                       <path d="M6 7h20v14H15l-6 5v-5H6V7Z" />
@@ -1302,7 +1559,7 @@
                   </span>
                   <b>帮助与反馈</b><small>›</small>
                 </button>
-                <button type="button" data-aquarium-feedback="当前版本 v1.0.0">
+                <button type="button" disabled>
                   <span aria-hidden="true">
                     <svg class="aquarium-ui-icon" viewBox="0 0 32 32">
                       <path d="M16 4 27 10v12l-11 6-11-6V10L16 4Z" />
@@ -1383,28 +1640,6 @@
               </div>
               <p class="aquarium-preview-note">本原型仅展示本地预览，不会上传文件或生成 AI 结果。</p>
               <button class="aquarium-modal-primary aquarium-preview-done" type="button">完成</button>
-            </section>
-          </div>
-
-          <div class="aquarium-modal aquarium-report-modal" aria-hidden="true">
-            <button class="aquarium-modal-scrim" type="button" aria-label="关闭报告详情"></button>
-            <section class="aquarium-modal-card aquarium-report-modal-card" role="dialog" aria-modal="true" aria-labelledby="aquarium-report-modal-title">
-              <button class="aquarium-modal-close" type="button" aria-label="关闭">
-                <svg class="aquarium-ui-icon" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M18 6 6 18" />
-                  <path d="m6 6 12 12" />
-                </svg>
-              </button>
-              <span class="aquarium-modal-icon" aria-hidden="true">
-                <svg class="aquarium-ui-icon" viewBox="0 0 36 36">
-                  <path d="M7 11h11l3 4h8v14H7V11Z" />
-                  <path d="M11 22h14" />
-                </svg>
-              </span>
-              <h2 id="aquarium-report-modal-title"></h2>
-              <p class="aquarium-report-modal-summary"></p>
-              <span class="aquarium-report-modal-status"></span>
-              <button class="aquarium-modal-primary aquarium-report-done" type="button">知道了</button>
             </section>
           </div>
 
