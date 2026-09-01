@@ -90,6 +90,13 @@ const reptileDeviceButton = document.querySelector(".reptile-device-card");
 const monitorBackButton = document.querySelector(".monitor-back");
 const playbackTopBackButton = document.querySelector(".playback-top-back");
 const cameraSettingsBackButton = document.querySelector(".camera-settings-back");
+const cameraAlbumBackButton = document.querySelector(".camera-album-back");
+const cameraAlbumSelectButton = document.querySelector(".camera-album-select");
+const cameraAlbumView = document.querySelector(".camera-album-view");
+const cameraAlbumItems = document.querySelectorAll(".camera-album-item");
+const cameraAlbumDeleteButton = document.querySelector(".camera-album-delete");
+const cameraAlbumSelectionBar = document.querySelector(".camera-album-selection-bar");
+const cameraAlbumEmpty = document.querySelector(".camera-album-empty");
 const playbackTabs = document.querySelectorAll(".playback-tab");
 const playbackPanels = document.querySelectorAll(".playback-tab-panel");
 const localFileCards = document.querySelectorAll(".local-file-card");
@@ -192,7 +199,10 @@ function setActiveView(viewName) {
   appScreen?.classList.toggle("aquarium-mode", viewName === "aquarium-camera");
   appScreen?.classList.toggle(
     "monitor-mode",
-    viewName === "reptile-camera" || viewName === "camera-playback" || viewName === "camera-settings",
+    viewName === "reptile-camera" ||
+      viewName === "camera-playback" ||
+      viewName === "camera-settings" ||
+      viewName === "camera-album",
   );
   appScreen?.classList.toggle("reptile-camera-mode", viewName === "reptile-camera");
   appScreen?.classList.toggle(
@@ -1209,6 +1219,9 @@ cameraActionButtons.forEach((button) => {
     if (action === "playback") {
       setActiveView("camera-playback");
       setDrawerOpen(false);
+    } else if (action === "album") {
+      setActiveView("camera-album");
+      setDrawerOpen(false);
     } else if (action === "settings") {
       setActiveCameraSection("care");
       setActiveView("camera-settings");
@@ -1238,7 +1251,6 @@ cameraActionButtons.forEach((button) => {
         fullscreen: "已进入全屏演示",
         snapshot: "截图已保存到相册",
         share: "分享功能演示",
-        album: "相册功能演示",
       };
       showCameraToast(messages[action] ?? "功能演示");
     }
@@ -1266,6 +1278,76 @@ playbackTopBackButton?.addEventListener("click", () => {
 cameraSettingsBackButton?.addEventListener("click", () => {
   setActiveCameraSection("care");
   setActiveView("reptile-camera");
+});
+
+function resetCameraAlbumSelection() {
+  cameraAlbumView?.classList.remove("is-selecting");
+  cameraAlbumSelectButton?.setAttribute("aria-pressed", "false");
+  if (cameraAlbumSelectButton) cameraAlbumSelectButton.textContent = "选择";
+  cameraAlbumItems.forEach((item) => {
+    item.classList.remove("is-selected");
+    item.setAttribute("aria-pressed", "false");
+  });
+  cameraAlbumDeleteButton?.setAttribute("disabled", "");
+  cameraAlbumSelectionBar?.setAttribute("aria-hidden", "true");
+}
+
+function updateCameraAlbumSelection() {
+  const visibleItems = [...cameraAlbumItems].filter((item) => !item.hidden);
+  const selectedItems = visibleItems.filter((item) => item.classList.contains("is-selected"));
+  const allSelected = visibleItems.length > 0 && selectedItems.length === visibleItems.length;
+  if (cameraAlbumSelectButton) cameraAlbumSelectButton.textContent = allSelected ? "取消全选" : "全选";
+  cameraAlbumDeleteButton?.toggleAttribute("disabled", selectedItems.length === 0);
+  cameraAlbumDeleteButton?.setAttribute("aria-label", selectedItems.length ? `删除所选 ${selectedItems.length} 张图片` : "删除所选图片");
+}
+
+cameraAlbumBackButton?.addEventListener("click", () => {
+  if (cameraAlbumView?.classList.contains("is-selecting")) {
+    resetCameraAlbumSelection();
+    return;
+  }
+  setActiveCameraSection("care");
+  setActiveView("reptile-camera");
+});
+
+cameraAlbumSelectButton?.addEventListener("click", () => {
+  const isSelecting = cameraAlbumView?.classList.contains("is-selecting");
+  if (!isSelecting) {
+    cameraAlbumView?.classList.add("is-selecting");
+    cameraAlbumSelectButton.setAttribute("aria-pressed", "true");
+    cameraAlbumSelectionBar?.setAttribute("aria-hidden", "false");
+    updateCameraAlbumSelection();
+    return;
+  }
+
+  const visibleItems = [...cameraAlbumItems].filter((item) => !item.hidden);
+  const shouldSelectAll = visibleItems.some((item) => !item.classList.contains("is-selected"));
+  visibleItems.forEach((item) => {
+    item.classList.toggle("is-selected", shouldSelectAll);
+    item.setAttribute("aria-pressed", String(shouldSelectAll));
+  });
+  updateCameraAlbumSelection();
+});
+
+cameraAlbumItems.forEach((item) => {
+  item.addEventListener("click", () => {
+    if (!cameraAlbumView?.classList.contains("is-selecting")) return;
+    const isSelected = item.getAttribute("aria-pressed") !== "true";
+    item.classList.toggle("is-selected", isSelected);
+    item.setAttribute("aria-pressed", String(isSelected));
+    updateCameraAlbumSelection();
+  });
+});
+
+cameraAlbumDeleteButton?.addEventListener("click", () => {
+  const selectedItems = [...cameraAlbumItems].filter((item) => !item.hidden && item.classList.contains("is-selected"));
+  if (!selectedItems.length) return;
+  selectedItems.forEach((item) => {
+    item.hidden = true;
+  });
+  const hasVisibleItems = [...cameraAlbumItems].some((item) => !item.hidden);
+  cameraAlbumEmpty?.toggleAttribute("hidden", hasVisibleItems);
+  resetCameraAlbumSelection();
 });
 
 playbackTabs.forEach((tab) => {

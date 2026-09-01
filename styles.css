@@ -194,24 +194,6 @@
   font-weight: var(--weight-heavy);
 }
 
-.iot-online-state {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  color: #319d78;
-  font-size: 10px;
-  line-height: 1;
-  font-weight: var(--weight-bold);
-}
-
-.iot-online-state i {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #40c995;
-  box-shadow: 0 0 0 4px rgba(64, 201, 149, 0.12);
-}
-
 .iot-auto-mode {
   min-width: 112px;
   height: 40px;
@@ -425,7 +407,7 @@
 .camera-quality-button {
   position: absolute;
   left: 12px;
-  bottom: 12px;
+  top: 12px;
   z-index: 3;
   height: 28px;
   padding: 0 10px;
@@ -436,11 +418,6 @@
   backdrop-filter: blur(5px);
   font-size: 11px;
   font-weight: var(--weight-bold);
-}
-
-.camera-is-member .camera-quality-button {
-  left: 12px;
-  right: auto;
 }
 
 .camera-quick-actions {
@@ -12103,6 +12080,207 @@ button.aquarium-knowledge-card:active {
 }
 
 /* Standalone camera device settings */
+.app-screen .camera-album-view {
+  overflow: hidden;
+  padding: 0;
+}
+
+.camera-album-topbar {
+  grid-template-columns: 56px 1fr 70px;
+  padding-right: 4px;
+  background: rgba(227, 243, 255, 0.94);
+  backdrop-filter: blur(16px);
+}
+
+.camera-album-topbar .camera-album-back {
+  grid-column: 1;
+  grid-row: 1;
+  z-index: 1;
+}
+
+.camera-album-back span { display: none; }
+
+.camera-album-view.is-selecting .camera-album-back {
+  width: 52px;
+  color: #2d82ff;
+  background: transparent;
+  font-size: 13px;
+  font-weight: var(--weight-bold);
+}
+
+.camera-album-view.is-selecting .camera-album-back svg { display: none; }
+.camera-album-view.is-selecting .camera-album-back span { display: block; }
+
+.camera-album-topbar h1 {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  justify-self: center;
+}
+
+.camera-album-select {
+  grid-column: 3;
+  grid-row: 1;
+  z-index: 1;
+  width: 70px;
+  height: 42px;
+  color: #2d82ff;
+  background: transparent;
+  font-size: 13px;
+  font-weight: var(--weight-bold);
+  white-space: nowrap;
+}
+
+.camera-album-scroll {
+  height: calc(100% - 76px);
+  overflow-y: auto;
+  padding: 14px 12px 30px;
+  scrollbar-width: none;
+}
+
+.camera-album-view.is-selecting .camera-album-scroll { padding-bottom: 104px; }
+
+.camera-album-scroll::-webkit-scrollbar { width: 0; height: 0; }
+
+.camera-album-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.camera-album-item {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 2px solid #fff;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 5px 12px rgba(65, 111, 148, 0.11);
+}
+
+.camera-album-item img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.camera-album-check {
+  position: absolute;
+  top: auto;
+  bottom: 7px;
+  right: 7px;
+  z-index: 2;
+  width: 20px;
+  height: 20px;
+  display: none;
+  border: 2px solid rgba(255, 255, 255, 0.94);
+  border-radius: 50%;
+  background: rgba(28, 45, 60, 0.28);
+  box-shadow: 0 2px 7px rgba(24, 46, 66, 0.2);
+}
+
+.camera-album-view.is-selecting .camera-album-check { display: block; }
+
+.camera-album-item.is-selected {
+  border-color: #2d82ff;
+  box-shadow: 0 0 0 2px rgba(45, 130, 255, 0.14), 0 7px 15px rgba(45, 130, 255, 0.17);
+}
+
+.camera-album-item.is-selected .camera-album-check {
+  border-color: #2d82ff;
+  background: #2d82ff;
+}
+
+.camera-album-item.is-selected .camera-album-check::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 9px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.camera-album-empty {
+  min-height: 260px;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 10px;
+  color: #93a3b1;
+}
+
+.camera-album-empty[hidden] { display: none; }
+
+.camera-album-empty span {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  color: #78a9d5;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 7px 18px rgba(62, 111, 150, 0.08);
+}
+
+.camera-album-empty svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.camera-album-empty strong { font-size: 12px; font-weight: var(--weight-bold); }
+
+.camera-album-selection-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 6;
+  height: 80px;
+  display: none;
+  place-items: center;
+  border-top: 1px solid rgba(118, 151, 177, 0.1);
+  background: rgba(250, 253, 255, 0.94);
+  backdrop-filter: blur(16px);
+}
+
+.camera-album-view.is-selecting .camera-album-selection-bar { display: grid; }
+
+.camera-album-delete {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  color: #f05257;
+  background: rgba(255, 239, 240, 0.9);
+  box-shadow: 0 7px 16px rgba(216, 75, 82, 0.1);
+}
+
+.camera-album-delete svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.camera-album-delete:disabled {
+  opacity: 1;
+  color: #f05257;
+  background: rgba(255, 239, 240, 0.9);
+  box-shadow: 0 7px 16px rgba(216, 75, 82, 0.1);
+}
+
 .app-screen .camera-settings-view {
   overflow: hidden;
   padding: 0;

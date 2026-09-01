@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>爬宠摄像头 · 页面设计总览</title>
+    <style>
+      * { box-sizing: border-box; }
+      html, body { margin: 0; min-height: 100%; }
+      body {
+        width: 2940px;
+        padding: 52px 34px 66px;
+        color: #15212d;
+        background:
+          radial-gradient(circle at 8% 3%, rgba(51, 151, 255, 0.13), transparent 19%),
+          radial-gradient(circle at 91% 9%, rgba(35, 201, 213, 0.11), transparent 18%),
+          #edf5fa;
+        font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      }
+      .board-head { margin: 0 6px 42px; }
+      .board-head span {
+        display: inline-flex;
+        height: 30px;
+        align-items: center;
+        padding: 0 12px;
+        border-radius: 999px;
+        color: #287fd8;
+        background: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 5px 15px rgba(47, 102, 143, 0.08);
+        font-size: 14px;
+        font-weight: 700;
+      }
+      .board-head h1 { margin: 15px 0 9px; font-size: 42px; line-height: 1; font-weight: 800; }
+      .board-head p { margin: 0; color: #728393; font-size: 17px; font-weight: 500; }
+      .board-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 430px);
+        align-items: start;
+        gap: 46px 44px;
+      }
+      .screen-card { width: 430px; }
+      .screen-label {
+        min-height: 38px;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        padding: 0 4px;
+        color: #22313e;
+        font-size: 17px;
+        font-weight: 800;
+      }
+      .screen-label i {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #2d82ff, #28c9e5);
+        box-shadow: 0 0 0 5px rgba(45, 130, 255, 0.1);
+      }
+      .screen-frame {
+        width: 430px;
+        height: 932px;
+        display: block;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.92);
+        border-radius: 28px;
+        background: #dff2ff;
+        box-shadow: 0 20px 46px rgba(39, 88, 126, 0.16), inset 0 1px 0 #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="board-head">
+      <span>宠智灵 · 爬宠摄像头</span>
+      <h1>页面设计总览</h1>
+      <p>基础摄像头、云端智能陪伴与设备控制相关页面</p>
+    </header>
+    <main class="board-grid" id="board"></main>
+    <script>
+      const screens = [
+        { name: "01 · 安心看护", actions: ["open-camera"] },
+        { name: "02 · 智能陪伴 · 未订阅", actions: ["open-camera", "companion"] },
+        { name: "03 · 会员开通", actions: ["open-camera", "companion", "membership"] },
+        { name: "04 · 智能陪伴 · 已订阅", actions: ["open-camera", "companion", "subscribe"] },
+        { name: "05 · 设备控制", actions: ["open-camera", "iot"] },
+        { name: "06 · 温度目标区间", actions: ["open-camera", "iot", "temperature-target"] },
+        { name: "07 · 录像回看 · 本地", actions: ["open-camera", "playback"] },
+        { name: "08 · 录像回看 · 云端未订阅", actions: ["open-camera", "playback", "cloud"] },
+        { name: "09 · 录像回看 · 云端已订阅", actions: ["open-camera", "companion", "subscribe", "playback", "cloud"] },
+        { name: "10 · 相册", actions: ["open-camera", "album"] },
+        { name: "11 · 相册 · 选择", actions: ["open-camera", "album", "album-select"] },
+        { name: "12 · 设备设置", actions: ["open-camera", "settings"] },
+        { name: "13 · 进食详情", actions: ["open-camera", "companion", "food-detail"] },
+        { name: "14 · 活动详情", actions: ["open-camera", "companion", "activity-detail"] },
+        { name: "15 · 晒背详情", actions: ["open-camera", "companion", "sun-detail"] },
+        { name: "16 · 蜕皮详情", actions: ["open-camera", "companion", "molt-detail"] },
+        { name: "17 · 健康评估", actions: ["open-camera", "companion", "health-detail"] },
+        { name: "18 · 环境详情", actions: ["open-camera", "companion", "environment-detail"] },
+      ];
+
+      const actionSelectors = {
+        "open-camera": ".reptile-device-card",
+        companion: '[data-camera-section="companion"]',
+        iot: '[data-camera-section="iot"]',
+        membership: ".camera-membership-entry",
+        subscribe: ".camera-membership-entry",
+        "temperature-target": '[data-iot-target="temperature"]',
+        playback: '[data-camera-action="playback"]',
+        cloud: '[data-playback-tab="cloud"]',
+        album: '[data-camera-action="album"]',
+        "album-select": ".camera-album-select",
+        settings: '.camera-more-button[data-camera-action="settings"]',
+        "food-detail": ".food-feature-card",
+        "activity-detail": ".activity-feature-card",
+        "sun-detail": ".sun-feature-card",
+        "molt-detail": ".molt-feature-card",
+        "health-detail": ".health-report-card",
+        "environment-detail": ".env-detail-entry",
+      };
+
+      function click(doc, selector) {
+        const target = doc.querySelector(selector);
+        if (target) target.click();
+      }
+
+      function applyAction(doc, action) {
+        click(doc, actionSelectors[action]);
+        if (action === "subscribe") click(doc, ".camera-membership-activate");
+      }
+
+      const board = document.querySelector("#board");
+      let readyCount = 0;
+      screens.forEach((screen) => {
+        const card = document.createElement("section");
+        card.className = "screen-card";
+        card.innerHTML = `<div class="screen-label"><i></i>${screen.name}</div>`;
+        const frame = document.createElement("iframe");
+        frame.className = "screen-frame";
+        frame.src = "../index.html";
+        frame.setAttribute("title", screen.name);
+        frame.addEventListener("load", () => {
+          const doc = frame.contentDocument;
+          screen.actions.forEach((action) => applyAction(doc, action));
+          readyCount += 1;
+          if (readyCount === screens.length) document.documentElement.dataset.ready = "true";
+        });
+        card.append(frame);
+        board.append(card);
+      });
+    </script>
+  </body>
+</html>
