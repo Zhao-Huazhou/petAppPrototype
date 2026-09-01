@@ -1647,27 +1647,43 @@
         </section>
 
         <section class="page-view monitor-view" data-view="reptile-camera" aria-label="爬宠摄像头页面">
-          <header class="monitor-topbar monitor-topbar-with-prototype">
+          <header class="monitor-topbar monitor-topbar-with-prototype camera-main-topbar">
             <button class="monitor-back" type="button" aria-label="返回设备页面">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="m15 5-7 7 7 7" />
               </svg>
             </button>
             <h1>爬宠摄像头</h1>
-            <button class="env-prototype-toggle" type="button" aria-label="演示：切换环境监测数据状态" aria-pressed="false">
-              <span class="env-prototype-toggle-tag">演示</span>
-              <span class="env-prototype-toggle-label">无环境数据</span>
+            <button class="camera-more-button" type="button" data-camera-action="settings" aria-label="进入设备设置">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.6" /><circle cx="12" cy="12" r="1.6" /><circle cx="19" cy="12" r="1.6" /></svg>
             </button>
           </header>
 
+          <nav class="camera-section-tabs" aria-label="摄像头功能栏目">
+            <button class="camera-section-tab active" type="button" data-camera-section="care" aria-pressed="true">
+              <span class="camera-section-tab-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6Z" /><circle cx="12" cy="12" r="2.6" /></svg>
+              </span>
+              安心看护
+            </button>
+            <button class="camera-section-tab" type="button" data-camera-section="companion" aria-pressed="false">
+              <span class="camera-section-tab-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="m12 3 1.8 4.2L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.8L12 3Z" /><path d="m18.5 14 .9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9.9-2.1Z" /></svg>
+              </span>
+              智能陪伴
+            </button>
+            <button class="camera-section-tab" type="button" data-camera-section="iot" aria-pressed="false">
+              <span class="camera-section-tab-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M7 3v4M17 3v4M5 7h14v5a7 7 0 0 1-14 0V7Z" /><path d="M9 17v4M15 17v4M8 21h8" /></svg>
+              </span>
+              设备控制
+            </button>
+          </nav>
+
           <div class="monitor-scroll">
-            <section class="live-card" aria-label="实时画面">
+            <section class="camera-section-panel camera-care-panel active" data-camera-panel="care" aria-label="安心看护">
+            <section class="live-card camera-live-card" aria-label="实时画面">
               <img src="./assets/new-camera-live.jpg" alt="爬宠箱实时监控画面" />
-              <div class="live-ai-overlay" aria-label="AI 实时分析">
-                <span class="live-ai-overlay-tag">AI 实时分析</span>
-                <p>品种识别：<strong>绿鬣蜥</strong></p>
-                <p>实时状态：<strong>晒背中</strong></p>
-              </div>
               <div class="live-device-status is-online" role="status" aria-label="当前网速 472 KB 每秒，设备在线">
                 <span class="live-network-speed">472 KB/s</span>
                 <span class="live-device-status-value">
@@ -1675,32 +1691,37 @@
                   在线
                 </span>
               </div>
-              <div class="live-actions" aria-label="实时画面操作">
-                <button class="live-action-button" type="button" aria-label="高清，清晰度设置">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M5 18V6" />
-                    <path d="M10 18v-5" />
-                    <path d="M15 18v-8" />
-                    <path d="M20 18v-11" />
-                  </svg>
-                  <span>高清</span>
-                </button>
-                <div class="playback-mode-switch" role="group" aria-label="实时与回放模式切换">
-                  <button class="active" type="button" aria-label="当前为实时监控" aria-pressed="true">实时</button>
-                  <button class="playback-entry-button" type="button" aria-label="切换到回放模式">回放</button>
-                </div>
-                <button class="live-action-button" type="button" aria-label="全屏，切换全屏">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M8 3H5a2 2 0 0 0-2 2v3" />
-                    <path d="M21 8V5a2 2 0 0 0-2-2h-3" />
-                    <path d="M3 16v3a2 2 0 0 0 2 2h3" />
-                    <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
-                  </svg>
-                  <span>全屏</span>
-                </button>
-              </div>
+              <button class="camera-quality-button" type="button" data-camera-action="quality" aria-label="切换画面清晰度">高清</button>
             </section>
 
+            <section class="camera-quick-actions" aria-label="实时画面快捷操作">
+              <button type="button" data-camera-action="fullscreen"><span><svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3" /></svg></span><b>全屏</b></button>
+              <button type="button" data-camera-action="snapshot"><span><svg viewBox="0 0 24 24"><path d="M14.5 5h-5L7.5 8H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-2.5l-2-3Z" /><circle cx="12" cy="14" r="3.5" /></svg></span><b>截图</b></button>
+              <button type="button" data-camera-action="record"><span><svg viewBox="0 0 24 24"><rect x="3" y="5" width="14" height="14" rx="3" /><path d="m17 10 4-2v8l-4-2" /></svg></span><b>录像</b></button>
+              <button type="button" data-camera-action="share"><span><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="2.5" /><circle cx="6" cy="12" r="2.5" /><circle cx="18" cy="19" r="2.5" /><path d="m8.2 10.8 7.6-4.5M8.2 13.2l7.6 4.5" /></svg></span><b>分享</b></button>
+            </section>
+
+            <section class="camera-basic-section" aria-label="摄像头基础功能">
+              <div class="camera-function-grid">
+                <button class="camera-function-card playback-entry-button" type="button" data-camera-action="playback"><span class="camera-function-icon tone-blue"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" /><path d="M10 8.5 15 12l-5 3.5V8.5Z" /></svg></span><strong>录像回看</strong><small>本地与云端录像</small></button>
+                <button class="camera-function-card" type="button" data-camera-action="album"><span class="camera-function-icon tone-cyan"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3" /><circle cx="9" cy="9" r="1.5" /><path d="m5 17 4-4 3 3 2-2 5 3" /></svg></span><strong>相册</strong><small>截图与录像</small></button>
+                <button class="camera-function-card" type="button" data-camera-action="night"><span class="camera-function-icon tone-violet"><svg viewBox="0 0 24 24"><path d="M20 15.5A8 8 0 0 1 8.5 4a8 8 0 1 0 11.5 11.5Z" /><path d="m16 4 .5 1.5L18 6l-1.5.5L16 8l-.5-1.5L14 6l1.5-.5L16 4Z" /></svg></span><strong>夜视模式</strong><small class="camera-function-state">自动</small></button>
+                <button class="camera-function-card is-toggle" type="button" data-camera-action="privacy" aria-pressed="false"><span class="camera-function-icon tone-indigo"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.4 2.8 8.4 7 10 4.2-1.6 7-5.6 7-10V6l-7-3Z" /><path d="M9.5 12a2.5 2.5 0 0 1 5 0c0 1.5-1.1 2.5-2.5 2.5S9.5 13.5 9.5 12Z" /></svg></span><strong>隐私模式</strong><small class="camera-function-state">已关闭</small></button>
+              </div>
+            </section>
+            </section>
+
+            <section class="camera-section-panel camera-companion-panel" data-camera-panel="companion" aria-label="智能陪伴">
+              <section class="camera-companion-locked" aria-label="智能陪伴未开启">
+                <article class="camera-companion-hero">
+                  <h2>开启智能陪伴</h2>
+                  <p>解锁行为记录、健康洞察与云端录像。</p>
+                  <button class="camera-membership-entry" type="button">开通会员</button>
+                  <img class="camera-companion-member-image" src="./assets/pro-member-cat.png" alt="皇冠会员猫形象" />
+                </article>
+              </section>
+
+              <div class="camera-companion-member-content">
             <div class="monitor-status-notices" aria-label="状态通知" hidden>
               <article class="monitor-status-notice tone-env" role="alert">
                 <span class="monitor-status-notice-icon" aria-hidden="true">
@@ -1925,24 +1946,24 @@
             </section>
 
             <section class="environment-section" aria-label="环境监测">
-              <article class="env-card env-card-compact">
-                <div class="env-compact-copy">
-                  <div class="monitor-section-title">
+              <article class="env-card environment-card-shell">
+                <div class="monitor-section-title environment-section-title">
+                  <div>
                     <h2>环境监测</h2>
                   </div>
+                  <button class="env-prototype-toggle" type="button" aria-label="演示：切换环境监测数据状态" aria-pressed="false">
+                    <span class="env-prototype-toggle-tag">演示</span>
+                    <span class="env-prototype-toggle-label">无环境数据</span>
+                  </button>
+                </div>
+              <div class="env-card-compact">
+                <div class="env-compact-copy">
                   <strong>暂无环境数据</strong>
                   <p>添加环境监测配件后，AI 持续判断箱内环境是否适宜</p>
                 </div>
-              </article>
+              </div>
 
-              <article class="env-card env-card-full">
-                <div class="monitor-section-title">
-                  <h2>环境监测</h2>
-                  <button class="env-prototype-toggle env-alert-toggle" type="button" aria-label="演示：切换环境异常状态" aria-pressed="false">
-                    <span class="env-prototype-toggle-tag">演示</span>
-                    <span class="env-prototype-toggle-label">无环境异常</span>
-                  </button>
-                </div>
+              <div class="env-card-full">
                 <div class="env-metrics">
                   <button class="env-temp-card env-detail-entry warm" type="button" aria-label="查看热区温度详情，当前 32.4 摄氏度">
                     <div class="env-metric-head">
@@ -1989,34 +2010,179 @@
                     <path d="M5.5 16.5 6.4 18.6 8.5 19.5 6.4 20.4 5.5 22.5 4.6 20.4 2.5 19.5 4.6 18.6 5.5 16.5Z" />
                   </svg>
                 </article>
+              </div>
               </article>
             </section>
+              </div>
+            </section>
+
+            <section class="camera-section-panel camera-iot-panel" data-camera-panel="iot" aria-label="设备控制">
+              <section class="iot-overview-card" aria-label="箱内环境概览">
+                <div class="iot-overview-head">
+                  <div>
+                    <span class="iot-online-state"><i aria-hidden="true"></i>设备在线</span>
+                    <h2>设备控制</h2>
+                  </div>
+                  <button class="iot-auto-mode active" type="button" aria-pressed="true">
+                    <span>自动模式</span>
+                    <i aria-hidden="true"><b></b></i>
+                  </button>
+                </div>
+                <div class="iot-metric-grid">
+                  <button class="iot-metric-card temperature" type="button" data-iot-target="temperature" aria-label="设置目标温度区间">
+                    <span>温度</span>
+                    <strong>28<small>℃</small></strong>
+                    <em>目标 26–30℃</em>
+                  </button>
+                  <button class="iot-metric-card humidity" type="button" data-iot-target="humidity" aria-label="设置目标湿度区间">
+                    <span>湿度</span>
+                    <strong>60<small>%</small></strong>
+                    <em>目标 50–70%</em>
+                  </button>
+                  <article class="iot-metric-card uv">
+                    <span>UV 指数</span>
+                    <strong>3</strong>
+                    <em>适中</em>
+                  </article>
+                </div>
+              </section>
+
+              <section class="iot-control-section" aria-label="外设控制">
+                <div class="monitor-section-title iot-section-title">
+                  <h2>外设控制</h2>
+                  <span>8 个设备</span>
+                </div>
+                <div class="iot-device-grid">
+                  <button class="iot-device-card is-on" type="button" data-iot-device="照明灯" aria-pressed="true">
+                    <span class="iot-device-icon light"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4" /><path d="M8 14a6 6 0 1 1 8 0c-1 .8-1 2-1 2H9s0-1.2-1-2Z" /></svg></span>
+                    <span class="iot-device-copy"><strong>照明灯</strong><small>已开启</small></span><i class="iot-switch" aria-hidden="true"><b></b></i>
+                  </button>
+                  <button class="iot-device-card is-on" type="button" data-iot-device="UV 灯" aria-pressed="true">
+                    <span class="iot-device-icon uv"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" /><path d="M12 2v3M12 19v3M4.9 4.9 7 7M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1 7 17M17 7l2.1-2.1" /></svg></span>
+                    <span class="iot-device-copy"><strong>UV 灯</strong><small>已开启</small></span><i class="iot-switch" aria-hidden="true"><b></b></i>
+                  </button>
+                  <button class="iot-device-card is-on" type="button" data-iot-device="加热垫" aria-pressed="true">
+                    <span class="iot-device-icon heat"><svg viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="12" rx="3" /><path d="M8 10h8M8 14h8" /></svg></span>
+                    <span class="iot-device-copy"><strong>加热垫</strong><small>已开启</small></span><i class="iot-switch" aria-hidden="true"><b></b></i>
+                  </button>
+                  <button class="iot-device-card is-on" type="button" data-iot-device="风扇" aria-pressed="true">
+                    <span class="iot-device-icon fan"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2" /><path d="M12 10c-1-5 1-7 3-6 2 1 1 4-1 7M14 12c5-1 7 1 6 3-1 2-4 1-7-1M12 14c1 5-1 7-3 6-2-1-1-4 1-7M10 12c-5 1-7-1-6-3 1-2 4-1 7 1" /></svg></span>
+                    <span class="iot-device-copy"><strong>风扇</strong><small>已开启</small></span><i class="iot-switch" aria-hidden="true"><b></b></i>
+                  </button>
+                  <button class="iot-device-card" type="button" data-iot-device="喷雾" aria-pressed="false">
+                    <span class="iot-device-icon mist"><svg viewBox="0 0 24 24"><path d="M8 8h8l2 4v7H6v-7l2-4Z" /><path d="M10 5h4M17 7l3-2M18 10h3" /></svg></span>
+                    <span class="iot-device-copy"><strong>喷雾</strong><small>已关闭</small></span><i class="iot-switch" aria-hidden="true"><b></b></i>
+                  </button>
+                  <button class="iot-device-card" type="button" data-iot-device="滴水器" aria-pressed="false">
+                    <span class="iot-device-icon water"><svg viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z" /></svg></span>
+                    <span class="iot-device-copy"><strong>滴水器</strong><small>已关闭</small></span><i class="iot-switch" aria-hidden="true"><b></b></i>
+                  </button>
+                  <button class="iot-device-card" type="button" data-iot-device="喂食机" aria-pressed="false">
+                    <span class="iot-device-icon feeder"><svg viewBox="0 0 24 24"><path d="M8 4h8l1 7H7l1-7Z" /><path d="M6 11h12v8H6zM9 15h6" /></svg></span>
+                    <span class="iot-device-copy"><strong>喂食机</strong><small>已关闭</small></span><i class="iot-switch" aria-hidden="true"><b></b></i>
+                  </button>
+                  <button class="iot-device-card" type="button" data-iot-device="智能插座" aria-pressed="false">
+                    <span class="iot-device-icon socket"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5" /><path d="M9 10v4M15 10v4M9 17h6" /></svg></span>
+                    <span class="iot-device-copy"><strong>智能插座</strong><small>已关闭</small></span><i class="iot-switch" aria-hidden="true"><b></b></i>
+                  </button>
+                </div>
+              </section>
+            </section>
           </div>
+
+          <div class="camera-sheet-layer" aria-hidden="true">
+            <button class="camera-sheet-scrim" type="button" aria-label="关闭面板"></button>
+            <section class="camera-bottom-sheet camera-membership-sheet" data-camera-sheet="membership" aria-label="智能陪伴会员">
+              <div class="camera-sheet-handle" aria-hidden="true"></div>
+              <div class="camera-sheet-title"><div><span>摄像头会员</span><h2>开启智能陪伴</h2></div><button class="camera-sheet-close" type="button" aria-label="关闭会员开通引导">×</button></div>
+              <p class="camera-membership-intro">解锁云端录像与 AI 智能。</p>
+              <div class="camera-membership-plans" role="group" aria-label="选择会员套餐">
+                <button class="camera-membership-plan active" type="button" data-membership-plan="monthly" aria-pressed="true">
+                  <span>月卡</span>
+                  <strong><small>¥</small>19.9</strong>
+                  <em>按月开通</em>
+                </button>
+                <button class="camera-membership-plan" type="button" data-membership-plan="yearly" aria-pressed="false">
+                  <i>更划算</i>
+                  <span>年卡</span>
+                  <strong><small>¥</small>168</strong>
+                  <em>约 ¥14/月 · 省 ¥70.8</em>
+                </button>
+              </div>
+              <button class="camera-membership-activate" type="button">开通会员</button>
+            </section>
+            <section class="camera-bottom-sheet iot-target-sheet" data-camera-sheet="iot-target" aria-label="设置目标区间">
+              <div class="camera-sheet-handle" aria-hidden="true"></div>
+              <div class="camera-sheet-title">
+                <div><span>自动控制目标</span><h2 class="iot-target-title">设置温度区间</h2></div>
+                <button class="camera-sheet-close" type="button" aria-label="关闭目标区间设置">×</button>
+              </div>
+              <p class="iot-target-intro">设备将根据目标区间自动调节相关外设。</p>
+              <div class="iot-target-range" aria-label="目标区间">
+                <div class="iot-target-control">
+                  <span>最低值</span>
+                  <div><button type="button" data-iot-target-bound="min" data-iot-target-delta="-1" aria-label="降低最低值">−</button><strong class="iot-target-min">26<small>℃</small></strong><button type="button" data-iot-target-bound="min" data-iot-target-delta="1" aria-label="提高最低值">＋</button></div>
+                </div>
+                <div class="iot-target-divider" aria-hidden="true"></div>
+                <div class="iot-target-control">
+                  <span>最高值</span>
+                  <div><button type="button" data-iot-target-bound="max" data-iot-target-delta="-1" aria-label="降低最高值">−</button><strong class="iot-target-max">30<small>℃</small></strong><button type="button" data-iot-target-bound="max" data-iot-target-delta="1" aria-label="提高最高值">＋</button></div>
+                </div>
+              </div>
+              <button class="iot-target-save" type="button">保存目标区间</button>
+            </section>
+          </div>
+          <div class="camera-toast" role="status" aria-live="polite"></div>
           <div class="home-indicator monitor-home-indicator" aria-hidden="true"></div>
         </section>
 
+        <section class="page-view monitor-view camera-settings-view" data-view="camera-settings" aria-label="设备设置页面">
+          <header class="monitor-topbar camera-settings-topbar">
+            <button class="monitor-back camera-settings-back" type="button" aria-label="返回安心看护">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7" /></svg>
+            </button>
+            <h1>设备设置</h1>
+          </header>
+
+          <div class="camera-settings-scroll">
+            <article class="camera-settings-summary" aria-label="爬宠摄像头在线">
+              <span class="camera-settings-summary-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="4" /><circle cx="12" cy="12" r="3" /><path d="M8 2v3M16 2v3" /></svg>
+              </span>
+              <div><strong>爬宠摄像头</strong><small>已连接 · Wi-Fi 良好</small></div>
+              <em><i aria-hidden="true"></i>在线</em>
+            </article>
+
+            <section class="camera-settings-page-card" aria-label="设备设置选项">
+              <div class="camera-settings-list">
+                <button type="button"><span>设备名称</span><strong>爬宠摄像头</strong><i>›</i></button>
+                <button type="button"><span>网络状态</span><strong class="is-good">Wi-Fi 良好</strong><i>›</i></button>
+                <button type="button"><span>存储卡</span><strong>42.6G / 128G</strong><i>›</i></button>
+                <button type="button"><span>共享设备</span><strong>未共享</strong><i>›</i></button>
+                <button type="button"><span>固件版本</span><strong>已是最新</strong><i>›</i></button>
+                <button type="button"><span>设备信息</span><strong>在线</strong><i>›</i></button>
+              </div>
+            </section>
+
+            <section class="camera-remove-device-section" aria-label="移除设备">
+              <button class="camera-remove-device" type="button">移除设备</button>
+            </section>
+          </div>
+        </section>
+
         <section class="page-view monitor-view playback-view" data-view="camera-playback" aria-label="回放功能页面">
-          <header class="monitor-topbar monitor-topbar-with-prototype playback-topbar">
-            <button class="monitor-back playback-top-back" type="button" aria-label="返回爬宠摄像头实时页面">
+          <header class="monitor-topbar playback-topbar">
+            <button class="monitor-back playback-top-back" type="button" aria-label="返回安心看护">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="m15 5-7 7 7 7" />
               </svg>
             </button>
-            <h1>爬宠摄像头</h1>
-            <button class="env-prototype-toggle playback-topbar-spacer" type="button" aria-hidden="true" tabindex="-1">
-              <span class="env-prototype-toggle-tag">演示</span>
-              <span class="env-prototype-toggle-label">无环境数据</span>
-            </button>
+            <h1>录像回看</h1>
           </header>
 
           <div class="playback-scroll">
             <section class="live-card playback-live-card" aria-label="实时画面">
               <img src="./assets/new-camera-live.jpg" alt="爬宠箱实时监控画面" />
-              <div class="live-ai-overlay" aria-label="AI 实时分析">
-                <span class="live-ai-overlay-tag">AI 实时分析</span>
-                <p>品种识别：<strong>绿鬣蜥</strong></p>
-                <p>实时状态：<strong>晒背中</strong></p>
-              </div>
               <div class="live-device-status is-online" role="status" aria-label="设备在线">
                 <span class="live-device-status-value">
                   <i aria-hidden="true"></i>
@@ -2028,93 +2194,98 @@
                   <path d="M9 7v10l8-5-8-5Z" />
                 </svg>
               </button>
-              <div class="live-actions" aria-label="实时画面操作">
-                <button class="live-action-button" type="button" aria-label="倍速，播放速度设置">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M4 12a8 8 0 1 1 16 0" />
-                    <path d="M12 12 17 8" />
-                    <path d="M6.4 17.6h11.2" />
-                  </svg>
-                  <span>倍速</span>
-                </button>
-                <div class="playback-mode-switch" role="group" aria-label="实时与回放模式切换">
-                  <button class="playback-live-mode-button" type="button" aria-label="切换到实时监控">实时</button>
-                  <button class="active" type="button" aria-label="当前为回放模式" aria-pressed="true">回放</button>
-                </div>
-                <button class="live-action-button" type="button" aria-label="全屏，切换全屏">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M8 3H5a2 2 0 0 0-2 2v3" />
-                    <path d="M21 8V5a2 2 0 0 0-2-2h-3" />
-                    <path d="M3 16v3a2 2 0 0 0 2 2h3" />
-                    <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
-                  </svg>
-                  <span>全屏</span>
-                </button>
+              <div class="playback-video-controls" aria-label="录像播放控制">
+                <span>09:42</span><i><b></b></i><span>10:00</span>
+                <button type="button" data-camera-action="playback-speed">1.0×</button>
+                <button type="button" data-camera-action="fullscreen" aria-label="全屏播放"><svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3" /></svg></button>
               </div>
             </section>
 
             <div class="playback-tabs" role="tablist" aria-label="回放类型">
-              <button class="playback-tab active" type="button" role="tab" aria-selected="true" data-playback-tab="cloud">云回放</button>
-              <button class="playback-tab" type="button" role="tab" aria-selected="false" data-playback-tab="local">本地回放</button>
+              <button class="playback-tab active" type="button" role="tab" aria-selected="true" data-playback-tab="local">本地录像</button>
+              <button class="playback-tab" type="button" role="tab" aria-selected="false" data-playback-tab="cloud">云端录像 <i class="playback-member-mark">会员</i></button>
             </div>
 
-            <section class="playback-tab-panel active" data-playback-panel="cloud" aria-label="云回放">
+            <section class="playback-tab-panel" data-playback-panel="cloud" aria-label="云端录像">
+              <div class="cloud-locked-content">
               <article class="cloud-benefit-hero">
                 <div class="cloud-benefit-copy">
-                  <span>设备会员</span>
-                  <h2>开通设备会员<br />守护每一段关键画面</h2>
-                  <p>云端保存、加密保护、事件推送同步开启，让爱宠的变化随时可追溯。</p>
-                  <button type="button">开通会员</button>
+                  <h2>开启云端录像</h2>
+                  <p>关键片段云端留存，随时安心回看。</p>
+                  <button class="camera-membership-entry" type="button">开通会员</button>
                 </div>
                 <img src="./assets/pro-member-cat.png" alt="设备会员权益形象" />
               </article>
 
-              <div class="cloud-benefit-list" aria-label="云回放会员权益">
+              <div class="cloud-benefit-list" aria-label="云端录像会员权益">
                 <article>
-                  <span class="cloud-benefit-icon">
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M6 18h11.5a4 4 0 0 0 .5-7.9A6 6 0 0 0 6.3 8.4 4.8 4.8 0 0 0 6 18Z" />
-                    </svg>
-                  </span>
+                  <span class="cloud-benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18h11.5a4 4 0 0 0 .5-7.9A6 6 0 0 0 6.3 8.4 4.8 4.8 0 0 0 6 18Z" /></svg></span>
                   <strong>云端保护</strong>
-                  <p>录像自动云端备份，设备离线也能安心留存。</p>
+                  <p>录像自动云端备份</p>
                 </article>
                 <article>
-                  <span class="cloud-benefit-icon">
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M12 3 5 6v5c0 4.4 2.8 8.4 7 10 4.2-1.6 7-5.6 7-10V6l-7-3Z" />
-                      <path d="m9 12 2 2 4-5" />
-                    </svg>
-                  </span>
+                  <span class="cloud-benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v5c0 4.4 2.8 8.4 7 10 4.2-1.6 7-5.6 7-10V6l-7-3Z" /><path d="m9 12 2 2 4-5" /></svg></span>
                   <strong>隐私加密</strong>
-                  <p>云端传输与存储加密，数据隐私更安全。</p>
+                  <p>传输与存储全程保护</p>
                 </article>
                 <article>
-                  <span class="cloud-benefit-icon">
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M4 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7Z" />
-                      <path d="M8 9h8" />
-                      <path d="M8 13h5" />
-                    </svg>
-                  </span>
-                  <strong>超大空间</strong>
-                  <p>超大云端存储空间，长期记录成长变化。</p>
+                  <span class="cloud-benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7Z" /><path d="M8 9h8M8 13h5" /></svg></span>
+                  <strong>充足空间</strong>
+                  <p>长期留存成长变化</p>
                 </article>
                 <article>
-                  <span class="cloud-benefit-icon">
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 7h18s-3 0-3-7" />
-                      <path d="M10 19a2 2 0 0 0 4 0" />
-                      <path d="m19 4 2-2" />
-                    </svg>
-                  </span>
+                  <span class="cloud-benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 7h18s-3 0-3-7" /><path d="M10 19a2 2 0 0 0 4 0M19 4l2-2" /></svg></span>
                   <strong>事件推送</strong>
-                  <p>精彩片段实时推送，不错过每一个高光瞬间。</p>
+                  <p>重要片段及时提醒</p>
                 </article>
+              </div>
+              </div>
+
+              <div class="cloud-member-content" aria-label="云端录像列表">
+                <div class="local-playback-head">
+                  <div>
+                    <h2>云端视频文件</h2>
+                    <p>按时间选择云端视频文件。</p>
+                  </div>
+                  <div class="local-storage-meter" aria-label="云端存储已用 42.6G，总空间 2T">
+                    <span>已用 42.6G / 2T</span>
+                    <i aria-hidden="true"><b></b></i>
+                  </div>
+                </div>
+
+                <div class="local-file-list" aria-label="云端视频列表">
+                  <button class="local-file-card active" type="button" data-file-title="2026-07-09 09:30" data-file-time="09:42" data-file-total="10:00">
+                    <span class="local-file-thumb">
+                      <img src="./assets/new-camera-live.jpg" alt="2026-07-09 09:30 云端视频缩略图" />
+                    </span>
+                    <span class="local-file-meta">
+                      <strong>2026-07-09 09:30</strong>
+                      <small>68MB</small>
+                    </span>
+                  </button>
+                  <button class="local-file-card" type="button" data-file-title="2026-07-09 09:00" data-file-time="09:12" data-file-total="09:30">
+                    <span class="local-file-thumb">
+                      <img src="./assets/reptile-camera-live.png" alt="2026-07-09 09:00 云端视频缩略图" />
+                    </span>
+                    <span class="local-file-meta">
+                      <strong>2026-07-09 09:00</strong>
+                      <small>72MB</small>
+                    </span>
+                  </button>
+                  <button class="local-file-card" type="button" data-file-title="2026-07-09 08:30" data-file-time="08:46" data-file-total="09:00">
+                    <span class="local-file-thumb">
+                      <img src="./assets/new-camera-live.jpg" alt="2026-07-09 08:30 云端视频缩略图" />
+                    </span>
+                    <span class="local-file-meta">
+                      <strong>2026-07-09 08:30</strong>
+                      <small>64MB</small>
+                    </span>
+                  </button>
+                </div>
               </div>
             </section>
 
-            <section class="playback-tab-panel" data-playback-panel="local" aria-label="本地回放">
+            <section class="playback-tab-panel active" data-playback-panel="local" aria-label="本地录像">
               <div class="local-playback-head">
                 <div>
                   <h2>本地视频文件</h2>

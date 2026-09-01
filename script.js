@@ -88,12 +88,41 @@ const aquariumAssistantSuggestions = document.querySelectorAll(".aquarium-assist
 const aquariumToast = document.querySelector(".aquarium-toast");
 const reptileDeviceButton = document.querySelector(".reptile-device-card");
 const monitorBackButton = document.querySelector(".monitor-back");
-const playbackEntryButton = document.querySelector(".playback-entry-button");
 const playbackTopBackButton = document.querySelector(".playback-top-back");
-const playbackLiveModeButton = document.querySelector(".playback-live-mode-button");
+const cameraSettingsBackButton = document.querySelector(".camera-settings-back");
 const playbackTabs = document.querySelectorAll(".playback-tab");
 const playbackPanels = document.querySelectorAll(".playback-tab-panel");
 const localFileCards = document.querySelectorAll(".local-file-card");
+const cameraSectionTabs = document.querySelectorAll(".camera-section-tab");
+const cameraSectionPanels = document.querySelectorAll(".camera-section-panel");
+const cameraSectionDock = document.querySelector(".camera-section-tabs");
+const cameraActionButtons = document.querySelectorAll("[data-camera-action]");
+const cameraSheetLayer = document.querySelector(".camera-sheet-layer");
+const cameraSheets = document.querySelectorAll(".camera-bottom-sheet");
+const cameraSheetCloseButtons = document.querySelectorAll(".camera-sheet-close, .camera-sheet-scrim");
+const cameraMembershipEntries = document.querySelectorAll(".camera-membership-entry");
+const cameraMembershipActivate = document.querySelector(".camera-membership-activate");
+const cameraMembershipPlans = document.querySelectorAll(".camera-membership-plan");
+const iotAutoModeButton = document.querySelector(".iot-auto-mode");
+const iotDeviceButtons = document.querySelectorAll(".iot-device-card");
+const iotTargetButtons = document.querySelectorAll("[data-iot-target]");
+const iotTargetTitle = document.querySelector(".iot-target-title");
+const iotTargetMin = document.querySelector(".iot-target-min");
+const iotTargetMax = document.querySelector(".iot-target-max");
+const iotTargetStepButtons = document.querySelectorAll("[data-iot-target-bound]");
+const iotTargetSave = document.querySelector(".iot-target-save");
+const cameraToast = document.querySelector(".camera-toast");
+
+if (cameraSectionDock) {
+  appScreen?.append(cameraSectionDock);
+}
+if (cameraSheetLayer) {
+  appScreen?.append(cameraSheetLayer);
+}
+if (cameraToast) {
+  appScreen?.append(cameraToast);
+}
+
 const foodFeatureButton = document.querySelector(".food-feature-card");
 const activityFeatureButton = document.querySelector(".activity-feature-card");
 const sunFeatureButton = document.querySelector(".sun-feature-card");
@@ -125,6 +154,14 @@ let aquariumCaptureReturnPage = "diagnosis";
 let aquariumPreviewUrl = "";
 let aquariumSelectedFile = null;
 let aquariumToastTimer = 0;
+let cameraMemberState = false;
+let activeCameraSection = "care";
+let activeIotTarget = "temperature";
+const iotTargetState = {
+  temperature: { label: "温度", unit: "℃", min: 26, max: 30, floor: 15, ceiling: 40, step: 1 },
+  humidity: { label: "湿度", unit: "%", min: 50, max: 70, floor: 20, ceiling: 90, step: 5 },
+};
+let cameraToastTimer = 0;
 const aquariumPageReturnTargets = {};
 const aquariumScrollPositions = {
   home: 0,
@@ -153,7 +190,11 @@ function setActiveView(viewName) {
   );
   appScreen?.classList.toggle("create-pet-mode", viewName === "create-pet-profile");
   appScreen?.classList.toggle("aquarium-mode", viewName === "aquarium-camera");
-  appScreen?.classList.toggle("monitor-mode", viewName === "reptile-camera" || viewName === "camera-playback");
+  appScreen?.classList.toggle(
+    "monitor-mode",
+    viewName === "reptile-camera" || viewName === "camera-playback" || viewName === "camera-settings",
+  );
+  appScreen?.classList.toggle("reptile-camera-mode", viewName === "reptile-camera");
   appScreen?.classList.toggle(
     "food-mode",
     viewName === "food-detail" ||
@@ -166,7 +207,6 @@ function setActiveView(viewName) {
   appScreen?.classList.toggle("message-mode", viewName === "message");
   appScreen?.classList.toggle("profile-mode", viewName === "profile");
   activeViewName = viewName;
-
   viewTabs.forEach((tab) => {
     const isActive = tab.dataset.viewTarget === viewName;
     tab.classList.toggle("active", isActive);
@@ -394,10 +434,8 @@ syncLinkPetCompleteState();
 const monitorScroll = document.querySelector('[data-view="reptile-camera"] .monitor-scroll');
 const monitorStatusNotices = document.querySelector(".monitor-status-notices");
 const monitorStatusNoticeCloseButtons = document.querySelectorAll(".monitor-status-notice-close");
-const envPrototypeToggle = document.querySelector(".monitor-topbar .env-prototype-toggle");
-const envPrototypeToggleLabel = document.querySelector(".monitor-topbar .env-prototype-toggle-label");
-const envAlertToggle = document.querySelector(".env-alert-toggle");
-const envAlertToggleLabel = document.querySelector(".env-alert-toggle .env-prototype-toggle-label");
+const envPrototypeToggle = document.querySelector(".environment-section-title .env-prototype-toggle");
+const envPrototypeToggleLabel = document.querySelector(".environment-section-title .env-prototype-toggle-label");
 
 function syncMonitorStatusNoticeVisibility() {
   const hasData = monitorScroll?.classList.contains("env-has-data");
@@ -407,38 +445,21 @@ function syncMonitorStatusNoticeVisibility() {
   monitorStatusNotices?.toggleAttribute("hidden", !shouldShow);
 }
 
-function setEnvAlertState(hasAlert) {
-  monitorScroll?.classList.toggle("env-has-alert", hasAlert);
-  envAlertToggle?.setAttribute("aria-pressed", String(hasAlert));
-  if (envAlertToggleLabel) {
-    envAlertToggleLabel.textContent = hasAlert ? "有环境异常" : "无环境异常";
-  }
-  if (hasAlert) {
-    monitorStatusNotices?.classList.remove("is-hidden");
-    monitorStatusNotices?.querySelector(".monitor-status-notice")?.classList.remove("is-dismissed");
-  }
-  syncMonitorStatusNoticeVisibility();
-}
-
-envPrototypeToggle?.addEventListener("click", () => {
-  const hasData = monitorScroll?.classList.toggle("env-has-data") ?? false;
-  envPrototypeToggle.setAttribute("aria-pressed", String(hasData));
+function setEnvironmentDataState(hasData) {
+  monitorScroll?.classList.toggle("env-has-data", hasData);
+  envPrototypeToggle?.setAttribute("aria-pressed", String(hasData));
   if (envPrototypeToggleLabel) {
     envPrototypeToggleLabel.textContent = hasData ? "有环境数据" : "无环境数据";
   }
   if (!hasData) {
     monitorScroll?.classList.remove("env-has-alert");
-    envAlertToggle?.setAttribute("aria-pressed", "false");
-    if (envAlertToggleLabel) {
-      envAlertToggleLabel.textContent = "无环境异常";
-    }
   }
   syncMonitorStatusNoticeVisibility();
-});
+}
 
-envAlertToggle?.addEventListener("click", () => {
-  const hasAlert = !monitorScroll?.classList.contains("env-has-alert");
-  setEnvAlertState(hasAlert);
+envPrototypeToggle?.addEventListener("click", () => {
+  const hasData = !(monitorScroll?.classList.contains("env-has-data") ?? false);
+  setEnvironmentDataState(hasData);
 });
 
 function dismissMonitorStatusNotice(notice) {
@@ -1015,7 +1036,220 @@ aquariumAssistantSuggestions.forEach((button) => {
   });
 });
 
+function showCameraToast(message) {
+  if (!cameraToast) {
+    return;
+  }
+  window.clearTimeout(cameraToastTimer);
+  cameraToast.textContent = message;
+  cameraToast.classList.add("is-visible");
+  cameraToastTimer = window.setTimeout(() => {
+    cameraToast.classList.remove("is-visible");
+  }, 1800);
+}
+
+function setActiveCameraSection(sectionName) {
+  activeCameraSection = sectionName;
+  cameraSectionTabs.forEach((tab) => {
+    const isActive = tab.dataset.cameraSection === sectionName;
+    tab.classList.toggle("active", isActive);
+    tab.setAttribute("aria-pressed", String(isActive));
+  });
+  cameraSectionPanels.forEach((panel) => {
+    panel.classList.toggle("active", panel.dataset.cameraPanel === sectionName);
+  });
+  monitorScroll?.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function setCameraMemberState(isMember, announce = false) {
+  cameraMemberState = isMember;
+  appScreen?.classList.toggle("camera-is-member", isMember);
+  monitorScroll?.classList.remove("env-has-alert");
+  setEnvironmentDataState(true);
+  if (announce) {
+    showCameraToast(isMember ? "智能陪伴已开启" : "已切换为未订阅演示");
+  }
+}
+
+function setCameraSheetOpen(sheetName = "") {
+  const isOpen = Boolean(sheetName);
+  cameraSheetLayer?.classList.toggle("is-open", isOpen);
+  cameraSheetLayer?.setAttribute("aria-hidden", String(!isOpen));
+  cameraSheets.forEach((sheet) => {
+    sheet.classList.toggle("active", sheet.dataset.cameraSheet === sheetName);
+  });
+}
+
+cameraSectionTabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    setActiveCameraSection(tab.dataset.cameraSection ?? "care");
+  });
+});
+
+iotAutoModeButton?.addEventListener("click", () => {
+  const isAuto = iotAutoModeButton.getAttribute("aria-pressed") !== "true";
+  iotAutoModeButton.setAttribute("aria-pressed", String(isAuto));
+  iotAutoModeButton.classList.toggle("active", isAuto);
+  const label = iotAutoModeButton.querySelector("span");
+  if (label) {
+    label.textContent = isAuto ? "自动模式" : "手动模式";
+  }
+  showCameraToast(isAuto ? "设备控制已切换为自动模式" : "已切换为手动控制");
+});
+
+iotDeviceButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const isOn = button.getAttribute("aria-pressed") !== "true";
+    button.setAttribute("aria-pressed", String(isOn));
+    button.classList.toggle("is-on", isOn);
+    const state = button.querySelector(".iot-device-copy small");
+    if (state) {
+      state.textContent = isOn ? "已开启" : "已关闭";
+    }
+    showCameraToast(`${button.dataset.iotDevice ?? "设备"}${isOn ? "已开启" : "已关闭"}`);
+  });
+});
+
+function renderIotTargetSheet() {
+  const target = iotTargetState[activeIotTarget];
+  if (!target) return;
+  if (iotTargetTitle) iotTargetTitle.textContent = `设置${target.label}区间`;
+  if (iotTargetMin) iotTargetMin.innerHTML = `${target.min}<small>${target.unit}</small>`;
+  if (iotTargetMax) iotTargetMax.innerHTML = `${target.max}<small>${target.unit}</small>`;
+}
+
+iotTargetButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    activeIotTarget = button.dataset.iotTarget ?? "temperature";
+    renderIotTargetSheet();
+    setCameraSheetOpen("iot-target");
+  });
+});
+
+iotTargetStepButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const target = iotTargetState[activeIotTarget];
+    if (!target) return;
+    const bound = button.dataset.iotTargetBound;
+    const direction = Number(button.dataset.iotTargetDelta ?? 0);
+    const change = direction * target.step;
+    if (bound === "min") {
+      target.min = Math.max(target.floor, Math.min(target.min + change, target.max - target.step));
+    } else {
+      target.max = Math.min(target.ceiling, Math.max(target.max + change, target.min + target.step));
+    }
+    renderIotTargetSheet();
+  });
+});
+
+iotTargetSave?.addEventListener("click", () => {
+  const target = iotTargetState[activeIotTarget];
+  const card = document.querySelector(`[data-iot-target="${activeIotTarget}"]`);
+  const summary = card?.querySelector("em");
+  if (!target) return;
+  if (summary) summary.textContent = `目标 ${target.min}–${target.max}${target.unit}`;
+  setCameraSheetOpen();
+  showCameraToast(`${target.label}目标区间已保存`);
+});
+
+cameraMembershipEntries.forEach((button) => {
+  button.addEventListener("click", () => {
+    if (activeViewName !== "reptile-camera" && activeViewName !== "camera-playback") {
+      setActiveView("reptile-camera");
+      setActiveCameraSection("companion");
+    }
+    setCameraSheetOpen("membership");
+  });
+});
+
+cameraMembershipPlans.forEach((plan) => {
+  plan.addEventListener("click", () => {
+    cameraMembershipPlans.forEach((item) => {
+      const isActive = item === plan;
+      item.classList.toggle("active", isActive);
+      item.setAttribute("aria-pressed", String(isActive));
+    });
+  });
+});
+
+cameraMembershipActivate?.addEventListener("click", () => {
+  const openedFromPlayback = activeViewName === "camera-playback";
+  setCameraMemberState(true);
+  setCameraSheetOpen();
+  if (!openedFromPlayback) {
+    setActiveCameraSection("companion");
+  }
+  showCameraToast("摄像头会员已开启");
+});
+
+cameraSheetCloseButtons.forEach((button) => {
+  button.addEventListener("click", () => setCameraSheetOpen());
+});
+
+function toggleCameraFunction(button, action) {
+  const nextState = button.getAttribute("aria-pressed") !== "true";
+  const stateCopy = button.querySelector(".camera-function-state");
+  button.setAttribute("aria-pressed", String(nextState));
+  button.classList.toggle("is-active", nextState);
+
+  if (action === "privacy") {
+    if (stateCopy) stateCopy.textContent = nextState ? "已开启" : "已关闭";
+    showCameraToast(nextState ? "隐私模式已开启，画面已暂停" : "隐私模式已关闭");
+  }
+}
+
+cameraActionButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const action = button.dataset.cameraAction;
+    if (button.classList.contains("is-toggle")) {
+      toggleCameraFunction(button, action);
+      return;
+    }
+
+    if (action === "playback") {
+      setActiveView("camera-playback");
+      setDrawerOpen(false);
+    } else if (action === "settings") {
+      setActiveCameraSection("care");
+      setActiveView("camera-settings");
+      setDrawerOpen(false);
+    } else if (action === "record") {
+      const isActive = button.classList.toggle("is-active");
+      showCameraToast(isActive ? "手动录像已开始" : "录像已保存到相册");
+    } else if (action === "quality") {
+      const isHd = button.textContent.trim() === "高清";
+      button.textContent = isHd ? "标清" : "高清";
+      showCameraToast(`已切换为${isHd ? "标清" : "高清"}画质`);
+    } else if (action === "night") {
+      const modes = ["自动", "红外夜视", "星光夜视"];
+      const stateCopy = button.querySelector(".camera-function-state");
+      const currentIndex = modes.indexOf(stateCopy?.textContent.trim() ?? "自动");
+      const nextMode = modes[(currentIndex + 1) % modes.length];
+      if (stateCopy) {
+        stateCopy.textContent = nextMode;
+      }
+      showCameraToast(`夜视模式已切换为${nextMode}`);
+    } else if (action === "playback-speed") {
+      const speeds = ["1.0×", "1.5×", "2.0×", "0.5×"];
+      const currentIndex = speeds.indexOf(button.textContent.trim());
+      button.textContent = speeds[(currentIndex + 1) % speeds.length];
+    } else {
+      const messages = {
+        fullscreen: "已进入全屏演示",
+        snapshot: "截图已保存到相册",
+        share: "分享功能演示",
+        album: "相册功能演示",
+      };
+      showCameraToast(messages[action] ?? "功能演示");
+    }
+  });
+});
+
+setCameraMemberState(false);
+setActiveCameraSection("care");
+
 reptileDeviceButton?.addEventListener("click", () => {
+  setActiveCameraSection("care");
   setActiveView("reptile-camera");
   setDrawerOpen(false);
 });
@@ -1024,16 +1258,13 @@ monitorBackButton?.addEventListener("click", () => {
   setActiveView("pet");
 });
 
-playbackEntryButton?.addEventListener("click", () => {
-  setActiveView("camera-playback");
-  setDrawerOpen(false);
-});
-
 playbackTopBackButton?.addEventListener("click", () => {
+  setActiveCameraSection("care");
   setActiveView("reptile-camera");
 });
 
-playbackLiveModeButton?.addEventListener("click", () => {
+cameraSettingsBackButton?.addEventListener("click", () => {
+  setActiveCameraSection("care");
   setActiveView("reptile-camera");
 });
 
@@ -1053,7 +1284,8 @@ playbackTabs.forEach((tab) => {
 
 localFileCards.forEach((card) => {
   card.addEventListener("click", () => {
-    localFileCards.forEach((item) => {
+    const panelFileCards = card.closest(".playback-tab-panel")?.querySelectorAll(".local-file-card") ?? [];
+    panelFileCards.forEach((item) => {
       item.classList.toggle("active", item === card);
     });
   });
@@ -1231,7 +1463,8 @@ document.addEventListener("keydown", (event) => {
       setActiveView("wifi-setup");
     } else if (activeViewName === "wifi-setup") {
       setActiveView("add-device");
-    } else if (activeViewName === "camera-playback") {
+    } else if (activeViewName === "camera-playback" || activeViewName === "camera-settings") {
+      setActiveCameraSection("care");
       setActiveView("reptile-camera");
     } else if (appScreen?.classList.contains("scan-mode") || appScreen?.classList.contains("monitor-mode")) {
       setActiveView("pet");
