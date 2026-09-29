@@ -1,1557 +1,252 @@
-const historyButton = document.querySelector(".history");
-const drawerLayer = document.querySelector(".drawer-layer");
-const drawerScrim = document.querySelector(".drawer-scrim");
-const newChatButton = document.querySelector(".new-chat");
-const viewTabs = document.querySelectorAll("[data-view-target]");
-const pageViews = document.querySelectorAll("[data-view]");
-const appScreen = document.querySelector(".app-screen");
-const addDeviceButton = document.querySelector(".add-device");
-const scanBackButton = document.querySelector(".scan-back");
-const scanPreviewButton = document.querySelector(".scan-preview");
-const wifiBackButton = document.querySelector(".wifi-back");
-const wifiPasswordInput = document.querySelector(".wifi-password");
-const wifiTogglePasswordButton = document.querySelector(".wifi-toggle-password");
-const wifiClearButton = document.querySelector(".wifi-clear");
-const wifiSsidInput = document.querySelector(".wifi-ssid");
-const wifiNextButton = document.querySelector(".wifi-next");
-const linkPetView = document.querySelector('[data-view="link-pet-profile"]');
-const linkPetBackButton = document.querySelector(".link-pet-back");
-const linkPetCards = document.querySelectorAll(".link-pet-card:not(.link-pet-add-card)");
-const linkPetAddCard = document.querySelector(".link-pet-add-card");
-const linkPetEmptyCreateButton = document.querySelector(".link-pet-empty-create");
-const linkPetCompleteButton = document.querySelector(".link-pet-complete");
-const createPetBackButton = document.querySelector(".create-pet-back");
-const createPetSaveButton = document.querySelector(".create-pet-save");
-const createPetGenderButtons = document.querySelectorAll(".create-pet-gender");
-const createPetNameInput = document.querySelector(".create-pet-name");
-const createPetSpeciesSelect = document.querySelector(".create-pet-species");
-const createPetSpeciesCustomField = document.querySelector(".create-pet-species-custom");
-const createPetSpeciesNameInput = document.querySelector(".create-pet-species-name");
-const createPetBirthdateInput = document.querySelector(".create-pet-birthdate");
-const createPetAgeDisplay = document.querySelector(".create-pet-age-display");
-const createPetAvatarPreview = document.querySelector(".create-pet-avatar-preview");
-const createPetAvatarUploadButton = document.querySelector(".create-pet-avatar-upload");
-const createPetAvatarInput = document.querySelector(".create-pet-avatar-input");
-const aquariumDeviceButton = document.querySelector(".aquarium-device-card");
-const aquariumView = document.querySelector('[data-view="aquarium-camera"]');
-const aquariumBackButton = document.querySelector(".aquarium-back");
-const aquariumMoreButton = document.querySelector(".aquarium-more");
-const aquariumPageTitle = document.querySelector(".aquarium-page-title");
-const aquariumPages = document.querySelectorAll("[data-aquarium-page]");
-const aquariumTabs = document.querySelectorAll("[data-aquarium-tab]");
-const aquariumAnalysisTargets = document.querySelectorAll("[data-analysis-target]");
-const aquariumDiagnosisCards = document.querySelectorAll("[data-diagnosis-feature]");
-const aquariumUploadButtons = document.querySelectorAll("[data-analysis-upload]");
-const aquariumImageInput = document.querySelector(".aquarium-image-input");
-const aquariumVideoInput = document.querySelector(".aquarium-video-input");
-const aquariumAnalysisPreview = document.querySelector(".aquarium-analysis-preview");
-const aquariumPreviewKind = document.querySelector(".aquarium-preview-kind");
-const aquariumPreviewImage = document.querySelector(".aquarium-preview-media img");
-const aquariumPreviewVideo = document.querySelector(".aquarium-preview-media video");
-const aquariumCaptureGuide = document.querySelector(".aquarium-capture-guide-text");
-const aquariumCaptureMode = document.querySelector(".aquarium-capture-mode");
-const aquariumCaptureType = document.querySelector(".aquarium-capture-type strong");
-const aquariumCaptureLive = document.querySelector(".aquarium-capture-live");
-const aquariumCaptureImage = document.querySelector(".aquarium-capture-image");
-const aquariumCaptureVideo = document.querySelector(".aquarium-capture-video");
-const aquariumCaptureSelected = document.querySelector(".aquarium-capture-selected");
-const aquariumCaptureSelectedName = document.querySelector(".aquarium-capture-selected span");
-const aquariumCaptureGallery = document.querySelector(".aquarium-capture-gallery");
-const aquariumCaptureShutter = document.querySelector(".aquarium-capture-shutter");
-const aquariumCaptureFlash = document.querySelector(".aquarium-capture-flash");
-const aquariumCaptureFlip = document.querySelector(".aquarium-capture-flip");
-const aquariumCaptureCancel = document.querySelector(".aquarium-capture-cancel");
-const aquariumCaptureStart = document.querySelector(".aquarium-capture-start");
-const aquariumCaptureCloudNote = document.querySelector(".aquarium-capture-cloud-note");
-const aquariumCaptureWarning = document.querySelector(".aquarium-capture-warning");
-const aquariumReportShortcut = document.querySelector(".aquarium-report-shortcut");
-const aquariumMyReportsButton = document.querySelector(".aquarium-my-reports");
-const aquariumFilterButton = document.querySelector(".aquarium-filter-button");
-const aquariumFilterMenu = document.querySelector(".aquarium-report-filter-menu");
-const aquariumFilterOptions = document.querySelectorAll("[data-report-filter]");
-const aquariumReportEntries = document.querySelectorAll(".aquarium-report-entry");
-const aquariumReportEmpty = document.querySelector(".aquarium-report-empty");
-const aquariumFullReportButton = document.querySelector(".aquarium-full-report-button");
-const aquariumDestinationButtons = document.querySelectorAll("[data-aquarium-destination]");
-const aquariumReportRetest = document.querySelector(".aquarium-report-retest");
-const aquariumReportConsult = document.querySelector(".aquarium-report-consult");
-const aquariumReportDiseaseButtons = document.querySelectorAll(".aquarium-report-disease, .aquarium-report-disease-cta");
-const aquariumKnowledgeSearch = document.querySelector(".aquarium-knowledge-search input");
-const aquariumKnowledgeFilters = document.querySelectorAll("[data-knowledge-filter]");
-const aquariumKnowledgeCards = document.querySelectorAll("[data-knowledge-category]");
-const aquariumKnowledgeDetailButtons = document.querySelectorAll("[data-knowledge-detail]");
-const aquariumKnowledgeEmpty = document.querySelector(".aquarium-knowledge-empty");
-const aquariumAssistantForm = document.querySelector(".aquarium-assistant-composer");
-const aquariumAssistantInput = document.querySelector("#aquarium-assistant-input");
-const aquariumAssistantMessages = document.querySelector(".aquarium-assistant-messages");
-const aquariumAssistantSuggestions = document.querySelectorAll(".aquarium-assistant-suggestions button");
-const aquariumToast = document.querySelector(".aquarium-toast");
-const reptileDeviceButton = document.querySelector(".reptile-device-card");
-const monitorBackButton = document.querySelector(".monitor-back");
-const playbackTopBackButton = document.querySelector(".playback-top-back");
-const cameraSettingsBackButton = document.querySelector(".camera-settings-back");
-const cameraAlbumBackButton = document.querySelector(".camera-album-back");
-const cameraAlbumSelectButton = document.querySelector(".camera-album-select");
-const cameraAlbumView = document.querySelector(".camera-album-view");
-const cameraAlbumItems = document.querySelectorAll(".camera-album-item");
-const cameraAlbumDeleteButton = document.querySelector(".camera-album-delete");
-const cameraAlbumSelectionBar = document.querySelector(".camera-album-selection-bar");
-const cameraAlbumEmpty = document.querySelector(".camera-album-empty");
-const playbackTabs = document.querySelectorAll(".playback-tab");
-const playbackPanels = document.querySelectorAll(".playback-tab-panel");
-const localFileCards = document.querySelectorAll(".local-file-card");
-const cameraSectionTabs = document.querySelectorAll(".camera-section-tab");
-const cameraSectionPanels = document.querySelectorAll(".camera-section-panel");
-const cameraSectionDock = document.querySelector(".camera-section-tabs");
-const cameraActionButtons = document.querySelectorAll("[data-camera-action]");
-const cameraSheetLayer = document.querySelector(".camera-sheet-layer");
-const cameraSheets = document.querySelectorAll(".camera-bottom-sheet");
-const cameraSheetCloseButtons = document.querySelectorAll(".camera-sheet-close, .camera-sheet-scrim");
-const cameraMembershipEntries = document.querySelectorAll(".camera-membership-entry");
-const cameraMembershipActivate = document.querySelector(".camera-membership-activate");
-const cameraMembershipPlans = document.querySelectorAll(".camera-membership-plan");
-const iotAutoModeButton = document.querySelector(".iot-auto-mode");
-const iotDeviceButtons = document.querySelectorAll(".iot-device-card");
-const iotTargetButtons = document.querySelectorAll("[data-iot-target]");
-const iotTargetTitle = document.querySelector(".iot-target-title");
-const iotTargetMin = document.querySelector(".iot-target-min");
-const iotTargetMax = document.querySelector(".iot-target-max");
-const iotTargetStepButtons = document.querySelectorAll("[data-iot-target-bound]");
-const iotTargetSave = document.querySelector(".iot-target-save");
-const cameraToast = document.querySelector(".camera-toast");
-
-if (cameraSectionDock) {
-  appScreen?.append(cameraSectionDock);
+(() => {
+'use strict';
+document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[role=button][data-action]')){e.preventDefault();e.target.click();}});
+const KEY='czl-app3-camera-v1', TODAY='2026-09-23', IMAGE=window.CAMERA_IMAGE;
+const HEALTH_BADGE=(()=>{const template=document.createElement('template');template.innerHTML=window.CAMERA_ORIGINAL.health;return template.content.querySelector('.health-risk-summary-badge')?.getAttribute('src')||'';})();
+const $=s=>document.querySelector(s), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const paths={calendar:'M8 3v4m8-4v4M4 6h16v15H4zM4 11h16M8 15h2m4 0h2m-8 3h2',file:'M6 3h8l4 4v14H6zM14 3v5h5M9 12h6m-6 4h4',family:'M10 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0M16 5a3 3 0 0 1 0 6M2 21v-3a5 5 0 0 1 10 0v3m3-7a5 5 0 0 1 5 5v2',headset:'M4 14v-3a8 8 0 0 1 16 0v3M4 12H2v7h4v-7zm16 0h2v7h-4v-7zm0 7v2h-6',help:'M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0M9 9a3 3 0 0 1 6 0c0 2-3 2-3 4m0 3h.01',chat:'M3 4h18v14H8l-5 3z',bag:'M3 7h18v14H3zM8 7V3h8v4',phone:'M7 3h10v18H7zM12 17h.01',quality:'M4 4h16v16H4zM7 8v8m4-8v8m-4-4h4m3-4h2l1 1v6l-1 1h-2z',cloud:'M6 18a4 4 0 0 1-1-8 7 7 0 0 1 13-2 5 5 0 0 1 0 10H6',share:'M12 16V3m-5 5 5-5 5 5M5 13v8h14v-8',home:'M3 10 12 3l9 7v10H5V10m4 10v-7h6v7',life:'M4 5h16v14H4zM8 9h8m-8 4h5',ai:'M12 3v3m-7 2h14v11H5zM9 12h.01M15 12h.01M9 16h6',care:'M12 20S3 15 3 9a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6-9 11-9 11',user:'M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0M4 21a8 8 0 0 1 16 0',back:'m14 5-7 7 7 7',bell:'M5 17h14l-2-3V9a5 5 0 0 0-10 0v5zm5 3h4',plus:'M12 5v14M5 12h14',settings:'M9 3h6l1 3 3 1 2 5-2 5-3 1-1 3H9l-1-3-3-1-2-5 2-5 3-1zM15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0',camera:'M3 7h5l2-3h4l2 3h5v13H3zM16 13a4 4 0 1 1-8 0 4 4 0 0 1 8 0',video:'M3 6h12v12H3zm12 4 6-3v10l-6-3',expand:'M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5',more:'M5 12h.01M12 12h.01M19 12h.01',play:'m8 4 12 8-12 8z',image:'M3 3h18v18H3zM3 17l6-6 5 5 3-3 4 4M16 7h.01',shield:'m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6zM8 12l3 3 5-6',leaf:'M19 4C7 1 2 8 6 15s15 3 13-11ZM5 21l11-13',sun:'M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1 1m12 12 1 1M5 19l1-1M18 6l1-1',activity:'M2 12h5l3-8 4 16 3-8h5',temp:'M9 14V5a3 3 0 0 1 6 0v9a5 5 0 1 1-6 0M12 9v9',clock:'M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0M12 6v6l4 2',lock:'M6 10h12v11H6zM8 10V6a4 4 0 0 1 8 0v4',wifi:'M2 8a17 17 0 0 1 20 0M5 12a12 12 0 0 1 14 0M8 16a6 6 0 0 1 8 0M12 20h.01',close:'m6 6 12 12M6 18 18 6',check:'m4 12 5 5L20 6'};
+const icon=n=>`<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="${paths[n]||paths.camera}"/></svg>`;
+const btn=(label,act,cls='primary',attrs='')=>`<button type="button" class="${cls}" data-action="${act}" ${attrs}>${label}</button>`;
+const ib=(name,label,act,attrs='')=>btn(icon(name),act,'icon-btn',`aria-label="${label}" ${attrs}`);
+const tag=(t,c='')=>`<span class="tag ${c}">${esc(t)}</span>`;
+const empty=(title,text,action='',name='camera')=>`<div class="card empty">${icon(name)}<h3>${esc(title)}</h3><p>${esc(text)}</p>${action}</div>`;
+const row=(label,value,action,name='settings',attrs='')=>btn(`${icon(name)}<span class="label">${label}</span><span class="value">${esc(value)}</span><span class="caret">›</span>`,action,'link-row',attrs);
+const dateLabel=d=>d===TODAY?'今天':d;
+const clone=v=>JSON.parse(JSON.stringify(v));
+function makeDevice(id,name,petId,member=true){return {id,name,petId,online:true,lastSeen:'2026-09-23 09:40',role:'owner',subscription:member?'active':'inactive',privacy:false,quality:'高清',sd:true,analysis:'ready',media:[],shared:[],firmware:'1.0.3',network:'家庭 Wi-Fi'};}
+function seed(){const d1=makeDevice('cam-1','Mochi 的雨林箱','pet-1'),d2=makeDevice('cam-2','书房爬宠箱','pet-2');
+return {version:1,devices:[d1,d2],pets:[{id:'pet-1',name:'Mochi',species:'绿鬣蜥'},{id:'pet-2',name:'小绿',species:'绿鬣蜥'}],events:[{id:'event-1',deviceId:'cam-1',petId:'pet-1',type:'activity',title:'活动较平时减少',time:TODAY+' 08:40',read:false,resolved:false,detail:'07:00–08:30 的活动时长低于最近 7 日同时间段。请结合画面与日常状态继续观察。',evidence:'08:15–08:30'}],reports:[{id:'report-1',deviceId:'cam-1',petId:'pet-1',date:TODAY,food:'08:12',water:'13:20',activity:80,molt:false,region:[1,1,2,1,2,4,1,2,3],healthScore:95,risk:'clear'},{id:'report-2',deviceId:'cam-1',petId:'pet-1',date:'2026-09-22',food:'08:30',water:'12:40',activity:95,molt:false,region:[1,1,2,1,2,4,1,2,3],healthScore:95,risk:'clear'},{id:'report-3',deviceId:'cam-2',petId:'pet-2',date:TODAY,food:'08:45',water:'12:50',activity:95,molt:false,region:[1,1,2,1,2,4,1,2,3],healthScore:95,risk:'clear'},{id:'report-4',deviceId:'cam-2',petId:'pet-2',date:'2026-09-22',food:'08:20',water:'12:30',activity:85,molt:false,region:[1,1,2,1,2,4,1,2,3],healthScore:95,risk:'clear'}]};}
+let db;try{db=JSON.parse(localStorage.getItem(KEY));if(db?.version!==1||!Array.isArray(db.devices)||!Array.isArray(db.pets)||!Array.isArray(db.events)||!Array.isArray(db.reports))db=seed();}catch{db=seed();}
+db.devices.forEach(d=>{delete d.shareLink;});
+let snapshotNotice=null;
+let view={page:'home',deviceId:db.devices[0]?.id||'',section:'care',date:TODAY},stack=[],modal=null,wizard=null,recording=null,connectTimer=null,toastTimer=null,scenario='normal',storageFailed=false;
+const dev=()=>db.devices.find(d=>d.id===view.deviceId),pet=id=>db.pets.find(p=>p.id===id),pname=id=>pet(id)?.name||'未关联宠物';
+const currentReport=()=>db.reports.find(r=>r.deviceId===view.deviceId&&r.date===view.date&&r.petId===dev()?.petId);
+const reportById=id=>db.reports.find(r=>r.id===id);
+const visibleEvents=d=>db.events.filter(e=>e.deviceId===d.id&&e.type!=='environment');
+const pending=d=>visibleEvents(d).filter(e=>!e.resolved);
+const dayEvents=(d,date)=>pending(d).filter(e=>e.time.startsWith(date));
+function save(){try{localStorage.setItem(KEY,JSON.stringify(db));storageFailed=false;}catch{storageFailed=true;}$('#save-status').textContent=storageFailed?'浏览器限制存储，本次仍可继续体验。':'演示数据已保存在当前浏览器';}
+function toast(t){$('#toast').textContent=t;$('#toast').classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('visible'),2500);}
+function isOwner(d=dev()){return d?.role==='owner';}
+function canManage(){if(!isOwner()){toast('共享成员仅可查看，请联系设备拥有者');return false;}return true;}
+function canLive(){const d=dev();if(!d?.online||d.privacy){toast(d?.privacy?'隐私模式已开启':'设备离线，实时操作不可用');return false;}return true;}
+function stopRecording(){if(recording){const d=db.devices.find(d=>d.id===recording.deviceId);if(d)d.media.unshift({id:'media-'+Date.now(),kind:'录像',time:new Date().toLocaleTimeString('zh-CN',{hour12:false}),duration:Math.max(1,Math.round((Date.now()-recording.start)/1000))});recording=null;save();}}
+function go(page,extra={},push=true){snapshotNotice=null;if(recording&&page!=='camera')stopRecording();if(push)stack.push({...view,scroll:$('#app-content').scrollTop});view={...view,page,...extra,scroll:0};closeModal(false);render();}
+function back(){snapshotNotice=null;if(wizard){if(wizard.step==='connecting'){clearTimeout(connectTimer);wizard.step=2;render();return;}if(wizard.step>0){wizard.step-=1;render();return;}openModal('cancel-bind');return;}stopRecording();view=stack.pop()||{page:'home',deviceId:db.devices[0]?.id||'',section:'care',date:TODAY};closeModal(false);render();}
+function root(page){snapshotNotice=null;stopRecording();stack=[];view={...view,page,scroll:0,context:null};closeModal(false);render();}
+const names={home:'H01 · 首页',camera:'C01 · 摄像头',messages:'M01 · 消息',event:'E01 · 事件详情',report:'A02 · 行为详情',health:'A04 · 健康详情',history:'A03 · 历史报告',playback:'V02 · 录像回看',album:'V03 · 相册',settings:'S01 · 设备设置',subscription:'B01 · 摄像头订阅',subscriptions:'B02 · 设备订阅',pets:'P01 · 宠物档案',assistant:'G01 · 管家',life:'生活',care:'趣养',mine:'我的',add:'D01 · 添加设备'};
+function render(){
+const d=dev(),global=['home','life','assistant','care','mine'].includes(view.page);if(!d&&['camera','settings','playback','album','subscription','history'].includes(view.page)){view.page='home';return render();}
+let header;
+if(view.page==='home')header=`<div class="topbar"><div class="title">早上好<small>今日有 ${db.devices.reduce((n,x)=>n+pending(x).length,0)} 条提醒 · AI 养宠管家</small></div>${ib('bell','消息','messages')}${ib('plus','添加设备','add')}</div>`;
+else if(view.page==='mine')header=`<div class="topbar"><div class="title">我的</div><span class="mine-bell" aria-label="消息">${icon('bell')}</span></div>`;
+else if(view.page==='camera')header=`<div class="topbar">${ib('back','返回','back')}<div class="title">${btn(esc(d.name)+' ⌄','switch-device','',`aria-label="切换设备：${esc(d.name)}"`)}<small>${esc(pname(d.petId))} · ${d.role==='viewer'?'共享查看':'我的摄像头'}</small></div>${ib('settings','设备设置','settings')}</div><nav class="section-tabs" aria-label="摄像头栏目">${['care','companion'].map((section,i)=>btn(['视频直播','智能养护'][i],'section',view.section===section?'active':'',`data-value="${section}" aria-pressed="${view.section===section}"`)).join('')}</nav>`;
+else header=`<div class="topbar">${!global||view.context?ib('back','返回','back'):''}<div class="title">${esc(wizard?'添加爬宠摄像头':(view.page==='playback'?(view.source==='cloud'?'云回放':'本地回放'):view.page==='report'?({food:'饮食',activity:'活动',molt:'蜕皮'}[view.kind]||'行为详情'):(names[view.page]||'').split(' · ').pop()))}</div>${view.page==='messages'?btn('全部已读','read-all','text-btn'):''}${wizard?btn('取消','cancel-bind','text-btn'):''}</div>`;
+$('#app-header').innerHTML=header;
+const pages={home:homePage,camera:cameraPage,messages:messagesPage,event:eventPage,report:reportPage,health:healthPage,history:historyPage,playback:playbackPage,album:albumPage,settings:settingsPage,subscription:subscriptionPage,subscriptions:subscriptionsPage,pets:petsPage,assistant:assistantPage,life:()=>boundaryPage('生活','宠友社区、内容发布与评价沿用 APP 3.0。本次接入原型不展开社区流程。','life'),care:()=>boundaryPage('趣养','问诊与养宠工具沿用 APP 3.0。摄像头分析结果通过“问问管家”继续解读。','care'),mine:minePage,add:wizardPage};
+$('#app-content').innerHTML=(pages[view.page]||homePage)();$('#app-content').scrollTop=view.scroll||0;
+$('#app-nav').innerHTML=global?`<div class="nav-tabs">${[['home','首页','home'],['life','生活','life'],['assistant','管家','ai'],['care','趣养','care'],['mine','我的','user']].map(([p,t,i])=>btn((i==='ai'?'<span class="ai-orb">AI</span>':icon(i))+`<span>${t}</span>`,'root',view.page===p?'active':'',`data-value="${p}" ${view.page===p?'aria-current="page"':''}`)).join('')}</div>`:'';
+renderScenarios();save();
 }
-if (cameraSheetLayer) {
-  appScreen?.append(cameraSheetLayer);
+function eventsHtml(items){return items.map(e=>btn(`<span class="event-mark">${icon('activity')}</span><span class="grow"><strong>${esc(e.title)} ${e.read?'':'<span class="tag red">未读</span>'}</strong><small>${esc(pname(e.petId))} · ${esc(e.time.slice(11))} · ${e.resolved?'已解除':'待关注'}</small></span><span class="caret">›</span>`,'event','event-row',`data-id="${e.id}"`)).join('');}
+function deviceCard(d){
+ const species=pet(d.petId)?.species||(d.petId?'待完善':'待关联');
+ return `<button type="button" class="device-card" data-action="open-device" data-id="${d.id}" aria-label="${esc(d.name)}，${esc(pname(d.petId))}，${d.online?'在线':'离线'}" title="${esc(d.name)}">
+ <div class="device-card-head"><span class="device-avatar">${d.privacy?icon('shield'):`<img src="${IMAGE}" alt="${esc(d.name)}设备缩略图">`}</span><span class="device-heading"><strong class="device-name">${esc(d.name)}</strong><span class="device-connection ${d.online?'':'offline'}"><i></i>${d.online?'在线':'离线'}</span></span></div>
+ <div class="device-species-row"><span>爬宠品种</span><strong title="${esc(species)}">${esc(species)}</strong></div>
+ </button>`;
 }
-if (cameraToast) {
-  appScreen?.append(cameraToast);
+function homePage(){const alerts=db.devices.flatMap(pending);return `${alerts.length?`<div class="card alert-card"><div class="row between"><h3>重要提醒</h3>${tag(alerts.length+' 条','amber')}</div>${eventsHtml(alerts)}</div>`:''}<div class="row between" style="margin-top:20px"><h2>我的设备</h2>${btn('＋ 添加','add','text-btn')}</div>${db.devices.length?`<div class="device-grid">${db.devices.map(deviceCard).join('')}</div>`:empty('还没有设备','添加爬宠摄像头，开始了解它的日常。',btn('添加设备','add'))}<div class="card"><h3>智能待办</h3><p class="muted">暂无待办</p></div>`;}
+function liveVideo(d){let blocked=!d.online||d.privacy;return `<div class="video">${!blocked?`<img src="${IMAGE}" alt="爬宠箱示例直播画面"><div class="video-top">${tag('● 在线')}<span class="camera-quality">${esc(d.quality)}</span></div><span class="video-bottom">${TODAY} 09:41:00 ${recording?' · ● 录像中':''}</span>`:`<div class="video-cover">${icon(d.privacy?'shield':'wifi')}<strong>${d.privacy?'隐私模式已开启':'设备已离线'}</strong><p>${d.privacy?'实时画面与实时操作已暂停':'最后在线 '+esc(d.lastSeen)}</p>${d.privacy&&isOwner(d)&&d.online?btn('关闭隐私模式','privacy','secondary'):''}</div>`}</div>`;}
+function cameraPage(){const d=dev();if(view.section==='companion')return companionPage(d);const disabled=!d.online||d.privacy||!isOwner(d);
+const basic=(i,title,desc,action,tone,attrs='')=>btn(`<span class="camera-function-icon ${tone}">${icon(i)}</span><strong>${title}</strong><small>${desc}</small>`,action,'camera-function-card',attrs);
+return `<div class="camera-player">${liveVideo(d)}${snapshotNotice===d.id&&d.online&&!d.privacy?`<div class="snapshot-feedback" role="status"><img src="${IMAGE}" alt="刚保存的截图预览"><span>截图已保存到相册</span>${btn('进入相册','album','primary')}</div>`:''}</div><div class="toolbar camera-quick-actions">${[['expand','全屏','fullscreen'],['camera','截图','snapshot'],['video',recording?'结束录像':'录像','record'],['quality','画质','quality']].map(([i,t,a])=>btn(`<span>${icon(i)}</span><b>${t}</b>`,a,'tool'+(a==='record'&&recording?' active':''),((a==='snapshot'||a==='record')&&disabled)||((a==='fullscreen'||a==='quality')&&(!d.online||d.privacy))||(a==='quality'&&!isOwner(d))?'disabled':'')).join('')}</div>
+<div class="camera-function-grid">${basic('play','本地回放','查看存储卡录像','playback','blue','data-value="sd"')}${basic('cloud','云回放',d.subscription==='active'?'设备会员已开通':'需开通设备会员','playback','blue','data-value="cloud"')}${basic('image','相册','截图与录像 · '+d.media.length+' 项','album','cyan')}${basic('shield','隐私模式',d.privacy?'已开启':'已关闭','privacy','indigo',`aria-pressed="${d.privacy}" ${!d.online||!isOwner(d)?'disabled':''}`)}</div>
+
+`; }
+function companionHero(d){return `<div class="card hero"><h2>开启智能养护</h2><p>解锁行为记录、健康洞察与云端录像。</p>${btn(isOwner(d)?'开通会员':'查看设备权益','subscription','secondary')}</div>`;}
+
+function originalContent(kind,petId){return `<div class="original-camera">${(window.CAMERA_ORIGINAL[kind]||'').replaceAll('{{PET}}',esc(pname(petId)))}</div>`;}
+const SAMPLE_REPORT=Object.freeze({id:'sample',food:'08:12',water:'13:20',activity:80,molt:false,region:[1,1,2,1,2,4,1,2,3],healthScore:95,risk:'clear'});
+function careData(d=dev(),r=currentReport(),sample=d.subscription!=='active'){
+ const report=sample?{...SAMPLE_REPORT,deviceId:d.id,petId:d.petId,date:view.date}:r;
+ const keys={food:'food',water:'water',activity:'activity',region:'region',molt:'molt',health:'healthScore',risk:'risk'};
+ const states=Object.fromEntries(Object.entries(keys).map(([k,field])=>{const raw=report?.states?.[k];const explicit=raw==='pending'?'insufficient':raw;const global=['pending','insufficient'].includes(d.analysis)?'insufficient':null;return [k,sample?'ready':explicit&&explicit!=='ready'?explicit:global&&!explicit?global:report?.[field]!=null?'ready':'insufficient'];}));
+ return {report,states,sample};
 }
-
-const foodFeatureButton = document.querySelector(".food-feature-card");
-const activityFeatureButton = document.querySelector(".activity-feature-card");
-const sunFeatureButton = document.querySelector(".sun-feature-card");
-const moltFeatureButton = document.querySelector(".molt-feature-card");
-const healthReportCard = document.querySelector(".health-report-card");
-const diseaseRiskCard = document.querySelector(".disease-risk-card");
-const envMetricButtons = document.querySelectorAll(".env-detail-entry");
-const foodBackButton = document.querySelector(".food-back");
-const activityBackButton = document.querySelector(".activity-back");
-const sunBackButton = document.querySelector(".sun-back");
-const moltBackButton = document.querySelector(".molt-back");
-const healthBackButton = document.querySelector(".health-back");
-const envBackButton = document.querySelector(".env-back");
-const foodCalendarButtons = document.querySelectorAll(".food-calendar-button");
-const foodDayButtons = document.querySelectorAll(".food-day-button");
-const foodDateDialog = document.querySelector(".food-date-dialog");
-const foodDateScrim = document.querySelector(".food-date-scrim");
-const foodDateCloseButton = document.querySelector(".food-date-close");
-const foodDateModalButtons = document.querySelectorAll(".food-date-modal [data-food-day]");
-const messageButton = document.querySelector(".message");
-const messageBackButton = document.querySelector(".message-back");
-const profileButton = document.querySelector(".profile");
-const profileBackButton = document.querySelector(".profile-back");
-let activeViewName = "pet";
-let returnViewName = "pet";
-let activeAquariumPage = "home";
-let pendingAquariumAnalysis = "disease";
-let aquariumCaptureReturnPage = "diagnosis";
-let aquariumPreviewUrl = "";
-let aquariumSelectedFile = null;
-let aquariumToastTimer = 0;
-let cameraMemberState = false;
-let activeCameraSection = "care";
-let activeIotTarget = "temperature";
-const iotTargetState = {
-  temperature: { label: "温度", unit: "℃", min: 26, max: 30, floor: 15, ceiling: 40, step: 1 },
-  humidity: { label: "湿度", unit: "%", min: 50, max: 70, floor: 20, ceiling: 90, step: 5 },
-};
-let cameraToastTimer = 0;
-const aquariumPageReturnTargets = {};
-const aquariumScrollPositions = {
-  home: 0,
-  diagnosis: 0,
-  capture: 0,
-  reports: 0,
-  "report-detail": 0,
-  "care-records": 0,
-  knowledge: 0,
-  "knowledge-detail": 0,
-  assistant: 0,
-  profile: 0,
-};
-
-function setActiveView(viewName) {
-  pageViews.forEach((view) => {
-    view.classList.toggle("active", view.dataset.view === viewName);
-  });
-
-  appScreen?.classList.toggle(
-    "scan-mode",
-    viewName === "add-device" ||
-      viewName === "wifi-setup" ||
-      viewName === "link-pet-profile" ||
-      viewName === "create-pet-profile",
-  );
-  appScreen?.classList.toggle("create-pet-mode", viewName === "create-pet-profile");
-  appScreen?.classList.toggle("aquarium-mode", viewName === "aquarium-camera");
-  appScreen?.classList.toggle(
-    "monitor-mode",
-    viewName === "reptile-camera" ||
-      viewName === "camera-playback" ||
-      viewName === "camera-settings" ||
-      viewName === "camera-album",
-  );
-  appScreen?.classList.toggle("reptile-camera-mode", viewName === "reptile-camera");
-  appScreen?.classList.toggle(
-    "food-mode",
-    viewName === "food-detail" ||
-      viewName === "activity-detail" ||
-      viewName === "sun-detail" ||
-      viewName === "molt-detail" ||
-      viewName === "health-detail" ||
-      viewName === "environment-detail",
-  );
-  appScreen?.classList.toggle("message-mode", viewName === "message");
-  appScreen?.classList.toggle("profile-mode", viewName === "profile");
-  activeViewName = viewName;
-  viewTabs.forEach((tab) => {
-    const isActive = tab.dataset.viewTarget === viewName;
-    tab.classList.toggle("active", isActive);
-    if (isActive) {
-      tab.setAttribute("aria-current", "page");
-    } else {
-      tab.removeAttribute("aria-current");
-    }
-  });
+const stateLabel=()=> '数据不足';
+function sampleMark(sample){return sample?tag('示例数据','gray'):'';}
+function sampleBanner(){return `<div class="card sample-banner membership-placeholder"><div class="membership-placeholder-head"><span class="membership-placeholder-icon" aria-hidden="true">${icon('shield')}</span><div><strong>订阅设备会员</strong><p>解锁 AI 养护分析与云回放</p></div></div>${btn(isOwner()?'立即订阅':'查看设备会员','subscription','primary full')}<p class="membership-example-note">当前展示为示例数据，订阅后查看本设备的分析结果。</p></div>`;}
+function careLink(label,kind,c){const keys=kind==='food'?['food','water']:[kind];const enabled=keys.some(k=>c.states[k]==='ready');return btn(label,kind==='health'?'health':'report','text-btn',`data-kind="${kind}" data-id="${c.report?.id||''}" data-sample="${c.sample}" ${enabled?'':'disabled'} aria-label="${label}${enabled?'':'，'+'数据不足'}"`);}
+function careMetric(label,key,c){const state=c.states[key],value=state==='ready'?esc(c.report[key]):'—';return `<div class="care-metric" data-result="${key}" data-state="${state}"><span class="care-metric-title">${label}</span><span class="care-metric-recency">最近一次</span><strong>${value}</strong>${state!=='ready'?`<small>${'数据不足'}</small>`:''}</div>`;}
+function analysisBody(d,r){if(!d.petId)return empty('先关联你的爬宠','直播与回放可正常使用。关联宠物后，再生成个体分析。',btn('关联宠物','link-pet','primary',!isOwner(d)?'disabled':''),'user');
+ const c=careData(d,r),st=c.states,report=c.report,mark=sampleMark(c.sample);
+ const allReady=['food','water','activity'].every(k=>st[k]==='ready');
+ const summary=allReady?`${esc(pname(d.petId))} 的进食、饮水与活动记录已完成分析，整体表现稳定。建议结合日常观察持续关注饮食与活动变化。`:'进食、饮水或活动记录不足，暂无法形成完整的综合结论。';
+ const healthReady=st.health==='ready',riskReady=st.risk==='ready';
+ return `${c.sample?sampleBanner():''}<section class="care-today-group" aria-labelledby="care-today-title"><header class="care-today-heading"><h2 id="care-today-title">今日状态</h2></header><section class="card care-food" data-module="food"><div class="row between care-section-heading"><div class="care-heading-label"><h3>饮食分析</h3>${mark}</div>${careLink('查看详情','food',c)}</div><div class="care-food-grid">${careMetric('进食','food',c)}${careMetric('饮水','water',c)}</div></section>
+ <section class="card care-activity" data-module="activity"><div class="row between care-section-heading"><div class="care-heading-label"><h3>活动分析</h3>${mark}</div>${careLink('查看详情','activity',c)}</div><div class="care-duration" data-result="activity" data-state="${st.activity}"><h3>今日活动</h3><strong>${st.activity==='ready'?durationValue(report.activity):'—'}</strong>${st.activity!=='ready'?`<small>${'数据不足'}</small>`:''}</div>${activityMap(report,st.region)}</section>
+ <section class="card care-molt" data-module="molt"><div class="row between care-section-heading"><div class="care-heading-label"><h3>蜕皮检测</h3>${mark}</div>${careLink('查看详情','molt',c)}</div><div class="care-molt-result" data-result="molt" data-state="${st.molt}"><span class="care-molt-symbol" aria-hidden="true">${icon('shield')}</span><div class="care-molt-copy"><div class="care-molt-state-line"><strong>${st.molt==='ready'?'未蜕皮':'—'}</strong></div><p>${st.molt==='ready'?'未检测到蜕皮行为':'数据不足，暂无法判断蜕皮状态'}</p></div></div></section>
+ <section class="card report-analysis" data-module="summary"><div class="care-section-heading"><div class="care-heading-label"><h3><span class="ai-chip">AI</span> 状态解读</h3>${mark}</div></div><p class="care-basis">综合进食、饮水与活动记录</p><p>${summary}</p></section></section>
+ <section class="care-health-group" aria-labelledby="care-health-title"><header class="care-today-heading"><h2 id="care-health-title">健康评估</h2></header><section class="card care-health" data-module="health"><div class="care-section-heading"><div class="care-heading-label"><h3>AI 多维健康分析</h3>${mark}</div></div><div class="care-health-summary"><div><span class="tag ${healthReady?'':'gray'}">${healthReady?'优秀':'数据不足'}</span><p>${healthReady?'状态极佳，继续保持！':'数据不足，暂无法生成健康报告。'}</p></div><strong class="care-health-score">${healthReady?report.healthScore:'—'}${healthReady?'<small>分</small>':''}</strong></div>${careLink('查看健康报告','health',c)}</section>
+ <section class="card care-risk" data-module="risk"><div class="care-section-heading"><div class="care-heading-label"><h3>异常疾病风险识别</h3>${mark}</div></div><div class="care-risk-overview"><strong class="care-risk-result ${riskReady?'ready':''}">${riskReady?'暂未识别到明显风险':'数据不足'}</strong>${riskReady?`<img class="care-risk-badge" src="${HEALTH_BADGE}" alt="" aria-hidden="true">`:''}</div><p>${riskReady?'当前状态良好，建议继续观察日常表现与体表变化。':'识别依据不足，不能据此判断是否存在风险。'}</p></section>
+ <section class="card report-analysis" data-module="health-reading"><div class="care-section-heading"><div class="care-heading-label"><h3><span class="ai-chip">AI</span> 健康解读</h3>${mark}</div></div><p>${healthReady&&riskReady?`${esc(pname(d.petId))} 今日健康表现良好，活力、进食、体表与姿态均无明显异常。暂未发现卡皮或疑似疾病风险，建议持续关注食欲与蜕皮情况。`:'健康或风险识别数据不足，暂无法生成完整健康解读。'}</p></section></section>`;
 }
+function durationValue(minutes){const h=Math.floor(minutes/60),m=minutes%60;return `${h?h+'<small>小时</small>':''}${m||!h?m+'<small>分钟</small>':''}`;}
+function activityMap(r,state='ready'){return `<div class="activity-area-card care-region" data-result="region" data-state="${state}"><div><h3>活动区域</h3><p>${state==='ready'?'今日活动集中在右侧区域':'活动区域数据不足'}</p><small>九宫格展示各区域活跃情况</small></div><div class="activity-heatmap ${state==='ready'?'':'heatmap-neutral'}" role="img" aria-label="${state==='ready'?'右侧区域更活跃':'暂无有效活动区域数据'}">${(state==='ready'?r.region:Array(9).fill(0)).map(n=>`<span class="heat-${n}"></span>`).join('')}</div></div>`;}
+function companionPage(d){return analysisBody(d,currentReport());}
+function detailReport(){return view.sample?{...SAMPLE_REPORT,petId:view.petId,deviceId:view.deviceId,date:view.sampleDate}:reportById(view.reportId);}
+function healthPage(){const d=dev(),r=detailReport(),c=careData(d,r,!!view.sample);if(!r||c.states.health!=='ready')return empty('暂无法评估','健康数据不足，暂无法生成报告。');if(!view.sample&&d.subscription!=='active')return companionHero(d);const t=document.createElement('template');t.innerHTML=originalContent('health',r.petId);if(c.states.risk!=='ready'){const risk=t.content.querySelector('.health-risk-panel');risk.innerHTML=`<h3>异常疾病风险识别</h3><p>${stateLabel(c.states.risk)}，暂无法判断风险。</p>`;}return (view.sample?sampleBanner():'')+t.innerHTML;}
+function messagesPage(){const all=db.devices.flatMap(visibleEvents);return `<p class="caption">打开详情即标记已读；已读不会解除异常。</p>${all.length?`<div class="card">${eventsHtml(all)}</div>`:empty('暂无消息','设备状态与异常提醒会出现在这里。','','bell')}`;}
+function eventPage(){const e=db.events.find(e=>e.id===view.eventId);if(!e)return empty('事件不可用','设备可能已经移除。');const d=dev();return `<div class="card"><div class="row between">${tag('行为提醒','amber')}${tag(e.resolved?'已解除':'待关注',e.resolved?'green':'amber')}</div><h2 style="margin-top:14px">${esc(e.title)}</h2><p class="muted">${esc(d.name)} · ${esc(pname(e.petId))}<br>${esc(e.time)}</p><p>${esc(e.detail)}</p><p class="caption">已读 · 事件 ${esc(e.id)}</p></div><div class="card"><h3>观察依据</h3><p>分析时段：${esc(e.evidence)}。可查看相应录像片段辅助判断。</p>${btn('查看对应录像','event-evidence','secondary full')}</div>${btn('问问管家','ask-event','primary full')}${isOwner(d)&&!e.resolved?btn('记录为已处理','resolve-event','secondary full'):''}<p class="caption" style="margin-top:12px">“已处理”记录用户处理结果；原型以“已解除”演示闭环。</p>`;}
+const kinds={food:{title:'饮食记录',ob:r=>'最近一次识别到进食：'+r.food,time:'08:12–08:16',suggestion:'结合食物消耗与日常喂养记录观察食欲变化。',unit:'次',values:[2,2,1,2,2,1,1]},activity:{title:'活动分析',ob:r=>'累计识别活动 '+r.activity+' 分钟',time:'07:00–09:30',suggestion:'对照最近几天同一时段的活动，结合画面继续观察。',unit:'分钟',values:[95,110,90,100,85,95,80]},molt:{title:'蜕皮观察',ob:()=> '当前时段未检测到蜕皮行为',time:'00:00–09:30',suggestion:'“未检测到”不等于确认没有蜕皮，可结合体表观察补充记录。',unit:'',values:[]}};
+function reportWeek(r,selected){const anchor=new Date(selected+'T12:00:00');const end=new Date(anchor.getTime()+(6-(anchor.getDay()+6)%7)*86400000);const days=Array.from({length:7},(_,i)=>{const day=new Date(end.getTime()-(6-i)*86400000);return {date:day.toISOString().slice(0,10),label:(day.getMonth()+1)+'.'+day.getDate(),week:['日','一','二','三','四','五','六'][day.getDay()]};});return `<section class="card report-date-panel"><div class="row between"><div><span class="eyebrow">${esc(pname(r.petId))} · ${kinds[view.kind].title}</span><h3>${days[0].label} — ${days[6].label}</h3></div><label class="report-calendar" aria-label="选择报告日期"><input type="date" aria-label="选择报告日期" max="${TODAY}" value="${esc(selected)}" data-change="report-date"></label></div><div class="report-week">${days.map(day=>btn(`<span>周${day.week}</span><strong>${day.label}</strong>`,'report-day',day.date===selected?'active':'',`data-value="${day.date}" aria-pressed="${day.date===selected}" ${day.date>TODAY?'disabled':''}`)).join('')}</div></section>`;}
+function reportPage(){const original=detailReport(),d=dev();if(!original)return empty('报告不可用','请返回选择其他记录。');if(!view.sample&&d.subscription!=='active')return companionHero(d);const selected=view.reportDate||original.date,r=view.sample?(selected===original.date?original:null):db.reports.find(x=>x.deviceId===d.id&&x.petId===original.petId&&x.date===selected),calendar=view.kind==='molt'?'':reportWeek(original,selected),banner=view.sample?sampleBanner():'';if(!r)return banner+calendar+empty('当天暂无报告','当前日期数据不足，可选择其他日期。','','clock');const c=careData(d,r,!!view.sample);const valid=view.kind==='food'?c.states.food==='ready'||c.states.water==='ready':c.states[view.kind]==='ready';if(!valid)return banner+calendar+empty('暂无法查看详情',stateLabel(c.states[view.kind]));
+ const t=document.createElement('template');t.innerHTML=originalContent(view.kind,r.petId);
+ if(view.kind==='food'){
+ ['food','water'].forEach((key,i)=>{const ready=c.states[key]==='ready',card=t.content.querySelectorAll('.food-summary-card')[i],event=t.content.querySelectorAll('.food-event-item')[i];card.querySelector('p').textContent=ready?'最近一次 '+r[key]:stateLabel(c.states[key]);if(!ready){card.querySelector('strong').textContent='—';event.hidden=true;}else{event.querySelector('.food-event-copy p span').textContent=r[key];}});
+ if(c.states.food!=='ready'||c.states.water!=='ready'){t.content.querySelector('.food-habit-head>span')?.remove();t.content.querySelector('.today-habit-analysis').innerHTML='<p>记录尚不完整，暂无法形成综合饮食结论。</p>';}
+ }else if(view.kind==='activity'){t.content.querySelector('.food-summary-card>strong').innerHTML=durationValue(r.activity);}
+ t.content.querySelectorAll('.food-event-item:not([hidden])').forEach((event,i)=>{const thumb=event.querySelector('.food-event-thumb');if(!thumb)return;const time=event.querySelector('.food-event-copy p span')?.textContent||'',title=event.querySelector('.food-event-copy h3')?.textContent||'事件片段';const button=document.createElement('button');button.type='button';button.className='event-clip-thumb';button.dataset.action='event-clip';button.dataset.time=time;button.dataset.title=title;button.dataset.date=selected;button.dataset.petId=r.petId;button.setAttribute('aria-label',`播放 ${time} ${title}`);thumb.replaceWith(button);button.append(thumb);const overlay=document.createElement('span');overlay.className='event-clip-play';overlay.innerHTML=icon('play');button.append(overlay);});
+ return banner+calendar+t.innerHTML;}
+function historyPage(){const reports=db.reports.filter(r=>r.deviceId===view.deviceId);return reports.length?`<p class="caption">报告保留生成时的宠物归属。</p><div class="card">${reports.map(r=>row(`${esc(r.date)}<small>${esc(pname(r.petId))} · 行为报告</small>`,'查看','report','clock',`data-id="${r.id}" data-kind="activity"`)).join('')}</div>`:empty('暂无历史报告','积累足够的分析数据后，报告会保存在这里。','','clock');}
+function playbackPage(){const d=dev(),source=view.source||'sd',cloud=source==='cloud',canPlay=cloud?d.subscription==='active':(d.online&&d.sd);let state=view.playbackState||'ready';let message='';if(cloud&&d.subscription!=='active')message='云回放需开通设备会员';else if(!cloud&&!d.online)message='设备离线，无法读取存储卡';else if(!cloud&&!d.sd)message='未检测到存储卡';else if(view.playDate&& ![TODAY,'2026-09-22'].includes(view.playDate))state='empty';
+return `<div class="datebar"><label for="play-date">日期</label><input id="play-date" type="date" max="${TODAY}" value="${esc(view.playDate||view.date)}" data-change="play-date">${!cloud&&canPlay?'<span class="playback-storage-inline" aria-label="存储空间已用 42.6 GB，总容量 128 GB">42.6 / 128 GB</span>':''}</div>${message?empty(message,cloud?'为当前摄像头开通设备会员后，即可查看云端录像。':'请确认设备在线且已插入可用存储卡。',cloud?btn(isOwner(d)?'开通设备会员':'查看设备会员','subscription'):'','play'):state==='empty'?`<div class="video playback-empty"><div class="video-cover">${icon('video')}<strong>当天没有录像</strong><p>${esc(view.playDate||view.date)} · 暂无录像片段</p></div><div class="video-top">${tag(cloud?'云录像':'存储卡')}</div></div><div class="row between" style="margin-top:10px">${btn(icon('play')+'播放','toggle-play','secondary','disabled')}${btn(esc(view.speed||'1.0')+'×','speed','secondary','disabled')}</div>`:state==='error'?empty('录像加载失败','网络请求未成功，可重试加载。',btn('重新加载','retry-playback'),'wifi'):`<div class="video"><img src="${IMAGE}" alt="历史录像示例帧"><div class="video-top">${tag(cloud?'云录像':'存储卡')}<span>${view.playing?'播放中 · 模拟':'已暂停'}</span></div><span class="video-bottom">${esc(view.playDate||view.date)} ${esc(view.segment||'08:12')} · 示例录像</span></div><div class="row between" style="margin-top:10px">${btn(icon('play')+(view.playing?'暂停':'播放'),'toggle-play','secondary')}${btn(esc(view.speed||'1.0')+'×','speed','secondary')}</div><div class="card"><h3>可播放时段</h3><div class="timeline">${['07:30','08:12','08:40','09:00'].map(t=>btn(t,'segment',(view.segment||'08:12')===t?'selected':'',`data-value="${t}"`)).join('')}</div></div>`}${canPlay?'':'<p class="caption">当前页面仅展示所选回放类型。</p>'}`;}
+function albumPage(){const d=dev();return d.media.length?`<p class="caption">${esc(d.name)} · ${d.media.length} 项，仅当前浏览器演示</p><div class="gallery">${d.media.map(m=>btn(`<img src="${IMAGE}" alt="${esc(m.kind)}预览"><p>${esc(m.kind)} ${esc(m.time)}${m.duration?' · '+m.duration+'秒':''}</p>`,'media','',`data-id="${m.id}"`)).join('')}</div>`:empty('相册还是空的','在视频直播中截图或录制，完成后即可在这里查看。','','image');}
 
-function setDrawerOpen(isOpen) {
-  drawerLayer.classList.toggle("is-open", isOpen);
-  drawerLayer.setAttribute("aria-hidden", String(!isOpen));
-  historyButton.setAttribute("aria-expanded", String(isOpen));
+function settingsPage(){const d=dev();return `${!isOwner(d)?'<p class="caption">共享成员只读。设备管理、截图录像与订阅开通由拥有者操作。</p>':''}<div class="card">${row('设备名称',d.name,'rename')}${row('关联宠物',pname(d.petId),'link-pet','user')}${row('网络状态',d.online?d.network:'离线','network','wifi')}${row('存储卡',d.sd?'42.6 GB / 128 GB':'未插入','storage','video')}${row('固件版本',d.firmware,'firmware')}${row('设备信息',d.id,'device-info','camera')}</div>${btn(isOwner(d)?'移除设备':'停止接收共享','remove-device','danger full')}<p class="caption">移除操作在原型中可通过场景重置恢复。</p>`;}
+function subscriptionPage(){const d=dev();return `<div class="card subscription">${tag('摄像头独立订阅')}<h2 style="margin-top:16px">更懂它的每一天</h2><p>购买对象：${esc(d.name)}<br>设备编号：${esc(d.id)}</p><div class="plan-price">${d.subscription==='active'?'权益已生效':'AI 分析 + 云录像'}</div><p>套餐价格与云存储时长待业务确认</p></div><div class="card"><h3>此设备专属权益</h3><p>✓ 进食、活动与蜕皮行为分析<br>✓ 历史报告与 AI 解读<br>✓ 云端录像回看</p><div class="separator"></div><p>基础直播和存储卡回放不依赖本订阅。</p></div>${d.subscription==='active'?tag('当前设备已开通','green'):isOwner(d)?btn('模拟开通当前设备','activate','primary full'):empty('由拥有者管理订阅','共享成员不能购买或变更设备权益。','','lock')}<p class="caption" style="margin-top:14px">仅演示权益状态，不发起支付，不自动续费，不代表正式套餐承诺。</p>`;}
+function subscriptionsPage(){return db.devices.length?db.devices.map(d=>`<div class="card"><h3>${esc(d.name)}</h3><p>${d.subscription==='active'?'AI 分析与云录像 · 已开通':'尚未开通'} · ${isOwner(d)?'拥有者':'共享成员'}</p>${btn('查看设备权益','device-subscription','text-btn',`data-id="${d.id}"`)}</div>`).join(''):empty('暂无设备订阅','先添加摄像头，再为设备开通权益。');}
+function minePage(){const tile=(i,label,tone='')=>`<div class="mine-function"><span class="mine-function-icon ${tone}">${icon(i)}</span><span>${label}</span></div>`;return `<div class="mine-page"><div class="mine-profile"><span class="mine-avatar">基</span><div><h2>叶仲基</h2><p>宠主ID CZL10284956</p></div></div><div class="mine-shortcuts"><section class="card mine-shortcut"><h3>宠物档案</h3><p>记录每一次成长</p><span class="mine-shortcut-icon blue">${icon('bag')}</span></section><section class="card mine-shortcut"><h3>设备管理</h3><p>绑定、设置与会员</p><span class="mine-shortcut-icon green">${icon('phone')}</span></section></div><section class="mine-promo"><div><h3>春季驱虫 × 硬件礼遇</h3><p>绑定设备领解读券 · 点击查看活动</p></div><span class="mine-promo-dots" aria-hidden="true"><i></i><i></i><i></i></span></section><section class="card mine-group"><h3>常用功能</h3><div class="mine-function-grid">${tile('calendar','智能待办','blue')}${tile('file','报告记录','green')}${tile('family','家庭管理','amber')}${tile('headset','在线客服','cyan')}</div></section><section class="card mine-group mine-more"><h3>更多功能</h3><div class="mine-function-grid">${tile('help','常见问题')}${tile('chat','意见反馈')}${tile('bag','商务合作')}${tile('settings','设置')}</div></section></div>`;}
+
+function petsPage(){return `<p class="caption">统一宠物档案。每台摄像头首版关联一只爬宠。</p>${db.pets.map(p=>`<div class="card row"><span class="avatar">${icon('leaf')}</span><div class="grow"><h3>${esc(p.name)}</h3><p class="muted">${esc(p.species)}</p><p class="caption">${db.devices.filter(d=>d.petId===p.id).map(d=>esc(d.name)).join('、')||'尚未关联摄像头'}</p></div></div>`).join('')}${btn('新建爬宠档案','create-pet','secondary full')}`;}
+function boundaryPage(title,text,name){return empty(title,text,`<a class="secondary" href="https://czy666-cc.github.io/czl-app3-prototype/home.html" target="_blank" rel="noopener">查看 APP 3.0 原型 ↗</a>`,name);}
+function assistantPage(){const ctx=view.context;return boundaryPage('AI 管家','AI 管家沿用 APP 3.0。本次接入原型不展开管家对话流程。','ai')+(ctx?`<div class="card"><h3>摄像头接入上下文</h3><p class="caption">正式接入时，将以下记录带入 APP 3.0 管家。</p><div class="context-card">${esc(ctx.deviceName)} · ${esc(ctx.petName)}<br>${esc(ctx.title)} · ${esc(ctx.date)}<br>${esc(ctx.summary)}</div></div>`:'');}
+function wizardPage(){if(!wizard)return '';const w=wizard;let body='';if(w.step==='connecting')return `<div class="card empty"><div class="loading-orb"></div><h3>正在连接摄像头</h3><p>正在检查网络与设备绑定状态…</p>${btn('取消连接','cancel-connect','secondary')}</div>`;
+const step=Math.min(Number(w.step)||0,4);const top=`<div class="step-label">步骤 ${step+1} / 5</div><div class="progress">${[0,1,2,3,4].map(i=>`<i class="${i<=step?'on':''}"></i>`).join('')}</div>`;
+if(step===0)body=`<h2>选择你的设备</h2><p class="muted small">通过 APP 3.0 统一添加入口接入</p><div class="card">${row('爬宠摄像头<small>视频直播与智能养护</small>','选择','wizard-type','camera')}</div><p class="caption">其他设备类型沿用 APP 3.0。本原型不声明摄像头具备蓝牙发现能力。</p>`;
+if(step===1)body=`<h2>让摄像头准备好</h2><div class="card"><p>1. 为摄像头接通电源<br>2. 按设备说明进入配网状态<br>3. 确认手机可连接家庭 Wi-Fi</p></div><form id="prepare-form" class="form"><label>设备识别码<input name="code" value="${esc(w.code||'CZL-CAM-DEMO')}" maxlength="50" required></label><label class="check"><input type="checkbox" name="ready" required>我已按设备说明进入配网状态</label><button class="primary full" type="submit">下一步</button></form><p class="caption">本原型通过输入设备码演示添加流程。</p>`;
+if(step===2)body=`<h2>连接家庭 Wi-Fi</h2><p class="caption">请以设备说明支持的 Wi-Fi 频段为准。</p><form id="wifi-form" class="form"><label>Wi-Fi 名称<input name="ssid" value="${esc(w.ssid||'家庭 Wi-Fi')}" maxlength="64" autocomplete="off" required></label><label>Wi-Fi 密码<input name="password" type="password" maxlength="64" autocomplete="new-password" placeholder="输入网络密码" required></label>${w.error?`<p class="form-error" role="alert">${esc(w.error)}</p>`:''}<label>本次连接结果（原型模拟）<select name="outcome"><option value="success">连接成功</option><option value="failure">连接失败</option><option value="timeout">连接超时</option><option value="bound">设备已被绑定</option></select></label><button class="primary full" type="submit">${w.error?'重新连接':'开始连接'}</button></form><p class="caption">密码仅用于表单演示，提交后清空，不写入浏览器存储。</p>`;
+if(step===3)body=`<h2>${w.reconfigure?'网络已更新':'连接成功，给它起个名字'}</h2><form id="name-form" class="form"><label>设备名称<input name="name" value="${esc(w.name||'我的爬宠箱')}" maxlength="30" required></label><p class="caption">最多 30 个字符，便于多台设备区分。</p><button type="submit" class="primary full">${w.reconfigure?'保存并返回':'下一步'}</button></form>`;
+if(step===4)body=`<h2>关联你的爬宠</h2><p class="caption">稍后关联也可以使用直播和回放。</p>${petChoices(w.petId,'wizard-pet')}${btn('＋ 新建爬宠档案','create-pet','secondary full')}${btn('完成并查看摄像头','finish-bind','primary full',!w.petId?'disabled':'')}${btn('稍后关联，先看直播','skip-bind','text-btn full')}`;
+return top+body;}
+function petChoices(selected,action){return db.pets.map(p=>btn(`<span class="avatar">${icon('leaf')}</span><span class="grow"><strong>${esc(p.name)}</strong><small style="display:block">${esc(p.species)}</small></span>${selected===p.id?tag('已选择'):''}`,action,'pet-choice'+(selected===p.id?' selected':''),`data-id="${p.id}" aria-pressed="${selected===p.id}"`)).join('');}
+let modalReturnFocus=null,clipTimer=null;
+function closeQuality(focus=false){$('.quality-popover')?.remove();const trigger=$('[data-action="quality"]');trigger?.setAttribute('aria-expanded','false');if(focus)trigger?.focus();}
+function toggleQuality(){const trigger=$('[data-action="quality"]');if($('.quality-popover')){closeQuality(true);return;}const popover=document.createElement('div');popover.className='quality-popover';popover.id='quality-popover';popover.setAttribute('role','group');popover.setAttribute('aria-label','选择画质');popover.innerHTML=['高清','标清'].map(q=>btn(`<span>${q}</span>${dev().quality===q?icon('check'):''}`,'set-quality','quality-option'+(dev().quality===q?' selected':''),`data-value="${q}" aria-pressed="${dev().quality===q}"`)).join('');trigger.setAttribute('aria-expanded','true');trigger.setAttribute('aria-controls','quality-popover');trigger.parentElement.append(popover);popover.querySelector('.selected')?.focus();}
+document.addEventListener('click',e=>{if(!e.target.closest('.quality-popover,[data-action="quality"]'))closeQuality();});
+document.addEventListener('focusin',e=>{if(!e.target.closest('.quality-popover,[data-action="quality"]'))closeQuality();});
+function closeModal(restore=true){clearInterval(clipTimer);clipTimer=null;const had=modal;modal=null;$('#modal-root').innerHTML='';$('#app-content').inert=false;$('#app-header').inert=false;$('#app-nav').inert=false;if(restore&&had&&modalReturnFocus?.isConnected)modalReturnFocus.focus();}
+function openModal(type,data={}){clearInterval(clipTimer);clipTimer=null;if(!modal)modalReturnFocus=document.activeElement;modal={type,...data};renderModal();if(type==='event-clip'){syncClipPlayer();clipTimer=setInterval(()=>{if(modal?.type!=='event-clip'||!modal.playing)return;modal.elapsed=Math.min(modal.duration,modal.elapsed+1);if(modal.elapsed===modal.duration)modal.playing=false;syncClipPlayer();},1000);}}
+function renderModal(){if(!modal)return;const d=dev(),m=modal;let title='',body='',full=false;
+switch(m.type){
+case 'switch':title='切换摄像头';body=db.devices.map(x=>row(esc(x.name)+`<small>${esc(pname(x.petId))} · ${x.online?'在线':'离线'}</small>`,x.id===view.deviceId?'当前设备':'','select-device','camera',`data-id="${x.id}"`)).join('');break;
+case 'more':title='看护设置';body=row('隐私模式',d.privacy?'已开启':'已关闭','privacy','shield');break;
+case 'rename':title='设备名称';body=`<form id="rename-form" class="form"><label>名称<input name="name" value="${esc(d.name)}" maxlength="30" required ${!isOwner(d)?'disabled':''}></label><button class="primary full" ${!isOwner(d)?'disabled':''}>保存</button></form>`;break;
+case 'link-pet':title='关联爬宠档案';body=`<p>一台摄像头关联一只爬宠。更换后新报告使用新档案，历史报告保留原归属。</p>${petChoices(d.petId,'choose-pet')}${isOwner(d)?btn('新建爬宠档案','create-pet','secondary full'): '<p>共享成员只能查看关联关系。</p>'}`;break;
+case 'create-pet':title='新建爬宠档案';body=`<form id="pet-form" class="form"><label>宠物名字<input name="name" maxlength="20" placeholder="例如 Mochi" required></label><label>物种<input name="species" maxlength="30" placeholder="例如 绿鬣蜥" required></label><button class="primary full" type="submit">保存档案</button></form><p class="caption">复用 APP 宠物档案；保存后可用于摄像头关联。</p>`;break;
+case 'network':title='网络状态';body=`<p>设备：${esc(d.name)}<br>状态：${d.online?'在线':'离线'}<br>网络：${esc(d.network)}<br>最后在线：${esc(d.lastSeen)}</p>${btn('重新配网','reconfigure','secondary full',!isOwner(d)?'disabled':'')}`;break;
+case 'storage':title='存储卡';body=`<p>${d.sd?'容量：128 GB<br>已用：42.6 GB<br>状态：'+(d.online?'可用':'设备离线，无法读取实时状态'):'未插入存储卡，插入兼容存储卡后可启用本地录像。'}</p><p class="caption">格式化与录制策略本次不开放，避免误解为已接入硬件。</p>`;break;
+case 'firmware':title='固件版本';body=`<p>当前版本：${esc(d.firmware)}<br>原型未连接固件服务，无法检查最新版本。</p>`;break;
+case 'device-info':title='设备信息';body=`<p>名称：${esc(d.name)}<br>设备编号：${esc(d.id)}<br>品类：爬宠摄像头<br>角色：${isOwner(d)?'拥有者':'共享成员'}</p>`;break;
+case 'remove':title=isOwner(d)?'移除这台设备？':'停止接收共享？';body=`<p>${esc(d.name)} 将从此原型账号移除；对应演示事件和报告将不再显示。不会影响其他设备。</p><p>正式产品的解绑与数据保留政策需业务确认。</p>${btn('确认移除','confirm-remove','danger full')}${btn('保留设备','close-modal','secondary full')}`;break;
+case 'cancel-bind':title='取消添加设备？';body=`<p>当前配网进度将丢弃，不会生成未完成设备。</p>${btn('取消添加','confirm-cancel','danger full')}${btn('继续添加','close-modal','secondary full')}`;break;
+case 'fullscreen':title='全屏预览';full=true;body=`<img src="${IMAGE}" alt="全屏爬宠示例画面"><p>横屏画面演示 · ${esc(d.name)} · 关闭后返回看护</p>`;break;
+case 'event-clip':title='事件视频片段';body=`<div class="clip-player"><img src="${IMAGE}" alt="${esc(m.title)}示例画面"><div class="clip-controls">${btn('暂停','clip-toggle','clip-toggle','aria-label="暂停片段"')}<input type="range" min="0" max="${m.duration}" step="1" value="${m.elapsed}" data-change="clip-seek" aria-label="片段播放进度"><span class="clip-time"></span></div></div>`;break;
+case 'media':{const item=d.media.find(x=>x.id===m.id);title=item?.kind||'相册';body=item?`<img src="${IMAGE}" style="width:100%;border-radius:12px" alt="${esc(item.kind)}预览"><p>${esc(item.time)} ${item.duration?'· '+item.duration+' 秒':''}</p><p class="caption">${item.kind==='录像'?'手动录像记录演示，使用静态示例帧展示，不包含视频文件。':'截图使用当前原型示例帧。'}</p>${isOwner(d)?btn('删除此记录','delete-media','danger full',`data-id="${item.id}"`):''}`:'<p>记录不存在。</p>';break;}
+case 'account':title='账号与隐私';body='<p>摄像头复用 APP 3.0 登录、账号和家庭权限。本原型不模拟第二套登录。</p><p>本地演示数据保存在当前浏览器，可通过场景重置清除。</p>';break;
+case 'upgrade-confirm':title='开通当前摄像头';body=`<p>确认将 AI 分析与云录像权益开通到：<strong>${esc(d.name)}</strong>（${esc(d.id)}）。其他设备不受影响。</p><p class="caption">模拟操作，无支付、无自动续费。</p>${btn('确认模拟开通','confirm-activate','primary full')}`;break;
 }
-
-viewTabs.forEach((tab) => {
-  tab.addEventListener("click", (event) => {
-    event.preventDefault();
-    setActiveView(tab.dataset.viewTarget);
-    setDrawerOpen(false);
-  });
-});
-
-historyButton.addEventListener("click", () => {
-  setDrawerOpen(true);
-});
-
-drawerScrim.addEventListener("click", () => {
-  setDrawerOpen(false);
-});
-
-newChatButton.addEventListener("click", () => {
-  setDrawerOpen(false);
-});
-
-addDeviceButton?.addEventListener("click", () => {
-  setActiveView("add-device");
-  setDrawerOpen(false);
-});
-
-scanBackButton?.addEventListener("click", () => {
-  setActiveView("pet");
-});
-
-scanPreviewButton?.addEventListener("click", () => {
-  setActiveView("wifi-setup");
-});
-
-wifiBackButton?.addEventListener("click", () => {
-  setActiveView("add-device");
-});
-
-wifiTogglePasswordButton?.addEventListener("click", () => {
-  const isHidden = wifiPasswordInput?.type === "password";
-  if (wifiPasswordInput) {
-    wifiPasswordInput.type = isHidden ? "text" : "password";
-  }
-  wifiTogglePasswordButton?.setAttribute("aria-pressed", String(isHidden));
-  wifiTogglePasswordButton?.setAttribute("aria-label", isHidden ? "隐藏密码" : "显示密码");
-});
-
-wifiClearButton?.addEventListener("click", () => {
-  if (wifiSsidInput) {
-    wifiSsidInput.value = "";
-    wifiSsidInput.focus();
-  }
-});
-
-wifiNextButton?.addEventListener("click", () => {
-  setActiveView("link-pet-profile");
-});
-
-function syncLinkPetCompleteState() {
-  const hasSelection = Boolean(linkPetView?.querySelector(".link-pet-card.selected:not(.link-pet-add-card)"));
-  if (linkPetCompleteButton) {
-    linkPetCompleteButton.disabled = !hasSelection;
-  }
+$('#modal-root').innerHTML=`<div class="modal-backdrop ${m.type==='event-clip'?'event-player-backdrop':''}"><section class="sheet ${full?'fullscreen-sheet':''} ${m.type==='event-clip'?'event-player-sheet':''}" role="dialog" aria-modal="true" ${m.type==='event-clip'?`aria-label="${esc(pname(m.petId))} ${esc(m.date)} ${esc(m.time)} ${esc(m.title)} · ${view.sample?'示例数据 · ':''}模拟播放"`:'aria-labelledby="sheet-title"'}>${m.type==='event-clip'?ib('close','关闭播放器','close-modal'):`<div class="row between"><h2 id="sheet-title">${title}</h2>${ib('close','关闭弹层','close-modal')}</div>`}${body}</section></div>`;
+$('#app-content').inert=true;$('#app-header').inert=true;$('#app-nav').inert=true;$('#modal-root').querySelector('input:not([disabled]),button:not([disabled])')?.focus();}
+function syncClipPlayer(){if(modal?.type!=='event-clip')return;const toggle=$('[data-action="clip-toggle"]'),seek=$('[data-change="clip-seek"]');if(!toggle||!seek)return;toggle.textContent=modal.playing?'暂停':modal.elapsed===modal.duration?'重播':'播放';toggle.setAttribute('aria-label',toggle.textContent+'片段');seek.value=modal.elapsed;$('.clip-time').textContent=`00:${String(modal.elapsed).padStart(2,'0')} / 00:${String(modal.duration).padStart(2,'0')}`;}
+function openContext(ctx){go('assistant',{context:ctx});}
+function reportContext(r,kind='summary'){const k=kinds[kind];return {key:r.id+':'+kind,deviceId:r.deviceId,deviceName:dev().name,petId:r.petId,petName:pname(r.petId),reportId:r.id,date:r.date,title:k?.title||'行为摘要',summary:k?k.ob(r):'进食 '+r.food+' · 活动 '+r.activity+' 分钟'};}
+function beginAdd(reconfigure=false){if(reconfigure&&!canManage())return;go('add');wizard={step:reconfigure?2:0,reconfigure,deviceId:reconfigure?view.deviceId:null,name:reconfigure?dev().name:'',ssid:reconfigure?dev().network:'',petId:null};render();}
+function finishBind(skip){const w=wizard;if(!w)return;const id='cam-'+Date.now();const d=makeDevice(id,w.name||'我的爬宠箱',skip?null:w.petId,false);d.analysis='insufficient';d.network=w.ssid||'家庭 Wi-Fi';db.devices.push(d);wizard=null;stack=[];view={page:'camera',deviceId:id,section:'care',date:TODAY,scroll:0};save();render();toast('设备已添加'+(skip?'，可稍后关联宠物':''));}
+function updateView(change){view.scroll=$('#app-content').scrollTop;Object.assign(view,change);render();}
+const scenarios=[['normal','正常 · 多设备'],['empty','无设备'],['unlinked','未关联'],['offline','设备离线'],['privacy','隐私模式'],['unsubscribed','未订阅'],['insufficient','数据不足'],['partial','部分结果可用'],['shared','共享成员'],['no-sd','无存储卡'],['no-video','无录像'],['video-error','回放失败']];
+function renderScenarios(){$('#scenarios').innerHTML=scenarios.map(([k,t])=>btn(t,'scenario',scenario===k?'active':'',`data-value="${k}" aria-pressed="${scenario===k}"`)).join('');}
+function applyScenario(name){snapshotNotice=null;clearTimeout(connectTimer);wizard=null;recording=null;stack=[];closeModal(false);db=seed();scenario=name;const d=db.devices[0];view={page:'camera',deviceId:d.id,section:'care',date:TODAY};switch(name){case'normal':db.devices.forEach(device=>{device.online=true;device.subscription='active';device.analysis='ready';});view.page='home';break;case'empty':db.devices=[];db.events=[];db.reports=[];view.page='home';view.deviceId='';break;case'unlinked':d.petId=null;d.analysis='insufficient';db.events=[];view.section='companion';break;case'offline':d.online=false;break;case'privacy':d.privacy=true;break;case'unsubscribed':d.subscription='inactive';view.section='companion';break;case'insufficient':d.analysis='insufficient';view.section='companion';break;case'partial':db.reports[0].states={food:'ready',water:'insufficient',activity:'ready',region:'insufficient',molt:'insufficient',health:'insufficient',risk:'insufficient'};view.section='companion';break;case'shared':d.role='viewer';d.shared=[{id:'share-1',phone:'13900000002',status:'accepted'}];break;case'no-sd':d.sd=false;view.page='playback';view.source='sd';break;case'no-video':view.page='playback';view.source='cloud';view.playbackState='empty';break;case'video-error':view.page='playback';view.source='cloud';view.playbackState='error';break;}render();}
+document.addEventListener('click',event=>{const el=event.target.closest('[data-action]');if(!el||el.disabled)return;const a=el.dataset.action,id=el.dataset.id,value=el.dataset.value,d=dev();
+switch(a){
+case'root':root(value);break;case'home':root('home');break;case'back':back();break;case'close-modal':closeModal();break;case'scenario':applyScenario(value);break;
+case'open-device':go('camera',{deviceId:id,section:'care',date:TODAY});break;
+case'switch-device':openModal('switch');break;
+case'select-device':snapshotNotice=null;stopRecording();view={...view,deviceId:id,section:'care',date:TODAY,scroll:0};closeModal();render();break;
+case'section':snapshotNotice=null;stopRecording();updateView({section:value,scroll:0});$('#app-content').scrollTop=0;break;
+case'messages':go('messages');break;
+case'read-all':db.events.forEach(e=>e.read=true);render();toast('已全部标记为已读，异常状态不变');break;
+case'event':{const e=db.events.find(e=>e.id===id);if(!e)return;e.read=true;go('event',{eventId:id,deviceId:e.deviceId});break;}
+case'resolve-event':if(canManage()){db.events.find(e=>e.id===view.eventId).resolved=true;render();toast('已记录处理结果');}break;
+case'ask-event':{const e=db.events.find(e=>e.id===view.eventId);openContext({key:e.id,deviceId:d.id,deviceName:d.name,petId:e.petId,petName:pname(e.petId),eventId:e.id,date:e.time,title:e.title,summary:e.detail});break;}
+case'ask-summary':case'ask-report':{const r=reportById(id||view.reportId);if(r)openContext(reportContext(r,a==='ask-report'?view.kind:'summary'));break;}
+case'assistant-home':go('assistant',{context:null});break;
+case'health':{const c=careData();if(c.states.health==='ready')go('health',{reportId:c.report.id,sample:c.sample,petId:c.report.petId,sampleDate:c.report.date});break;}
+case'report':go('report',{reportId:id,reportDate:null,kind:el.dataset.kind||'activity',sample:el.dataset.sample==='true',petId:dev().petId,sampleDate:view.date});break;
+case'report-day':changeReportDate(value);break;
+case'history':go('history');break;
+case'playback':go('playback',{source:value==='cloud'?'cloud':'sd',playing:false,playDate:TODAY,playbackState:'ready',segment:'08:12'});break;
+case'event-evidence':{const e=db.events.find(e=>e.id===view.eventId);go('playback',{source:d.online&&d.sd?'sd':'cloud',playDate:e.time.slice(0,10),segment:e.time.slice(11),playing:false,playbackState:'ready'});break;}
+case'report-evidence':{const r=reportById(view.reportId);go('playback',{source:d.online&&d.sd?'sd':'cloud',playDate:r.date,segment:kinds[view.kind].time.split('–')[0],playing:false,playbackState:'ready'});break;}
+case'segment':updateView({segment:value,playing:true});break;
+case'toggle-play':updateView({playing:!view.playing});break;
+case'speed':{const speeds=['1.0','1.5','2.0','0.5'];updateView({speed:speeds[(speeds.indexOf(view.speed||'1.0')+1)%4]});break;}
+case'retry-playback':updateView({playbackState:'ready'});break;
+case'album':go('album');break;
+case'snapshot':if(canManage()&&canLive()){d.media.unshift({id:'media-'+Date.now(),kind:'截图',time:new Date().toLocaleTimeString('zh-CN',{hour12:false})});snapshotNotice=d.id;updateView({});}break;
+case'record':if(canManage()&&canLive()){if(recording){stopRecording();render();toast('录像记录已加入相册');}else{recording={deviceId:d.id,start:Date.now()};render();toast('开始模拟录像，再次点击结束');}}break;
+case'fullscreen':if(canLive())openModal('fullscreen');break;
+case'quality':if(canManage()&&canLive())toggleQuality();break;
+case'set-quality':if(canManage()&&canLive()&&['高清','标清'].includes(value)){d.quality=value;closeQuality();render();$('[data-action="quality"]')?.focus();}break;
+case'event-clip':{const r=detailReport();if(!r||view.page!=='report'||(!view.sample&&d.subscription!=='active'))break;el.focus();openModal('event-clip',{title:el.dataset.title,time:el.dataset.time,date:el.dataset.date,petId:r.petId,deviceId:d.id,elapsed:0,duration:15,playing:true});break;}
+case'clip-toggle':if(modal?.type==='event-clip'){if(modal.elapsed===modal.duration)modal.elapsed=0;modal.playing=!modal.playing;syncClipPlayer();}break;
+case'media':openModal('media',{id});break;
+case'delete-media':if(canManage()){d.media=d.media.filter(m=>m.id!==id);closeModal();render();toast('相册记录已删除');}break;
+case'more':openModal('more');break;
+case'privacy':if(canManage()&&d.online){snapshotNotice=null;stopRecording();d.privacy=!d.privacy;closeModal();render();toast(d.privacy?'隐私模式已开启':'实时看护已恢复');}else if(!d.online)toast('设备离线，无法修改隐私模式');break;
+case'settings':go('settings');break;
+case'rename':case'network':case'storage':case'firmware':case'device-info':openModal(a);break;
+case'link-pet':openModal('link-pet');break;
+case'choose-pet':if(canManage()){if(d.petId!==id){d.petId=id;d.analysis='insufficient';}closeModal();render();toast('已更新关联，历史报告归属不变');}break;
+case'create-pet':if(wizard||view.page==='pets'||canManage())openModal('create-pet',{from:modal?.type||view.page});break;
+case'remove-device':openModal('remove');break;
+case'confirm-remove':{const removing=d.id;db.devices=db.devices.filter(x=>x.id!==removing);db.events=db.events.filter(e=>e.deviceId!==removing);db.reports=db.reports.filter(r=>r.deviceId!==removing);view.deviceId=db.devices[0]?.id||'';root('home');toast('设备已移除');break;}
+case'subscription':go('subscription');break;
+case'subscriptions':go('subscriptions');break;
+case'device-subscription':go('subscription',{deviceId:id});break;
+case'activate':if(canManage())openModal('upgrade-confirm');break;
+case'confirm-activate':if(canManage()){d.subscription='active';closeModal();render();toast('已模拟开通 '+d.name+'，其他设备不受影响');}break;
+case'pets':go('pets');break;
+case'account-help':openModal('account');break;
+case'add':beginAdd();break;
+case'reconfigure':beginAdd(true);break;
+case'wizard-type':wizard.step=1;render();break;
+case'cancel-bind':openModal('cancel-bind');break;
+case'confirm-cancel':clearTimeout(connectTimer);wizard=null;closeModal();back();break;
+case'cancel-connect':clearTimeout(connectTimer);wizard.step=2;wizard.error='连接已取消，可修改网络后重试。';render();break;
+case'wizard-pet':wizard.petId=id;render();break;
+case'finish-bind':if(wizard?.petId)finishBind(false);break;
+case'skip-bind':finishBind(true);break;
 }
+});
+function changeReportDate(date){if(!date||date>TODAY){toast('请选择有效日期');return;}const original=detailReport();const match=db.reports.find(r=>r.deviceId===view.deviceId&&r.petId===original?.petId&&r.date===date);updateView({reportDate:date,reportId:view.sample?view.reportId:match?.id||view.reportId,scroll:0});}
+document.addEventListener('input',event=>{if(event.target.dataset.change==='clip-seek'&&modal?.type==='event-clip'){modal.elapsed=Math.max(0,Math.min(modal.duration,Number(event.target.value)||0));if(modal.elapsed===modal.duration)modal.playing=false;syncClipPlayer();}});
+document.addEventListener('change',event=>{const action=event.target.dataset.change;if(action==='report-date')changeReportDate(event.target.value);if(action==='date'){const date=event.target.value;if(date&&date<=TODAY)updateView({date,scroll:0});else{event.target.value=view.date;toast('请选择有效日期');}}if(action==='play-date'){const date=event.target.value;if(date&&date<=TODAY)updateView({playDate:date,segment:null,playing:false,playbackState:'ready'});else event.target.value=view.playDate||view.date;}});
+function trimmed(form,name){return String(new FormData(form).get(name)||'').trim();}
+function formError(form,text){let p=form.querySelector('.form-error');if(!p){p=document.createElement('p');p.className='form-error';p.setAttribute('role','alert');form.append(p);}p.textContent=text;}
+document.addEventListener('submit',event=>{const form=event.target;event.preventDefault();if(!form.checkValidity()){form.reportValidity();return;}const d=dev();
+switch(form.id){
+case'prepare-form':{const code=trimmed(form,'code');if(!code){formError(form,'请输入有效设备识别码');return;}wizard.code=code;wizard.step=2;render();break;}
+case'wifi-form':{const ssid=trimmed(form,'ssid');if(!ssid){formError(form,'请输入 Wi-Fi 名称');return;}const outcome=trimmed(form,'outcome');wizard.ssid=ssid;form.elements.password.value='';wizard.error='';wizard.step='connecting';render();clearTimeout(connectTimer);connectTimer=setTimeout(()=>{if(!wizard)return;if(outcome==='success')wizard.step=3;else{wizard.step=2;wizard.error={failure:'连接失败，请检查网络名称和密码后重试。',timeout:'连接超时，请确认设备处于配网状态后重试。',bound:'此设备已被绑定，请联系原拥有者解绑后再添加。'}[outcome];}render();},1200);break;}
+case'name-form':{const name=trimmed(form,'name');if(!name){formError(form,'请输入设备名称');return;}wizard.name=name;if(wizard.reconfigure){const x=db.devices.find(x=>x.id===wizard.deviceId);x.network=wizard.ssid;x.online=true;x.name=name;wizard=null;back();toast('网络配置已更新');}else{wizard.step=4;render();}break;}
+case'rename-form':if(canManage()){const name=trimmed(form,'name');if(!name){formError(form,'名称不能为空');return;}d.name=name;closeModal();render();}break;
+case'pet-form':{const name=trimmed(form,'name'),species=trimmed(form,'species');if(!name||!species){formError(form,'请填写宠物名称和物种');return;}const from=modal?.from,p={id:'pet-'+Date.now(),name,species};db.pets.push(p);if(wizard){wizard.petId=p.id;closeModal();render();}else if(from==='link-pet'&&canManage()){d.petId=p.id;d.analysis='insufficient';closeModal();render();}else{closeModal();render();}break;}
 
-function setSelectedLinkPetCard(card) {
-  linkPetCards.forEach((item) => {
-    const isSelected = item === card;
-    item.classList.toggle("selected", isSelected);
-    item.setAttribute("aria-pressed", String(isSelected));
-  });
-  syncLinkPetCompleteState();
 }
-
-linkPetBackButton?.addEventListener("click", () => {
-  setActiveView("wifi-setup");
-});
-
-linkPetCards.forEach((card) => {
-  card.addEventListener("click", () => {
-    setSelectedLinkPetCard(card);
-  });
-});
-
-linkPetAddCard?.addEventListener("click", () => {
-  setActiveView("create-pet-profile");
-});
-
-linkPetEmptyCreateButton?.addEventListener("click", () => {
-  setActiveView("create-pet-profile");
-});
-
-linkPetCompleteButton?.addEventListener("click", () => {
-  if (linkPetCompleteButton.disabled) {
-    return;
-  }
-  setActiveView("pet");
-});
-
-createPetBackButton?.addEventListener("click", () => {
-  setActiveView("link-pet-profile");
-});
-
-createPetGenderButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    createPetGenderButtons.forEach((item) => {
-      item.classList.toggle("active", item === button);
-    });
-  });
-});
-
-function formatPetAge(birthDateValue) {
-  if (!birthDateValue) {
-    return "请选择出生日期";
-  }
-
-  const birth = new Date(`${birthDateValue}T00:00:00`);
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-
-  if (Number.isNaN(birth.getTime()) || birth > today) {
-    return "日期无效";
-  }
-
-  let years = today.getFullYear() - birth.getFullYear();
-  let months = today.getMonth() - birth.getMonth();
-
-  if (today.getDate() < birth.getDate()) {
-    months -= 1;
-  }
-
-  if (months < 0) {
-    years -= 1;
-    months += 12;
-  }
-
-  if (years <= 0 && months <= 0) {
-    return "不足 1 个月";
-  }
-
-  if (years <= 0) {
-    return `${months}个月`;
-  }
-
-  if (months <= 0) {
-    return `${years}岁`;
-  }
-
-  return `${years}岁${months}个月`;
-}
-
-function syncCreatePetAgeDisplay() {
-  if (createPetAgeDisplay) {
-    createPetAgeDisplay.textContent = `年龄：${formatPetAge(createPetBirthdateInput?.value ?? "")}`;
-  }
-}
-
-createPetBirthdateInput?.addEventListener("change", syncCreatePetAgeDisplay);
-
-function syncCreatePetSpeciesCustomField() {
-  const showCustom = createPetSpeciesSelect?.value === "其他品种";
-  createPetSpeciesCustomField?.toggleAttribute("hidden", !showCustom);
-  if (!showCustom && createPetSpeciesNameInput) {
-    createPetSpeciesNameInput.value = "";
-  }
-}
-
-createPetSpeciesSelect?.addEventListener("change", syncCreatePetSpeciesCustomField);
-
-createPetAvatarUploadButton?.addEventListener("click", () => {
-  createPetAvatarInput?.click();
-});
-
-createPetAvatarInput?.addEventListener("change", () => {
-  const file = createPetAvatarInput.files?.[0];
-  if (!file || !createPetAvatarPreview) {
-    return;
-  }
-
-  const reader = new FileReader();
-  reader.onload = () => {
-    if (typeof reader.result !== "string") {
-      return;
-    }
-
-    createPetAvatarPreview.style.backgroundImage = `url("${reader.result}")`;
-    createPetAvatarPreview.classList.remove("is-empty");
-  };
-  reader.readAsDataURL(file);
-});
-
-if (createPetBirthdateInput) {
-  createPetBirthdateInput.max = new Date().toISOString().slice(0, 10);
-}
-
-syncCreatePetAgeDisplay();
-
-createPetSaveButton?.addEventListener("click", () => {
-  linkPetView?.classList.add("has-reptile-profiles");
-  const firstCard = linkPetCards[0];
-  if (firstCard) {
-    setSelectedLinkPetCard(firstCard);
-  }
-  setActiveView("link-pet-profile");
-});
-
-syncLinkPetCompleteState();
-
-const monitorScroll = document.querySelector('[data-view="reptile-camera"] .monitor-scroll');
-const monitorStatusNotices = document.querySelector(".monitor-status-notices");
-const monitorStatusNoticeCloseButtons = document.querySelectorAll(".monitor-status-notice-close");
-const envPrototypeToggle = document.querySelector(".environment-section-title .env-prototype-toggle");
-const envPrototypeToggleLabel = document.querySelector(".environment-section-title .env-prototype-toggle-label");
-
-function syncMonitorStatusNoticeVisibility() {
-  const hasData = monitorScroll?.classList.contains("env-has-data");
-  const hasAlert = monitorScroll?.classList.contains("env-has-alert");
-  const isDismissed = monitorStatusNotices?.classList.contains("is-hidden");
-  const shouldShow = Boolean(hasData && hasAlert && !isDismissed);
-  monitorStatusNotices?.toggleAttribute("hidden", !shouldShow);
-}
-
-function setEnvironmentDataState(hasData) {
-  monitorScroll?.classList.toggle("env-has-data", hasData);
-  envPrototypeToggle?.setAttribute("aria-pressed", String(hasData));
-  if (envPrototypeToggleLabel) {
-    envPrototypeToggleLabel.textContent = hasData ? "有环境数据" : "无环境数据";
-  }
-  if (!hasData) {
-    monitorScroll?.classList.remove("env-has-alert");
-  }
-  syncMonitorStatusNoticeVisibility();
-}
-
-envPrototypeToggle?.addEventListener("click", () => {
-  const hasData = !(monitorScroll?.classList.contains("env-has-data") ?? false);
-  setEnvironmentDataState(hasData);
-});
-
-function dismissMonitorStatusNotice(notice) {
-  notice?.classList.add("is-dismissed");
-  monitorStatusNotices?.classList.add("is-hidden");
-  syncMonitorStatusNoticeVisibility();
-}
-
-monitorStatusNoticeCloseButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    dismissMonitorStatusNotice(button.closest(".monitor-status-notice"));
-  });
-});
-
-const aquariumPageTitles = {
-  home: "AI智养鱼",
-  diagnosis: "AI诊断",
-  capture: "拍照分析",
-  reports: "报告中心",
-  "report-detail": "完整报告",
-  "care-records": "养护记录",
-  knowledge: "养鱼知识库",
-  "knowledge-detail": "知识详情",
-  assistant: "AI智养管家",
-  profile: "我的",
-};
-
-const aquariumAnalysisNames = {
-  disease: "疾病检测",
-  species: "鱼种识别",
-  density: "密度与混养分析",
-  behavior: "行为分析",
-};
-
-const aquariumCaptureConfigs = {
-  disease: {
-    name: "疾病检测",
-    guide: "对准疑似病鱼体表 · 光线充足 / 水面平静",
-    cloudNote: "照片上传至云端 AI 推理，预计 5–10 秒生成当次分析报告。",
-    warningLead: "本分析基于照片 AI 推理，以下因素可能影响准确性：",
-    fileKind: "照片",
-  },
-  species: {
-    name: "鱼种识别",
-    guide: "对准鱼缸全景 · 确保鱼只清晰完整",
-    cloudNote: "照片上传至云端 AI 推理，预计 5–10 秒识别鱼种与数量。",
-    warningLead: "本分析基于照片 AI 推理，以下因素可能影响准确性：",
-    fileKind: "照片",
-  },
-  density: {
-    name: "密度与混养分析",
-    guide: "完整拍摄鱼缸 · 尽量拍全所有鱼只",
-    cloudNote: "照片上传至云端 AI 推理，将结合鱼缸水量计算密度与混养风险。",
-    warningLead: "本分析基于照片 AI 推理，以下因素可能影响准确性：",
-    fileKind: "照片",
-  },
-  behavior: {
-    name: "行为分析",
-    guide: "保持镜头稳定 · 连续录制鱼只游动 10 秒",
-    cloudNote: "视频上传至云端 AI 推理，预计 5–10 秒识别异常行为及疾病风险。",
-    warningLead: "本分析基于 10 秒视频 AI 推理，以下因素可能影响准确性：",
-    fileKind: "视频",
-  },
-};
-
-function showAquariumToast(message) {
-  if (!aquariumToast) {
-    return;
-  }
-
-  window.clearTimeout(aquariumToastTimer);
-  aquariumToast.textContent = message;
-  aquariumToast.classList.add("is-visible");
-  aquariumToastTimer = window.setTimeout(() => {
-    aquariumToast.classList.remove("is-visible");
-  }, 1800);
-}
-
-function setAquariumModalOpen(modal, isOpen) {
-  modal?.classList.toggle("is-open", isOpen);
-  modal?.setAttribute("aria-hidden", String(!isOpen));
-}
-
-function closeAquariumAnalysisPreview() {
-  setAquariumModalOpen(aquariumAnalysisPreview, false);
-  aquariumPreviewVideo?.pause();
-  if (aquariumPreviewImage) {
-    aquariumPreviewImage.removeAttribute("src");
-    aquariumPreviewImage.hidden = true;
-  }
-  if (aquariumPreviewVideo) {
-    aquariumPreviewVideo.removeAttribute("src");
-    aquariumPreviewVideo.load();
-    aquariumPreviewVideo.hidden = true;
-  }
-}
-
-function clearAquariumCaptureSelection() {
-  closeAquariumAnalysisPreview();
-  aquariumCaptureVideo?.pause();
-
-  if (aquariumPreviewUrl) {
-    URL.revokeObjectURL(aquariumPreviewUrl);
-    aquariumPreviewUrl = "";
-  }
-
-  aquariumSelectedFile = null;
-  if (aquariumCaptureImage) {
-    aquariumCaptureImage.removeAttribute("src");
-    aquariumCaptureImage.hidden = true;
-  }
-  if (aquariumCaptureVideo) {
-    aquariumCaptureVideo.removeAttribute("src");
-    aquariumCaptureVideo.load();
-    aquariumCaptureVideo.hidden = true;
-  }
-  if (aquariumCaptureLive) {
-    aquariumCaptureLive.hidden = false;
-  }
-  if (aquariumCaptureSelected) {
-    aquariumCaptureSelected.hidden = true;
-  }
-  if (aquariumCaptureSelectedName) {
-    aquariumCaptureSelectedName.textContent = "";
-  }
-  aquariumCaptureStart?.classList.remove("has-media");
-}
-
-function configureAquariumCapture(analysisType) {
-  const config = aquariumCaptureConfigs[analysisType] ?? aquariumCaptureConfigs.disease;
-  pendingAquariumAnalysis = analysisType;
-
-  if (aquariumCaptureGuide) {
-    aquariumCaptureGuide.textContent = config.guide;
-  }
-  if (aquariumCaptureMode) {
-    aquariumCaptureMode.textContent = config.name;
-  }
-  if (aquariumCaptureType) {
-    aquariumCaptureType.textContent = config.name;
-  }
-  if (aquariumCaptureCloudNote) {
-    aquariumCaptureCloudNote.textContent = config.cloudNote;
-  }
-  const warningLead = aquariumCaptureWarning?.querySelector("p");
-  if (warningLead) {
-    warningLead.textContent = config.warningLead;
-  }
-
-  const isVideo = analysisType === "behavior";
-  aquariumCaptureShutter?.classList.toggle("is-video", isVideo);
-  aquariumCaptureShutter?.setAttribute("aria-label", isVideo ? "录像按钮展示" : "拍照按钮展示");
-  aquariumCaptureGallery?.setAttribute("aria-label", isVideo ? "从相册选择视频" : "从相册选择照片");
-}
-
-function openAquariumCapture(analysisType, returnPage) {
-  clearAquariumCaptureSelection();
-  aquariumCaptureReturnPage =
-    returnPage ??
-    (activeAquariumPage === "home" || activeAquariumPage === "diagnosis"
-      ? activeAquariumPage
-      : "diagnosis");
-  configureAquariumCapture(analysisType);
-  setAquariumPage("capture");
-}
-
-function closeAquariumOverlays() {
-  closeAquariumAnalysisPreview();
-  aquariumFilterMenu?.toggleAttribute("hidden", true);
-  aquariumFilterButton?.setAttribute("aria-expanded", "false");
-}
-
-function getAquariumRootTab(pageName) {
-  if (pageName === "capture") {
-    return "diagnosis";
-  }
-
-  let currentPageName = pageName;
-  let depth = 0;
-  while (aquariumPageReturnTargets[currentPageName] && depth < 8) {
-    currentPageName = aquariumPageReturnTargets[currentPageName];
-    depth += 1;
-  }
-
-  return ["home", "diagnosis", "reports", "profile"].includes(currentPageName)
-    ? currentPageName
-    : "home";
-}
-
-function openAquariumSubpage(pageName, returnPage = activeAquariumPage) {
-  aquariumPageReturnTargets[pageName] = returnPage;
-  aquariumScrollPositions[pageName] = 0;
-  setAquariumPage(pageName);
-}
-
-function setAquariumPage(pageName, focusFeature) {
-  if (!aquariumPageTitles[pageName]) {
-    return;
-  }
-
-  if (appScreen) {
-    appScreen.scrollTop = 0;
-  }
-
-  const currentPage = aquariumView?.querySelector(`[data-aquarium-page="${activeAquariumPage}"]`);
-  if (currentPage) {
-    aquariumScrollPositions[activeAquariumPage] = currentPage.scrollTop;
-  }
-
-  aquariumPages.forEach((page) => {
-    const isActive = page.dataset.aquariumPage === pageName;
-    page.classList.toggle("active", isActive);
-    page.setAttribute("aria-hidden", String(!isActive));
-  });
-
-  aquariumTabs.forEach((tab) => {
-    const activeTabName = getAquariumRootTab(pageName);
-    const isActive = tab.dataset.aquariumTab === activeTabName;
-    tab.classList.toggle("active", isActive);
-    if (isActive) {
-      tab.setAttribute("aria-current", "page");
-    } else {
-      tab.removeAttribute("aria-current");
-    }
-  });
-
-  activeAquariumPage = pageName;
-  if (aquariumPageTitle) {
-    aquariumPageTitle.textContent = aquariumPageTitles[pageName];
-  }
-  let backLabel = "返回 AI 智养鱼首页";
-  if (pageName === "home") {
-    backLabel = "返回设备页面";
-  } else if (pageName === "capture") {
-    backLabel = `返回${aquariumPageTitles[aquariumCaptureReturnPage] ?? "上一页"}`;
-  } else if (aquariumPageReturnTargets[pageName]) {
-    backLabel = `返回${aquariumPageTitles[aquariumPageReturnTargets[pageName]] ?? "上一页"}`;
-  }
-  aquariumBackButton?.setAttribute("aria-label", backLabel);
-
-  window.requestAnimationFrame(() => {
-    if (appScreen) {
-      appScreen.scrollTop = 0;
-    }
-
-    const nextPage = aquariumView?.querySelector(`[data-aquarium-page="${pageName}"]`);
-    if (!nextPage) {
-      return;
-    }
-
-    nextPage.scrollTop = aquariumScrollPositions[pageName] ?? 0;
-    if (!focusFeature || pageName !== "diagnosis") {
-      return;
-    }
-
-    const targetCard = nextPage.querySelector(`[data-diagnosis-feature="${focusFeature}"]`);
-    if (!targetCard) {
-      return;
-    }
-
-    targetCard.scrollIntoView({ behavior: "smooth", block: "center" });
-    targetCard.classList.add("is-focused");
-    window.setTimeout(() => targetCard.classList.remove("is-focused"), 1600);
-  });
-}
-
-function openAquariumUpload(analysisType) {
-  pendingAquariumAnalysis = analysisType;
-  const input = analysisType === "behavior" ? aquariumVideoInput : aquariumImageInput;
-  if (!input) {
-    return;
-  }
-
-  input.value = "";
-  input.click();
-}
-
-function handleAquariumFileSelection(input, mediaType) {
-  const file = input?.files?.[0];
-  if (!file) {
-    return;
-  }
-
-  if (aquariumPreviewUrl) {
-    URL.revokeObjectURL(aquariumPreviewUrl);
-  }
-
-  aquariumCaptureVideo?.pause();
-  aquariumSelectedFile = file;
-  aquariumPreviewUrl = URL.createObjectURL(file);
-
-  if (aquariumCaptureLive) {
-    aquariumCaptureLive.hidden = true;
-  }
-  if (mediaType === "video" && aquariumCaptureVideo) {
-    if (aquariumCaptureImage) {
-      aquariumCaptureImage.hidden = true;
-      aquariumCaptureImage.removeAttribute("src");
-    }
-    aquariumCaptureVideo.src = aquariumPreviewUrl;
-    aquariumCaptureVideo.hidden = false;
-  } else if (aquariumCaptureImage) {
-    if (aquariumCaptureVideo) {
-      aquariumCaptureVideo.pause();
-      aquariumCaptureVideo.hidden = true;
-      aquariumCaptureVideo.removeAttribute("src");
-    }
-    aquariumCaptureImage.src = aquariumPreviewUrl;
-    aquariumCaptureImage.hidden = false;
-  }
-
-  if (aquariumCaptureSelected && aquariumCaptureSelectedName) {
-    aquariumCaptureSelectedName.textContent = file.name;
-    aquariumCaptureSelected.hidden = false;
-  }
-  aquariumCaptureStart?.classList.add("has-media");
-}
-
-function openAquariumSelectedPreview() {
-  if (!aquariumSelectedFile || !aquariumPreviewUrl || !aquariumPreviewKind) {
-    showAquariumToast(`请先拍摄或选择${aquariumCaptureConfigs[pendingAquariumAnalysis].fileKind}`);
-    return;
-  }
-
-  closeAquariumAnalysisPreview();
-  aquariumPreviewKind.textContent = `${aquariumAnalysisNames[pendingAquariumAnalysis]} · ${aquariumSelectedFile.name}`;
-  if (pendingAquariumAnalysis === "behavior" && aquariumPreviewVideo) {
-    aquariumPreviewVideo.src = aquariumPreviewUrl;
-    aquariumPreviewVideo.hidden = false;
-  } else if (aquariumPreviewImage) {
-    aquariumPreviewImage.src = aquariumPreviewUrl;
-    aquariumPreviewImage.hidden = false;
-  }
-  setAquariumModalOpen(aquariumAnalysisPreview, true);
-}
-
-function applyAquariumReportFilter(filterName) {
-  let visibleCount = 0;
-  aquariumReportEntries.forEach((entry) => {
-    if (entry.classList.contains("aquarium-current-report")) {
-      return;
-    }
-    const shouldShow = filterName === "all" || entry.dataset.reportType === filterName;
-    entry.toggleAttribute("hidden", !shouldShow);
-    visibleCount += shouldShow ? 1 : 0;
-  });
-
-  aquariumFilterOptions.forEach((option) => {
-    option.classList.toggle("active", option.dataset.reportFilter === filterName);
-  });
-  aquariumReportEmpty?.toggleAttribute("hidden", visibleCount !== 0);
-  aquariumFilterMenu?.toggleAttribute("hidden", true);
-  aquariumFilterButton?.setAttribute("aria-expanded", "false");
-}
-
-aquariumDeviceButton?.addEventListener("click", () => {
-  closeAquariumOverlays();
-  clearAquariumCaptureSelection();
-  setAquariumPage("home");
-  setActiveView("aquarium-camera");
-  setDrawerOpen(false);
-});
-
-aquariumBackButton?.addEventListener("click", () => {
-  closeAquariumOverlays();
-  if (activeAquariumPage === "home") {
-    clearAquariumCaptureSelection();
-    setActiveView("pet");
-  } else if (activeAquariumPage === "capture") {
-    clearAquariumCaptureSelection();
-    setAquariumPage(aquariumCaptureReturnPage);
-  } else if (aquariumPageReturnTargets[activeAquariumPage]) {
-    setAquariumPage(aquariumPageReturnTargets[activeAquariumPage]);
-  } else {
-    setAquariumPage("home");
-  }
-});
-
-aquariumMoreButton?.addEventListener("click", () => {
-  showAquariumToast("水族箱摄像头 · 在线");
-});
-
-aquariumTabs.forEach((tab) => {
-  tab.addEventListener("click", () => {
-    if (activeAquariumPage === "capture") {
-      clearAquariumCaptureSelection();
-    }
-    setAquariumPage(tab.dataset.aquariumTab);
-  });
-});
-
-aquariumAnalysisTargets.forEach((target) => {
-  target.addEventListener("click", () => {
-    openAquariumCapture(target.dataset.analysisTarget);
-  });
-});
-
-aquariumDiagnosisCards.forEach((card) => {
-  card.addEventListener("click", () => {
-    openAquariumCapture(card.dataset.diagnosisFeature);
-  });
-
-  card.addEventListener("keydown", (event) => {
-    if ((event.key === "Enter" || event.key === " ") && event.target === card) {
-      event.preventDefault();
-      openAquariumCapture(card.dataset.diagnosisFeature);
-    }
-  });
-});
-
-aquariumUploadButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    openAquariumCapture(button.dataset.analysisUpload);
-  });
-});
-
-aquariumCaptureGallery?.addEventListener("click", () => {
-  openAquariumUpload(pendingAquariumAnalysis);
-});
-
-aquariumCaptureFlash?.addEventListener("click", () => {
-  aquariumCaptureFlash.classList.toggle("active");
-  const isActive = aquariumCaptureFlash.classList.contains("active");
-  aquariumCaptureFlash.setAttribute("aria-pressed", String(isActive));
-  showAquariumToast(isActive ? "闪光灯已开启" : "闪光灯已关闭");
-});
-
-aquariumCaptureFlip?.addEventListener("click", () => {
-  aquariumCaptureFlip.classList.add("is-rotating");
-  showAquariumToast("已切换摄像头");
-  window.setTimeout(() => aquariumCaptureFlip.classList.remove("is-rotating"), 420);
-});
-
-aquariumCaptureCancel?.addEventListener("click", () => {
-  clearAquariumCaptureSelection();
-  setAquariumPage(aquariumCaptureReturnPage);
-});
-
-aquariumCaptureStart?.addEventListener("click", openAquariumSelectedPreview);
-
-aquariumImageInput?.addEventListener("change", () => {
-  handleAquariumFileSelection(aquariumImageInput, "image");
-});
-
-aquariumVideoInput?.addEventListener("change", () => {
-  handleAquariumFileSelection(aquariumVideoInput, "video");
-});
-
-aquariumAnalysisPreview?.querySelectorAll(".aquarium-modal-close, .aquarium-modal-scrim, .aquarium-preview-done").forEach((button) => {
-  button.addEventListener("click", closeAquariumAnalysisPreview);
-});
-
-aquariumReportShortcut?.addEventListener("click", () => {
-  setAquariumPage("reports");
-});
-
-aquariumMyReportsButton?.addEventListener("click", () => {
-  setAquariumPage("reports");
-});
-
-aquariumFilterButton?.addEventListener("click", () => {
-  const isOpen = aquariumFilterButton.getAttribute("aria-expanded") === "true";
-  aquariumFilterButton.setAttribute("aria-expanded", String(!isOpen));
-  aquariumFilterMenu?.toggleAttribute("hidden", isOpen);
-});
-
-aquariumFilterOptions.forEach((option) => {
-  option.addEventListener("click", () => {
-    applyAquariumReportFilter(option.dataset.reportFilter);
-  });
-});
-
-aquariumFullReportButton?.addEventListener("click", () => {
-  openAquariumSubpage("report-detail", "reports");
-});
-
-aquariumDestinationButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    openAquariumSubpage(button.dataset.aquariumDestination, activeAquariumPage);
-  });
-});
-
-aquariumReportRetest?.addEventListener("click", () => {
-  openAquariumCapture("behavior", "report-detail");
-});
-
-aquariumReportConsult?.addEventListener("click", () => {
-  openAquariumSubpage("assistant", "report-detail");
-});
-
-aquariumReportDiseaseButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    openAquariumCapture("disease", "report-detail");
-  });
-});
-
-let activeKnowledgeFilter = "all";
-
-function applyAquariumKnowledgeFilter() {
-  const query = aquariumKnowledgeSearch?.value.trim().toLocaleLowerCase("zh-CN") ?? "";
-  let visibleCount = 0;
-
-  aquariumKnowledgeCards.forEach((card) => {
-    const matchesCategory =
-      activeKnowledgeFilter === "all" || card.dataset.knowledgeCategory === activeKnowledgeFilter;
-    const matchesQuery = !query || card.textContent.toLocaleLowerCase("zh-CN").includes(query);
-    const shouldShow = matchesCategory && matchesQuery;
-    card.toggleAttribute("hidden", !shouldShow);
-    visibleCount += shouldShow ? 1 : 0;
-  });
-
-  aquariumKnowledgeEmpty?.toggleAttribute("hidden", visibleCount !== 0);
-}
-
-aquariumKnowledgeFilters.forEach((filter) => {
-  filter.addEventListener("click", () => {
-    activeKnowledgeFilter = filter.dataset.knowledgeFilter;
-    aquariumKnowledgeFilters.forEach((item) => {
-      item.classList.toggle("active", item === filter);
-    });
-    applyAquariumKnowledgeFilter();
-  });
-});
-
-aquariumKnowledgeSearch?.addEventListener("input", applyAquariumKnowledgeFilter);
-
-aquariumKnowledgeDetailButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    openAquariumSubpage("knowledge-detail", "knowledge");
-  });
-});
-
-function appendAquariumAssistantMessage(message, role) {
-  if (!aquariumAssistantMessages) {
-    return;
-  }
-
-  const bubble = document.createElement("div");
-  bubble.className = `aquarium-chat-bubble ${role}`;
-  const text = document.createElement("p");
-  text.textContent = message;
-  bubble.append(text);
-  aquariumAssistantMessages.append(bubble);
-  bubble.scrollIntoView({ behavior: "smooth", block: "nearest" });
-}
-
-function sendAquariumAssistantQuestion(message) {
-  const question = message.trim();
-  if (!question) {
-    return;
-  }
-
-  appendAquariumAssistantMessage(question, "user");
-  if (aquariumAssistantInput) {
-    aquariumAssistantInput.value = "";
-  }
-
-  window.setTimeout(() => {
-    appendAquariumAssistantMessage(
-      "建议先检查水温、水质和鱼只体表，再结合行为或疾病检测结果判断。当前为交互原型，暂未接入在线问诊服务。",
-      "assistant",
-    );
-  }, 320);
-}
-
-aquariumAssistantForm?.addEventListener("submit", (event) => {
-  event.preventDefault();
-  sendAquariumAssistantQuestion(aquariumAssistantInput?.value ?? "");
-});
-
-aquariumAssistantSuggestions.forEach((button) => {
-  button.addEventListener("click", () => {
-    sendAquariumAssistantQuestion(button.textContent ?? "");
-  });
-});
-
-function showCameraToast(message) {
-  if (!cameraToast) {
-    return;
-  }
-  window.clearTimeout(cameraToastTimer);
-  cameraToast.textContent = message;
-  cameraToast.classList.add("is-visible");
-  cameraToastTimer = window.setTimeout(() => {
-    cameraToast.classList.remove("is-visible");
-  }, 1800);
-}
-
-function setActiveCameraSection(sectionName) {
-  activeCameraSection = sectionName;
-  cameraSectionTabs.forEach((tab) => {
-    const isActive = tab.dataset.cameraSection === sectionName;
-    tab.classList.toggle("active", isActive);
-    tab.setAttribute("aria-pressed", String(isActive));
-  });
-  cameraSectionPanels.forEach((panel) => {
-    panel.classList.toggle("active", panel.dataset.cameraPanel === sectionName);
-  });
-  monitorScroll?.scrollTo({ top: 0, behavior: "smooth" });
-}
-
-function setCameraMemberState(isMember, announce = false) {
-  cameraMemberState = isMember;
-  appScreen?.classList.toggle("camera-is-member", isMember);
-  monitorScroll?.classList.remove("env-has-alert");
-  setEnvironmentDataState(true);
-  if (announce) {
-    showCameraToast(isMember ? "智能陪伴已开启" : "已切换为未订阅演示");
-  }
-}
-
-function setCameraSheetOpen(sheetName = "") {
-  const isOpen = Boolean(sheetName);
-  cameraSheetLayer?.classList.toggle("is-open", isOpen);
-  cameraSheetLayer?.setAttribute("aria-hidden", String(!isOpen));
-  cameraSheets.forEach((sheet) => {
-    sheet.classList.toggle("active", sheet.dataset.cameraSheet === sheetName);
-  });
-}
-
-cameraSectionTabs.forEach((tab) => {
-  tab.addEventListener("click", () => {
-    setActiveCameraSection(tab.dataset.cameraSection ?? "care");
-  });
-});
-
-iotAutoModeButton?.addEventListener("click", () => {
-  const isAuto = iotAutoModeButton.getAttribute("aria-pressed") !== "true";
-  iotAutoModeButton.setAttribute("aria-pressed", String(isAuto));
-  iotAutoModeButton.classList.toggle("active", isAuto);
-  const label = iotAutoModeButton.querySelector("span");
-  if (label) {
-    label.textContent = isAuto ? "自动模式" : "手动模式";
-  }
-  showCameraToast(isAuto ? "设备控制已切换为自动模式" : "已切换为手动控制");
-});
-
-iotDeviceButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const isOn = button.getAttribute("aria-pressed") !== "true";
-    button.setAttribute("aria-pressed", String(isOn));
-    button.classList.toggle("is-on", isOn);
-    const state = button.querySelector(".iot-device-copy small");
-    if (state) {
-      state.textContent = isOn ? "已开启" : "已关闭";
-    }
-    showCameraToast(`${button.dataset.iotDevice ?? "设备"}${isOn ? "已开启" : "已关闭"}`);
-  });
-});
-
-function renderIotTargetSheet() {
-  const target = iotTargetState[activeIotTarget];
-  if (!target) return;
-  if (iotTargetTitle) iotTargetTitle.textContent = `设置${target.label}区间`;
-  if (iotTargetMin) iotTargetMin.innerHTML = `${target.min}<small>${target.unit}</small>`;
-  if (iotTargetMax) iotTargetMax.innerHTML = `${target.max}<small>${target.unit}</small>`;
-}
-
-iotTargetButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    activeIotTarget = button.dataset.iotTarget ?? "temperature";
-    renderIotTargetSheet();
-    setCameraSheetOpen("iot-target");
-  });
-});
-
-iotTargetStepButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const target = iotTargetState[activeIotTarget];
-    if (!target) return;
-    const bound = button.dataset.iotTargetBound;
-    const direction = Number(button.dataset.iotTargetDelta ?? 0);
-    const change = direction * target.step;
-    if (bound === "min") {
-      target.min = Math.max(target.floor, Math.min(target.min + change, target.max - target.step));
-    } else {
-      target.max = Math.min(target.ceiling, Math.max(target.max + change, target.min + target.step));
-    }
-    renderIotTargetSheet();
-  });
-});
-
-iotTargetSave?.addEventListener("click", () => {
-  const target = iotTargetState[activeIotTarget];
-  const card = document.querySelector(`[data-iot-target="${activeIotTarget}"]`);
-  const summary = card?.querySelector("em");
-  if (!target) return;
-  if (summary) summary.textContent = `目标 ${target.min}–${target.max}${target.unit}`;
-  setCameraSheetOpen();
-  showCameraToast(`${target.label}目标区间已保存`);
-});
-
-cameraMembershipEntries.forEach((button) => {
-  button.addEventListener("click", () => {
-    if (activeViewName !== "reptile-camera" && activeViewName !== "camera-playback") {
-      setActiveView("reptile-camera");
-      setActiveCameraSection("companion");
-    }
-    setCameraSheetOpen("membership");
-  });
-});
-
-cameraMembershipPlans.forEach((plan) => {
-  plan.addEventListener("click", () => {
-    cameraMembershipPlans.forEach((item) => {
-      const isActive = item === plan;
-      item.classList.toggle("active", isActive);
-      item.setAttribute("aria-pressed", String(isActive));
-    });
-  });
-});
-
-cameraMembershipActivate?.addEventListener("click", () => {
-  const openedFromPlayback = activeViewName === "camera-playback";
-  setCameraMemberState(true);
-  setCameraSheetOpen();
-  if (!openedFromPlayback) {
-    setActiveCameraSection("companion");
-  }
-  showCameraToast("摄像头会员已开启");
-});
-
-cameraSheetCloseButtons.forEach((button) => {
-  button.addEventListener("click", () => setCameraSheetOpen());
-});
-
-function toggleCameraFunction(button, action) {
-  const nextState = button.getAttribute("aria-pressed") !== "true";
-  const stateCopy = button.querySelector(".camera-function-state");
-  button.setAttribute("aria-pressed", String(nextState));
-  button.classList.toggle("is-active", nextState);
-
-  if (action === "privacy") {
-    if (stateCopy) stateCopy.textContent = nextState ? "已开启" : "已关闭";
-    showCameraToast(nextState ? "隐私模式已开启，画面已暂停" : "隐私模式已关闭");
-  }
-}
-
-cameraActionButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const action = button.dataset.cameraAction;
-    if (button.classList.contains("is-toggle")) {
-      toggleCameraFunction(button, action);
-      return;
-    }
-
-    if (action === "playback") {
-      setActiveView("camera-playback");
-      setDrawerOpen(false);
-    } else if (action === "album") {
-      setActiveView("camera-album");
-      setDrawerOpen(false);
-    } else if (action === "settings") {
-      setActiveCameraSection("care");
-      setActiveView("camera-settings");
-      setDrawerOpen(false);
-    } else if (action === "record") {
-      const isActive = button.classList.toggle("is-active");
-      showCameraToast(isActive ? "手动录像已开始" : "录像已保存到相册");
-    } else if (action === "quality") {
-      const isHd = button.textContent.trim() === "高清";
-      button.textContent = isHd ? "标清" : "高清";
-      showCameraToast(`已切换为${isHd ? "标清" : "高清"}画质`);
-    } else if (action === "night") {
-      const modes = ["自动", "红外夜视", "星光夜视"];
-      const stateCopy = button.querySelector(".camera-function-state");
-      const currentIndex = modes.indexOf(stateCopy?.textContent.trim() ?? "自动");
-      const nextMode = modes[(currentIndex + 1) % modes.length];
-      if (stateCopy) {
-        stateCopy.textContent = nextMode;
-      }
-      showCameraToast(`夜视模式已切换为${nextMode}`);
-    } else if (action === "playback-speed") {
-      const speeds = ["1.0×", "1.5×", "2.0×", "0.5×"];
-      const currentIndex = speeds.indexOf(button.textContent.trim());
-      button.textContent = speeds[(currentIndex + 1) % speeds.length];
-    } else {
-      const messages = {
-        fullscreen: "已进入全屏演示",
-        snapshot: "截图已保存到相册",
-        share: "分享功能演示",
-      };
-      showCameraToast(messages[action] ?? "功能演示");
-    }
-  });
-});
-
-setCameraMemberState(false);
-setActiveCameraSection("care");
-
-reptileDeviceButton?.addEventListener("click", () => {
-  setActiveCameraSection("care");
-  setActiveView("reptile-camera");
-  setDrawerOpen(false);
-});
-
-monitorBackButton?.addEventListener("click", () => {
-  setActiveView("pet");
-});
-
-playbackTopBackButton?.addEventListener("click", () => {
-  setActiveCameraSection("care");
-  setActiveView("reptile-camera");
-});
-
-cameraSettingsBackButton?.addEventListener("click", () => {
-  setActiveCameraSection("care");
-  setActiveView("reptile-camera");
-});
-
-function resetCameraAlbumSelection() {
-  cameraAlbumView?.classList.remove("is-selecting");
-  cameraAlbumSelectButton?.setAttribute("aria-pressed", "false");
-  if (cameraAlbumSelectButton) cameraAlbumSelectButton.textContent = "选择";
-  cameraAlbumItems.forEach((item) => {
-    item.classList.remove("is-selected");
-    item.setAttribute("aria-pressed", "false");
-  });
-  cameraAlbumDeleteButton?.setAttribute("disabled", "");
-  cameraAlbumSelectionBar?.setAttribute("aria-hidden", "true");
-}
-
-function updateCameraAlbumSelection() {
-  const visibleItems = [...cameraAlbumItems].filter((item) => !item.hidden);
-  const selectedItems = visibleItems.filter((item) => item.classList.contains("is-selected"));
-  const allSelected = visibleItems.length > 0 && selectedItems.length === visibleItems.length;
-  if (cameraAlbumSelectButton) cameraAlbumSelectButton.textContent = allSelected ? "取消全选" : "全选";
-  cameraAlbumDeleteButton?.toggleAttribute("disabled", selectedItems.length === 0);
-  cameraAlbumDeleteButton?.setAttribute("aria-label", selectedItems.length ? `删除所选 ${selectedItems.length} 张图片` : "删除所选图片");
-}
-
-cameraAlbumBackButton?.addEventListener("click", () => {
-  if (cameraAlbumView?.classList.contains("is-selecting")) {
-    resetCameraAlbumSelection();
-    return;
-  }
-  setActiveCameraSection("care");
-  setActiveView("reptile-camera");
-});
-
-cameraAlbumSelectButton?.addEventListener("click", () => {
-  const isSelecting = cameraAlbumView?.classList.contains("is-selecting");
-  if (!isSelecting) {
-    cameraAlbumView?.classList.add("is-selecting");
-    cameraAlbumSelectButton.setAttribute("aria-pressed", "true");
-    cameraAlbumSelectionBar?.setAttribute("aria-hidden", "false");
-    updateCameraAlbumSelection();
-    return;
-  }
-
-  const visibleItems = [...cameraAlbumItems].filter((item) => !item.hidden);
-  const shouldSelectAll = visibleItems.some((item) => !item.classList.contains("is-selected"));
-  visibleItems.forEach((item) => {
-    item.classList.toggle("is-selected", shouldSelectAll);
-    item.setAttribute("aria-pressed", String(shouldSelectAll));
-  });
-  updateCameraAlbumSelection();
-});
-
-cameraAlbumItems.forEach((item) => {
-  item.addEventListener("click", () => {
-    if (!cameraAlbumView?.classList.contains("is-selecting")) return;
-    const isSelected = item.getAttribute("aria-pressed") !== "true";
-    item.classList.toggle("is-selected", isSelected);
-    item.setAttribute("aria-pressed", String(isSelected));
-    updateCameraAlbumSelection();
-  });
-});
-
-cameraAlbumDeleteButton?.addEventListener("click", () => {
-  const selectedItems = [...cameraAlbumItems].filter((item) => !item.hidden && item.classList.contains("is-selected"));
-  if (!selectedItems.length) return;
-  selectedItems.forEach((item) => {
-    item.hidden = true;
-  });
-  const hasVisibleItems = [...cameraAlbumItems].some((item) => !item.hidden);
-  cameraAlbumEmpty?.toggleAttribute("hidden", hasVisibleItems);
-  resetCameraAlbumSelection();
-});
-
-playbackTabs.forEach((tab) => {
-  tab.addEventListener("click", () => {
-    const targetPanel = tab.dataset.playbackTab;
-    playbackTabs.forEach((button) => {
-      const isActive = button === tab;
-      button.classList.toggle("active", isActive);
-      button.setAttribute("aria-selected", String(isActive));
-    });
-    playbackPanels.forEach((panel) => {
-      panel.classList.toggle("active", panel.dataset.playbackPanel === targetPanel);
-    });
-  });
-});
-
-localFileCards.forEach((card) => {
-  card.addEventListener("click", () => {
-    const panelFileCards = card.closest(".playback-tab-panel")?.querySelectorAll(".local-file-card") ?? [];
-    panelFileCards.forEach((item) => {
-      item.classList.toggle("active", item === card);
-    });
-  });
-});
-
-foodFeatureButton?.addEventListener("click", () => {
-  setActiveView("food-detail");
-  setDrawerOpen(false);
-});
-
-activityFeatureButton?.addEventListener("click", () => {
-  setActiveView("activity-detail");
-  setDrawerOpen(false);
-});
-
-sunFeatureButton?.addEventListener("click", () => {
-  setActiveView("sun-detail");
-  setDrawerOpen(false);
-});
-
-moltFeatureButton?.addEventListener("click", () => {
-  setActiveView("molt-detail");
-  setDrawerOpen(false);
-});
-
-healthReportCard?.addEventListener("click", () => {
-  setActiveView("health-detail");
-  setDrawerOpen(false);
-});
-
-healthReportCard?.addEventListener("keydown", (event) => {
-  if (event.key === "Enter" || event.key === " ") {
-    event.preventDefault();
-    setActiveView("health-detail");
-    setDrawerOpen(false);
-  }
-});
-
-diseaseRiskCard?.addEventListener("click", () => {
-  setActiveView("health-detail");
-  setDrawerOpen(false);
-});
-
-diseaseRiskCard?.addEventListener("keydown", (event) => {
-  if (event.key === "Enter" || event.key === " ") {
-    event.preventDefault();
-    setActiveView("health-detail");
-    setDrawerOpen(false);
-  }
-});
-
-envMetricButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    if (!monitorScroll?.classList.contains("env-has-data")) {
-      return;
-    }
-    setActiveView("environment-detail");
-    setDrawerOpen(false);
-  });
-});
-
-foodBackButton?.addEventListener("click", () => {
-  setActiveView("reptile-camera");
-});
-
-activityBackButton?.addEventListener("click", () => {
-  setActiveView("reptile-camera");
-});
-
-sunBackButton?.addEventListener("click", () => {
-  setActiveView("reptile-camera");
-});
-
-moltBackButton?.addEventListener("click", () => {
-  setActiveView("reptile-camera");
-});
-
-healthBackButton?.addEventListener("click", () => {
-  setActiveView("reptile-camera");
-});
-
-envBackButton?.addEventListener("click", () => {
-  setActiveView("reptile-camera");
-});
-
-function setActiveFoodDay(index) {
-  foodDayButtons.forEach((button, buttonIndex) => {
-    button.classList.toggle("active", buttonIndex % 7 === index);
-  });
-  foodDateModalButtons.forEach((button, buttonIndex) => {
-    button.classList.toggle("active", buttonIndex === index);
-  });
-}
-
-function setFoodDateDialogOpen(isOpen) {
-  foodDateDialog?.classList.toggle("is-open", isOpen);
-  foodDateDialog?.setAttribute("aria-hidden", String(!isOpen));
-}
-
-foodDayButtons.forEach((button, index) => {
-  button.addEventListener("click", () => {
-    setActiveFoodDay(index % 7);
-  });
-});
-
-foodCalendarButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    setFoodDateDialogOpen(true);
-  });
-});
-
-foodDateScrim?.addEventListener("click", () => {
-  setFoodDateDialogOpen(false);
-});
-
-foodDateCloseButton?.addEventListener("click", () => {
-  setFoodDateDialogOpen(false);
-});
-
-foodDateModalButtons.forEach((button, index) => {
-  button.addEventListener("click", () => {
-    setActiveFoodDay(Number(button.dataset.foodDay ?? index));
-    setFoodDateDialogOpen(false);
-  });
-});
-
-messageButton?.addEventListener("click", () => {
-  returnViewName = activeViewName === "message" ? returnViewName : activeViewName;
-  setActiveView("message");
-  setDrawerOpen(false);
-});
-
-messageBackButton?.addEventListener("click", () => {
-  setActiveView(returnViewName);
-});
-
-profileButton?.addEventListener("click", () => {
-  returnViewName = activeViewName === "profile" ? returnViewName : activeViewName;
-  setActiveView("profile");
-  setDrawerOpen(false);
-});
-
-profileBackButton?.addEventListener("click", () => {
-  setActiveView(returnViewName);
-});
-
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    if (aquariumAnalysisPreview?.classList.contains("is-open")) {
-      closeAquariumAnalysisPreview();
-    } else if (aquariumFilterButton?.getAttribute("aria-expanded") === "true") {
-      aquariumFilterMenu?.toggleAttribute("hidden", true);
-      aquariumFilterButton.setAttribute("aria-expanded", "false");
-    } else if (activeViewName === "aquarium-camera") {
-      if (activeAquariumPage === "home") {
-        clearAquariumCaptureSelection();
-        setActiveView("pet");
-      } else if (activeAquariumPage === "capture") {
-        clearAquariumCaptureSelection();
-        setAquariumPage(aquariumCaptureReturnPage);
-      } else if (aquariumPageReturnTargets[activeAquariumPage]) {
-        setAquariumPage(aquariumPageReturnTargets[activeAquariumPage]);
-      } else {
-        setAquariumPage("home");
-      }
-    } else if (foodDateDialog?.classList.contains("is-open")) {
-      setFoodDateDialogOpen(false);
-    } else if (appScreen?.classList.contains("message-mode") || appScreen?.classList.contains("profile-mode")) {
-      setActiveView(returnViewName);
-    } else if (appScreen?.classList.contains("food-mode")) {
-      setActiveView("reptile-camera");
-    } else if (activeViewName === "create-pet-profile") {
-      setActiveView("link-pet-profile");
-    } else if (activeViewName === "link-pet-profile") {
-      setActiveView("wifi-setup");
-    } else if (activeViewName === "wifi-setup") {
-      setActiveView("add-device");
-    } else if (activeViewName === "camera-playback" || activeViewName === "camera-settings") {
-      setActiveCameraSection("care");
-      setActiveView("reptile-camera");
-    } else if (appScreen?.classList.contains("scan-mode") || appScreen?.classList.contains("monitor-mode")) {
-      setActiveView("pet");
-    } else {
-      setDrawerOpen(false);
-    }
-  }
-});
+save();});
+document.addEventListener('keydown',event=>{if(event.key==='Escape'){if($('.quality-popover')){closeQuality(true);return;}if(modal)closeModal();else if(view.page!=='home')back();}if(event.key==='Tab'&&modal){const elements=[...$('#modal-root').querySelectorAll('button:not([disabled]),input:not([disabled]),select,textarea,a[href]')];const first=elements[0],last=elements.at(-1);if(event.shiftKey&&document.activeElement===first){event.preventDefault();last?.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first?.focus();}}});
+window.prototypeState=()=>clone({db,view,stack,wizard,recording});
+render();
+})();

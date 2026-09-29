@@ -1,0 +1,11 @@
+{
+  "name": "czl-app3-camera-prototype",
+  "version": "1.0.0",
+  "private": true,
+  "description": "宠智灵 APP 3.0 爬宠摄像头接入原型",
+  "scripts": {
+    "build": "python3 prototype/build.py",
+    "test": "node --check script.js && node tests/flows.cjs"
+  },
+  "devDependencies": { "jsdom": "30.1.0" }
+}
