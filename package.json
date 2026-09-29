@@ -5,7 +5,10 @@
   "description": "宠智灵 APP 3.0 爬宠摄像头接入原型",
   "scripts": {
     "build": "python3 prototype/build.py",
-    "test": "node --check script.js && node tests/flows.cjs"
+    "test": "node --check script.js && node tests/flows.cjs",
+    "deploy": "python3 scripts/deploy_pages.py"
   },
-  "devDependencies": { "jsdom": "30.1.0" }
+  "devDependencies": {
+    "jsdom": "30.1.0"
+  }
 }
