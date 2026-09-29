@@ -13,7 +13,6 @@ prototype/
   shell.html                # 外层 HTML 模板
   original-camera.json      # 复用的行为与健康详情模板
   build.py                  # 将源码与图片内嵌到 index.html
-scripts/deploy_pages.py     # 发布 gh-pages 分支
 tests/flows.cjs             # 交互回归检查
 docs/                      # UI、开发及验收说明
 references/                # 原 APP 截图和历史摄像头设计板
@@ -63,15 +62,16 @@ npm test
 
 ## GitHub Pages 部署
 
-站点域名：`https://petapp.aidenzhao.site/`。GitHub Pages 从 `gh-pages` 分支根目录发布，仅包含 `index.html`、`.nojekyll` 和 `CNAME`。主域名的个人博客不变。
+站点：`https://petapp.aidenzhao.site/`。仅使用 `main` 分支；Pages 从 `main` 根目录发布。根目录 `CNAME` 绑定子域名，`.nojekyll` 禁用 Jekyll。主域名个人博客不变。
 
-更新页面后执行：
+更新流程：
 
 ```sh
 npm run build
 npm test
-# 提交并推送 main 的源码修改后：
-npm run deploy
+git add <本次修改的文件> index.html
+git commit -m "说明本次修改"
+git push origin main
 ```
 
-部署命令需要本机 GitHub Git 推送权限，会在临时目录同步 `gh-pages`，正常快进推送，不强制覆盖；GitHub 随后异步构建页面。部署脚本不改变 DNS。阿里云解析需保留 `petapp` 的 CNAME 指向 `Zhao-Huazhou.github.io`，GitHub Pages 设置中绑定该域名，待证书签发后开启 Enforce HTTPS。
+GitHub Pages 会自动构建发布 main 的更新，无需额外部署分支。阿里云 DNS 记录为 `petapp` CNAME → `Zhao-Huazhou.github.io`。等待证书签发后启用 Enforce HTTPS。站点和仓库均公开；不要提交敏感文件。
