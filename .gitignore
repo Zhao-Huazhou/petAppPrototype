@@ -1,19 +1,6 @@
-# Local system files
 .DS_Store
 *.log
-
-# Dependencies and caches
-node_modules/
 __pycache__/
 *.py[cod]
-
-# Local deliverables, backups and review artifacts
-outputs/
-coverage/
-playwright-report/
-test-results/
-
-# Local environment and credentials
 .env
 .env.*
-!.env.example
