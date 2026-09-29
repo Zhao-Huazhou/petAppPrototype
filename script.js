@@ -1,5 +1,8 @@
 (() => {
 'use strict';
+function fitDesktopPreview(){const scale=window.innerWidth>=1280?Math.max(1,Math.min(1.5,(window.innerHeight-96)/844)):1;document.documentElement.style.setProperty('--preview-scale',String(scale));}
+fitDesktopPreview();window.addEventListener('resize',fitDesktopPreview);
+
 document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[role=button][data-action]')){e.preventDefault();e.target.click();}});
 const KEY='czl-app3-camera-v1', TODAY='2026-09-23', IMAGE=window.CAMERA_IMAGE;
 const HEALTH_BADGE=(()=>{const template=document.createElement('template');template.innerHTML=window.CAMERA_ORIGINAL.health;return template.content.querySelector('.health-risk-summary-badge')?.getAttribute('src')||'';})();
