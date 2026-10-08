@@ -338,7 +338,7 @@ case'clip-toggle':if(modal?.type==='event-clip'){if(modal.elapsed===modal.durati
 case'media':openModal('media',{id});break;
 case'delete-media':if(canManage()){d.media=d.media.filter(m=>m.id!==id);closeModal();render();toast('相册记录已删除');}break;
 case'more':openModal('more');break;
-case'privacy':if(canManage()&&d.online){snapshotNotice=null;stopRecording();d.privacy=!d.privacy;closeModal();render();toast(d.privacy?'隐私模式已开启':'实时看护已恢复');}else if(!d.online)toast('设备离线，无法修改隐私模式');break;
+case'privacy':if(canManage()&&d.online){snapshotNotice=null;stopRecording();d.privacy=!d.privacy;closeModal();render();}else if(!d.online)toast('设备离线，无法修改隐私模式');break;
 case'settings':go('settings');break;
 case'rename':case'network':case'storage':case'firmware':case'device-info':openModal(a);break;
 case'link-pet':openModal('link-pet');break;
