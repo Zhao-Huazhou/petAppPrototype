@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-label="外设列表与状态展示流程图">
+<style>text{font-family:"PingFang SC","Microsoft YaHei",sans-serif;font-size:14px;fill:#111827}</style>
+<rect width="1200" height="300" fill="#ffffff"/>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#2563eb"/></marker></defs>
+<path d="M216 86H264" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M456 86H504" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M696 86H744" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M936 86H984" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M600 118V216" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="612" y="172" style="font-size:12px;fill:#6b7280">离线或状态未知</text>
+<rect x="420" y="216" width="360" height="56" rx="8" fill="#f9fafb" stroke="#d1d5db"/>
+<text x="600" y="249" text-anchor="middle">标注原因并禁用对应开关</text>
+<rect x="24" y="54" width="192" height="64" rx="8" fill="#eff6ff" stroke="#d1d5db"/>
+<text x="120" y="91" text-anchor="middle">读取关联外设</text>
+<rect x="264" y="54" width="192" height="64" rx="8" fill="#ffffff" stroke="#d1d5db"/>
+<text x="360" y="91" text-anchor="middle">展示数量与卡片</text>
+<path d="M528 54H672L696 86L672 118H528L504 86Z" fill="#eff6ff" stroke="#d1d5db"/>
+<text x="600" y="91" text-anchor="middle">读取确认开关状态</text>
+<rect x="744" y="54" width="192" height="64" rx="8" fill="#ffffff" stroke="#d1d5db"/>
+<text x="840" y="91" text-anchor="middle">按权限启用开关</text>
+<rect x="984" y="54" width="192" height="64" rx="8" fill="#eff6ff" stroke="#d1d5db"/>
+<text x="1080" y="91" text-anchor="middle">周期同步设备状态</text>
+</svg>

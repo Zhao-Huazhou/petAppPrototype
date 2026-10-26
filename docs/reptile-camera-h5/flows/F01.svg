@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="170" viewBox="0 0 1200 170" role="img" aria-label="进入摄像头与栏目切换流程图">
+<style>text{font-family:"PingFang SC","Microsoft YaHei",sans-serif;font-size:14px;fill:#111827}</style>
+<rect width="1200" height="170" fill="#ffffff"/>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#2563eb"/></marker></defs>
+<path d="M216 86H264" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M456 86H504" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M696 86H744" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M936 86H984" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="24" y="54" width="192" height="64" rx="8" fill="#eff6ff" stroke="#d1d5db"/>
+<text x="120" y="91" text-anchor="middle">打开 H5</text>
+<rect x="264" y="54" width="192" height="64" rx="8" fill="#ffffff" stroke="#d1d5db"/>
+<text x="360" y="91" text-anchor="middle">默认进入视频直播</text>
+<rect x="504" y="54" width="192" height="64" rx="8" fill="#ffffff" stroke="#d1d5db"/>
+<text x="600" y="91" text-anchor="middle">选择三个同级栏目</text>
+<rect x="744" y="54" width="192" height="64" rx="8" fill="#ffffff" stroke="#d1d5db"/>
+<text x="840" y="91" text-anchor="middle">如录制则结束保存</text>
+<rect x="984" y="54" width="192" height="64" rx="8" fill="#eff6ff" stroke="#d1d5db"/>
+<text x="1080" y="91" text-anchor="middle">展示目标栏目内容</text>
+</svg>

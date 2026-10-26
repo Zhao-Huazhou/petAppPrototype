@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-label="单外设开关与结果反馈流程图">
+<style>text{font-family:"PingFang SC","Microsoft YaHei",sans-serif;font-size:14px;fill:#111827}</style>
+<rect width="1200" height="300" fill="#ffffff"/>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#2563eb"/></marker></defs>
+<path d="M216 86H264" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M456 86H504" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M696 86H744" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M936 86H984" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M840 118V216" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="852" y="172" style="font-size:12px;fill:#6b7280">失败或超时</text>
+<rect x="660" y="216" width="360" height="56" rx="8" fill="#f9fafb" stroke="#d1d5db"/>
+<text x="840" y="249" text-anchor="middle">提示原因并同步实际状态，禁止盲目重发</text>
+<rect x="24" y="54" width="192" height="64" rx="8" fill="#eff6ff" stroke="#d1d5db"/>
+<text x="120" y="91" text-anchor="middle">点击外设开关</text>
+<rect x="264" y="54" width="192" height="64" rx="8" fill="#ffffff" stroke="#d1d5db"/>
+<text x="360" y="91" text-anchor="middle">校验权限及状态</text>
+<rect x="504" y="54" width="192" height="64" rx="8" fill="#ffffff" stroke="#d1d5db"/>
+<text x="600" y="91" text-anchor="middle">提交目标开关状态</text>
+<path d="M768 54H912L936 86L912 118H768L744 86Z" fill="#eff6ff" stroke="#d1d5db"/>
+<text x="840" y="91" text-anchor="middle">等待设备执行确认</text>
+<rect x="984" y="54" width="192" height="64" rx="8" fill="#eff6ff" stroke="#d1d5db"/>
+<text x="1080" y="91" text-anchor="middle">成功后更新开关</text>
+</svg>
